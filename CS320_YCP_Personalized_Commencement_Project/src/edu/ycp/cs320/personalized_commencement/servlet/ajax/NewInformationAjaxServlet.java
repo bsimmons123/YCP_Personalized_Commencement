@@ -1,4 +1,4 @@
-package edu.ycp.cs320.personalized.commencement.servlet.ajax;
+package edu.ycp.cs320.personalized_commencement.servlet.ajax;
 
 import java.io.IOException;
 

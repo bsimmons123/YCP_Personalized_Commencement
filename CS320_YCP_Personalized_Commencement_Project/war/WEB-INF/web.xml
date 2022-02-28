@@ -8,33 +8,33 @@
   <!-- Servlets -->
 	<servlet>
     <servlet-name>NewInformationServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.NewInformationServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.NewInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
     <servlet-name>UpdateInformationServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.UpdateInformationServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.UpdateInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
     <servlet-name>DeleteInformationServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.DeleteInformationServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.DeleteInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
     <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.IndexServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.IndexServlet</servlet-class>
   	</servlet>
   
   <!-- AJAX servlets. -->
 	<servlet>
 	<servlet-name>DeleteInformationAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized.commencement.servlet.ajax.DeleteInformationAjaxServlet</servlet-class>
+	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.DeleteInformationAjaxServlet</servlet-class>
 	</servlet>
 	<servlet>
 	<servlet-name>NewInformationAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized.commencement.servlet.ajax.NewInformationAjaxServlet</servlet-class>
+	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.NewInformationAjaxServlet</servlet-class>
 	</servlet>
 	<servlet>
 	<servlet-name>UpdateInformationAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized.commencement.servlet.ajax.UpdateInformationAjaxServlet</servlet-class>
+	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.UpdateInformationAjaxServlet</servlet-class>
 	</servlet>
 
   <!-- Servlet mappings -->
