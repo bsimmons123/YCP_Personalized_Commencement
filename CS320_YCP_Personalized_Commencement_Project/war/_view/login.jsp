@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Index view</title>
+		<title>Login view</title>
 	</head>
 	<style>
 		.button	{
