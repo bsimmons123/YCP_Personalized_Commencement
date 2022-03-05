@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import edu.ycp.cs320_personalized_commencement.model.Advisor;
 
+/**
+ * JUnit test class for the Advisor model class.
+ *
+ */
 public class AdvisorTest {
 private Advisor model;
 	

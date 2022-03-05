@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import edu.ycp.cs320_personalized_commencement.model.Student;
 
+/**
+ * JUnit test class for the Student model class.
+ *
+ */
 public class StudentTest {
 	private Student model;
 	
