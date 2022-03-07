@@ -10,6 +10,10 @@ public class StudentController extends UserController{
 	
 	StudentModel model;
 	
+	/**
+	 * 
+	 * @param model 	For interactions with controller
+	 */
 	public void setModel(StudentModel model) {
 		this.model = model;
 	}

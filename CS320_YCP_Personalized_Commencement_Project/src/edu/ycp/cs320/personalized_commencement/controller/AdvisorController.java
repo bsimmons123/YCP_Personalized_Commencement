@@ -8,8 +8,12 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
  */
 public class AdvisorController extends UserController{
 	
-	AdvisorModel model;
+	AdvisorModel model; 
 	
+	/**
+	 * 
+	 * @param model 	For interactions with controller
+	 */
 	public void setModel(AdvisorModel model) {
 		this.model = model;
 	}
