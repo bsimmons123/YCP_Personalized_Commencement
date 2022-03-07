@@ -28,5 +28,8 @@ public class Main {
         // wait until the server is done executing.
         // See http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#join()
 		server.join();
+		
+		// Here's the link for copy pasting
+		// http://localhost:8081/pcomm/index
 	}
 }

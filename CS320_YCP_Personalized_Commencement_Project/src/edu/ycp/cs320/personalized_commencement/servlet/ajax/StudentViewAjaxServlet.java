@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class UpdateInformationAjaxServlet extends HttpServlet {
+public class StudentViewAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -24,14 +23,13 @@ public class UpdateInformationAjaxServlet extends HttpServlet {
 	}
 
 	private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		
+	
 		
 
-		
-		// Send back a response
-		resp.setContentType("text/plain");
+	
 	}
-
 	private Double getDouble(HttpServletRequest req, String name) {
 		String val = req.getParameter(name);
 		if (val == null) {

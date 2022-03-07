@@ -7,18 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DeleteInformationServlet extends HttpServlet {
+public class AdvisorViewServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("delete Servlet: doGet");
+		System.out.println("Login Servlet: doGet");
 
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/delete.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/advisor_view.jsp").forward(req, resp);
 	}
-	
 
 }
