@@ -32,7 +32,7 @@
 			</div>
 			<div>
 				<div class="button">
-				<input type="button" onclick="window.location.href='index';" value="Advisor Login" />
+				<input type="button" onclick="window.location.href='advisor_index';" value="Advisor Login" />
 				</div>
 			</div>
 			

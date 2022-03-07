@@ -19,8 +19,12 @@
     <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.DeleteInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
-    <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.IndexServlet</servlet-class>
+    <servlet-name>StudentIndexServlet</servlet-name>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.StudentIndexServlet</servlet-class>
+  	</servlet>
+  	<servlet>
+    <servlet-name>AdvisorIndexServlet</servlet-name>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.AdvisorIndexServlet</servlet-class>
   	</servlet>
   	<servlet>
   	<servlet-name>LoginServlet</servlet-name>
@@ -55,8 +59,12 @@
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/index</url-pattern>
+    <servlet-name>StudentIndexServlet</servlet-name>
+    <url-pattern>/student_index</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdvisorIndexServlet</servlet-name>
+    <url-pattern>/advisor_index</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>NewInformationServlet</servlet-name>
@@ -81,6 +89,9 @@
   
   <!--  AJAX servlet mappings. -->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>studentindex.html</welcome-file>
+  </welcome-file-list>
+  <welcome-file-list>
+    <welcome-file>advisorindex.html</welcome-file>
   </welcome-file-list>
 </web-app>
