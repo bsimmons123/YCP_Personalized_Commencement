@@ -30,14 +30,6 @@
   	<servlet-name>LoginServlet</servlet-name>
   	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.LoginServlet</servlet-class>
   	</servlet>
-  	<servlet>
-  	<servlet-name>StudentLoginServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.StudentLoginServlet</servlet-class>
-  	</servlet>
-  	<servlet>
-  	<servlet-name>AdvisorLoginServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.AdvisorLoginServlet</servlet-class>
-  	</servlet>
   
   <!-- AJAX servlets. -->
 	<servlet>
@@ -77,14 +69,6 @@
   <servlet-mapping>
     <servlet-name>DeleteInformationServlet</servlet-name>
     <url-pattern>/delete</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>StudentLoginServlet</servlet-name>
-  	<url-pattern>/student_login</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>AdvisorLoginServlet</servlet-name>
-  	<url-pattern>/advisor_login</url-pattern>
   </servlet-mapping>
   
   <!--  AJAX servlet mappings. -->
