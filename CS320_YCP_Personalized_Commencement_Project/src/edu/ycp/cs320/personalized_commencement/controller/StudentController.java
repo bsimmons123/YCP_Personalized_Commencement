@@ -25,7 +25,7 @@ public class StudentController extends UserController{
 	 * @return			User is logged in
 	 */
 	public boolean checkStudentLogin(UserModel user) {
-		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword())) {
+		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword()) && model.getStudent()) {
 			return true;
 		}
 		return false;

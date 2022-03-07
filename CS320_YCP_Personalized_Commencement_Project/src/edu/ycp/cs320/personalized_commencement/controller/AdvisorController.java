@@ -25,7 +25,7 @@ public class AdvisorController extends UserController{
 	 * @return if		User is logged in
 	 */
 	public boolean checkAdvisorLogin(UserModel user) {
-		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword())) {
+		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword()) && !model.getStudent()) {
 			return true;
 		}
 		return false;
