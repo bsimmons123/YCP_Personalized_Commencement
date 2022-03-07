@@ -11,14 +11,26 @@
 	</style>
 
 	<body>
-			<!--Button for student login-->
-			<div class="button">
-				<input type="button" onclick="window.location.href='student_login';" value="Student Login" />
+			<!--Username box for advisor login-->
+			<div>
+				<label>Username:</label>
+			</div>
+			<div class="text">
+				<input type="text" />
+				
 			</div>
 			
-			<!--Button for Advisor login-->
-			<div class="button">
-				<input type="button" onclick="window.location.href='advisor_login';" value="Advisor Login" />
+			<!--Password for Advisor login-->
+			<div>
+				<label>Password:</label>
+			</div>
+			<div class="text">
+				<input type="text" />
+			</div>
+			<div>
+				<div class="button">
+				<input type="button" onclick="window.location.href='index';" value="Advisor Login" />
+				</div>
 			</div>
 			
 	</body>
