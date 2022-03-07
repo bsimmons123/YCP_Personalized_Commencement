@@ -1,4 +1,4 @@
-package edu.ycp.cs320.personalized.commencement.main;
+package edu.ycp.cs320.personalized_commencement.main;
 
 import java.io.File;
 

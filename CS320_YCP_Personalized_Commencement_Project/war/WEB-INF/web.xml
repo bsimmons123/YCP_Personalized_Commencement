@@ -8,37 +8,53 @@
   <!-- Servlets -->
 	<servlet>
     <servlet-name>NewInformationServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.NewInformationServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.NewInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
     <servlet-name>UpdateInformationServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.UpdateInformationServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.UpdateInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
     <servlet-name>DeleteInformationServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.DeleteInformationServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.DeleteInformationServlet</servlet-class>
   	</servlet>
   	<servlet>
     <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized.commencement.servlet.IndexServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.IndexServlet</servlet-class>
+  	</servlet>
+  	<servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.LoginServlet</servlet-class>
+  	</servlet>
+  	<servlet>
+  	<servlet-name>StudentLoginServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.StudentLoginServlet</servlet-class>
+  	</servlet>
+  	<servlet>
+  	<servlet-name>AdvisorLoginServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.AdvisorLoginServlet</servlet-class>
   	</servlet>
   
   <!-- AJAX servlets. -->
 	<servlet>
 	<servlet-name>DeleteInformationAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized.commencement.servlet.ajax.DeleteInformationAjaxServlet</servlet-class>
+	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.DeleteInformationAjaxServlet</servlet-class>
 	</servlet>
 	<servlet>
 	<servlet-name>NewInformationAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized.commencement.servlet.ajax.NewInformationAjaxServlet</servlet-class>
+	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.NewInformationAjaxServlet</servlet-class>
 	</servlet>
 	<servlet>
 	<servlet-name>UpdateInformationAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized.commencement.servlet.ajax.UpdateInformationAjaxServlet</servlet-class>
+	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.UpdateInformationAjaxServlet</servlet-class>
 	</servlet>
 
   <!-- Servlet mappings -->
-	<servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
@@ -50,9 +66,17 @@
     <servlet-name>UpdateInformationServlet</servlet-name>
     <url-pattern>/update</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DeleteInformationServlet</servlet-name>
     <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>StudentLoginServlet</servlet-name>
+  	<url-pattern>/student_login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdvisorLoginServlet</servlet-name>
+  	<url-pattern>/advisor_login</url-pattern>
   </servlet-mapping>
   
   <!--  AJAX servlet mappings. -->

@@ -1,4 +1,4 @@
-package edu.ycp.cs320.personalized.commencement.servlet;
+package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
 
