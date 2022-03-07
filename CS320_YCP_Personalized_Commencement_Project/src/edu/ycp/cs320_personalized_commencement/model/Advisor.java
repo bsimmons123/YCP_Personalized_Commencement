@@ -9,9 +9,9 @@ public class Advisor extends User{
 	boolean decision;
 	
 	/**
-	 * Sets the advisor's decision based off of the decision passed as the argument.
+	 * Sets the advisor's decision of content
 	 */
-	public void setDecision(boolean decision) {
+	public void setDecision(boolean decision) { 
 		this.decision = decision;
 	}
 	
