@@ -23,8 +23,8 @@
 			<table>
 				<!-- User Email -->
 				<tr>
-					<td>Username:</td>
-					<td><input type="text" name="first" size="12" value="${username}" /></td>
+					<td>Email:</td>
+					<td><input type="text" name="first" size="12" value="${email}" /></td>
 				</tr>
 				<!-- User Password -->
 				<tr>

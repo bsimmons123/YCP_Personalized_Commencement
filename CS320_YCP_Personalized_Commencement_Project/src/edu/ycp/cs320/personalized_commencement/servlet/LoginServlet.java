@@ -57,16 +57,23 @@ public class LoginServlet extends HttpServlet{
 		// get username and password from form
 		try {
 			// pull parameters from JSP
-			String username = req.getParameter("username");
+			String email = req.getParameter("email");
 			String password = req.getParameter("password");
 			
 			// set parameters in user to check in controller
-			user.setEmail(username);
+			user.setEmail(email);
 			user.setPassword(password);
+			
+			if(email == null || password == null) {
+				errorMessage = "invalid Username or Password";
+			}else {
+				
+			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
 			errorMessage = "invalid Username or Password";
 		}
+		
 		
 		
 	}
