@@ -67,7 +67,9 @@ public class LoginServlet extends HttpServlet{
 			if(email == null || password == null) {
 				errorMessage = "invalid Username or Password";
 			}else {
-				
+				if(studentController.checkStudentLogin(user) || advisorController.checkAdvisorLogin(user)) {
+					
+				}
 			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
