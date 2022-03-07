@@ -12,12 +12,11 @@ public class Student extends User{
 	/**
 	 * Hardcode test account
 	 */
-	public void createTestUser() {
-		user.setEmail("test@ycp.edu");
+	public void createTestStudent() {
+		user.setEmail("teststudent@ycp.edu");
 		user.setUsername("test");
 		user.setPassword("test");
 	}
-	
 	
 	
 	/**
