@@ -7,6 +7,12 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
  * Acts as the controller for the Student model class.
  */
 public class StudentController extends UserController{
+	
+	StudentModel model;
+	
+	public void setModel(StudentModel model) {
+		this.model = model;
+	}
 
 	/**
 	 * 
@@ -14,8 +20,8 @@ public class StudentController extends UserController{
 	 * @param user		User from JSP
 	 * @return			User is logged in
 	 */
-	public boolean checkStudentLogin(StudentModel student, UserModel user) {
-		if(student.getEmail().equals(user.getEmail()) && student.getPassword().equals(user.getPassword())) {
+	public boolean checkStudentLogin(UserModel user) {
+		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword())) {
 			return true;
 		}
 		return false;
