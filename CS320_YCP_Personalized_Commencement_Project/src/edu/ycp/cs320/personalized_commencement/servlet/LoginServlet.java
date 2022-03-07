@@ -35,24 +35,34 @@ public class LoginServlet extends HttpServlet{
 		// holds the error message text, if there is any
 		String errorMessage = null;
 		
-		// Creates advisor and student objects
+		// Creates advisor and student model
 		AdvisorModel advisorModel = new AdvisorModel();
 		StudentModel studentModel = new StudentModel();
 		
+		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
+		
+		// sets model in controllers
+		advisorController.setModel(advisorModel);
+		studentController.setModel(studentModel);
 		
 		
 		// Creates user to interact with controller
 		UserModel user = new UserModel();
 		
-		student.createTestStudent();
-		advisor.createTestAdvisor();
+		studentModel.createTestStudent();
+		advisorModel.createTestAdvisor();
 		
 		// get username and password from form
 		try {
+			// pull parameters from JSP
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
+			
+			// set parameters in user to check in controller
+			user.setEmail(username);
+			user.setPassword(password);
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
 			errorMessage = "invalid Username or Password";
