@@ -15,7 +15,6 @@ public class Student extends User{
 	public void createTestStudent() {
 		user.setStudent(true);
 		user.setEmail("teststudent@ycp.edu");
-		user.setUsername("test");
 		user.setPassword("test");
 	}
 	

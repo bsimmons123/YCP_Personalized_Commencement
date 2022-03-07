@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.ycp.cs320_personalized_commencement.model.Advisor;
+import edu.ycp.cs320_personalized_commencement.model.Student;
+import edu.ycp.cs320_personalized_commencement.model.User;
+
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -25,6 +29,14 @@ public class LoginServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		System.out.println("Login Servlet: doPost");
+		
+		Advisor advisor = new Advisor();
+		Student student = new Student();
+		User user = new User();
+		
+		student.createTestStudent();
+		advisor.createTestAdvisor();
+		
 		
 	}
 }
