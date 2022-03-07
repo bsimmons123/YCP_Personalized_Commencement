@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
+import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
 import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 import edu.ycp.cs320_personalized_commencement.model.UserModel;
@@ -34,8 +36,13 @@ public class LoginServlet extends HttpServlet{
 		String errorMessage = null;
 		
 		// Creates advisor and student objects
-		AdvisorModel advisor = new AdvisorModel();
-		StudentModel student = new StudentModel();
+		AdvisorModel advisorModel = new AdvisorModel();
+		StudentModel studentModel = new StudentModel();
+		
+		AdvisorController advisorController = new AdvisorController();
+		StudentController studentController = new StudentController();
+		
+		
 		// Creates user to interact with controller
 		UserModel user = new UserModel();
 		
