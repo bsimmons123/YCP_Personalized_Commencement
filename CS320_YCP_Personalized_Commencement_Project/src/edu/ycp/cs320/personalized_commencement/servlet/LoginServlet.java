@@ -35,6 +35,10 @@ public class LoginServlet extends HttpServlet{
 		// holds the error message text, if there is any
 		String errorMessage = null;
 		
+		// Checks if student or advisor has entered the correct information
+		boolean student = false;
+		boolean advisor = false;
+		
 		// Creates advisor and student model
 		AdvisorModel advisorModel = new AdvisorModel();
 		StudentModel studentModel = new StudentModel();
@@ -69,9 +73,9 @@ public class LoginServlet extends HttpServlet{
 			}else {
 				// Check if user is Student
 				if(studentController.checkStudentLogin(user)) {
-					
+					student = true;
 				}else if(advisorController.checkAdvisorLogin(user)) { // Check if user is advisor
-					
+					advisor = true;
 				}
 			}
 		}catch(NullPointerException e) {
@@ -79,7 +83,20 @@ public class LoginServlet extends HttpServlet{
 			errorMessage = "invalid Username or Password";
 		}
 		
+		req.setAttribute("errorMessage", errorMessage);
+		System.out.println("\tLogin results");
+		req.setAttribute("user", user);
 		
+		
+		if(student) {
+			student = false; // set to false incase user logs out and tries to log in as a new user
+			// Forward to view to render the result HTML document
+			req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
+		}else if(advisor) {
+			advisor = false; // set to false incase user logs out and tries to log in as a new user
+			// Forward to view to render the result HTML document
+			req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+		}
 		
 	}
 }
