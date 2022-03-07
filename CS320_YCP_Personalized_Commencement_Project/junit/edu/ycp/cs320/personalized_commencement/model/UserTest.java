@@ -16,15 +16,11 @@ private UserModel model;
 	@Before
 	public void setUp() {
 		model = new UserModel();
-		model.setUsername("AndrewLikesGluten43");
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
 	
-	@Test
-	public void testGetUsername() {
-		assertEquals("AndrewLikesGluten43", model.getUsername());
-	}
+
 	
 	@Test
 	public void testGetPassword() {
@@ -34,12 +30,6 @@ private UserModel model;
 	@Test
 	public void testGetEmail() {
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
-	}
-	
-	@Test
-	public void testSetUsername() {
-		model.setUsername("insertUNameHere");
-		assertEquals("insertUNameHere", model.getUsername());
 	}
 	
 	@Test

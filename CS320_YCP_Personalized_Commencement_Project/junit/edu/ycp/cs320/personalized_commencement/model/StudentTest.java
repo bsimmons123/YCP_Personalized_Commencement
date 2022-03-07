@@ -18,7 +18,6 @@ public class StudentTest {
 	public void setup() {
 		model = new StudentModel();
 		model.setStudentInfo("Info");
-		model.setUsername("AndrewLikesGluten43");
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
@@ -28,10 +27,6 @@ public class StudentTest {
 		assertEquals("Info", model.getStudentInfo());
 	}
 	
-	@Test
-	public void testGetUsername() {
-		assertEquals("AndrewLikesGluten43", model.getUsername());
-	}
 	
 	@Test
 	public void testGetPassword() {
@@ -49,11 +44,7 @@ public class StudentTest {
 		assertEquals(4, model.getStudentInfo());
 	}
 	
-	@Test
-	public void testSetUsername() {
-		model.setUsername("insertUNameHere");
-		assertEquals("insertUNameHere", model.getUsername());
-	}
+
 	
 	@Test
 	public void testSetPassword() {

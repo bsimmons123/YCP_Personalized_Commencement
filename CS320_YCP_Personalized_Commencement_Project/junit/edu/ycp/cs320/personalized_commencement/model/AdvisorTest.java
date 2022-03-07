@@ -18,7 +18,6 @@ private AdvisorModel model;
 	public void setup() {
 		model = new AdvisorModel();
 		model.setDecision(true);
-		model.setUsername("AndrewLikesGluten43");
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
@@ -28,10 +27,6 @@ private AdvisorModel model;
 		assertEquals(true, model.getDecision());
 	}
 	
-	@Test
-	public void testGetUsername() {
-		assertEquals("AndrewLikesGluten43", model.getUsername());
-	}
 	
 	@Test
 	public void testGetPassword() {
@@ -49,12 +44,7 @@ private AdvisorModel model;
 		assertEquals(false, model.getDecision());
 	}
 	
-	@Test
-	public void testSetUsername() {
-		model.setUsername("insertUNameHere");
-		assertEquals("insertUNameHere", model.getUsername());
-	}
-	
+
 	@Test
 	public void testSetPassword() {
 		model.setPassword("insertPasswordHere");
