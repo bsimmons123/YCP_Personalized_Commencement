@@ -2,6 +2,14 @@ package edu.ycp.cs320_personalized_commencement.model;
 
 public class User {
 	private String username, email, password;
+	private boolean login;
+	
+	/**
+	 * Check for login state
+	 */
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
 	
 	/**
 	 * Sets the user's username.
@@ -22,6 +30,13 @@ public class User {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	/**
+	 * Returns users login state
+	 */
+	public boolean getlogin() {
+		return login;
 	}
 	
 	/**
