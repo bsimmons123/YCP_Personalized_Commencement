@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Index view</title>
+		<title>Student Index View</title>
 	</head>
 	<style>
 		.button	{

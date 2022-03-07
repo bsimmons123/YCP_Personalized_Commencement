@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class IndexServlet extends HttpServlet {
+public class StudentIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("Index Servlet: doGet");
+		System.out.println("Student Index Servlet: doGet");
 
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
 	}
 	
 
