@@ -18,7 +18,7 @@
 	<body>
 		<c:if test="${! empty errorMessage}"> <!--if error message-->
 			<div class="error">${errorMessage}</div>
-		</c:if>
+		</c:if><!-- if no error message -->
 			<form action="${pageContext.servletContext.contextPath}/login" method="post">
 			<!-- User Login Table-->
 			<table>

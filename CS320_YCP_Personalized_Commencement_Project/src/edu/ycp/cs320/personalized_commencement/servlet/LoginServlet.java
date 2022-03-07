@@ -96,6 +96,9 @@ public class LoginServlet extends HttpServlet{
 			advisor = false; // set to false incase user logs out and tries to log in as a new user
 			// Forward to view to render the result HTML document
 			req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+		}else {
+			// Forward to view to render the result HTML document
+			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}
 		
 	}
