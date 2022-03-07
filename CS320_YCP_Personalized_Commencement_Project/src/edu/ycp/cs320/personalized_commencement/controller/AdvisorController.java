@@ -7,6 +7,12 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
  * Acts as a controller for the Advisor model class.
  */
 public class AdvisorController extends UserController{
+	
+	AdvisorModel model;
+	
+	public void setModel(AdvisorModel model) {
+		this.model = model;
+	}
 
 	/**
 	 * 
@@ -14,8 +20,8 @@ public class AdvisorController extends UserController{
 	 * @param user	 	User from JSP
 	 * @return if		User is logged in
 	 */
-	public boolean checkStudentLogin(AdvisorModel advisor, UserModel user) {
-		if(advisor.getEmail().equals(user.getEmail()) && advisor.getPassword().equals(user.getPassword())) {
+	public boolean checkStudentLogin(UserModel user) {
+		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword())) {
 			return true;
 		}
 		return false;
