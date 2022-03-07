@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320_personalized_commencement.model.Advisor;
-import edu.ycp.cs320_personalized_commencement.model.Student;
-import edu.ycp.cs320_personalized_commencement.model.User;
+import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
+import edu.ycp.cs320_personalized_commencement.model.StudentModel;
+import edu.ycp.cs320_personalized_commencement.model.UserModel;
 
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -34,10 +34,10 @@ public class LoginServlet extends HttpServlet{
 		String errorMessage = null;
 		
 		// Creates advisor and student objects
-		Advisor advisor = new Advisor();
-		Student student = new Student();
+		AdvisorModel advisor = new AdvisorModel();
+		StudentModel student = new StudentModel();
 		// Creates user to interact with controller
-		User user = new User();
+		UserModel user = new UserModel();
 		
 		student.createTestStudent();
 		advisor.createTestAdvisor();

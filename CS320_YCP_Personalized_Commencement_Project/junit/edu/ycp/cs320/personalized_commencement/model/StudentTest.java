@@ -5,18 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.Student;
+import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 
 /**
  * JUnit test class for the Student model class.
  *
  */
 public class StudentTest {
-	private Student model;
+	private StudentModel model;
 	
 	@Before
 	public void setup() {
-		model = new Student();
+		model = new StudentModel();
 		model.setStudentInfo("Info");
 		model.setUsername("AndrewLikesGluten43");
 		model.setPassword("Brandon'sMom1");

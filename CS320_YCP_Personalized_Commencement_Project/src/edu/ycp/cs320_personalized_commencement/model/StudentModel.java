@@ -3,11 +3,11 @@ package edu.ycp.cs320_personalized_commencement.model;
 /**
  * Stores the student's information in the model.
  */
-public class Student extends User{
+public class StudentModel extends UserModel{
 	// field Object for the student's info
 	private Object studentInfo; 
 	
-	private User user; // used to set Hardcoded credentials
+	private UserModel user; // used to set Hardcoded credentials
 	
 	/**
 	 * Hardcode test account

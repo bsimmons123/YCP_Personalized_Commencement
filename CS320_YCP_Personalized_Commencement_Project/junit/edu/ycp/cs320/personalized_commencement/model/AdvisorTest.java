@@ -5,18 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.Advisor;
+import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
 
 /**
  * JUnit test class for the Advisor model class.
  *
  */
 public class AdvisorTest {
-private Advisor model;
+private AdvisorModel model;
 	
 	@Before
 	public void setup() {
-		model = new Advisor();
+		model = new AdvisorModel();
 		model.setDecision(true);
 		model.setUsername("AndrewLikesGluten43");
 		model.setPassword("Brandon'sMom1");
