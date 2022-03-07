@@ -16,7 +16,6 @@ public class AdvisorModel extends UserModel{
 	public void createTestAdvisor() {
 		user.setStudent(false);
 		user.setEmail("testadvisor@ycp.edu");
-		user.setUsername("test");
 		user.setPassword("test");
 	}
 	

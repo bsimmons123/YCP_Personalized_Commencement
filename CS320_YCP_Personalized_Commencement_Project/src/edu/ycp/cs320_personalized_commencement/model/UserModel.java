@@ -1,7 +1,7 @@
 package edu.ycp.cs320_personalized_commencement.model;
 
 public class UserModel {
-	private String username, email, password;
+	private String email, password;
 	
 	private boolean login, student; // student to check if student is an advisor or not
 	
@@ -17,13 +17,6 @@ public class UserModel {
 	 */
 	public void setLogin(boolean login) {
 		this.login = login;
-	}
-	
-	/**
-	 * Sets the user's username.
-	 */
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	
 	/**
@@ -52,13 +45,6 @@ public class UserModel {
 	 */
 	public boolean getlogin() {
 		return login;
-	}
-	
-	/**
-	 * Returns the user's username.
-	 */
-	public String getUsername() {
-		return username;
 	}
 	
 	/**
