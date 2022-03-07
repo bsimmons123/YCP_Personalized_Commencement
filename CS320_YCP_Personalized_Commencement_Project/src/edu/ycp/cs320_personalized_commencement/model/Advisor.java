@@ -14,6 +14,7 @@ public class Advisor extends User{
 	 * Hardcode test account
 	 */
 	public void createTestAdvisor() {
+		user.setStudent(false);
 		user.setEmail("testadvisor@ycp.edu");
 		user.setUsername("test");
 		user.setPassword("test");
