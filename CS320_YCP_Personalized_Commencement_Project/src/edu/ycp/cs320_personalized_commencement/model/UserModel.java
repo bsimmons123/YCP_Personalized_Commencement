@@ -3,7 +3,7 @@ package edu.ycp.cs320_personalized_commencement.model;
 public class UserModel {
 	private String email, password;
 	
-	private boolean login, student; // student to check if student is an advisor or not
+	private boolean login, student; // student to check if student is an advisor or not or logged in or not
 	
 	/**
 	 * Check to see if user is student

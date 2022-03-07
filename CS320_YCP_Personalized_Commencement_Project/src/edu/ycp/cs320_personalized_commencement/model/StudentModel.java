@@ -6,16 +6,15 @@ package edu.ycp.cs320_personalized_commencement.model;
 public class StudentModel extends UserModel{
 	// field Object for the student's info
 	private Object studentInfo; 
-	
-	private UserModel user; // used to set Hardcoded credentials
+	private UserModel user = new UserModel(); // used to set Hardcoded credentials
 	
 	/**
 	 * Hardcode test account
 	 */
 	public void createTestStudent() {
-		user.setStudent(true);
 		user.setEmail("teststudent@ycp.edu");
 		user.setPassword("test");
+		user.setStudent(true);
 	}
 	
 	

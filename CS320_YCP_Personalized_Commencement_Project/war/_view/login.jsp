@@ -16,8 +16,9 @@
 	</style>
 
 	<body>
-		<c:if test="${empty login}"> <!--if error message-->
+		<c:if test="${! empty errorMessage}"> <!--if error message-->
 			<div class="error">${errorMessage}</div>
+		</c:if>
 			<form action="${pageContext.servletContext.contextPath}/login" method="post">
 			<!-- User Login Table-->
 			<table>
@@ -32,12 +33,9 @@
 					<td><input type="text" name="second" size="12" value="${user.password}" /></td>
 				</tr>
 			</table>
-			<div>
 				<div class="button">
-				<input type="button" onclick="window.location.href='index';" value="Advisor Login" />
+				<input type="Submit" name="login" value="Login">
 				</div>
-			</div>
-			</form>
-		</c:if>
+		</form>
 	</body>
 </html>
