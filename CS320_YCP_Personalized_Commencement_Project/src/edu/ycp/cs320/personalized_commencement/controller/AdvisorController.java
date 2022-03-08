@@ -26,7 +26,7 @@ public class AdvisorController extends UserController{
 	}
 
 	/**
-	 * 
+	 * 	Checks if the user has entered the correct credentials
 	 * @param advisor 	Advisor
 	 * @param user	 	User from JSP
 	 * @return if		User is logged in

@@ -35,7 +35,7 @@ public class StudentController extends UserController{
 	}
 
 	/**
-	 * 
+	 * Checks if the user has entered the correct credentials
 	 * @param student	Student
 	 * @param user		User from JSP
 	 * @return			User is logged in
