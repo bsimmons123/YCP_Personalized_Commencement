@@ -79,8 +79,10 @@ public class LoginServlet extends HttpServlet{
 					studentController.setLogin();
 				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
 					advisor = true;
-				}else
+				}else {
+					System.out.println("\tinvalid Username or Password");
 					errorMessage = "invalid Username or Password";
+				}
 			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
