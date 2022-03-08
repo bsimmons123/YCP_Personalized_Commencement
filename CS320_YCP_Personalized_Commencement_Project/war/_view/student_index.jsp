@@ -42,8 +42,9 @@
 			padding-top: 10px;
 			
 		}
-		#button	{
-			margin-bottom: 20px;
+		#buttons	{
+			padding-left: 506px;
+			width: 100%;
 		}
 		.title {
 			text-align: center;
@@ -62,8 +63,9 @@
 			<p>Instructions: </p>
 			<ul>
 			<li>Fill out the information in the text boxes and upload files to be displayed during the commencement ceremony. </li>
-			<li>	File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files. </li>
-			<li>	When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so. </li>
+			<li>If there is nothing to add to any of the optional categories, simply leave them blank. </li>
+			<li>File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files. </li>
+			<li>When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so. </li>
 			</ul>
 		</div>
 		
@@ -83,7 +85,7 @@
 				<label>Major(s):</label>
 				<br>
 				<br>
-				<label>Minor(s):</label>
+				<label>Minor(s) (optional):</label>
 				<br>
 				<br>
 				<label>Sports, Clubs, or Organizations (optional):</label>
@@ -122,8 +124,9 @@
 			<br>
 			<br>
 			<!--Button for adding new content-->
-			<div class="button">
-				<input type="button" value="Save Information" />
+			<div id="buttons">
+				<input type="button" value="Save">
+				<input type="button" value="Edit Content">
 			</div>
 			
 		</div>
