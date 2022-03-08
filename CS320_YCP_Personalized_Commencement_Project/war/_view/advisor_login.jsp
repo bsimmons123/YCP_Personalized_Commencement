@@ -16,7 +16,7 @@
 	<body>
 			<!--Username box for advisor login-->
 			<div>
-				<label>Username:</label>
+				<label>Email:</label>
 			</div>
 			<div class="text">
 				<input type="text" />
@@ -32,7 +32,7 @@
 			</div>
 			<div>
 				<div class="button">
-				<input type="button" onclick="window.location.href='index';" value="Advisor Login" />
+				<input type="button" onclick="window.location.href='advisor_index';" value="Advisor Login" />
 				</div>
 			</div>
 			

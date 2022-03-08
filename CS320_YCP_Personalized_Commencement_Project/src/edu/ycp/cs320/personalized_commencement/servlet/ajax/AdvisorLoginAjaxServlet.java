@@ -30,6 +30,8 @@ public class AdvisorLoginAjaxServlet extends HttpServlet {
 
 	
 	}
+	@SuppressWarnings("unused")
+	// added suppress warnings until these methods are used to get rid of warnings in console temporarily
 	private Double getDouble(HttpServletRequest req, String name) {
 		String val = req.getParameter(name);
 		if (val == null) {
@@ -42,6 +44,8 @@ public class AdvisorLoginAjaxServlet extends HttpServlet {
 		}
 	}
 
+	@SuppressWarnings("unused")
+	// added suppress warnings until these methods are used to get rid of warnings in console temporarily
 	private void badRequest(String message, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
 		resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

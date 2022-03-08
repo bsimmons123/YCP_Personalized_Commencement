@@ -16,7 +16,7 @@
 	<body>
 			<!--Username box for Student login-->
 			<div>
-				<label>Username:</label>
+				<label>Email:</label>
 			</div>
 			<div class="text">
 				<input type="text" />
@@ -32,7 +32,7 @@
 			</div>
 			<div>
 				<div class="button">
-				<input type="button" onclick="window.location.href='index';" value="Student Login" />
+				<input type="button" onclick="window.location.href='student_index';" value="Student Login" />
 				</div>
 			</div>
 			
