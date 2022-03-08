@@ -22,7 +22,7 @@ private AdvisorModel model;
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
 	
-	//getters
+	// getters
 	@Test
 	public void testGetDecision() {
 		assertEquals(true, model.getDecision());
@@ -38,7 +38,7 @@ private AdvisorModel model;
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
 	}
 	
-	//setters
+	// setters
 	@Test
 	public void testSetDecision() {
 		model.setDecision(false);

@@ -22,7 +22,7 @@ public class StudentTest {
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
 	
-	//getters
+	// getters
 	@Test
 	public void testGetStudentInfo() {
 		assertEquals("Info", model.getStudentInfo());
@@ -39,7 +39,7 @@ public class StudentTest {
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
 	}
 	
-	//setters
+	// setters
 	@Test
 	public void testSetStudentInfo() {
 		model.setStudentInfo(4);

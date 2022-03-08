@@ -24,7 +24,7 @@ private UserModel model;
 	}
 	
 	
-	//getters
+	// getters
 	@Test
 	public void testGetPassword() {
 		assertEquals("Brandon'sMom1", model.getPassword());
@@ -51,7 +51,7 @@ private UserModel model;
 	}
 	
 	
-	//setters
+	// setters
 	@Test
 	public void testSetPassword() {
 		model.setPassword("insertPasswordHere");
