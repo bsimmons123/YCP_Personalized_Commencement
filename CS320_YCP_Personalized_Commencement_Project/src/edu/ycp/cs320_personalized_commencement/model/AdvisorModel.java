@@ -3,15 +3,18 @@ package edu.ycp.cs320_personalized_commencement.model;
 /**
  * Stores the advisors information.
  */
-public class Advisor extends User{
+public class AdvisorModel extends UserModel{
 
 	// variable to be set as true if content is accepted or false if it is rejected.
 	boolean decision;
 	
+	@SuppressWarnings("unused")
+	private UserModel user = new UserModel(); // used to set Hardcoded credentials
+	
 	/**
-	 * Sets the advisor's decision based off of the decision passed as the argument.
+	 * Sets the advisor's decision of content
 	 */
-	public void setDecision(boolean decision) {
+	public void setDecision(boolean decision) { 
 		this.decision = decision;
 	}
 	

@@ -5,26 +5,22 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.User;
+import edu.ycp.cs320_personalized_commencement.model.UserModel;
 
 /**
  * JUnit test class for the User model.
  */
 public class UserTest {
-private User model;
+private UserModel model;
 	
 	@Before
 	public void setUp() {
-		model = new User();
-		model.setUsername("AndrewLikesGluten43");
+		model = new UserModel();
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
 	
-	@Test
-	public void testGetUsername() {
-		assertEquals("AndrewLikesGluten43", model.getUsername());
-	}
+
 	
 	@Test
 	public void testGetPassword() {
@@ -34,12 +30,6 @@ private User model;
 	@Test
 	public void testGetEmail() {
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
-	}
-	
-	@Test
-	public void testSetUsername() {
-		model.setUsername("insertUNameHere");
-		assertEquals("insertUNameHere", model.getUsername());
 	}
 	
 	@Test
