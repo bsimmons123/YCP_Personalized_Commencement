@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet{
 			// set parameters in user to check in controller
 			user.setEmail(email);
 			user.setPassword(password);
-			
+			System.out.println("\t\tIn Try | email: " + email + " | password: " + password);
 			if(email == null || password == null) {
 				errorMessage = "invalid Username or Password";
 			}else {
@@ -84,7 +84,9 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 		req.setAttribute("errorMessage", errorMessage);
-		System.out.println("\tLogin results");
+		System.out.println("\tLogin results:");
+		System.out.println("\t\tModel | email: " + user.getEmail() + " | password: " + user.getPassword());
+		
 		req.setAttribute("user", user);
 		
 		
