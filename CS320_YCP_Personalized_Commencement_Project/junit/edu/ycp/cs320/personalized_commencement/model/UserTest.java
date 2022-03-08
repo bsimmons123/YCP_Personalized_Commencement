@@ -18,10 +18,13 @@ private UserModel model;
 		model = new UserModel();
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
+		model.setLogin(true);
+		model.setStudent(true);
+		model.setAdvisor(false);
 	}
 	
-
 	
+	//getters
 	@Test
 	public void testGetPassword() {
 		assertEquals("Brandon'sMom1", model.getPassword());
@@ -33,6 +36,23 @@ private UserModel model;
 	}
 	
 	@Test
+	public void testGetLogin() {
+		assertEquals(true, model.getLogin());
+	}
+	
+	@Test
+	public void testGetStudent() {
+		assertEquals(true, model.getStudent());
+	}
+	
+	@Test
+	public void testGetAdvisor() {
+		assertEquals(false, model.getAdvisor());
+	}
+	
+	
+	//setters
+	@Test
 	public void testSetPassword() {
 		model.setPassword("insertPasswordHere");
 		assertEquals("insertPasswordHere", model.getPassword());
@@ -42,5 +62,23 @@ private UserModel model;
 	public void testSetEmail() {
 		model.setEmail("MyEmail@stuff.gov");
 		assertEquals("MyEmail@stuff.gov", model.getEmail());
+	}
+	
+	@Test
+	public void testSetLogin() {
+		model.setLogin(false);
+		assertEquals(false, model.getLogin());
+	}
+	
+	@Test
+	public void testSetStudent() {
+		model.setStudent(false);
+		assertEquals(false, model.getStudent());
+	}
+	
+	@Test
+	public void testSetAdvisor() {
+		model.setAdvisor(true);
+		assertEquals(true, model.getAdvisor());
 	}
 }
