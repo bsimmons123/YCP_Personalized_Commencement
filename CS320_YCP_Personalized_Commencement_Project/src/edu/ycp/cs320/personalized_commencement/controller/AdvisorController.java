@@ -17,6 +17,13 @@ public class AdvisorController extends UserController{
 	public void setModel(AdvisorModel model) {
 		this.model = model;
 	}
+	
+	/**
+	 * set login for advisor
+	 */
+	public void setLogin() {
+		model.setLogin(true);
+	}
 
 	/**
 	 * 

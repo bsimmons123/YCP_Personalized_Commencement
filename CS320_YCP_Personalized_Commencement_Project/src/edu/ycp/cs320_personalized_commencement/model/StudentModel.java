@@ -8,7 +8,6 @@ import org.eclipse.jetty.server.Authentication.User;
 public class StudentModel extends UserModel{
 	// field Object for the student's info
 	private Object studentInfo; 
-	private UserModel user = new UserModel(); // used to set Hardcoded credentials
 	
 	/**
 	 * Sets the studentInfo object with the info they submitted.

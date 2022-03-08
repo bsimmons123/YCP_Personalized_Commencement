@@ -74,6 +74,7 @@ public class LoginServlet extends HttpServlet{
 				errorMessage = "invalid Username or Password";
 			}else {
 				// Check if user is Student
+				System.out.println("\tChecking user login");
 				if(studentController.checkStudentLogin(jspUser)) {
 					student = true;
 					studentController.setLogin();
@@ -94,7 +95,7 @@ public class LoginServlet extends HttpServlet{
 		
 		req.setAttribute("user", jspUser);
 		
-		
+		// determines where to send the user
 		if(student) {
 			student = false; // set to false incase user logs out and tries to log in as a new user
 			// Forward to view to render the result HTML document

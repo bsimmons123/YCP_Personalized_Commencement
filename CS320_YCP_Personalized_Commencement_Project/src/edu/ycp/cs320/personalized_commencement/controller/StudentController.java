@@ -18,6 +18,9 @@ public class StudentController extends UserController{
 		this.model = model;
 	}
 	
+	/**
+	 * set login for student
+	 */
 	public void setLogin() {
 		model.setLogin(true);
 	}
