@@ -53,7 +53,6 @@ public class LoginServlet extends HttpServlet{
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		
-		studentModel.createTestStudent();
 		advisorModel.createTestAdvisor();
 		
 		// sets model in controllers
