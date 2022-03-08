@@ -18,6 +18,10 @@ public class StudentController extends UserController{
 		this.model = model;
 	}
 	
+	public void setLogin() {
+		model.setLogin(true);
+	}
+	
 	/**
 	 * Hardcode account details
 	 */
@@ -34,19 +38,6 @@ public class StudentController extends UserController{
 	 * @return			User is logged in
 	 */
 	public boolean checkStudentLogin(UserModel user) {
-		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword()) && model.getStudent()) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param model
-	 * @param user
-	 * @return
-	 */
-	public boolean checkStudentLogin(StudentModel model,UserModel user) {
 		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword()) && model.getStudent()) {
 			return true;
 		}

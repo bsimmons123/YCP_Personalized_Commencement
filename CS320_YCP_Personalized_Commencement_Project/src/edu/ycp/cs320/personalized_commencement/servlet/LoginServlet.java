@@ -53,16 +53,13 @@ public class LoginServlet extends HttpServlet{
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		
-		advisorModel.createTestAdvisor();
-		
 		// sets model in controllers
 		advisorController.setModel(advisorModel);
 		studentController.setModel(studentModel);
 		
 		studentController.createTestStudent();
+		advisorController.createTestAdvisor();
 		
-		System.out.println(studentModel.getEmail());
-		System.out.println(studentModel.getPassword());
 		// get username and password from form
 		try {
 			// pull parameters from JSP
@@ -73,11 +70,13 @@ public class LoginServlet extends HttpServlet{
 			jspUser.setEmail(email);
 			jspUser.setPassword(password);
 			if(email == null || password == null) {
+				System.out.println("\tinvalid Username or Password");
 				errorMessage = "invalid Username or Password";
 			}else {
 				// Check if user is Student
 				if(studentController.checkStudentLogin(jspUser)) {
 					student = true;
+					studentController.setLogin();
 				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
 					advisor = true;
 				}
@@ -88,8 +87,7 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 		req.setAttribute("errorMessage", errorMessage);
-		System.out.println("\tLogin results:");
-		System.out.println("\t\tModel | email: " + jspUser.getEmail() + " | password: " + jspUser.getPassword());
+		System.out.println("\tLogin results");
 		
 		req.setAttribute("user", jspUser);
 		

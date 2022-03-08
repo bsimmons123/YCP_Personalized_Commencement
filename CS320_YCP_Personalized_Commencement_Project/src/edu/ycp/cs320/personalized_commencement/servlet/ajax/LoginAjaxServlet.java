@@ -34,9 +34,6 @@ public class LoginAjaxServlet extends HttpServlet {
 		StudentModel studentModel = new StudentModel();
 		AdvisorModel advisorModel = new AdvisorModel();
 		
-		studentModel.createTestStudent();
-		advisorModel.createTestAdvisor();
-		
 		UserModel user = new UserModel();
 		
 		// Get parameters

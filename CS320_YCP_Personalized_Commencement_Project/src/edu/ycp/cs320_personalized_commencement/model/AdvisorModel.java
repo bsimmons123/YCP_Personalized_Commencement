@@ -11,15 +11,6 @@ public class AdvisorModel extends UserModel{
 	private UserModel user = new UserModel(); // used to set Hardcoded credentials
 	
 	/**
-	 * Hardcode test account
-	 */
-	public void createTestAdvisor() {
-		user.setStudent(false);
-		user.setEmail("testadvisor@ycp.edu");
-		user.setPassword("test");
-	}
-	
-	/**
 	 * Sets the advisor's decision of content
 	 */
 	public void setDecision(boolean decision) { 

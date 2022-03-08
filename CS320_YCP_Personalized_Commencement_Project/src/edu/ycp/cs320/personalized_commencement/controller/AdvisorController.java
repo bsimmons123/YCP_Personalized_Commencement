@@ -30,4 +30,13 @@ public class AdvisorController extends UserController{
 		}
 		return false;
 	}
+
+	/**
+	 * Hardcode test account
+	 */
+	public void createTestAdvisor() {
+		model.setStudent(false);
+		model.setEmail("testadvisor@ycp.edu");
+		model.setPassword("test");
+	}
 }
