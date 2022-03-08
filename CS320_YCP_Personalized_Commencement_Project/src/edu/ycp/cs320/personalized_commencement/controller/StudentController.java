@@ -17,6 +17,15 @@ public class StudentController extends UserController{
 	public void setModel(StudentModel model) {
 		this.model = model;
 	}
+	
+	/**
+	 * Hardcode account details
+	 */
+	public void createTestStudent() {
+		model.setEmail("teststudent@ycp.edu");
+		model.setPassword("test");
+		model.setStudent(true);
+	}
 
 	/**
 	 * 

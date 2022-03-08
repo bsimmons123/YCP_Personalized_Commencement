@@ -47,17 +47,23 @@ public class LoginServlet extends HttpServlet{
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
 		
-		// sets model in controllers
-		advisorController.setModel(advisorModel);
-		studentController.setModel(studentModel);
+
 		
 		
 		// Creates user to interact with controller
-		UserModel user = new UserModel();
+		UserModel jspUser = new UserModel();
 		
 		studentModel.createTestStudent();
 		advisorModel.createTestAdvisor();
 		
+		// sets model in controllers
+		advisorController.setModel(advisorModel);
+		studentController.setModel(studentModel);
+		
+		studentController.createTestStudent();
+		
+		System.out.println(studentModel.getEmail());
+		System.out.println(studentModel.getPassword());
 		// get username and password from form
 		try {
 			// pull parameters from JSP
@@ -65,16 +71,15 @@ public class LoginServlet extends HttpServlet{
 			String password = req.getParameter("password");
 			
 			// set parameters in user to check in controller
-			user.setEmail(email);
-			user.setPassword(password);
-			System.out.println("\t\tIn Try | email: " + email + " | password: " + password);
+			jspUser.setEmail(email);
+			jspUser.setPassword(password);
 			if(email == null || password == null) {
 				errorMessage = "invalid Username or Password";
 			}else {
 				// Check if user is Student
-				if(studentController.checkStudentLogin(user)) {
+				if(studentController.checkStudentLogin(jspUser)) {
 					student = true;
-				}else if(advisorController.checkAdvisorLogin(user)) { // Check if user is advisor
+				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
 					advisor = true;
 				}
 			}
@@ -85,9 +90,9 @@ public class LoginServlet extends HttpServlet{
 		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tLogin results:");
-		System.out.println("\t\tModel | email: " + user.getEmail() + " | password: " + user.getPassword());
+		System.out.println("\t\tModel | email: " + jspUser.getEmail() + " | password: " + jspUser.getPassword());
 		
-		req.setAttribute("user", user);
+		req.setAttribute("user", jspUser);
 		
 		
 		if(student) {
