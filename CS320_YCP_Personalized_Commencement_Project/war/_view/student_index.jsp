@@ -12,7 +12,7 @@
 	<!-- temporary hold location for css styling -->
 	<style>
 		body {
-			background-color: rgb(240, 240, 240);
+			background-color: rgb(240, 240, 235);
 		}
 		#pageHeader {
 			width: 100%;
@@ -50,6 +50,7 @@
 			text-align: center;
 			font-size: 32px;
 			color: green;
+			border-bottom: 3px solid green;
 		}
 	</style>
 
