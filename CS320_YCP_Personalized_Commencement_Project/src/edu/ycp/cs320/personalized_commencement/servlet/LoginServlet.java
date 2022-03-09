@@ -1,6 +1,7 @@
 package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +40,9 @@ public class LoginServlet extends HttpServlet{
 		boolean student = false;
 		boolean advisor = false;
 		
+		// initialize students array
+		ArrayList<StudentModel> students = new ArrayList<StudentModel>();
+		
 		// Creates advisor and student model
 		AdvisorModel advisorModel = new AdvisorModel();
 		StudentModel studentModel = new StudentModel();
@@ -47,9 +51,11 @@ public class LoginServlet extends HttpServlet{
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
 		
+		// Set student arraylist in controller
+		studentController.setStudents(students);
+		
 		// sets model in controllers
 		advisorController.setModel(advisorModel);
-		studentController.setModel(studentModel);
 		
 		// Creates student models for testing 
 		StudentModel amottStudentModel = new StudentModel();
@@ -57,32 +63,25 @@ public class LoginServlet extends HttpServlet{
 		StudentModel rwoodStudentModel = new StudentModel();
 		StudentModel bsimmonsStudentModel = new StudentModel();
 		
-		// Creates student controllers for testing
-		StudentController amottStudentController = new StudentController();
-		StudentController erosenberryStudentController = new StudentController();
-		StudentController rwoodStudentController = new StudentController();
-		StudentController bsimmonsStudentController = new StudentController();
-		
-		// Adds model to test controllers
-		amottStudentController.setModel(amottStudentModel);
-		erosenberryStudentController.setModel(erosenberryStudentModel);
-		rwoodStudentController.setModel(rwoodStudentModel);
-		bsimmonsStudentController.setModel(bsimmonsStudentModel);
+		studentController.addStudent(studentModel); 			// index 0
+		studentController.addStudent(bsimmonsStudentModel);		// index 1
+		studentController.addStudent(rwoodStudentModel);		// index 2
+		studentController.addStudent(erosenberryStudentModel); 	// index 3
+		studentController.addStudent(amottStudentModel);		// index 4
 	
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		
 		// Creates accounts for test users
-		studentController.createTestStudent("teststudent@ycp.edu", "test");
-		advisorController.createTestAdvisor("testadvisor@ycp.edu", "test");
+		studentController.createTestStudent(studentController.getStudent(0),"teststudent@ycp.edu", "test");
+		studentController.createTestStudent(studentController.getStudent(1), "bsimmons1@ycp.edu", "test");
+		studentController.createTestStudent(studentController.getStudent(2), "rwood@ycp.edu", "test");
+		studentController.createTestStudent(studentController.getStudent(3), "erosenberry", "test");
+		studentController.createTestStudent(studentController.getStudent(4), "amott@ycp.edu", "test");
 		
-		// Creates accounts for users
-		amottStudentController.createTestStudent("amott@ycp.edu", "test");
-		erosenberryStudentController.createTestStudent("erosenberry@ycp.edu", "test");
-		rwoodStudentController.createTestStudent("rwood@ycp.edu", "test");
-		bsimmonsStudentController.createTestStudent("bsimmons1@ycp.edu", "test");
-		
-		
+		for(StudentModel studentIter: studentController.getStudents()) {
+			System.out.println("\t\tEmail: " + studentIter.getEmail() + " Pass: " + studentIter.getPassword());
+		}
 		// get username and password from form
 		try {
 			// pull parameters from JSP
@@ -98,15 +97,19 @@ public class LoginServlet extends HttpServlet{
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
-				if(studentController.checkStudentLogin(jspUser) && erosenberryStudentController.checkStudentLogin(jspUser) && amottStudentController.checkStudentLogin(jspUser) && rwoodStudentController.checkStudentLogin(jspUser) && bsimmonsStudentController.checkStudentLogin(jspUser)) {
-					student = true;
-					studentController.setLogin();
-				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
-					advisor = true;
-				}else {
-					System.out.println("\tInvalid Username/Password");
-					errorMessage = "Invalid Username/Password";
+				for(StudentModel studentIter: studentController.getStudents()) {
+					System.out.println("\t\tEmail: " + studentIter.getEmail() + " Pass: " + studentIter.getPassword());
+					if(studentController.checkStudentLogin(studentIter, jspUser)) {
+						student = true;
+						studentController.setLogin(studentIter);
+					}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
+						advisor = true;
+					}else {
+						System.out.println("\tInvalid Username/Password");
+						errorMessage = "Invalid Username/Password";
+					}
 				}
+		
 			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");

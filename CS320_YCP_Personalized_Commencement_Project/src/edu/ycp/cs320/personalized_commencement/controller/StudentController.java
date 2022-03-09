@@ -10,7 +10,6 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
  */
 public class StudentController extends UserController{
 	
-	StudentModel model;
 	ArrayList<StudentModel> students;
 	
 	/**
@@ -39,6 +38,14 @@ public class StudentController extends UserController{
 	}
 	
 	/**
+	 * 
+	 * @return			Students array
+	 */
+	public ArrayList<StudentModel> getStudents(){
+		return students;
+	}
+	
+	/**
 	 * set login for student
 	 */
 	public void setLogin(StudentModel student) {
@@ -60,8 +67,8 @@ public class StudentController extends UserController{
 	 * @param user		User from JSP
 	 * @return			User is logged in
 	 */
-	public boolean checkStudentLogin(UserModel user) {
-		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword()) && model.getStudent()) {
+	public boolean checkStudentLogin(StudentModel student,UserModel user) {
+		if(student.getEmail().equals(user.getEmail()) && student.getPassword().equals(user.getPassword()) && student.getStudent()) {
 			return true;
 		}
 		return false;

@@ -35,7 +35,7 @@ public class StudentIndexServlet extends HttpServlet {
 		// create new model
 		StudentModel model = new StudentModel();
 		StudentController controller = new StudentController();
-		controller.setModel(model);
+		//controller.setModel(model);
 		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
