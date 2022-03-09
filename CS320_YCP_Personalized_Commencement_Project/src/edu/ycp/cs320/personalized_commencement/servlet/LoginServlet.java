@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet{
 		studentController.setModel(studentModel);
 		
 		studentController.createTestStudent("bsimmons1@ycp.edu", "test");
-		advisorController.createTestAdvisor();
+		advisorController.createTestAdvisor("testAdvisor@ycp.edu", "test");
 		
 		// get username and password from form
 		try {
