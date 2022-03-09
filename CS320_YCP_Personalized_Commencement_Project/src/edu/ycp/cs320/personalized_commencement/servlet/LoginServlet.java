@@ -72,10 +72,12 @@ public class LoginServlet extends HttpServlet{
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		
+		advisorController.createTestAdvisor("testadvisor@ycp.edu", "test");
+		
 		// Creates accounts for test users
 		studentController.createTestStudent(studentController.getStudent(0),"teststudent@ycp.edu", "test");
 		studentController.createTestStudent(studentController.getStudent(1), "bsimmons1@ycp.edu", "test");
-		studentController.createTestStudent(studentController.getStudent(2), "rwood@ycp.edu", "test");
+		studentController.createTestStudent(studentController.getStudent(2), "rwood7@ycp.edu", "test");
 		studentController.createTestStudent(studentController.getStudent(3), "erosenberry", "test");
 		studentController.createTestStudent(studentController.getStudent(4), "amott@ycp.edu", "test");
 		
