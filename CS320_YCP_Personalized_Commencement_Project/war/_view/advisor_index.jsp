@@ -41,11 +41,20 @@
 			padding-top: 2px;
 			margin-left: 63%;
 		}
+		#logout {
+			width: auto;
+			margin-top: 20px;
+			margin-left: 1090px;
+		}
 		.title {
 			color: green;
 			font-size: 32px;
 			text-align: center;
 			border-bottom: 3px solid green;
+		}
+		.logoutButton {
+			height:30px;
+			width:65px;
 		}
 	</style>
 
@@ -97,6 +106,9 @@
 				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
 			</div>
 		</div>	
+		<div id="logout">
+			<input class="logoutButton" type="button" onclick="window.location='login'" value="Logout">
+		</div>
 	</body>
 </html>
 

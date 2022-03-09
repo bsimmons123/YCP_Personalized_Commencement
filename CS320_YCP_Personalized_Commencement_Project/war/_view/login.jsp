@@ -84,7 +84,7 @@
 					<tr>
 						<td>
 							<div class="button"> 
-								<input type="Submit" name="login" value="Login">
+								<input type="Submit" name="login" value="Login" onclick="">
 							</div>
 						</td>
 					</tr>

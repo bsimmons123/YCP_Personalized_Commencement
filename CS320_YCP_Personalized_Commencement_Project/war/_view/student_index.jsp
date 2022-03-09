@@ -15,7 +15,7 @@
 			background-color: rgb(240, 240, 235);
 		}
 		#pageHeader {
-			width: 100%;
+			width: auto;
 		}
 		#instructions {
 			margin: auto;
@@ -46,11 +46,20 @@
 			padding-left: 506px;
 			width: 100%;
 		}
+		#logout {
+			width: auto;
+			margin-top: 20px;
+			margin-left: 1090px;
+		}
 		.title {
 			text-align: center;
 			font-size: 32px;
 			color: green;
 			border-bottom: 3px solid green;
+		}
+		.logoutButton {
+			height:30px;
+			width:65px;
 		}
 	</style>
 
@@ -129,6 +138,9 @@
 				<input type="button" value="Save">
 				<input type="button" value="Edit Content">
 			</div>
+		</div>
+		<div id="logout">
+			<input class="logoutButton" type="button" onclick="window.location='login'" value="Logout">
 		</div>
 	</body>
 </html>
