@@ -46,10 +46,7 @@ public class LoginServlet extends HttpServlet{
 		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
-		
-
-		
-		
+	
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		

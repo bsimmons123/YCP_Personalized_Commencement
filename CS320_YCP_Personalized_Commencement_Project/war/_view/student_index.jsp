@@ -42,7 +42,7 @@
 			padding-top: 10px;
 			
 		}
-		#buttons	{
+		#buttons {
 			padding-left: 506px;
 			width: 100%;
 		}
@@ -128,7 +128,6 @@
 				<input type="button" value="Save">
 				<input type="button" value="Edit Content">
 			</div>
-			
 		</div>
 	</body>
 </html>
