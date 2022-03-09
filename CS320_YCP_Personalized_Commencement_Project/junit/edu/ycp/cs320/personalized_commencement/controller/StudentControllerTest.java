@@ -27,24 +27,21 @@ public class StudentControllerTest {
 			
 			// set up controller
 			controller = new StudentController();
-			controller.setModel(model);
 			
 		}
+		
 		@Test
 		public void testCheckStudentLogin(){
 			user.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 			user.setPassword("Brandon'sMom1");
 			user.setStudent(true);
 			model.setStudent(true);
-			assertEquals(true, controller.checkStudentLogin(user));
+			assertEquals(true, controller.checkStudentLogin(model, user));
 			
 			user.setEmail("AndrewLicksLinix@hotmail.com");
 			user.setPassword("Rob'sMom2");
 			user.setStudent(false);
 			model.setStudent(false);
-			assertEquals(false, controller.checkStudentLogin(user));
-			
+			assertEquals(false, controller.checkStudentLogin(model, user));
 		}
-		
-		
 }
