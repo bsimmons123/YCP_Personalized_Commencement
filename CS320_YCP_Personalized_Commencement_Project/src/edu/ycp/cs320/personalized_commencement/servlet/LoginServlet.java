@@ -42,20 +42,46 @@ public class LoginServlet extends HttpServlet{
 		// Creates advisor and student model
 		AdvisorModel advisorModel = new AdvisorModel();
 		StudentModel studentModel = new StudentModel();
-		
+
 		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
-	
-		// Creates user to interact with controller
-		UserModel jspUser = new UserModel();
 		
 		// sets model in controllers
 		advisorController.setModel(advisorModel);
 		studentController.setModel(studentModel);
 		
-		studentController.createTestStudent("bsimmons1@ycp.edu", "test");
-		advisorController.createTestAdvisor("testAdvisor@ycp.edu", "test");
+		// Creates student models for testing 
+		StudentModel amottStudentModel = new StudentModel();
+		StudentModel erosenberryStudentModel = new StudentModel();
+		StudentModel rwoodStudentModel = new StudentModel();
+		StudentModel bsimmonsStudentModel = new StudentModel();
+		
+		// Creates student controllers for testing
+		StudentController amottStudentController = new StudentController();
+		StudentController erosenberryStudentController = new StudentController();
+		StudentController rwoodStudentController = new StudentController();
+		StudentController bsimmonsStudentController = new StudentController();
+		
+		// Adds model to test controllers
+		amottStudentController.setModel(amottStudentModel);
+		erosenberryStudentController.setModel(erosenberryStudentModel);
+		rwoodStudentController.setModel(rwoodStudentModel);
+		bsimmonsStudentController.setModel(bsimmonsStudentModel);
+	
+		// Creates user to interact with controller
+		UserModel jspUser = new UserModel();
+		
+		// Creates accounts for test users
+		studentController.createTestStudent("teststudent@ycp.edu", "test");
+		advisorController.createTestAdvisor("testadvisor@ycp.edu", "test");
+		
+		// Creates accounts for users
+		amottStudentController.createTestStudent("amott@ycp.edu", "test");
+		erosenberryStudentController.createTestStudent("erosenberry@ycp.edu", "test");
+		rwoodStudentController.createTestStudent("rwood@ycp.edu", "test");
+		bsimmonsStudentController.createTestStudent("bsimmons1@ycp.edu", "test");
+		
 		
 		// get username and password from form
 		try {
