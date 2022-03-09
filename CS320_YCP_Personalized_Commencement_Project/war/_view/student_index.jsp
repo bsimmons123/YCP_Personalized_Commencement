@@ -46,7 +46,7 @@
 			padding-left: 506px;
 			width: 100%;
 		}
-		#logout {
+		#logoutDiv {
 			width: auto;
 			margin-top: 20px;
 			margin-left: 1090px;
@@ -57,7 +57,7 @@
 			color: green;
 			border-bottom: 3px solid green;
 		}
-		.logoutButton {
+		.logoutBut {
 			height:30px;
 			width:65px;
 		}
@@ -139,8 +139,8 @@
 				<input type="button" value="Edit Content">
 			</div>
 		</div>
-		<div id="logout">
-			<input class="logoutButton" type="button" onclick="window.location='login'" value="Logout">
+		<div id="logoutDiv">
+			<input class="logoutBut" type="button" onclick="window.location='login'" value="Logout">
 		</div>
 	</body>
 </html>
