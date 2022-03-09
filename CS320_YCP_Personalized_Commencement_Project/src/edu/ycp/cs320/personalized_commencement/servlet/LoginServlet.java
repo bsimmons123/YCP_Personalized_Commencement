@@ -81,9 +81,6 @@ public class LoginServlet extends HttpServlet{
 		studentController.createTestStudent(studentController.getStudent(3), "erosenberry", "test");
 		studentController.createTestStudent(studentController.getStudent(4), "amott@ycp.edu", "test");
 		
-		for(StudentModel studentIter: studentController.getStudents()) {
-			System.out.println("\t\tEmail: " + studentIter.getEmail() + " Pass: " + studentIter.getPassword());
-		}
 		// get username and password from form
 		try {
 			// pull parameters from JSP
@@ -100,14 +97,13 @@ public class LoginServlet extends HttpServlet{
 				// Check if user is Student
 				System.out.println("\tChecking user login");
 				for(StudentModel studentIter: studentController.getStudents()) {
-					System.out.println("\t\tEmail: " + studentIter.getEmail() + " Pass: " + studentIter.getPassword());
 					if(studentController.checkStudentLogin(studentIter, jspUser)) {
+						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
 						student = true;
 						studentController.setLogin(studentIter);
 					}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
 						advisor = true;
 					}else {
-						System.out.println("\tInvalid Username/Password");
 						errorMessage = "Invalid Username/Password";
 					}
 				}
@@ -119,7 +115,7 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 		req.setAttribute("errorMessage", errorMessage);
-		System.out.println("\tLogin results");
+		System.out.println("\tPosting Login results");
 		
 		req.setAttribute("user", jspUser);
 		
