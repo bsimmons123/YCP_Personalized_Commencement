@@ -22,6 +22,7 @@ public class StudentTest {
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
 	
+	// getters
 	@Test
 	public void testGetStudentInfo() {
 		assertEquals("Info", model.getStudentInfo());
@@ -38,14 +39,13 @@ public class StudentTest {
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
 	}
 	
+	// setters
 	@Test
 	public void testSetStudentInfo() {
 		model.setStudentInfo(4);
 		assertEquals(4, model.getStudentInfo());
 	}
-	
 
-	
 	@Test
 	public void testSetPassword() {
 		model.setPassword("insertPasswordHere");

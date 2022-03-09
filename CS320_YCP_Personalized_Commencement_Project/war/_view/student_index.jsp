@@ -12,10 +12,10 @@
 	<!-- temporary hold location for css styling -->
 	<style>
 		body {
-			background-color: rgb(240, 240, 240);
+			background-color: rgb(240, 240, 235);
 		}
 		#pageHeader {
-			width: 100%;
+			width: auto;
 		}
 		#instructions {
 			margin: auto;
@@ -42,13 +42,24 @@
 			padding-top: 10px;
 			
 		}
-		#button	{
-			margin-bottom: 20px;
+		#buttons {
+			padding-left: 506px;
+			width: 100%;
+		}
+		#logoutDiv {
+			width: auto;
+			margin-top: 20px;
+			margin-left: 1090px;
 		}
 		.title {
 			text-align: center;
 			font-size: 32px;
 			color: green;
+			border-bottom: 3px solid green;
+		}
+		.logoutBut {
+			height:30px;
+			width:65px;
 		}
 	</style>
 
@@ -62,8 +73,9 @@
 			<p>Instructions: </p>
 			<ul>
 			<li>Fill out the information in the text boxes and upload files to be displayed during the commencement ceremony. </li>
-			<li>	File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files. </li>
-			<li>	When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so. </li>
+			<li>If there is nothing to add to any of the optional categories, simply leave them blank. </li>
+			<li>File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files. </li>
+			<li>When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so. </li>
 			</ul>
 		</div>
 		
@@ -83,7 +95,7 @@
 				<label>Major(s):</label>
 				<br>
 				<br>
-				<label>Minor(s):</label>
+				<label>Minor(s) (optional):</label>
 				<br>
 				<br>
 				<label>Sports, Clubs, or Organizations (optional):</label>
@@ -122,10 +134,13 @@
 			<br>
 			<br>
 			<!--Button for adding new content-->
-			<div class="button">
-				<input type="button" value="Save Information" />
+			<div id="buttons">
+				<input type="button" value="Save">
+				<input type="button" value="Edit Content">
 			</div>
-			
+		</div>
+		<div id="logoutDiv">
+			<input class="logoutBut" type="button" onclick="window.location='login'" value="Logout">
 		</div>
 	</body>
 </html>

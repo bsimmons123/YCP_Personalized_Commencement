@@ -22,11 +22,11 @@ private AdvisorModel model;
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
 	
+	// getters
 	@Test
 	public void testGetDecision() {
 		assertEquals(true, model.getDecision());
 	}
-	
 	
 	@Test
 	public void testGetPassword() {
@@ -38,13 +38,13 @@ private AdvisorModel model;
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
 	}
 	
+	// setters
 	@Test
 	public void testSetDecision() {
 		model.setDecision(false);
 		assertEquals(false, model.getDecision());
 	}
 	
-
 	@Test
 	public void testSetPassword() {
 		model.setPassword("insertPasswordHere");

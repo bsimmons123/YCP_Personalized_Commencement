@@ -3,22 +3,9 @@ package edu.ycp.cs320_personalized_commencement.model;
 public class UserModel {
 	private String email, password;
 	
-	private boolean login, student; // student to check if student is an advisor or not or logged in or not
+	private boolean login, student, advisor; // student to check if student is an advisor or not or logged in or not
 	
-	/**
-	 * Check to see if user is student
-	 */
-	public void setStudent(boolean student) {
-		this.student = student;
-	}
-	
-	/**
-	 * Check for login state
-	 */
-	public void setLogin(boolean login) {
-		this.login = login;
-	}
-	
+	// setters
 	/**
 	 * Sets the user's password.
 	 */
@@ -34,19 +21,28 @@ public class UserModel {
 	}
 	
 	/**
-	 * Returns if user is student
+	 * Check to see if user is a student
 	 */
-	public boolean getStudent() {
-		return student;
+	public void setStudent(boolean student) {
+		this.student = student;
 	}
 	
 	/**
-	 * Returns users login state
+	 * Check to see if the user is an advisor
 	 */
-	public boolean getlogin() {
-		return login;
+	public void setAdvisor(boolean advisor) {
+		this.advisor = advisor;
 	}
 	
+	/**
+	 * Check for login state
+	 */
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
+	
+	
+	// getters
 	/**
 	 * Returns the user's password.
 	 */
@@ -59,5 +55,26 @@ public class UserModel {
 	 */
 	public String getEmail() {
 		return email;
+	}
+	
+	/**
+	 * Returns if user is student
+	 */
+	public boolean getStudent() {
+		return student;
+	}
+	
+	/**
+	 * Returns true if the user is an advisor
+	 */
+	public boolean getAdvisor() {
+		return advisor;
+	}
+	
+	/**
+	 * Returns users login state
+	 */
+	public boolean getLogin() {
+		return login;
 	}
 }

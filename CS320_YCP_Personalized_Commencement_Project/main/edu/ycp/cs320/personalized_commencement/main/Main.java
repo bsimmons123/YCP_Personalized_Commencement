@@ -29,7 +29,12 @@ public class Main {
         // See http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#join()
 		server.join();
 		
-		// Here's the link for copy pasting
-		// http://localhost:8081/pcomm/index
+		/*
+		 * Here are the links for ease of access
+		 * 
+		 * http://localhost:8081/pcomm/student_index
+		 * http://localhost:8081/pcomm/advisor_index
+		 * http://localhost:8081/pcomm/login
+		 */
 	}
 }

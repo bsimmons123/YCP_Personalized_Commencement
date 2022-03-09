@@ -46,10 +46,7 @@ public class LoginServlet extends HttpServlet{
 		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
-		
-
-		
-		
+	
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		
@@ -57,7 +54,7 @@ public class LoginServlet extends HttpServlet{
 		advisorController.setModel(advisorModel);
 		studentController.setModel(studentModel);
 		
-		studentController.createTestStudent();
+		studentController.createTestStudent("bsimmons1@ycp.edu", "test");
 		advisorController.createTestAdvisor();
 		
 		// get username and password from form
@@ -70,8 +67,8 @@ public class LoginServlet extends HttpServlet{
 			jspUser.setEmail(email);
 			jspUser.setPassword(password);
 			if(email == null || password == null) {
-				System.out.println("\tinvalid Username or Password");
-				errorMessage = "invalid Username or Password";
+				System.out.println("\tInvalid Username/Password");
+				errorMessage = "Invalid Username/Password";
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
@@ -81,13 +78,13 @@ public class LoginServlet extends HttpServlet{
 				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
 					advisor = true;
 				}else {
-					System.out.println("\tinvalid Username or Password");
-					errorMessage = "invalid Username or Password";
+					System.out.println("\tInvalid Username/Password");
+					errorMessage = "Invalid Username/Password";
 				}
 			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
-			errorMessage = "invalid Username or Password";
+			errorMessage = "Invalid Username/Password";
 		}
 		
 		req.setAttribute("errorMessage", errorMessage);
