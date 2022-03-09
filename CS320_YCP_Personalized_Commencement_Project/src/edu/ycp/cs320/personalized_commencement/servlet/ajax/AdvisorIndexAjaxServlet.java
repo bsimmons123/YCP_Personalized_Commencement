@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class DeleteInformationAjaxServlet extends HttpServlet {
+public class AdvisorIndexAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -24,11 +23,16 @@ public class DeleteInformationAjaxServlet extends HttpServlet {
 	}
 
 	private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+	
+		
 
-		// Send back a response
-		resp.setContentType("text/plain");
+	
 	}
-
+	
+	@SuppressWarnings("unused")
+	// added suppress warnings until these methods are used to get rid of warnings in console temporarily
 	private Double getDouble(HttpServletRequest req, String name) {
 		String val = req.getParameter(name);
 		if (val == null) {
@@ -41,6 +45,8 @@ public class DeleteInformationAjaxServlet extends HttpServlet {
 		}
 	}
 
+	@SuppressWarnings("unused")
+	// added suppress warnings until these methods are used to get rid of warnings in console temporarily
 	private void badRequest(String message, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
 		resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

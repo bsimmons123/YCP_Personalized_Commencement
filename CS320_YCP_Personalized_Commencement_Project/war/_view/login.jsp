@@ -30,7 +30,7 @@
 				<!-- User Password -->
 				<tr>
 					<td>Password:</td>
-					<td><input type="text" name="password" size="12" value="${user.password}" /></td>
+					<td><input type="password" name="password" size="12" value="${user.password}" /></td>
 				</tr>
 			</table>
 				<div class="button">

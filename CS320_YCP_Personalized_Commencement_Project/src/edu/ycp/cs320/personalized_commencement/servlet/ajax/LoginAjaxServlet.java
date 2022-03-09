@@ -31,7 +31,9 @@ public class LoginAjaxServlet extends HttpServlet {
 
 	private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Set models
+		@SuppressWarnings("unused")
 		StudentModel studentModel = new StudentModel();
+		@SuppressWarnings("unused")
 		AdvisorModel advisorModel = new AdvisorModel();
 		
 		UserModel user = new UserModel();
@@ -53,7 +55,9 @@ public class LoginAjaxServlet extends HttpServlet {
 		}
 		
 		// Use a controller to process the request
+		@SuppressWarnings("unused")
 		StudentController studentController = new StudentController();
+		@SuppressWarnings("unused")
 		AdvisorController advisorController = new AdvisorController();
 		
 		// Send back a response

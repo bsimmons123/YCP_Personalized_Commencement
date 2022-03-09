@@ -8,6 +8,7 @@ public class AdvisorModel extends UserModel{
 	// variable to be set as true if content is accepted or false if it is rejected.
 	boolean decision;
 	
+	@SuppressWarnings("unused")
 	private UserModel user = new UserModel(); // used to set Hardcoded credentials
 	
 	/**
