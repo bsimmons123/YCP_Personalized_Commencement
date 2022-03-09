@@ -98,7 +98,7 @@ public class LoginServlet extends HttpServlet{
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
-				if(studentController.checkStudentLogin(jspUser)) {
+				if(studentController.checkStudentLogin(jspUser) && erosenberryStudentController.checkStudentLogin(jspUser) && amottStudentController.checkStudentLogin(jspUser) && rwoodStudentController.checkStudentLogin(jspUser) && bsimmonsStudentController.checkStudentLogin(jspUser)) {
 					student = true;
 					studentController.setLogin();
 				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor

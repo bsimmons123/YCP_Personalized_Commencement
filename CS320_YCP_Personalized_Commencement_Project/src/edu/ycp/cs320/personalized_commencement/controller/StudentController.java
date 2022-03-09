@@ -1,5 +1,7 @@
 package edu.ycp.cs320.personalized_commencement.controller;
 
+import java.util.ArrayList;
+
 import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 import edu.ycp.cs320_personalized_commencement.model.UserModel;
 
@@ -9,29 +11,47 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
 public class StudentController extends UserController{
 	
 	StudentModel model;
+	ArrayList<StudentModel> students;
 	
 	/**
 	 * 
-	 * @param model 	For interactions with controller
+	 * @param students	Set the student array
 	 */
-	public void setModel(StudentModel model) {
-		this.model = model;
+	public void setStudents(ArrayList<StudentModel> students) {
+		this.students = students;
+	}
+	
+	/**
+	 * 
+	 * @param student	Add new student model
+	 */
+	public void addStudent(StudentModel student) {
+		students.add(student);
+	}
+	
+	/**
+	 * 
+	 * @param index		Index of a particular student
+	 * @return			Student
+	 */
+	public StudentModel getStudent(int index) {
+		return students.get(index);
 	}
 	
 	/**
 	 * set login for student
 	 */
-	public void setLogin() {
-		model.setLogin(true);
+	public void setLogin(StudentModel student) {
+		student.setLogin(true);
 	}
 	
 	/**
 	 * Hardcode account details
 	 */
-	public void createTestStudent(String email, String password) {
-		model.setEmail(email);
-		model.setPassword(password);
-		model.setStudent(true);
+	public void createTestStudent(StudentModel student, String email, String password) {
+		student.setEmail(email);
+		student.setPassword(password);
+		student.setStudent(true);
 	}
 
 	/**
