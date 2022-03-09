@@ -42,23 +42,46 @@ public class LoginServlet extends HttpServlet{
 		// Creates advisor and student model
 		AdvisorModel advisorModel = new AdvisorModel();
 		StudentModel studentModel = new StudentModel();
-		
+
 		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
-		
-
-		
-		
-		// Creates user to interact with controller
-		UserModel jspUser = new UserModel();
 		
 		// sets model in controllers
 		advisorController.setModel(advisorModel);
 		studentController.setModel(studentModel);
 		
-		studentController.createTestStudent();
-		advisorController.createTestAdvisor();
+		// Creates student models for testing 
+		StudentModel amottStudentModel = new StudentModel();
+		StudentModel erosenberryStudentModel = new StudentModel();
+		StudentModel rwoodStudentModel = new StudentModel();
+		StudentModel bsimmonsStudentModel = new StudentModel();
+		
+		// Creates student controllers for testing
+		StudentController amottStudentController = new StudentController();
+		StudentController erosenberryStudentController = new StudentController();
+		StudentController rwoodStudentController = new StudentController();
+		StudentController bsimmonsStudentController = new StudentController();
+		
+		// Adds model to test controllers
+		amottStudentController.setModel(amottStudentModel);
+		erosenberryStudentController.setModel(erosenberryStudentModel);
+		rwoodStudentController.setModel(rwoodStudentModel);
+		bsimmonsStudentController.setModel(bsimmonsStudentModel);
+	
+		// Creates user to interact with controller
+		UserModel jspUser = new UserModel();
+		
+		// Creates accounts for test users
+		studentController.createTestStudent("teststudent@ycp.edu", "test");
+		advisorController.createTestAdvisor("testadvisor@ycp.edu", "test");
+		
+		// Creates accounts for users
+		amottStudentController.createTestStudent("amott@ycp.edu", "test");
+		erosenberryStudentController.createTestStudent("erosenberry@ycp.edu", "test");
+		rwoodStudentController.createTestStudent("rwood@ycp.edu", "test");
+		bsimmonsStudentController.createTestStudent("bsimmons1@ycp.edu", "test");
+		
 		
 		// get username and password from form
 		try {
@@ -70,8 +93,8 @@ public class LoginServlet extends HttpServlet{
 			jspUser.setEmail(email);
 			jspUser.setPassword(password);
 			if(email == null || password == null) {
-				System.out.println("\tinvalid Username or Password");
-				errorMessage = "invalid Username or Password";
+				System.out.println("\tInvalid Username/Password");
+				errorMessage = "Invalid Username/Password";
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
@@ -81,13 +104,13 @@ public class LoginServlet extends HttpServlet{
 				}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
 					advisor = true;
 				}else {
-					System.out.println("\tinvalid Username or Password");
-					errorMessage = "invalid Username or Password";
+					System.out.println("\tInvalid Username/Password");
+					errorMessage = "Invalid Username/Password";
 				}
 			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
-			errorMessage = "invalid Username or Password";
+			errorMessage = "Invalid Username/Password";
 		}
 		
 		req.setAttribute("errorMessage", errorMessage);

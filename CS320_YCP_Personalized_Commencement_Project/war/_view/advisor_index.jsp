@@ -1,26 +1,120 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<html lang="en-US">
 
-<html>
+	<!-- head elements and imports -->
 	<head>
+		<meta charset="UTF-8">
 		<title>Advisor Index View</title>
 	</head>
+	
+	<!-- temporary hold location for css styling -->
 	<style>
-		.button	{
-			 margin-bottom: 20px;
+		body {
+			background-color: rgb(240, 240, 235);
+		}
+		#pageHeader {
+			width: 100%;
+		}
+		#instructions {
+			width: 50%;
+			margin: auto;
+			font-size: 16px;
+			text-align: center;
+		}
+		#outerdiv {
+			width: 50%;
+			margin: auto;
+			padding: 10px;
+			border: 3px solid green;
+		}
+		#innerdiv1{
+			width: auto;
+			float: left;
+			font-size: 18px;
+			margin-left: 20%;
+			padding-top: 2px;
+		}
+		#innerdiv2{
+			width: 15.5%;
+			padding-top: 2px;
+			margin-left: 63%;
+		}
+		#logoutDiv {
+			width: auto;
+			margin-top: 20px;
+			margin-left: 1090px;
+		}
+		.title {
+			color: green;
+			font-size: 32px;
+			text-align: center;
+			border-bottom: 3px solid green;
+		}
+		.logoutBut {
+			height:30px;
+			width:65px;
 		}
 	</style>
 
+	<!-- styling and layout of the body  -->
 	<body>
-			<!--Button for Viewing Students-->
-			<div class="button">
-				<p> 
-				This will have student names later, with view buttons next to each name. Database is required for such task. As such, difficulty has been found at this present moment to create much of a website for advisor index and I cannot divulge much further information as to what may or may not be here. After all, we are in the earlier stages of our project. I mean cut me some slack here, man. This is ridiculous, you can't actually imagine we'd have the entire advisor index working properly at this point in time. Jeez.
-				</p>
-				<h1>EXPOSTULATE </h1>
+		<!-- Header of the page -->
+		<div id="pageheader"> 
+			<h1 class="title">List of Submissions For Review</h1>
+		</div>
+		<!-- List of instructions -->
+		<div id="instructions"> 
+			<p>
+			Here you can find a list of submissions from your students that need to be reviewed.<br>
+			To view a student's submission, simply click the "view" button next to their name.<br>
+			Once you are ready to approve or deny a student's submission, click the respective button on their submission.
+			</p>
+		</div>
+		
+		<!-- Idea is for students to be shown automatically with view buttons next to each student -->
+		<!-- Holds student names-->
+		<div id="outerdiv">
+			<div id="innerdiv1">
+				<label>John Appleseed</label><br><br>
+				<label>Gwegowy Thunderballz</label><br><br>
+				<label>Ethan RosesN'Berries</label><br><br>
+				<label>Andrew "Expostulate" Mott</label><br><br>
+				<label>Michael Jackson</label><br><br>
+				<label>Ben(Brandon) Simmons</label><br><br>
+				<label>Bobert Forest </label><br><br>
+				<label>Cassidy Patchel </label><br><br>
+				<label>Grant MacDonald </label><br><br>
+				<label>Spider Man </label><br><br>
+				<label>Bologna Boy </label><br><br>
+				<label>Ricky Berwick </label><br><br>
 			</div>
-			<!-- Will edit later when students are implemented -->
-			<!-- Idea is for students to be shown automatically with view buttons next to each student -->
+			<!-- Holds buttons for each student -->
+			<div id="innerdiv2">
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
+			</div>
+		</div>	
+		<div id="logoutDiv">
+			<input class="logoutBut" type="button" onclick="window.location='login'" value="Logout">
+		</div>
 	</body>
 </html>
+
+
+
+
+
+
+

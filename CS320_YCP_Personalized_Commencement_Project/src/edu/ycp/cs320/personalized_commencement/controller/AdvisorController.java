@@ -26,7 +26,7 @@ public class AdvisorController extends UserController{
 	}
 
 	/**
-	 * 
+	 * 	Checks if the user has entered the correct credentials
 	 * @param advisor 	Advisor
 	 * @param user	 	User from JSP
 	 * @return if		User is logged in
@@ -41,9 +41,9 @@ public class AdvisorController extends UserController{
 	/**
 	 * Hardcode test account
 	 */
-	public void createTestAdvisor() {
+	public void createTestAdvisor(String email, String password) {
+		model.setEmail(email);
+		model.setPassword(password);
 		model.setStudent(false);
-		model.setEmail("testadvisor@ycp.edu");
-		model.setPassword("test");
 	}
 }
