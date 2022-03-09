@@ -28,9 +28,9 @@ public class StudentController extends UserController{
 	/**
 	 * Hardcode account details
 	 */
-	public void createTestStudent() {
-		model.setEmail("teststudent@ycp.edu");
-		model.setPassword("test");
+	public void createTestStudent(String email, String password) {
+		model.setEmail(email);
+		model.setPassword(password);
 		model.setStudent(true);
 	}
 
