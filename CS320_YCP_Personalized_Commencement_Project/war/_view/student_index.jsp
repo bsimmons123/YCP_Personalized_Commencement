@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Student Index View</title>
-		<!-- Path to css styling for redirects -->
+		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/StudentIndexSS.css" rel="stylesheet" type="text/css">
 	</head>
 
