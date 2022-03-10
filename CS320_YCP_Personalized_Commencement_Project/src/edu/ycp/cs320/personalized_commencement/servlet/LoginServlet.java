@@ -96,15 +96,18 @@ public class LoginServlet extends HttpServlet{
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
+				// for each loop that iterates over each user
 				for(StudentModel studentIter: studentController.getStudents()) {
+					// if user is a student
 					if(studentController.checkStudentLogin(studentIter, jspUser)) {
 						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
 						student = true;
 						studentController.setLogin(studentIter);
-					}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
+					}
+					else if(advisorController.checkAdvisorLogin(jspUser)) { // if user is an advisor
 						advisor = true;
 					}else {
-						errorMessage = "Invalid Username/Password";
+						errorMessage = "Invalid Username/Password"; // otherwise invalid login credentials
 					}
 				}
 		
@@ -121,15 +124,15 @@ public class LoginServlet extends HttpServlet{
 		
 		// determines where to send the user
 		if(student) {
-			student = false; // set to false incase user logs out and tries to log in as a new user
-			// Changed the forwards to redirects in order to show each page's true url
+			student = false; // set to false in case user logs out and tries to log in as a new user
+			// redirects the student to their index page
 			resp.sendRedirect(req.getContextPath() + "/_view/student_index.jsp");
 		}else if(advisor) {
-			advisor = false; // set to false incase user logs out and tries to log in as a new user
-			// Changed the forwards to redirects in order to show each page's true url
+			advisor = false; // set to false in case user logs out and tries to log in as a new user
+			// redirects the advisor to their index page
 			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
-			// Changed the forwards to redirects in order to show each page's true url
+			// redirects the user to the login page and shows invalid info error message
 			resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 		}
 		
