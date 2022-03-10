@@ -7,61 +7,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Student Index View</title>
+		<!-- Path to css styling for redirects -->
+		<link href="${pageContext.request.contextPath}/css/StudentIndexSS.css" rel="stylesheet" type="text/css">
 	</head>
-	
-	<!-- temporary hold location for css styling -->
-	<style>
-		body {
-			background-color: rgb(240, 240, 235);
-		}
-		#pageHeader {
-			width: auto;
-		}
-		#instructions {
-			margin: auto;
-			width: 50%;
-			text-align: left;
-			font-size: 16px;
-		}
-		#content {
-			 margin: auto;
-			 width: 50%;
-			 border: 3px solid green;
-			 padding: 10px;
-		}
-		#prompts {
-			width: 50%;
-			float: left;
-			font-size: 18px;
-			padding-left: 90px;
-			padding-top: 10px;
-		}
-		#fields {
-			margin-top: 2px;
-			margin-left: 50%;
-			padding-top: 10px;
-			
-		}
-		#buttons {
-			padding-left: 506px;
-			width: 100%;
-		}
-		#logoutDiv {
-			width: auto;
-			margin-top: 20px;
-			margin-left: 1090px;
-		}
-		.title {
-			text-align: center;
-			font-size: 32px;
-			color: green;
-			border-bottom: 3px solid green;
-		}
-		.logoutBut {
-			height:30px;
-			width:65px;
-		}
-	</style>
 
 	<!-- styling and layout of the body  -->
 	<body>
@@ -140,7 +88,7 @@
 			</div>
 		</div>
 		<div id="logoutDiv">
-			<input class="logoutBut" type="button" onclick="window.location='login'" value="Logout">
+			<input class="logoutBut" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
 		</div>
 	</body>
 </html>

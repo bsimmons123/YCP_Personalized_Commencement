@@ -126,15 +126,15 @@ public class LoginServlet extends HttpServlet{
 		// determines where to send the user
 		if(student) {
 			student = false; // set to false incase user logs out and tries to log in as a new user
-			// Forward to view to render the result HTML document
-			req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
+			// Redirect to view to render the result HTML document
+			resp.sendRedirect(req.getContextPath() + "/_view/student_index.jsp");
 		}else if(advisor) {
 			advisor = false; // set to false incase user logs out and tries to log in as a new user
-			// Forward to view to render the result HTML document
-			req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+			// Redirect to view to render the result HTML document
+			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
-			// Forward to view to render the result HTML document
-			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+			// Redirect to view to render the result HTML document
+			resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 		}
 		
 	}
