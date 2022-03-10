@@ -20,7 +20,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		System.out.println("Advisor Index Servlet: doGet");
 
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 	}
 	
 	@Override

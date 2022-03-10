@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("Login Servlet: doGet");
 
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 	}
 	
 	@Override
