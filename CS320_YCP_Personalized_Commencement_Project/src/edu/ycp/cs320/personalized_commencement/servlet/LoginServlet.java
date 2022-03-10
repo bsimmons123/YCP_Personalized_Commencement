@@ -134,8 +134,7 @@ public class LoginServlet extends HttpServlet{
 			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
 			// redirects the user to the login page and shows invalid info error message
-			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);;
+			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}
-		
 	}
 }
