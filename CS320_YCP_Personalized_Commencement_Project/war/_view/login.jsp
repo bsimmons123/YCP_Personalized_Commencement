@@ -28,9 +28,7 @@
 			</div>
 			<!--if error message-->
 			<c:if test="${! empty errorMessage}">
-				<div id="error">
-					${errorMessage}
-				</div>
+				<div id="error">${errorMessage}</div>
 			</c:if>
 			<!-- User Login Table-->
 			<table class="table">
