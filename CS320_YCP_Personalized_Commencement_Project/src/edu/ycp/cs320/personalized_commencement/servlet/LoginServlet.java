@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("Login Servlet: doGet");
 
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 	}
 	
 	@Override
@@ -81,9 +81,6 @@ public class LoginServlet extends HttpServlet{
 		studentController.createTestStudent(studentController.getStudent(3), "erosenberry", "test");
 		studentController.createTestStudent(studentController.getStudent(4), "amott@ycp.edu", "test");
 		
-		for(StudentModel studentIter: studentController.getStudents()) {
-			System.out.println("\t\tEmail: " + studentIter.getEmail() + " Pass: " + studentIter.getPassword());
-		}
 		// get username and password from form
 		try {
 			// pull parameters from JSP
@@ -99,16 +96,18 @@ public class LoginServlet extends HttpServlet{
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
+				// for each loop that iterates over each user
 				for(StudentModel studentIter: studentController.getStudents()) {
-					System.out.println("\t\tEmail: " + studentIter.getEmail() + " Pass: " + studentIter.getPassword());
+					// if user is a student
 					if(studentController.checkStudentLogin(studentIter, jspUser)) {
+						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
 						student = true;
 						studentController.setLogin(studentIter);
-					}else if(advisorController.checkAdvisorLogin(jspUser)) { // Check if user is advisor
+					}
+					else if(advisorController.checkAdvisorLogin(jspUser)) { // if user is an advisor
 						advisor = true;
 					}else {
-						System.out.println("\tInvalid Username/Password");
-						errorMessage = "Invalid Username/Password";
+						errorMessage = "Invalid Username/Password"; // otherwise invalid login credentials
 					}
 				}
 		
@@ -119,22 +118,22 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 		req.setAttribute("errorMessage", errorMessage);
-		System.out.println("\tLogin results");
+		System.out.println("\tPosting Login results");
 		
 		req.setAttribute("user", jspUser);
 		
 		// determines where to send the user
 		if(student) {
-			student = false; // set to false incase user logs out and tries to log in as a new user
-			// Forward to view to render the result HTML document
-			req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
+			student = false; // set to false in case user logs out and tries to log in as a new user
+			// redirects the student to their index page
+			resp.sendRedirect(req.getContextPath() + "/_view/student_index.jsp");
 		}else if(advisor) {
-			advisor = false; // set to false incase user logs out and tries to log in as a new user
-			// Forward to view to render the result HTML document
-			req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+			advisor = false; // set to false in case user logs out and tries to log in as a new user
+			// redirects the advisor to their index page
+			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
-			// Forward to view to render the result HTML document
-			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+			// redirects the user to the login page and shows invalid info error message
+			resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 		}
 		
 	}

@@ -1,8 +1,10 @@
+@charset "ISO-8859-1";
+
 body {
-	background-color: rgb(240, 240, 240);
+	background-color: rgb(240, 240, 235);
 }
 #pageHeader {
-	width: 100%;
+	width: auto;
 }
 #instructions {
 	margin: auto;
@@ -29,11 +31,22 @@ body {
 	padding-top: 10px;
 	
 }
-#button	{
-	margin-bottom: 20px;
+#buttons {
+	padding-left: 506px;
+	width: 100%;
+}
+#logoutDiv {
+	width: auto;
+	margin-top: 20px;
+	margin-left: 1090px;
 }
 .title {
 	text-align: center;
 	font-size: 32px;
 	color: green;
+	border-bottom: 3px solid green;
+}
+.logoutBut {
+	height:30px;
+	width:65px;
 }

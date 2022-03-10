@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320.personalized_commencement.controller.StudentController;
+//import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 
 public class StudentIndexServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class StudentIndexServlet extends HttpServlet {
 		System.out.println("Student Index Servlet: doGet");
 
 		// call JSP to generate empty form
-		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
 	}
 	
 	@Override
@@ -34,7 +34,7 @@ public class StudentIndexServlet extends HttpServlet {
 		
 		// create new model
 		StudentModel model = new StudentModel();
-		StudentController controller = new StudentController();
+		//StudentController controller = new StudentController();
 		//controller.setModel(model);
 		
 		req.setAttribute("errorMessage", errorMessage);

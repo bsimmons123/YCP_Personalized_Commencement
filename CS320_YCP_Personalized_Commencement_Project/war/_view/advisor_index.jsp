@@ -7,56 +7,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Advisor Index View</title>
+		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
+		<link href="${pageContext.request.contextPath}/css/AdvisorIndexSS.css" rel="stylesheet" type="text/css">
 	</head>
-	
-	<!-- temporary hold location for css styling -->
-	<style>
-		body {
-			background-color: rgb(240, 240, 235);
-		}
-		#pageHeader {
-			width: 100%;
-		}
-		#instructions {
-			width: 50%;
-			margin: auto;
-			font-size: 16px;
-			text-align: center;
-		}
-		#outerdiv {
-			width: 50%;
-			margin: auto;
-			padding: 10px;
-			border: 3px solid green;
-		}
-		#innerdiv1{
-			width: auto;
-			float: left;
-			font-size: 18px;
-			margin-left: 20%;
-			padding-top: 2px;
-		}
-		#innerdiv2{
-			width: 15.5%;
-			padding-top: 2px;
-			margin-left: 63%;
-		}
-		#logoutDiv {
-			width: auto;
-			margin-top: 20px;
-			margin-left: 1090px;
-		}
-		.title {
-			color: green;
-			font-size: 32px;
-			text-align: center;
-			border-bottom: 3px solid green;
-		}
-		.logoutBut {
-			height:30px;
-			width:65px;
-		}
-	</style>
 
 	<!-- styling and layout of the body  -->
 	<body>
@@ -107,7 +60,7 @@
 			</div>
 		</div>	
 		<div id="logoutDiv">
-			<input class="logoutBut" type="button" onclick="window.location='login'" value="Logout">
+			<input class="logoutBut" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
 		</div>
 	</body>
 </html>
