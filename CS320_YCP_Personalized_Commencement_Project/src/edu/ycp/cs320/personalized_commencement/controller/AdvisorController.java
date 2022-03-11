@@ -1,5 +1,7 @@
 package edu.ycp.cs320.personalized_commencement.controller;
 
+import java.util.ArrayList;
+
 import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
 import edu.ycp.cs320_personalized_commencement.model.UserModel;
 
@@ -8,42 +10,63 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
  */
 public class AdvisorController extends UserController{
 	
-	AdvisorModel model; 
+	// Create an arraylist of advisor users
+	ArrayList<AdvisorModel> advisors = new ArrayList<AdvisorModel>();
 	
 	/**
 	 * 
-	 * @param model 	For interactions with controller
+	 * @param index		Index of advisor in arraylist
+	 * @return			Advisor
 	 */
-	public void setModel(AdvisorModel model) {
-		this.model = model;
+	public AdvisorModel getAdvisor(int index) {
+		return advisors.get(index);
+	}
+	
+	/**
+	 * 
+	 * @return			Arraylist of advisors
+	 */
+	public ArrayList<AdvisorModel> getAdvisors(){
+		return advisors;
+	}
+	
+	/**
+	 * 
+	 * @param advisors	sets an arraylist of advisors
+	 */
+	public void setAdvisors(ArrayList<AdvisorModel> advisors) {
+		this.advisors = advisors;
 	}
 	
 	/**
 	 * set login for advisor
 	 */
-	public void setLogin() {
-		model.setLogin(true);
+	public void setLogin(AdvisorModel advisor) {
+		advisor.setLogin(true);
 	}
-
+	
 	/**
 	 * 	Checks if the user has entered the correct credentials
 	 * @param advisor 	Advisor
 	 * @param user	 	User from JSP
 	 * @return if		User is logged in
 	 */
-	public boolean checkAdvisorLogin(UserModel user) {
-		if(model.getEmail().equals(user.getEmail()) && model.getPassword().equals(user.getPassword()) && !model.getStudent()) {
+	public boolean checkAdvisorLogin(AdvisorModel advisor, UserModel user) {
+		if(advisor.getEmail().equals(user.getEmail()) && advisor.getPassword().equals(user.getPassword()) && !advisor.getStudent()) {
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * Hardcode test account
+	 * Initialize an advisor account
+	 * @param advisor	advisor
+	 * @param email		email of JSP user
+	 * @param password	password of JSP user
 	 */
-	public void createTestAdvisor(String email, String password) {
-		model.setEmail(email);
-		model.setPassword(password);
-		model.setStudent(false);
+	public void createTestAdvisor(AdvisorModel advisor, String email, String password) {
+		advisor.setEmail(email);
+		advisor.setPassword(password);
+		advisor.setStudent(false);
 	}
 }
