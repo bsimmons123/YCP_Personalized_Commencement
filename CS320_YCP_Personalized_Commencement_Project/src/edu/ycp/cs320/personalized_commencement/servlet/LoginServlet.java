@@ -119,6 +119,7 @@ public class LoginServlet extends HttpServlet{
 		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting Login results");
+		System.out.println("Error message is: " + errorMessage);
 		
 		req.setAttribute("user", jspUser);
 		
@@ -133,8 +134,7 @@ public class LoginServlet extends HttpServlet{
 			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
 			// redirects the user to the login page and shows invalid info error message
-			resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
+			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}
-		
 	}
 }
