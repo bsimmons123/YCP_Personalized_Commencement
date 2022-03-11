@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet{
 		
 		// initialize students array
 		ArrayList<StudentModel> students = new ArrayList<StudentModel>();
+		ArrayList<AdvisorModel> advisors = new ArrayList<AdvisorModel>();
 		
 		// Creates advisor and student model
 		AdvisorModel advisorModel = new AdvisorModel();
@@ -54,27 +55,37 @@ public class LoginServlet extends HttpServlet{
 		// Set student arraylist in controller
 		studentController.setStudents(students);
 		
-		// sets model in controllers
-		advisorController.setModel(advisorModel);
-		
 		// Creates student models for testing 
 		StudentModel amottStudentModel = new StudentModel();
 		StudentModel erosenberryStudentModel = new StudentModel();
 		StudentModel rwoodStudentModel = new StudentModel();
 		StudentModel bsimmonsStudentModel = new StudentModel();
 		
+		// Add students to arraylist
 		studentController.addStudent(studentModel); 			// index 0
 		studentController.addStudent(bsimmonsStudentModel);		// index 1
 		studentController.addStudent(rwoodStudentModel);		// index 2
 		studentController.addStudent(erosenberryStudentModel); 	// index 3
 		studentController.addStudent(amottStudentModel);		// index 4
-	
+		
+		// sets model arraylist in controllers
+		advisorController.setAdvisors(advisors);
+		
+		// Creates advisors for testing
+		AdvisorModel jmoscola = new AdvisorModel();
+		
+		//Add advisors to arraylist
+		advisorController.addAdvisor(advisorModel);
+		advisorController.addAdvisor(jmoscola);					// index 0
+		
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
 		
-		advisorController.createTestAdvisor("testadvisor@ycp.edu", "test");
+		// Creates accounts for test advisors
+		advisorController.createTestAdvisor(advisorController.getAdvisor(0), "testadvisor@ycp.edu", "test");
+		advisorController.createTestAdvisor(advisorController.getAdvisor(1), "jmoscola@ycp.edu", "test");
 		
-		// Creates accounts for test users
+		// Creates accounts for test students
 		studentController.createTestStudent(studentController.getStudent(0),"teststudent@ycp.edu", "test");
 		studentController.createTestStudent(studentController.getStudent(1), "bsimmons1@ycp.edu", "test");
 		studentController.createTestStudent(studentController.getStudent(2), "rwood7@ycp.edu", "test");
@@ -103,11 +114,18 @@ public class LoginServlet extends HttpServlet{
 						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
 						student = true;
 						studentController.setLogin(studentIter);
-					}
-					else if(advisorController.checkAdvisorLogin(jspUser)) { // if user is an advisor
-						advisor = true;
-					}else {
+					}else {	// if student does not exist
 						errorMessage = "Invalid Username/Password"; // otherwise invalid login credentials
+					}
+				}
+				for(AdvisorModel advisorIter: advisorController.getAdvisors()) {
+					// user is advisor
+					if(advisorController.checkAdvisorLogin(advisorIter, jspUser)) {
+						System.out.println("\t\t" + advisorIter.getEmail() + ": Logged in");
+						advisor = true;
+						advisorController.setLogin(advisorIter);
+					}else { //if advisor does not exist
+						errorMessage = "Invalid Username/Password"; //otherwise invalid login credentials
 					}
 				}
 		

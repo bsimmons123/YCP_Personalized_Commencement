@@ -69,4 +69,13 @@ public class AdvisorController extends UserController{
 		advisor.setPassword(password);
 		advisor.setStudent(false);
 	}
+
+	/**
+	 * add an advisor to arraylist of advisors
+	 * @param advisor	advisor to add
+	 */
+	public void addAdvisor(AdvisorModel advisor) {
+		advisors.add(advisor);
+		
+	}
 }
