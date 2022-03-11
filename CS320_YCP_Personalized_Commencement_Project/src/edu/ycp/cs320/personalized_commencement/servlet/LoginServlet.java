@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet{
 		String errorMessage = null;
 		
 		// Checks if student or advisor has entered the correct information
+		// Used later
 		boolean student = false;
 		boolean advisor = false;
 		
@@ -75,8 +76,8 @@ public class LoginServlet extends HttpServlet{
 		AdvisorModel jmoscola = new AdvisorModel();
 		
 		//Add advisors to arraylist
-		advisorController.addAdvisor(advisorModel);
-		advisorController.addAdvisor(jmoscola);					// index 0
+		advisorController.addAdvisor(advisorModel);				// index 0
+		advisorController.addAdvisor(jmoscola);					// index 1
 		
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();

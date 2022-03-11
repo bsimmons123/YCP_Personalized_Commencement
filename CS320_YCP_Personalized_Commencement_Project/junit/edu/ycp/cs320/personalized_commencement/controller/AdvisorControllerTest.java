@@ -26,18 +26,20 @@ private AdvisorController controller;
 		
 		// set up controller
 		controller = new AdvisorController();
-		controller.setModel(model);
+		
+		controller.addAdvisor(model);
+		//controller.setModel(model);
 		
 	}
 	@Test
 	public void testCheckAdvisorLogin(){
 		user.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 		user.setPassword("Brandon'sMom1");
-		assertEquals(true, controller.checkAdvisorLogin(user));
+		assertEquals(true, controller.checkAdvisorLogin(controller.getAdvisor(0), user));
 		
 		user.setEmail("AndrewLicksLinix@hotmail.com");
 		user.setPassword("Rob'sMom2");
-		assertEquals(false, controller.checkAdvisorLogin(user));
+		assertEquals(false, controller.checkAdvisorLogin(controller.getAdvisor(0),user));
 		
 	}
 	

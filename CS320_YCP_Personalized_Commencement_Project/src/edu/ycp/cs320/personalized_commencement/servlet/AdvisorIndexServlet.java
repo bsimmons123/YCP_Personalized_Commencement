@@ -35,7 +35,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		// create new model
 		AdvisorModel model = new AdvisorModel();
 		AdvisorController controller = new AdvisorController();
-		controller.setModel(model);
+		//controller.setModel(model);
 		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
