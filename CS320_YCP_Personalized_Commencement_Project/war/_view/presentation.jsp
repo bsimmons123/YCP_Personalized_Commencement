@@ -5,26 +5,44 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>View</title>
+		<title>Submission - ${student.last}, ${student.first}</title>
 	</head>
 	<body>
 	<form action="${pageContext.servletContext.contextPath}/presentation" method="get">
-		<div>
-			<p>${info.first}</p>	
-		</div>
-		<div>
-			<p>${info.last}</p>	
-		</div>
-		<div>
-			<p>${info.major}</p>	
-		</div>
-		<div>
-			<p>${info.minor}</p>	
-		</div>
-		<div>
-			<p>${info.extraCur}</p>	
-		</div>
-		
+		<table>
+			<tr>
+				<td>First Name:</td>
+				<td>${student.first}</td>
+			</tr>
+			<tr>
+				<td>Middle Initial:</td>
+				<td>${student.middle}</td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td>${student.last}</td>
+			</tr>
+			<tr>
+				<td>Minor(s):</td>
+				<td>${student.major}</td>
+			</tr>
+			<tr>
+				<td>Major(s):</td>
+				<td>${student.minor}</td>
+			</tr>
+			<tr>
+				<td>Extracurricular Activities:</td>
+				<td>${student.extraCur}</td>
+			</tr>
+			<tr>
+				<td>Uploaded Image/Video:</td>
+				<td>Will work on later</td>
+			</tr>
+			<tr>
+				<td>Uploaded Audio for Walk:</td>
+				<td>Will work on later</td>
+			</tr>
+		</table>
 	</form>
 	</body>
 

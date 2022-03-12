@@ -20,20 +20,20 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		System.out.println("Presentation Servlet: doGet");
 		
 		// create new model
-		StudentInfoModel model = new StudentInfoModel();
+		StudentInfoModel info = new StudentInfoModel();
 
 			
 		//hardcode information for the advisor view
-		model.setFirstName("John");
-		model.setLastName("Appleseed");
-		model.setMajor("Biology");
-		model.setMinor("Philosophy");
-		model.setMiddleInitial("A");
-		model.setExtraCur("Gardening Club President");
+		info.setFirstName("John");
+		info.setLastName("Appleseed");
+		info.setMajor("Biology");
+		info.setMinor("Philosophy");
+		info.setMiddleInitial("A");
+		info.setExtraCur("Gardening Club President");
 		//picture will be hard coded into presentation jsp
 				
 				
-		req.setAttribute("info", model);
+		req.setAttribute("student", info);
 
 		// call JSP to generate empty form
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
