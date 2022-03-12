@@ -14,7 +14,7 @@ public class StudentInfoModel {
 	public void setFirstName(String firstName){
 		this.firstName = firstName;
 	}
-	public void setMiddleInitial(String middleInitial) {
+	public void setMiddleInitial(String middleInitial) { // why middle initial?
 		this.middleInitial = middleInitial;
 	}
 	public void setLastName(String lastName) {
@@ -40,10 +40,10 @@ public class StudentInfoModel {
 	public String getFirst(){
 		return firstName;
 	}
-	public String getMiddleInital() {
+	public String getMiddle() {
 		return middleInitial;
 	}
-	public String getLastName() {
+	public String getLast() {
 		return lastName;
 	}
 	public String getMajor() {

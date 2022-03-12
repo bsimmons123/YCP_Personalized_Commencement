@@ -7,57 +7,67 @@
 
   <!-- Servlets -->
   	<servlet>
-  	<servlet-name>AdvisorIndexServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.AdvisorIndexServlet</servlet-class>
+	  	<servlet-name>AdvisorIndexServlet</servlet-name>
+	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.AdvisorIndexServlet</servlet-class>
   	</servlet>
   	
   	<servlet>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.LoginServlet</servlet-class>
+	  	<servlet-name>LoginServlet</servlet-name>
+	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.LoginServlet</servlet-class>
   	</servlet>
 
   	<servlet>
-    <servlet-name>StudentIndexServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.StudentIndexServlet</servlet-class>
+	    <servlet-name>StudentIndexServlet</servlet-name>
+	    <servlet-class>edu.ycp.cs320.personalized_commencement.servlet.StudentIndexServlet</servlet-class>
+  	</servlet>
+  	
+  	<servlet>
+  		<servlet-name>PresentationServlet_Advisor_View</servlet-name>
+  		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.PresentationServlet_Advisor_View</servlet-class>
   	</servlet>
   
   <!-- AJAX servlets. -->
  	<servlet>
-	<servlet-name>AdvisorIndexAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.AdvisorIndexAjaxServlet</servlet-class>
+		<servlet-name>AdvisorIndexAjaxServlet</servlet-name>
+		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.AdvisorIndexAjaxServlet</servlet-class>
 	</servlet>
 	
 	<servlet>
-	<servlet-name>LoginAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.LoginAjaxServlet</servlet-class>
+		<servlet-name>LoginAjaxServlet</servlet-name>
+		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.LoginAjaxServlet</servlet-class>
 	</servlet>
 	
 	<servlet>
-	<servlet-name>StudentIndexAjaxServlet</servlet-name>
-	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.StudentIndexAjaxServlet</servlet-class>
+		<servlet-name>StudentIndexAjaxServlet</servlet-name>
+		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.StudentIndexAjaxServlet</servlet-class>
 	</servlet>
 
   <!-- Servlet mappings -->
-  <servlet-mapping>
-  	<servlet-name>AdvisorIndexServlet</servlet-name>
-  	<url-pattern>/advisor_index</url-pattern>
-  </servlet-mapping>
+	<servlet-mapping>
+  		<servlet-name>AdvisorIndexServlet</servlet-name>
+  		<url-pattern>/advisor_index</url-pattern>
+	</servlet-mapping>
   
-  <servlet-mapping>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/login</url-pattern>
-  </servlet-mapping>
+ 	 <servlet-mapping>
+	  	<servlet-name>LoginServlet</servlet-name>
+	  	<url-pattern>/login</url-pattern>
+  	</servlet-mapping>
   
-  <servlet-mapping>
-    <servlet-name>StudentIndexServlet</servlet-name>
-    <url-pattern>/student_index</url-pattern>
-  </servlet-mapping>
+  	<servlet-mapping>
+	    <servlet-name>StudentIndexServlet</servlet-name>
+	    <url-pattern>/student_index</url-pattern>
+  	</servlet-mapping>
+  
+ 	 <servlet-mapping>
+  		<servlet-name>PresentationServlet_Advisor_View</servlet-name>
+  		<url-pattern>/presentation</url-pattern>
+ 	 </servlet-mapping>
   
   <!--  AJAX servlet mappings. -->
-  <welcome-file-list>
-    <welcome-file>studentindex.html</welcome-file>
-  </welcome-file-list>
-  <welcome-file-list>
-    <welcome-file>advisorindex.html</welcome-file>
-  </welcome-file-list>
+  	<welcome-file-list>
+   		<welcome-file>studentindex.html</welcome-file>
+ 	</welcome-file-list>
+ 	<welcome-file-list>
+  		<welcome-file>advisorindex.html</welcome-file>
+	</welcome-file-list>
 </web-app>

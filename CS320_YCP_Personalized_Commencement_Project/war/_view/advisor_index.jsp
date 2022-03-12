@@ -45,7 +45,7 @@
 			</div>
 			<!-- Holds buttons for each student -->
 			<div id="innerdiv2">
-				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;" onclick="window.location='presentation.jsp'"><br><br>
+				<input type="button" name="view" onclick="window.location='http://localhost:8081/pcomm/presentation'" value="View Submission" style="height:23px;width:117px;"><br><br>
 				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
 				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
 				<input type="button" name="view" value="View Submission" style="height:23px;width:117px;"><br><br>
