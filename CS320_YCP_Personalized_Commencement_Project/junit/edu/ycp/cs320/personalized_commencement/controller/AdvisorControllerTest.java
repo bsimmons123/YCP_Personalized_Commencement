@@ -15,11 +15,6 @@ private AdvisorController controller;
 	
 	@Before
 	public void setup() {
-		//set up model
-		model = new AdvisorModel();
-		model.setDecision(true);
-		model.setPassword("Brandon'sMom1");
-		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 		
 		//set up user
 		user = new UserModel();
@@ -28,7 +23,7 @@ private AdvisorController controller;
 		controller = new AdvisorController();
 
 		
-		controller.addAdvisor(model);
+		controller.addAdvisor("EthanLicksWindows@hotmail.yahoo.brown", "Brandon'sMom1");
 		//controller.setModel(model);
 		
 	}
@@ -40,13 +35,11 @@ private AdvisorController controller;
 	}
 	@Test
 	public void testCheckAdvisorLogin2(){
-		model.setDecision(true);
-		model.setPassword("Hello");
-		model.setEmail("Zombie@hotmail.yahoo");
+		controller.addAdvisor("Zombie@hotmail.yahoo", "Hello");
 		
 		user.setEmail("Zombie@hotmail.yahoo");
 		user.setPassword("Hello");
-		assertEquals(true, controller.checkAdvisorLogin(controller.getAdvisor(0), user));
+		assertEquals(true, controller.checkAdvisorLogin(controller.getAdvisor(1), user));
 	}
 	@Test
 	public void testCheckAdvisorLoginFalse(){
