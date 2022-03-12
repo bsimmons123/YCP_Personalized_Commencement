@@ -26,6 +26,7 @@ private AdvisorController controller;
 		
 		// set up controller
 		controller = new AdvisorController();
+
 		
 		controller.addAdvisor(model);
 		//controller.setModel(model);
@@ -40,7 +41,6 @@ private AdvisorController controller;
 		user.setEmail("AndrewLicksLinix@hotmail.com");
 		user.setPassword("Rob'sMom2");
 		assertEquals(false, controller.checkAdvisorLogin(controller.getAdvisor(0),user));
-		
 	}
 	
 	

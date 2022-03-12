@@ -31,17 +31,38 @@ public class StudentControllerTest {
 		}
 		
 		@Test
-		public void testCheckStudentLogin(){
+		public void testCheckStudentLoginTrue(){
 			user.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 			user.setPassword("Brandon'sMom1");
 			user.setStudent(true);
 			model.setStudent(true);
+			assertEquals(true, controller.checkStudentLogin(model, user));	
+		}
+		@Test
+		public void testCheckStudentLoginTrue2(){
+			model.setEmail("yolo@hotmail.brown");
+			model.setPassword("UrMom");
+			user.setEmail("yolo@hotmail.brown");
+			user.setPassword("UrMom");
+			user.setStudent(true);
+			model.setStudent(true);
 			assertEquals(true, controller.checkStudentLogin(model, user));
 			
+		}
+		@Test
+		public void testCheckStudentLoginFalse() {
 			user.setEmail("AndrewLicksLinix@hotmail.com");
 			user.setPassword("Rob'sMom2");
 			user.setStudent(false);
 			model.setStudent(false);
-			assertEquals(false, controller.checkStudentLogin(model, user));
+			assertEquals(false, controller.checkStudentLogin(model, user));	
+		}
+		@Test
+		public void testCheckStudentLoginFalse2() {
+			user.setEmail("ryan@hotmail.com");
+			user.setPassword("Ryanmom111");
+			user.setStudent(false);
+			model.setStudent(false);
+			assertEquals(false, controller.checkStudentLogin(model, user));	
 		}
 }
