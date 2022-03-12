@@ -37,12 +37,29 @@ private AdvisorController controller;
 		user.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 		user.setPassword("Brandon'sMom1");
 		assertEquals(true, controller.checkAdvisorLogin(controller.getAdvisor(0), user));
+	}
+	@Test
+	public void testCheckAdvisorLogin2(){
+		model.setDecision(true);
+		model.setPassword("Hello");
+		model.setEmail("Zombie@hotmail.yahoo");
 		
+		user.setEmail("Zombie@hotmail.yahoo");
+		user.setPassword("Hello");
+		assertEquals(true, controller.checkAdvisorLogin(controller.getAdvisor(0), user));
+	}
+	@Test
+	public void testCheckAdvisorLoginFalse(){
 		user.setEmail("AndrewLicksLinix@hotmail.com");
 		user.setPassword("Rob'sMom2");
 		assertEquals(false, controller.checkAdvisorLogin(controller.getAdvisor(0),user));
 	}
-	
+	@Test
+	public void testCheckAdvisorLoginFalse2(){
+		user.setEmail("Scammer@hotmail.com");
+		user.setPassword("IscAmER2");
+		assertEquals(false, controller.checkAdvisorLogin(controller.getAdvisor(0),user));
+	}
 	
 }
 
