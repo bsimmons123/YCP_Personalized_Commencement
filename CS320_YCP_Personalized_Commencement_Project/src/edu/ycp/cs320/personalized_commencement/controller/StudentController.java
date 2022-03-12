@@ -13,18 +13,22 @@ public class StudentController extends UserController{
 	ArrayList<StudentModel> students;
 	
 	/**
-	 * 
-	 * @param students	Set the student array
+	 * Contructor
 	 */
-	public void setStudents(ArrayList<StudentModel> students) {
-		this.students = students;
+	public StudentController() {
+		students = new ArrayList<StudentModel>();
 	}
 	
 	/**
-	 * 
-	 * @param student	Add new student model
+	 * Add new Student to ArrayList
+	 * @param email		Email for student
+	 * @param password	Password for student
 	 */
-	public void addStudent(StudentModel student) {
+	public void addStudent(String email, String password) {
+		StudentModel student = new StudentModel();
+		student.setEmail(email);
+		student.setPassword(password);
+		student.setStudent(true);
 		students.add(student);
 	}
 	
@@ -50,15 +54,6 @@ public class StudentController extends UserController{
 	 */
 	public void setLogin(StudentModel student) {
 		student.setLogin(true);
-	}
-	
-	/**
-	 * Hardcode account details
-	 */
-	public void createTestStudent(StudentModel student, String email, String password) {
-		student.setEmail(email);
-		student.setPassword(password);
-		student.setStudent(true);
 	}
 
 	/**

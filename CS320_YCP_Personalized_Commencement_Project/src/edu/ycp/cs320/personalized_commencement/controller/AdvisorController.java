@@ -14,6 +14,13 @@ public class AdvisorController extends UserController{
 	ArrayList<AdvisorModel> advisors = new ArrayList<AdvisorModel>();
 	
 	/**
+	 * Contructor
+	 */
+	public AdvisorController() {
+		advisors = new ArrayList<AdvisorModel>();
+	}
+	
+	/**
 	 * 
 	 * @param index		Index of advisor in arraylist
 	 * @return			Advisor
@@ -28,14 +35,6 @@ public class AdvisorController extends UserController{
 	 */
 	public ArrayList<AdvisorModel> getAdvisors(){
 		return advisors;
-	}
-	
-	/**
-	 * 
-	 * @param advisors	sets an arraylist of advisors
-	 */
-	public void setAdvisors(ArrayList<AdvisorModel> advisors) {
-		this.advisors = advisors;
 	}
 	
 	/**
@@ -59,23 +58,15 @@ public class AdvisorController extends UserController{
 	}
 
 	/**
-	 * Initialize an advisor account
-	 * @param advisor	advisor
-	 * @param email		email of JSP user
-	 * @param password	password of JSP user
+	 * Add advisor to advsior arraylist
+	 * @param email		Email for new advisor
+	 * @param password	Password for Advisor
 	 */
-	public void createTestAdvisor(AdvisorModel advisor, String email, String password) {
+	public void addAdvisor(String email, String password) {
+		AdvisorModel advisor = new AdvisorModel();
 		advisor.setEmail(email);
 		advisor.setPassword(password);
-		advisor.setStudent(false);
-	}
-
-	/**
-	 * add an advisor to arraylist of advisors
-	 * @param advisor	advisor to add
-	 */
-	public void addAdvisor(AdvisorModel advisor) {
+		advisor.setStudent(false);;
 		advisors.add(advisor);
-		
 	}
 }
