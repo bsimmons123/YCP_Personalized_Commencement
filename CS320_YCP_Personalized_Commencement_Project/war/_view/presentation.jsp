@@ -18,7 +18,7 @@
 				Leave check boxes blank for disapproval, when done click submit.
 				</p>
 			</div>
-			<table>
+			<table class="table">
 				<tr>
 					<td class="subheading">First Name:</td>
 					<td class="info">${student.first}</td>
@@ -59,10 +59,10 @@
 					<td><audio controls src="${pageContext.servletContext.contextPath}/Audio/johnny_appleseed.mp3"></audio></td>
 					<td><input type="checkbox" name="audio_approval"></td>
 				</tr>
-				<tr>
-					<td><input type="Submit" name="Approval" value="Submit"></td>
-				</tr>
 			</table>
+			<div class="button"> 
+							<input type="Submit" name="Approved" value="Submit">
+			</div>
 		</form>
 	</body>
 </html>
