@@ -37,7 +37,7 @@ public class StudentInfoModel {
 	}
 	
 	//getters
-	public String getFirstName(){
+	public String getFirst(){
 		return firstName;
 	}
 	public String getMiddleInital() {
