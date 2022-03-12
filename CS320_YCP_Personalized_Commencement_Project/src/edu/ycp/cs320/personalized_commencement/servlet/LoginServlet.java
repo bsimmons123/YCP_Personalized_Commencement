@@ -31,10 +31,7 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("Login Servlet: doPost");
-		
-		// holds the error message text, if there is any
-		String errorMessage = null;
+		System.out.println("Login Servlet: doPost");\
 		
 		// Checks if student or advisor has entered the correct information
 		// Used later
@@ -104,7 +101,6 @@ public class LoginServlet extends HttpServlet{
 			jspUser.setPassword(password);
 			if(email == null || password == null) {
 				System.out.println("\tInvalid Username/Password");
-				errorMessage = "Invalid Username/Password";
 			}else {
 				// Check if user is Student
 				System.out.println("\tChecking user login");
@@ -115,8 +111,6 @@ public class LoginServlet extends HttpServlet{
 						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
 						student = true;
 						studentController.setLogin(studentIter);
-					}else {	// if student does not exist
-						errorMessage = "Invalid Username/Password"; // otherwise invalid login credentials
 					}
 				}
 				for(AdvisorModel advisorIter: advisorController.getAdvisors()) {
@@ -125,20 +119,15 @@ public class LoginServlet extends HttpServlet{
 						System.out.println("\t\t" + advisorIter.getEmail() + ": Logged in");
 						advisor = true;
 						advisorController.setLogin(advisorIter);
-					}else { //if advisor does not exist
-						errorMessage = "Invalid Username/Password"; //otherwise invalid login credentials
 					}
 				}
-		
 			}
 		}catch(NullPointerException e) {
 			System.out.println("Setting error");
-			errorMessage = "Invalid Username/Password";
 		}
 		
-		req.setAttribute("errorMessage", errorMessage);
+		
 		System.out.println("\tPosting Login results");
-		System.out.println("Error message is: " + errorMessage);
 		
 		req.setAttribute("user", jspUser);
 		
@@ -153,6 +142,8 @@ public class LoginServlet extends HttpServlet{
 			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
 			// redirects the user to the login page and shows invalid info error message
+			req.setAttribute("errorMessage", "Invalid Username/Password");
+			System.out.println("Error message is: " + "Invalid Username/Password");
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}
 	}
