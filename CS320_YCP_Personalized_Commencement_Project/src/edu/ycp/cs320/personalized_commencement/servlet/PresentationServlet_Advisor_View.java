@@ -1,7 +1,6 @@
 package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,12 +22,12 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		StudentInfoModel info = new StudentInfoModel();
 
 			
-		//hardcode information for the advisor view
+		// hard-code information for the advisor view
 		info.setFirstName("John");
 		info.setLastName("Appleseed");
 		info.setMajor("Biology");
 		info.setMinor("Philosophy");
-		info.setMiddleInitial("A");
+		info.setMiddleInitial("A.");
 		info.setExtraCur("Gardening Club President");
 		//picture will be hard coded into presentation jsp
 				
@@ -39,30 +38,32 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
 	}
 	
-//	@Override
-//	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-//			throws ServletException, IOException {
-//		
-//		System.out.println("Presentation Servlet: doPost");
-//		
-//		
-//		// create new model
-//		StudentInfoModel model = new StudentInfoModel();
-//
-//	
-//		//hardcode information for the advisor view
-//		model.setFirstName("John");
-//		model.setLastName("Appleseed");
-//		model.setMajor("Biology");
-//		model.setMinor("Philosophy");
-//		model.setMiddleInitial("A");
-//		model.setExtraCur("Gardening Club President");
-//		//picture will be hard coded into presentation jsp
-//		
-//		
-//		req.setAttribute("info", model);
-//		
-//		// Forward to view to render the result HTML document
-//		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
-//	}
+	/*
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		System.out.println("Presentation Servlet: doPost");
+		
+		
+		// create new model
+		StudentInfoModel model = new StudentInfoModel();
+
+	
+		//hardcode information for the advisor view
+		model.setFirstName("John");
+		model.setLastName("Appleseed");
+		model.setMajor("Biology");
+		model.setMinor("Philosophy");
+		model.setMiddleInitial("A");
+		model.setExtraCur("Gardening Club President");
+		//picture will be hard coded into presentation jsp
+		
+		
+		req.setAttribute("info", model);
+		
+		// Forward to view to render the result HTML document
+		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
+	}
+	*/
 }

@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: rgb(240, 240, 235);
+	margin: auto;
+	padding-bottom: 50px;
+}
+table {
+	border: 3px solid green;
+	width: 600px;
+	margin: auto;
+	font-size: 18px;
+}
+tr.row td{
+	border-bottom: 3px solid green;
+}
+#pageHeader {
+	width: 100%;
+}
+#instructions {
+	width: 600px;
+	margin: auto;
+	font-size: 16px;
+	text-align: left;
+}
+#buttons {
+	text-align: center;
+	margin-top: 15px;
+	margin-left: 460px;
+}
+#logoutDiv {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	margin-left: 535px;
+}
+.title {
+	color: green;
+	font-size: 32px;
+	text-align: center;
+	border-bottom: 3px solid green;
+}
+.prompt {
+	color: black;
+	padding: 10px;
+	width: 270px;
+	text-align: center;
+	border-right: 2px solid green;
+}
+.textBoxes {
+	text-align: center;
+	width: 230px;
+	border-left: 2px solid green;
+}
+.uploads {
+	padding-left: 80px;
+	border-left: 2px solid green;
+}
+.box {
+	height: 30px;
+	width: 117px;
+}
+.logoutBut {
+	height:30px;
+	width:65px;
+	margin-bottom: 30px;
+}

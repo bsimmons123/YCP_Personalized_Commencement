@@ -5,11 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
 import edu.ycp.cs320_personalized_commencement.model.UserModel;
 
 public class AdvisorControllerTest {
-private AdvisorModel model;
 private UserModel user;
 private AdvisorController controller;
 	

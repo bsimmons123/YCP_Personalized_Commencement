@@ -11,14 +11,23 @@ table {
 	margin: auto;
 	font-size: 18px;
 }
-#instructions {
-	margin: auto;
-	width: 600px;
-	text-align: center;
-	font-size: 16px;
+tr.row td{
+	border-bottom: 3px solid green;
 }
 #pageHeader {
 	width: 100%;
+}
+#instructions {
+	width: 600px;
+	margin: auto;
+	font-size: 16px;
+	text-align: center;
+}
+#logoutDiv {
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 30px;
+	margin-left: 515px;
 }
 .title {
 	color: green;
@@ -26,29 +35,24 @@ table {
 	text-align: center;
 	border-bottom: 3px solid green;
 }
-tr.row td{
-	border-bottom: 3px solid green;
-}
-.valueName {
+.student {
 	color: black;
 	padding: 10px;
-	width: 20px;
+	width: 270px;
 	text-align: center;
-	border-right: 3px solid green;
+	border-right: 2px solid green;
 }
-.value {
-	color: black;
-	padding: 10px;
-	width: 40px;
+.view {
 	text-align: center;
+	border-left: 2px solid green;
+	width: 230px;
 }
-.button {
-	text-align: center;
-	margin-top: 15px;
-	margin-bottom: 30px;
-	margin-left: 515px;
+.viewBut {
+	height: 30px;
+	width: 117px;
 }
-.bSize{
+.logoutBut {
 	height:30px;
 	width:65px;
+	margin-bottom: 30px;
 }

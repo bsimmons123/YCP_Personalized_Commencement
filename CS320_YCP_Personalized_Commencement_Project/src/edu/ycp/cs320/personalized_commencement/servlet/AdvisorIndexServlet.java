@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
+//import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
 import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
 
 public class AdvisorIndexServlet extends HttpServlet {
@@ -34,8 +34,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		// create new model
 		AdvisorModel model = new AdvisorModel();
-		AdvisorController controller = new AdvisorController();
-		//controller.setModel(model);
+//		AdvisorController controller = new AdvisorController();
+//		controller.setModel(model);
 		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
