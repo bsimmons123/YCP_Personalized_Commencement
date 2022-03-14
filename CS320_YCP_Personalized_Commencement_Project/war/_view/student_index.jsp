@@ -25,7 +25,7 @@
 			File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files.<br>
 			</p>
 		</div>
-		
+		<form action="${pageContext.servletContext.contextPath}/upload" method="post" enctype="multipart/form-data">
 		<table>
 			<tr class="row">
 				<td class="prompt">First Name:</td>
@@ -66,6 +66,7 @@
 			<input type="button" value="Save">
 			<input type="button" value="Edit Content">
 		</div>
+		</form>
 		
 		<div id="logoutDiv">
 			<input class="logoutBut" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">

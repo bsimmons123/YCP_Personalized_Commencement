@@ -25,6 +25,11 @@
   		<servlet-name>PresentationServlet_Advisor_View</servlet-name>
   		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.PresentationServlet_Advisor_View</servlet-class>
   	</servlet>
+  	
+  	<servlet>
+	  	<servlet-name>UploadServlet</servlet-name>
+	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.UploadServlet</servlet-class>
+  	</servlet>
   
   <!-- AJAX servlets. -->
  	<servlet>
@@ -62,6 +67,11 @@
   		<servlet-name>PresentationServlet_Advisor_View</servlet-name>
   		<url-pattern>/presentation</url-pattern>
  	 </servlet-mapping>
+ 	 
+ 	 <servlet-mapping>
+	  	<servlet-name>UploadServlet</servlet-name>
+	  	<url-pattern>/upload</url-pattern>
+  	</servlet-mapping>
   
   <!--  AJAX servlet mappings. -->
   	<welcome-file-list>
