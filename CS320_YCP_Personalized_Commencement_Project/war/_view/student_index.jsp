@@ -25,7 +25,7 @@
 			File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files.<br>
 			</p>
 		</div>
-		<form action="${pageContext.servletContext.contextPath}/upload" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 		<table>
 			<tr class="row">
 				<td class="prompt">First Name:</td>
@@ -63,7 +63,7 @@
 		
 		<!--Button for adding new content-->
 		<div id="buttons">
-			<input type="button" value="Save">
+			<input type="submit" value="Save">
 			<input type="button" value="Edit Content">
 		</div>
 		</form>

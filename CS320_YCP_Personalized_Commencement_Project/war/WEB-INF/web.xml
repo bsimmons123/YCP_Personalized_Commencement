@@ -63,15 +63,11 @@
 	    <url-pattern>/student_index</url-pattern>
   	</servlet-mapping>
   
- 	 <servlet-mapping>
+ 	<servlet-mapping>
   		<servlet-name>PresentationServlet_Advisor_View</servlet-name>
   		<url-pattern>/presentation</url-pattern>
- 	 </servlet-mapping>
+ 	</servlet-mapping>
  	 
- 	 <servlet-mapping>
-	  	<servlet-name>UploadServlet</servlet-name>
-	  	<url-pattern>/upload</url-pattern>
-  	</servlet-mapping>
   
   <!--  AJAX servlet mappings. -->
   	<welcome-file-list>

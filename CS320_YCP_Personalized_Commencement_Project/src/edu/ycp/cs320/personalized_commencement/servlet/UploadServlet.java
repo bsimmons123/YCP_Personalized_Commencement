@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/upload") // both used for uploading files
+@WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,10 +21,12 @@ public class UploadServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String description = req.getParameter("description"); // Retrieves <input type="text" name="description">
-	    Part filePart = req.getPart("file"); // Retrieves <input type="file" name="file">
+		System.out.println("Upload Servlet: doPost");
+	    Part filePart = req.getPart("imageorvideo"); // Retrieves <input type="file" name="file">
 	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
 	    InputStream fileContent = filePart.getInputStream();
+	    System.out.println(fileName);
+	    System.out.println(fileContent);
 	    // ... (do your job here)
 	}
 }
