@@ -4,29 +4,58 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final String UPLOAD_DIRECTORY = "UserImages";
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("Upload Servlet: doPost");
-	    Part filePart = req.getPart("imageorvideo"); // Retrieves <input type="file" name="file">
-	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-	    InputStream fileContent = filePart.getInputStream();
-	    System.out.println(fileName);
-	    System.out.println(fileContent);
-	    // ... (do your job here)
-	}
-}
+		if(ServletFileUpload.isMultipartContent(req)){
+            try {
+               String fname = null;
+               String fsize = null;
+               String ftype = null;
+                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
+                for(FileItem item : multiparts){
+                    if(!item.isFormField()){
+                        fname = new File(item.getName()).getName();
+                        fsize = new Long(item.getSize()).toString();
+                        ftype = item.getContentType();
+                        item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
+                        System.out.println("\tFile Uploaded Successfully");
+                        req.setAttribute("message", "File Uploaded Successfully");
+                        req.setAttribute("name", fname);
+                        req.setAttribute("size", fsize + "Bytes");
+                    }
+                }
+               //File uploaded successfully
+            } catch (Exception ex) {
+            	System.out.println("\tFile Upload Failed due to " + ex);
+               req.setAttribute("errorMessage", "Error Uploading File");
+            }          
+         
+        }else{
+            req.setAttribute("errorMessage","Sorry this Servlet only handles file upload request");
+        }
+    
+		// Forward to view to render the result HTML document
+		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
+     
+    }     
+      // TODO Auto-generated method stub
+   }

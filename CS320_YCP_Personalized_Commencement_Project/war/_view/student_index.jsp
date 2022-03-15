@@ -17,7 +17,17 @@
 		<div id="pageheader"> 
 			<h1 class="title">Personalized Senior Commencement Form</h1>
 		</div>
+		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 		<div id="instructions">
+		<c:if test="${! empty message}">
+			<div id="uploadSM">${message}: 
+				<div id="uploadS">FileName: ${name}<br>FileSize: ${size}</div>
+				
+			</div>
+		</c:if>
+		<c:if test="${! empty errorMessage}">
+			<div class="error">${errorMessage}</div>
+		</c:if>
 			<p>
 			Fill out the information in the text boxes and upload files to be displayed during the commencement ceremony.  
 			If there is nothing to add to any of the optional categories, simply leave them blank.  
@@ -25,7 +35,7 @@
 			File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files.<br>
 			</p>
 		</div>
-		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
+		
 		<table>
 			<tr class="row">
 				<td class="prompt">First Name:</td>
