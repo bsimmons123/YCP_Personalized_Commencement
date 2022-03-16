@@ -14,6 +14,16 @@ table {
 tr.row td{
 	border-bottom: 3px solid green;
 }
+#Welcome{
+	margin: auto;
+	width: 50%;
+	padding-bottom: 20px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: green;
+}
+
 #pageHeader {
 	width: 100%;
 }

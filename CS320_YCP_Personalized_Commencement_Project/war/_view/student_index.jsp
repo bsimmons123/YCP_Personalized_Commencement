@@ -19,10 +19,14 @@
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 		<div id="instructions">
+		<c:if test="${! empty student }">
+			<div id="Welcome">
+				<p> Welcome, ${student.email}! I hope you enjoy your stay XD</p>
+			</div>
+		</c:if>
 		<c:if test="${! empty message}">
 			<div id="uploadSM">${message}: 
 				<div id="uploadS">FileName: ${name}<br>FileSize: ${size}</div>
-				
 			</div>
 		</c:if>
 		<c:if test="${! empty errorMessage}">

@@ -21,8 +21,14 @@
 		<div id="pageheader"> 
 			<h1 class="title">List of Submissions For Review</h1>
 		</div>
-		<!-- List of instructions -->
 		<div id="instructions"> 
+			<c:if test="${! empty advisor }">
+				<div id="Welcome">
+					<p> Welcome, ${advisor.email}! I hope you enjoy your stay XD</p>
+				</div>
+			</c:if>
+		<!-- List of instructions -->
+		
 			<p>
 			Here you can find a list of submissions from your students that need to be reviewed.<br>
 			To view a student's submission, simply click the "view" button next to their name.<br>

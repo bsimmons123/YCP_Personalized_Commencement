@@ -76,6 +76,7 @@ public class LoginServlet extends HttpServlet{
 						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
 						student = true;
 						studentController.setLogin(studentIter);
+						req.setAttribute("student", studentIter);
 					}
 				}
 				for(AdvisorModel advisorIter: advisorController.getAdvisors()) {
@@ -84,6 +85,7 @@ public class LoginServlet extends HttpServlet{
 						System.out.println("\t\t" + advisorIter.getEmail() + ": Logged in");
 						advisor = true;
 						advisorController.setLogin(advisorIter);
+						req.setAttribute("advisor", advisorIter);
 					}
 				}
 			}
@@ -100,11 +102,11 @@ public class LoginServlet extends HttpServlet{
 		if(student) {
 			student = false; // set to false in case user logs out and tries to log in as a new user
 			// redirects the student to their index page
-			resp.sendRedirect(req.getContextPath() + "/_view/student_index.jsp");
+			req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
 		}else if(advisor) {
 			advisor = false; // set to false in case user logs out and tries to log in as a new user
 			// redirects the advisor to their index page
-			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
+			req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
 		}else {
 			// redirects the user to the login page and shows invalid info error message
 			req.setAttribute("errorMessage",  "Invalid Username/Password");
