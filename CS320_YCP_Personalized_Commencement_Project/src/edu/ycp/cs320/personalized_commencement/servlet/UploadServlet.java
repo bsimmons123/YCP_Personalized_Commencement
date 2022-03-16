@@ -17,6 +17,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.CountingOutputStream;
 
+import edu.ycp.cs320.personalized_commencement.controller.StudentController;
+
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
@@ -26,12 +28,33 @@ public class UploadServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		// create controllers for info and student
+		StudentInfoController infoController = new StudentInfoController();
+		StudentController stuController = new StudentController();
+		
+		// set info controller to stuController's arraylist of students
+		infoController.setStudentArray(stuController.getStudents());
 		if(ServletFileUpload.isMultipartContent(req)){
             try {
             	String fname = null;
             	String fsize = null;
             	String ftype = null;
             	List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
+//            	System.out.println(multiparts.get(0));
+//            	System.out.println(multiparts.get(1));
+//            	System.out.println(multiparts.get(2));
+//            	System.out.println(multiparts.get(3));
+//            	System.out.println(multiparts.get(4));
+//            	System.out.println(multiparts.get(5));
+//            	System.out.println(multiparts.get(6));
+//            	System.out.println(multiparts.get(7));
+            	StudentInfoController StuInfo = new StudentInfoController();
+            	String firstName = multiparts.get(0).getString();
+            	String middleInitial = multiparts.get(1).getString();
+            	String lastName = multiparts.get(2).getString();
+            	String major = multiparts.get(3).getString();
+            	String minor = multiparts.get(4).getString();
+            	String extraCur = multiparts.get(5).getString();
             	for(FileItem item : multiparts){
                     if(!item.isFormField()){
                         fname = new File(item.getName()).getName();
@@ -39,15 +62,13 @@ public class UploadServlet extends HttpServlet {
                         ftype = item.getContentType();
                         item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
                         System.out.println("\tFile: " + fname + " Uploaded Successfully");
+                        System.out.println(fname);
                         req.setAttribute("message", "File Uploaded Successfully");
                         req.setAttribute("name", fname);
                         req.setAttribute("size", fsize + "Bytes");
-                    }else {
-                    	String fieldName = item.getFieldName();
-                        String fieldValue = item.getString();
-                        System.out.println(fieldName + ": " + fieldValue);
                     }
                 }
+//            	StuInfo.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
                //File uploaded successfully
             } catch (Exception ex) {
             	System.out.println("\tFile Upload Failed due to " + ex);

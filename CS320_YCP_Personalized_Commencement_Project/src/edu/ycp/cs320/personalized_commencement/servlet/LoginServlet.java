@@ -31,7 +31,6 @@ public class LoginServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		System.out.println("Login Servlet: doPost");
-		
 		// Checks if student or advisor has entered the correct information
 		// Used later
 		boolean student = false;
@@ -43,14 +42,14 @@ public class LoginServlet extends HttpServlet{
 
 		// Add students to arraylist
 		studentController.addStudent("teststudent@ycp.edu", "test"); 			// index 0
-		studentController.addStudent("bsimmons1@ycp.edu", "test");		// index 1
-		studentController.addStudent("rwood7@ycp.edu", "test");		// index 2
-		studentController.addStudent("erosenberry", "test"); 	// index 3
-		studentController.addStudent("amott@ycp.edu", "test");		// index 4
+		studentController.addStudent("bsimmons1@ycp.edu", "test");				// index 1
+		studentController.addStudent("rwood7@ycp.edu", "test");					// index 2
+		studentController.addStudent("erosenberry", "test"); 					// index 3
+		studentController.addStudent("amott@ycp.edu", "test");					// index 4
 		
 		//Add advisors to arraylist
-		advisorController.addAdvisor("testadvisor@ycp.edu", "test");				// index 0
-		advisorController.addAdvisor("jmoscola@ycp.edu", "test");					// index 1
+		advisorController.addAdvisor("testadvisor@ycp.edu", "test");			// index 0
+		advisorController.addAdvisor("jmoscola@ycp.edu", "test");				// index 1
 		
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
