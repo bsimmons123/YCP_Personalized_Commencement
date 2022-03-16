@@ -18,6 +18,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.CountingOutputStream;
 
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
+import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
+import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
+import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig

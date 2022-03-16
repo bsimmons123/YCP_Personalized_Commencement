@@ -1,27 +1,26 @@
 package edu.ycp.cs320_personalized_commencement.model;
 
 
-import org.eclipse.jetty.server.Authentication.User;
+//import org.eclipse.jetty.server.Authentication.User;
 
 /**
  * Stores the student's information in the model.
  */
-@SuppressWarnings("unused")
 public class StudentModel extends UserModel{
 	// field Object for the student's info
-	private Object studentInfo; 
+	private StudentInfoModel studentInfo; 
 	
 	/**
-	 * Sets the studentInfo object with the info they submitted.
+	 * Sets studentInfo with the info student submitted.
 	 */
-	public void setStudentInfo(Object studentInfo) {
+	public void setStudentInfo(StudentInfoModel studentInfo) {
 		this.studentInfo = studentInfo;
 	}
 	
 	/**
-	 * Returns the student's info.
+	 * Returns student's info.
 	 */
-	public Object getStudentInfo() {
+	public StudentInfoModel getStudentInfo() {
 		return studentInfo;
 	}
 }
