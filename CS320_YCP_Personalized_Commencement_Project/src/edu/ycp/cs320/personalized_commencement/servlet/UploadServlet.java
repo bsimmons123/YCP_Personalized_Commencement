@@ -58,6 +58,8 @@ public class UploadServlet extends HttpServlet {
             	String major = multiparts.get(3).getString();
             	String minor = multiparts.get(4).getString();
             	String extraCur = multiparts.get(5).getString();
+            	String img = new File(multiparts.get(6).getName()).getName();
+            	String audio = new File(multiparts.get(7).getName()).getName();
             	for(FileItem item : multiparts){
                     if(!item.isFormField()){
                         fname = new File(item.getName()).getName();
@@ -65,13 +67,11 @@ public class UploadServlet extends HttpServlet {
                         ftype = item.getContentType();
                         item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
                         System.out.println("\tFile: " + fname + " Uploaded Successfully");
-                        System.out.println(fname);
-                        req.setAttribute("message", "File Uploaded Successfully");
                         req.setAttribute("name", fname);
                         req.setAttribute("size", fsize + "Bytes");
                     }
                 }
-//            	StuInfo.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
+            	StuInfo.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
                //File uploaded successfully
             } catch (Exception ex) {
             	System.out.println("\tFile Upload Failed due to " + ex);
