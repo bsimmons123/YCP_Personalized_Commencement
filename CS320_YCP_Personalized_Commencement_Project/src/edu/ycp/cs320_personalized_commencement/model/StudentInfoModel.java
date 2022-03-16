@@ -1,14 +1,16 @@
 package edu.ycp.cs320_personalized_commencement.model;
 
-public class StudentInfoModel {
+public class StudentInfoModel{
+	
+	
 	private String firstName;
 	private String middleInitial;
 	private String lastName;
 	private String major;
 	private String minor;
 	private String extraCur;
-	private Object picture;
-	private Object nameSound;
+	private String picture; // String holding the name of the users file
+	private String nameSound; // String of users file
 	
 	//setters
 	public void setFirstName(String firstName){
@@ -29,10 +31,10 @@ public class StudentInfoModel {
 	public void setExtraCur(String extraCur) {
 		this.extraCur = extraCur;
 	}
-	public void setPicture(Object picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-	public void setNameSound(Object nameSound) {
+	public void setNameSound(String nameSound) {
 		this.nameSound = nameSound;
 	}
 	
@@ -55,10 +57,10 @@ public class StudentInfoModel {
 	public String getExtraCur() {
 		return extraCur;
 	}
-	public Object getPicture() {
+	public String getPicture() {
 		return picture;
 	}
-	public Object getNameSound() {
+	public String getNameSound() {
 		return nameSound;
 	}
 }

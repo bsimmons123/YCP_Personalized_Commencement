@@ -17,6 +17,11 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.CountingOutputStream;
 
+import edu.ycp.cs320.personalized_commencement.controller.StudentController;
+import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
+import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
+import edu.ycp.cs320_personalized_commencement.model.StudentModel;
+
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
@@ -26,6 +31,12 @@ public class UploadServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		// create controllers for info and student
+		StudentInfoController infoController = new StudentInfoController();
+		StudentController stuController = new StudentController();
+		
+		// set info controller to stuController's arraylist of students
+		infoController.setStudentArray(stuController.getStudents());
 		if(ServletFileUpload.isMultipartContent(req)){
             try {
             	String fname = null;
@@ -45,6 +56,8 @@ public class UploadServlet extends HttpServlet {
                     }else {
                     	String fieldName = item.getFieldName();
                         String fieldValue = item.getString();
+                        if(item.getFieldName() =="firstname")
+                        	infoController.setFirstName(item.getString());
                         System.out.println(fieldName + ": " + fieldValue);
                     }
                 }
