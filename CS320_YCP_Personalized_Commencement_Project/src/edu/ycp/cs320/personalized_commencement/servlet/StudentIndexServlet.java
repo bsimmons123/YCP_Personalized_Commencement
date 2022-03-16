@@ -26,7 +26,6 @@ public class StudentIndexServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
 		System.out.println("StudentIndex Servlet: doPost");
 		
 		// error message for JSP
@@ -34,9 +33,6 @@ public class StudentIndexServlet extends HttpServlet {
 		
 		// create new model
 		StudentModel model = new StudentModel();
-		//StudentController controller = new StudentController();
-		//controller.setModel(model);
-		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
 		
@@ -45,5 +41,4 @@ public class StudentIndexServlet extends HttpServlet {
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
 	}
-
 }
