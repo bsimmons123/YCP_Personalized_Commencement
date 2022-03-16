@@ -4,6 +4,12 @@ import java.io.File;
 
 import org.eclipse.jetty.server.Server;
 
+/**
+ * Main class for the personalized commencement project.
+ * 
+ * @authors Brandon Simmons, Andrew Mott, Ethan Rosenberry, Robert Wood
+ *
+ */
 public class Main {
 	public static void main(String[] args) throws Exception {
 		String webappCodeBase = "./war";
