@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.CountingOutputStream;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
@@ -27,26 +28,30 @@ public class UploadServlet extends HttpServlet {
 			throws ServletException, IOException {
 		if(ServletFileUpload.isMultipartContent(req)){
             try {
-               String fname = null;
-               String fsize = null;
-               String ftype = null;
-                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
-                for(FileItem item : multiparts){
+            	String fname = null;
+            	String fsize = null;
+            	String ftype = null;
+            	List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
+            	for(FileItem item : multiparts){
                     if(!item.isFormField()){
                         fname = new File(item.getName()).getName();
                         fsize = new Long(item.getSize()).toString();
                         ftype = item.getContentType();
                         item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
-                        System.out.println("\tFile Uploaded Successfully");
+                        System.out.println("\tFile: " + fname + " Uploaded Successfully");
                         req.setAttribute("message", "File Uploaded Successfully");
                         req.setAttribute("name", fname);
                         req.setAttribute("size", fsize + "Bytes");
+                    }else {
+                    	String fieldName = item.getFieldName();
+                        String fieldValue = item.getString();
+                        System.out.println(fieldName + ": " + fieldValue);
                     }
                 }
                //File uploaded successfully
             } catch (Exception ex) {
             	System.out.println("\tFile Upload Failed due to " + ex);
-               req.setAttribute("errorMessage", "Error Uploading File");
+            	req.setAttribute("errorMessage", "File Upload Failed due to" + ex);
             }          
          
         }else{

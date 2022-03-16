@@ -8,6 +8,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Jetty9"/>
 	<classpathentry kind="lib" path="D:/commons-fileupload-1.4-bin/commons-fileupload-1.4.jar"/>
 	<classpathentry kind="lib" path="D:/commons-fileupload-1.4-bin/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="D:/commons-fileupload-1.4-bin/javax.servlet-api-3.1.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
