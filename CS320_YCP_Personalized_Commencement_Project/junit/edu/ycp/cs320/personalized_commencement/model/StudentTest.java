@@ -17,7 +17,7 @@ public class StudentTest {
 	@Before
 	public void setup() {
 		model = new StudentModel();
-		model.setStudentInfo("Info");
+//		model.setStudentInfo("Info");
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 	}
@@ -42,7 +42,7 @@ public class StudentTest {
 	// setters
 	@Test
 	public void testSetStudentInfo() {
-		model.setStudentInfo(4);
+//		model.setStudentInfo(4);
 		assertEquals(4, model.getStudentInfo());
 	}
 

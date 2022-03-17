@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileExistsException;
 import org.apache.commons.io.output.CountingOutputStream;
 
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
@@ -34,52 +35,77 @@ public class UploadServlet extends HttpServlet {
 		// create controllers for info and student
 		StudentInfoController infoController = new StudentInfoController();
 		StudentController stuController = new StudentController();
-		
-		// set info controller to stuController's arraylist of students
-		infoController.setStudentArray(stuController.getStudents());
+		StudentInfoModel stuInfo = new StudentInfoModel();
+
 		if(ServletFileUpload.isMultipartContent(req)){
-            try {
-            	String fname = null;
-            	String fsize = null;
-            	String ftype = null;
-            	List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
-//            	System.out.println(multiparts.get(0));
-//            	System.out.println(multiparts.get(1));
-//            	System.out.println(multiparts.get(2));
-//            	System.out.println(multiparts.get(3));
-//            	System.out.println(multiparts.get(4));
-//            	System.out.println(multiparts.get(5));
-//            	System.out.println(multiparts.get(6));
-//            	System.out.println(multiparts.get(7));
-            	StudentInfoController StuInfo = new StudentInfoController();
-            	String firstName = multiparts.get(0).getString();
-            	String middleInitial = multiparts.get(1).getString();
-            	String lastName = multiparts.get(2).getString();
-            	String major = multiparts.get(3).getString();
-            	String minor = multiparts.get(4).getString();
-            	String extraCur = multiparts.get(5).getString();
-            	String img = new File(multiparts.get(6).getName()).getName();
-            	String audio = new File(multiparts.get(7).getName()).getName();
-            	for(FileItem item : multiparts){
-                    if(!item.isFormField()){
-                        fname = new File(item.getName()).getName();
-                        fsize = new Long(item.getSize()).toString();
-                        ftype = item.getContentType();
-                        item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
-                        System.out.println("\tFile: " + fname + " Uploaded Successfully");
-                        req.setAttribute("name", fname);
-                        req.setAttribute("size", fsize + "Bytes");
+			
+			// field names for file uploads
+        	String fname = null;
+        	String fsize = null;
+        	String ftype = null;
+        	
+        	// field names for form params
+        	String firstName = null;
+        	String middleInitial = null;
+        	String lastName = null;
+        	String major = null;
+        	String minor = null;
+        	String extraCur = null;
+        	String img = null;
+        	String audio = null;
+        	
+        	// try-catch for file upload
+        	try {
+        		// retrieves all form fields
+        		List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
+        		
+        		// iterates through all form fields 
+        	for(FileItem item : multiparts){
+        		// checks if the item is a field param and not a file
+                if(!item.isFormField()){
+                	// stores the field name of the file
+                	String field = item.getFieldName();
+                	
+                	// retrieves the file name and file to send to jsp
+                    fname = new File(item.getName()).getName();
+                    fsize = new Long(item.getSize()).toString();
+                    ftype = item.getContentType();
+                    // writes file to project folder
+                    item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
+                    
+                    // successfull upload message
+                    System.out.println("\tFile: " + fname + " Uploaded Successfully");
+                    // checks if the file is image or audio
+                    if(field.contains("imageorvideo")) {
+                        req.setAttribute("img", fname);
+                        req.setAttribute("imgSize", fsize + "Bytes");
+                    }else {
+                    	req.setAttribute("audio", fname);
+                        req.setAttribute("audioSize", fsize + "Bytes");
                     }
+                    // sets message that files uploaded
+                    req.setAttribute("message", "Files Uploaded Successfully!");
                 }
-            	StuInfo.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
+                // retrieves info from form field
+                firstName = multiparts.get(0).getString();
+            	middleInitial = multiparts.get(1).getString();
+            	lastName = multiparts.get(2).getString();
+            	major = multiparts.get(3).getString();
+            	minor = multiparts.get(4).getString();
+            	extraCur = multiparts.get(5).getString();
+            	img = new File(multiparts.get(6).getName()).getName();
+            	audio = new File(multiparts.get(7).getName()).getName();
+            }
                //File uploaded successfully
             } catch (Exception ex) {
+            	// files not uploaded 
             	System.out.println("\tFile Upload Failed due to " + ex);
-            	req.setAttribute("errorMessage", "File Upload Failed due to" + ex);
-            }          
-         
-        }else{
-            req.setAttribute("errorMessage","Sorry this Servlet only handles file upload request");
+            	req.setAttribute("errorMessage", "File Upload Failed due to" + ex);   
+            }finally {
+            	// sets student info
+            	infoController.setStudentInfo(stuInfo);
+            	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
+            }
         }
     
 		// Forward to view to render the result HTML document

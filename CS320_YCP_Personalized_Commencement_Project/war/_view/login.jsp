@@ -50,6 +50,7 @@
 					</td>
 				</tr>
 			</table>
+			<input name="studentModel" type="hidden" value="${sinfo}" />
 		</form>
 	</body>
 </html>

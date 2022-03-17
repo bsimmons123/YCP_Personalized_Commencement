@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
+import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
 import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
+import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
 import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 import edu.ycp.cs320_personalized_commencement.model.UserModel;
 
@@ -39,6 +41,8 @@ public class LoginServlet extends HttpServlet{
 		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
+		StudentInfoController stuInfo = new StudentInfoController();
+		StudentInfoModel stuInfoModel = new StudentInfoModel();
 
 		// Add students to arraylist
 		studentController.addStudent("teststudent@ycp.edu", "test"); 			// index 0
@@ -50,6 +54,10 @@ public class LoginServlet extends HttpServlet{
 		//Add advisors to arraylist
 		advisorController.addAdvisor("testadvisor@ycp.edu", "test");			// index 0
 		advisorController.addAdvisor("jmoscola@ycp.edu", "test");				// index 1
+		
+		stuInfo.setStudentInfo(stuInfoModel);
+		stuInfo.setStudentInfo("Brandon", "P", "Simmons", "Computer Science", "Philosophy - Math", "RockClimbing Club", "Faceshot.png", "Null");
+    	studentController.getStudent(1).setStudentInfo(stuInfo.getStudentInfo());
 		
 		// Creates user to interact with controller
 		UserModel jspUser = new UserModel();
@@ -76,6 +84,7 @@ public class LoginServlet extends HttpServlet{
 						student = true;
 						studentController.setLogin(studentIter);
 						req.setAttribute("student", studentIter);
+						req.setAttribute("sinfo", studentController.getStudent(1).getStudentInfo());
 					}
 				}
 				for(AdvisorModel advisorIter: advisorController.getAdvisors()) {
@@ -96,6 +105,7 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("\tPosting Login results");
 		
 		req.setAttribute("user", jspUser);
+		
 		
 		// determines where to send the user
 		if(student) {

@@ -26,7 +26,8 @@
 		</c:if>
 		<c:if test="${! empty message}">
 			<div id="uploadSM">${message}: 
-				<div id="uploadS">FileName: ${name}<br>FileSize: ${size}</div>
+				<div id="uploadS">FileName: ${img}<br>FileSize: ${imgSize}</div>
+				<div id="uploadS">FileName: ${audio}<br>FileSize: ${audioSize}</div>
 			</div>
 		</c:if>
 		<c:if test="${! empty errorMessage}">
@@ -43,27 +44,27 @@
 		<table>
 			<tr class="row">
 				<td class="prompt">First Name:</td>
-				<td class="textBoxes"><input type="text" name="firstname"></td>
+				<td class="textBoxes"><input type="text" name="firstname" value="${sinfo.first}"></td>
 			</tr>
 			<tr class="row">
 				<td class="prompt">Middle Initial:</td>
-				<td class="textBoxes"><input type="text" name="middleinitial"></td>
+				<td class="textBoxes"><input type="text" name="middleinitial" value="${sinfo.middle}"></td>
 			</tr>
 			<tr class="row">
 				<td class="prompt">Last Name:</td>
-				<td class="textBoxes"><input type="text" name="lastname"></td>
+				<td class="textBoxes"><input type="text" name="lastname" value="${sinfo.last}"></td>
 			</tr>
 			<tr class="row">
 				<td class="prompt">Major(s):</td>
-				<td class="textBoxes"><input type="text" name="majors"></td>
+				<td class="textBoxes"><input type="text" name="majors" value="${sinfo.major}"></td>
 			</tr>
 			<tr class="row">
 				<td class="prompt">Minor(s) (optional):</td>
-				<td class="textBoxes"><input type="text" name="minors"></td>
+				<td class="textBoxes"><input type="text" name="minors" value="${sinfo.minor}"></td>
 			</tr>
 			<tr class="row">
 				<td class="prompt">Sports, Clubs, or Organizations (optional):</td>
-				<td class="textBoxes"><input type="text" name="sportsclubsactivities"></td>
+				<td class="textBoxes"><input type="text" name="sportsclubsactivities" value="${sinfo.extraCur}"></td>
 			</tr>
 			<tr class="row">
 				<td class="prompt">Image/Video to display (optional):</td>
@@ -80,10 +81,12 @@
 			<input type="submit" value="Save">
 			<input type="button" value="Edit Content">
 		</div>
-		</form>
 		
 		<div id="logoutDiv">
 			<input class="logoutBut" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
 		</div>
+		
+		<input name="studentModel" type="hidden" value="${student}" />
+		</form>
 	</body>
 </html>

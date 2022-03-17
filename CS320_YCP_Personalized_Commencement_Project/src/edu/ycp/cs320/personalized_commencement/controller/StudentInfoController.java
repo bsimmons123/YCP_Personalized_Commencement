@@ -12,7 +12,7 @@ public class StudentInfoController extends UserController{
 	
 	// Initialize the arrays for student
 	StudentInfoModel stuInfo;
-	ArrayList<StudentModel> students;
+	StudentModel students;
 	
 	/**
 	 * Constructor for Controller
@@ -21,18 +21,33 @@ public class StudentInfoController extends UserController{
 		
 	}
 	
+	/**
+	 * Sets student info model
+	 * @param stuInfo		Student info model
+	 */
 	public void setStudentInfo(StudentInfoModel stuInfo) {
 		this.stuInfo = stuInfo;
 	}
 	
 	/**
-	 * Set the student array
+	 * Set student model
 	 * @param students		Students array
 	 */
-	public void setStudentArray(ArrayList<StudentModel> students) {
+	public void setStudentModel(StudentModel students) {
 		this.students = students;
 	}
 	
+	/**
+	 * Set the student model from user input
+	 * @param firstName			Firstname from user 
+	 * @param middleInitial		MiddleInitial from user
+	 * @param lastName			Lastnae from user
+	 * @param major				user's major
+	 * @param minor				user's minor
+	 * @param extraCur			user's extra curr
+	 * @param img				image uploaded by user
+	 * @param audio				audio file uploaded from user
+	 */
 	public void setStudentInfo(String firstName, String middleInitial, String lastName, String major, String minor, String extraCur, String img, String audio) {
 		stuInfo.setFirstName(firstName);
 		stuInfo.setMiddleInitial(middleInitial);
@@ -44,4 +59,11 @@ public class StudentInfoController extends UserController{
 		stuInfo.setNameSound(audio);
 	}
 	
+	/**
+	 * Return Student info model
+	 * @return	Student info model
+	 */
+	public StudentInfoModel getStudentInfo() {
+		return stuInfo;
+	}
 }
