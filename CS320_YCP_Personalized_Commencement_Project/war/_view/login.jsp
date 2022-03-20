@@ -9,6 +9,9 @@
 		<title>Login</title>
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/LoginSS.css" rel="stylesheet" type="text/css">
+		<!-- Styling with bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<%@ include file="header.jsp" %>
 	</head>
 
 	<!-- Body styling and layout -->
@@ -25,7 +28,7 @@
 				Please log in using YCP credentials (student/advisor email and password).<br>
 				Once logged in, you will be taken to your respective home page.
 				</p>
-			</div>
+			
 			<!--if error message-->
 			<c:if test="${! empty errorMessage}">
 				<div id="error">${errorMessage}</div>
@@ -50,6 +53,7 @@
 					</td>
 				</tr>
 			</table>
+			</div>
 			<input name="studentModel" type="hidden" value="${sinfo}" />
 		</form>
 	</body>

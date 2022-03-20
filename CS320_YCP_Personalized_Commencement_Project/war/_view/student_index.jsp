@@ -9,6 +9,9 @@
 		<title>Student Index View</title>
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/StudentInSS.css" rel="stylesheet" type="text/css">
+		<!-- Styling with bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">		
+		<%@ include file="header.jsp" %>
 	</head>
 
 	<!-- styling and layout of the body  -->
@@ -39,51 +42,44 @@
 			When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so.<br><br>
 			File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files.<br>
 			</p>
-		</div>
-		
-		<table>
-			<tr class="row">
-				<td class="prompt">First Name:</td>
-				<td class="textBoxes"><input type="text" name="firstname" value="${sinfo.first}"></td>
-			</tr>
-			<tr class="row">
-				<td class="prompt">Middle Initial:</td>
-				<td class="textBoxes"><input type="text" name="middleinitial" value="${sinfo.middle}"></td>
-			</tr>
-			<tr class="row">
-				<td class="prompt">Last Name:</td>
-				<td class="textBoxes"><input type="text" name="lastname" value="${sinfo.last}"></td>
-			</tr>
-			<tr class="row">
-				<td class="prompt">Major(s):</td>
-				<td class="textBoxes"><input type="text" name="majors" value="${sinfo.major}"></td>
-			</tr>
-			<tr class="row">
-				<td class="prompt">Minor(s) (optional):</td>
-				<td class="textBoxes"><input type="text" name="minors" value="${sinfo.minor}"></td>
-			</tr>
-			<tr class="row">
-				<td class="prompt">Sports, Clubs, or Organizations (optional):</td>
-				<td class="textBoxes"><input type="text" name="sportsclubsactivities" value="${sinfo.extraCur}"></td>
-			</tr>
-			<tr class="row">
-				<td class="prompt">Image/Video to display (optional):</td>
-				<td class="uploads"><input type="file" id="myFile" name="imageorvideo"></td>
-			</tr>
-			<tr>
-				<td class="prompt">Custom Audio for Commencement (optional):</td>
-				<td class="uploads"><input type="file" id="myAudio" name="customaudio"></td>
-			</tr>
-		</table>
+			<div class="jumbotron">
+			  <h1 class="display-4">
+			    ${sinfo.first} ${sinfo.last}
+			  </h1>
+			  <p class="lead">
+			    <strong>Major(s):</strong>
+			    ${sinfo.major}
+			  </p>
+			
+			  <p class="lead">
+			    <strong>Minor(s):</strong>
+			    ${sinfo.minor}
+			  </p>
+			
+			  <p class="lead">
+			    <strong>Sports, Clubs, or Organizations (optional):</strong>
+			    ${sinfo.extraCur}
+			  </p>
+			  
+			  <p class="lead">
+			    <strong>Image/Video to display (optional):</strong>
+			    image
+			  </p>
+			  
+			  <p class="lead">
+			    <strong>Custom Audio for Commencement (optional):</strong>
+			    audio
+			  </p>
+			  <hr class="my-4">
+			</div>
 		
 		<!--Button for adding new content-->
 		<div id="buttons">
-			<input type="submit" value="Save">
-			<input type="button" value="Edit Content">
+			<input class="btn btn-secondary" type="button" href="login.jsp" value="Edit Content">
 		</div>
 		
 		<div id="logoutDiv">
-			<input class="logoutBut" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
+			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
 		</div>
 		
 		<input name="studentModel" type="hidden" value="${student}" />
