@@ -6,7 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
+import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
 //import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 
@@ -18,9 +21,14 @@ public class StudentIndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("Student Index Servlet: doGet");
+		
+		HttpSession session = req.getSession(false);
+		StudentInfoModel stuInfo = new StudentInfoModel();
+		stuInfo = (StudentInfoModel) session.getAttribute("sinfo");
+		req.setAttribute("sinfo", stuInfo);
 
 		// call JSP to generate empty form
-		resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
+		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
 	}
 	
 	@Override

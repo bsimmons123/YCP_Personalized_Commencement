@@ -23,7 +23,7 @@ public class StudentInfoControllerTest {
 		model.setPicture("File");
 		model.setNameSound("Audio");
 		controller = new StudentInfoController();
-		controller.setStudentInfo(model);
+//		controller.setStudentInfo(model);
 	}
 	
 	
@@ -77,7 +77,7 @@ public class StudentInfoControllerTest {
 		model.setExtraCur("CURR");
 		model.setPicture("DisplayFile");
 		model.setNameSound("CustomAudio");
-		controller.setStudentInfo(model);
+//		controller.setStudentInfo(model);
 		assertEquals(controller.getStudentInfo(), model);
 	}
 	@Test

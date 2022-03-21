@@ -109,7 +109,6 @@ public class UploadServlet extends HttpServlet {
             	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
             }finally {
             	// sets student info
-            	infoController.setStudentInfo(stuInfo);
             	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
             }
         }

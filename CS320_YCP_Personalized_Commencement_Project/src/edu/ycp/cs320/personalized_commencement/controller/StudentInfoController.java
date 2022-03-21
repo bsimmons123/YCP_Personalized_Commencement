@@ -13,20 +13,26 @@ public class StudentInfoController extends UserController{
 	// Initialize the arrays for student
 	StudentInfoModel stuInfo;
 	StudentModel students;
+	ArrayList<StudentInfoModel> stuInfos;
 	
 	/**
 	 * Constructor for Controller
 	 */
 	public StudentInfoController() {
 		
+		stuInfos = new ArrayList<StudentInfoModel>();
 	}
 	
-	/**
-	 * Sets student info model
-	 * @param stuInfo		Student info model
-	 */
-	public void setStudentInfo(StudentInfoModel stuInfo) {
-		this.stuInfo = stuInfo;
+//	/**
+//	 * Sets student info model
+//	 * @param stuInfo		Student info model
+//	 */
+//	public void setStudentInfo(StudentInfoModel stuInfo) {
+//		this.stuInfo = stuInfo;
+//	}
+	
+	public StudentInfoModel getStudentInfo(int index) {
+		return stuInfos.get(index);
 	}
 	
 	/**
@@ -49,6 +55,7 @@ public class StudentInfoController extends UserController{
 	 * @param audio				audio file uploaded from user
 	 */
 	public void setStudentInfo(String firstName, String middleInitial, String lastName, String major, String minor, String extraCur, String img, String audio) {
+		stuInfo = new StudentInfoModel();
 		stuInfo.setFirstName(firstName);
 		stuInfo.setMiddleInitial(middleInitial);
 		stuInfo.setLastName(lastName);
@@ -57,6 +64,7 @@ public class StudentInfoController extends UserController{
 		stuInfo.setExtraCur(extraCur);
 		stuInfo.setPicture(img);
 		stuInfo.setNameSound(audio);
+		stuInfos.add(stuInfo);
 	}
 	
 	/**
