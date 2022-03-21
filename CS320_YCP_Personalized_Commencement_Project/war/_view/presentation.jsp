@@ -8,20 +8,19 @@
 		<!-- CSS styling that takes the path of the site and imports the respective style sheet -->
 		<link href="${pageContext.request.contextPath}/css/PresentationSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">		<%@ include file="header.jsp" %>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<%@ include file="header.jsp" %>
-		<title>Submission - ${student.last}, ${student.first}</title>	
+		<title>Submission - ${student.last}, ${student.first}</title>
 	</head>
 
 	<!-- Body layout and formatting -->
 	<body>
 		<form action="${pageContext.servletContext.contextPath}/presentation" method="get">
-			
 			<!-- Header of the page -->
-			<div id="pageheader"> 
+			<div id="pageheader">
 				<h1 class="title">Submission Preview for ${student.first} ${student.last}</h1>
 			</div>
-			
+
 			<!-- Instructions for advisor -->
 			<div id="instructions">
 				<p>
@@ -29,55 +28,47 @@
 				If you disapprove of any of the information, leave the check box for it blank.<br>
 				When you are finished, simply click the submit button to confirm your decision.
 				</p>
+			<div class="jumbotron">
+				<h1 class="display-4">
+					${student.first} ${student.last}
+				</h1>
+				<p class="lead">
+					<strong>Major(s):</strong>
+					${student.major}
+					<input type="checkbox" name="major_approval">
+				</p>
+
+				<p class="lead">
+					<strong>Minor(s):</strong>
+					${student.minor}
+					<input type="checkbox" name="minor_approval">
+				</p>
+
+				<p class="lead">
+					<strong>Sports, Clubs, or Organizations (optional):</strong>
+					${student.extraCur}
+					<input type="checkbox" name="extracur_approval">
+				</p>
+
+				<p class="lead">
+					<strong>Image/Video to display (optional):</strong>
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71Y6FwLwTfL.jpg" alt="User Image" width="460" height="345">
+					<%-- <img src="${pageContext.servletContext.contextPath}/img/Edge.jpg" alt="User Image" width="460" height="345"> --%>
+					<input type="checkbox" name="image_approval">
+				</p>
+
+				<p class="lead">
+					<strong>Custom Audio for Commencement (optional):</strong>
+					<audio controls src="${pageContext.servletContext.contextPath}/Audio/johnny_appleseed.mp3"></audio>
+					<input type="checkbox" name="audio_approval">
+				</p>
+				<hr class="my-4">
 			</div>
-			
-			<!-- Fields and their values -->
-			<table>
-				<tr class="row">
-					<td class="valueName">First Name:</td>
-					<td class="value">${student.first}</td>
-					<td><input type="checkbox" name="first_approval"></td>
-				</tr>
-				<tr class="row">
-					<td class="valueName">Middle Initial:</td>
-					<td class="value">${student.middle}</td>
-					<td><input type="checkbox" name="middle_approval"></td>
-				</tr>
-				<tr class="row">
-					<td class="valueName">Last Name:</td>
-					<td class="value">${student.last}</td>
-					<td><input type="checkbox" name="last_approval"></td>
-				</tr>
-				<tr class="row">
-					<td class="valueName">Major(s):</td>
-					<td class="value">${student.major}</td>
-					<td><input type="checkbox" name="major_approval"></td>
-				</tr>
-				<tr class="row">
-					<td class="valueName">Minor(s):</td>
-					<td class="value">${student.minor}</td>
-					<td><input type="checkbox" name="minor_approval"></td>
-				</tr>
-				<tr class="row">
-					<td class="valueName">Extracurricular Activities:</td>
-					<td class="value">${student.extraCur}</td>
-					<td><input type="checkbox" name="extracur_approval"></td>
-				</tr>
-				<tr class="row">
-					<td class="valueName">Uploaded Image/Video:</td>
-					<td><img src="https://images-na.ssl-images-amazon.com/images/I/71Y6FwLwTfL.jpg" alt="Johnny Appleseed" width="460" height="345"></td>
-					<td><input type="checkbox" name="image_approval"></td>
-				</tr>
-				<tr>
-					<td class="valueName">Uploaded Audio for Walk:</td>
-					<td><audio controls src="${pageContext.servletContext.contextPath}/Audio/johnny_appleseed.mp3"></audio></td>
-					<td><input type="checkbox" name="audio_approval"></td>
-				</tr>
-			</table>
-			
+
 			<!-- Submit button -->
-			<div class="button"> 
-				<input class="bSize" type="Submit" name="Status" value="Submit"> 
+			<div class="button">
+				<input class="btn btn-success" type="Submit" name="Status" value="Submit">
+			</div>
 			</div>
 		</form>
 	</body>

@@ -1,6 +1,7 @@
 package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +20,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		System.out.println("Advisor Index Servlet: doGet");
 
-		// call JSP to generate empty form
-		resp.sendRedirect(req.getContextPath() + "/_view/login.jsp");
+
+		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -28,6 +29,24 @@ public class AdvisorIndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("AdvisorIndex Servlet: doPost");
+		
+		ArrayList<String> stuList = new ArrayList<String>();
+		stuList.add("Brandon Simmons");
+		stuList.add("Rob Wood");
+		stuList.add("Ethan Rosenberry");
+		stuList.add("Andrew Mott");
+		stuList.add("John Appleseed");
+		stuList.add("Gwegowy Thunderballz");
+		stuList.add("Ethan RosesN'Berries");
+		stuList.add("Andrew \"Expostulate\" Mott");
+		stuList.add("Michael Jackson");
+		stuList.add("Ben(Brandon) Simmons");
+		stuList.add("Bobert Forest");
+		stuList.add("Cassidy Patchel");
+		stuList.add("Grant MacDonald");
+		stuList.add("Ricky Berwick");
+		stuList.add("Spider Man");
+		stuList.add("Bologna Boy");
 		
 		// error message for JSP
 		String errorMessage = null;
@@ -41,6 +60,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		System.out.println("\tPosting index");
 		
 		req.setAttribute("advisor", model);
+		req.setAttribute("stuList", stuList);
 		
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);

@@ -115,7 +115,7 @@ public class LoginServlet extends HttpServlet{
 		}else if(advisor) {
 			advisor = false; // set to false in case user logs out and tries to log in as a new user
 			// redirects the advisor to their index page
-			req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+			resp.sendRedirect(req.getContextPath() + "/_view/advisor_index.jsp");
 		}else {
 			// redirects the user to the login page and shows invalid info error message
 			req.setAttribute("errorMessage",  "Invalid Username/Password");

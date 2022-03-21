@@ -27,8 +27,8 @@ import edu.ycp.cs320_personalized_commencement.model.StudentModel;
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "UserImages";
-	
+	private final String UPLOAD_DIRECTORY = "war/img";
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -38,12 +38,12 @@ public class UploadServlet extends HttpServlet {
 		StudentInfoModel stuInfo = new StudentInfoModel();
 
 		if(ServletFileUpload.isMultipartContent(req)){
-			
+
 			// field names for file uploads
         	String fname = null;
         	String fsize = null;
         	String ftype = null;
-        	
+
         	// field names for form params
         	String firstName = null;
         	String middleInitial = null;
@@ -53,63 +53,69 @@ public class UploadServlet extends HttpServlet {
         	String extraCur = null;
         	String img = null;
         	String audio = null;
-        	
+
         	// try-catch for file upload
         	try {
         		// retrieves all form fields
         		List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
+        		System.out.println(multiparts.size());
+        		System.out.println(multiparts.get(0));
+        		System.out.println(multiparts.get(1));
+        		System.out.println(multiparts.get(2));
+        		System.out.println(multiparts.get(3));
+        		System.out.println(multiparts.get(4));
+        		System.out.println(multiparts.get(5));
+        		System.out.println(multiparts.get(6));
         		
-        		// iterates through all form fields 
+        		// iterates through all form fields
         	for(FileItem item : multiparts){
         		// checks if the item is a field param and not a file
                 if(!item.isFormField()){
                 	// stores the field name of the file
                 	String field = item.getFieldName();
-                	
+
                 	// retrieves the file name and file to send to jsp
                     fname = new File(item.getName()).getName();
                     fsize = new Long(item.getSize()).toString();
                     ftype = item.getContentType();
+                    System.out.println(fsize);
+                    if(!fsize.equals("0")) {
                     // writes file to project folder
                     item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
-                    
+
                     // successfull upload message
                     System.out.println("\tFile: " + fname + " Uploaded Successfully");
                     // checks if the file is image or audio
-                    if(field.contains("imageorvideo")) {
-                        req.setAttribute("img", fname);
-                        req.setAttribute("imgSize", fsize + "Bytes");
-                    }else {
-                    	req.setAttribute("audio", fname);
-                        req.setAttribute("audioSize", fsize + "Bytes");
-                    }
+
                     // sets message that files uploaded
                     req.setAttribute("message", "Files Uploaded Successfully!");
+                    }else {
+                    	req.setAttribute("errorMessage", "No Files Selected");
+                    	System.out.println("\tFile not uploaded, File is Null");
+                    }
                 }
                 // retrieves info from form field
                 firstName = multiparts.get(0).getString();
-            	middleInitial = multiparts.get(1).getString();
-            	lastName = multiparts.get(2).getString();
-            	major = multiparts.get(3).getString();
-            	minor = multiparts.get(4).getString();
-            	extraCur = multiparts.get(5).getString();
-            	img = new File(multiparts.get(6).getName()).getName();
-            	audio = new File(multiparts.get(7).getName()).getName();
+            	lastName = multiparts.get(1).getString();
+            	major = multiparts.get(2).getString();
+            	minor = multiparts.get(3).getString();
+            	img = new File(multiparts.get(4).getName()).getName();
+            	audio = new File(multiparts.get(5).getName()).getName();
             }
                //File uploaded successfully
             } catch (Exception ex) {
-            	// files not uploaded 
+            	// files not uploaded
             	System.out.println("\tFile Upload Failed due to " + ex);
-            	req.setAttribute("errorMessage", "File Upload Failed due to" + ex);   
+            	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
             }finally {
             	// sets student info
             	infoController.setStudentInfo(stuInfo);
             	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
             }
         }
-    
+
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
-     
-    }     
+
+    }
    }
