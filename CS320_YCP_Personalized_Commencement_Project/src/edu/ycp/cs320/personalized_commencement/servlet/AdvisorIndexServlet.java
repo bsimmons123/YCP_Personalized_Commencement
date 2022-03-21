@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
 import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
@@ -19,16 +20,6 @@ public class AdvisorIndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("Advisor Index Servlet: doGet");
-
-
-		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		
-		System.out.println("AdvisorIndex Servlet: doPost");
 		
 		ArrayList<String> stuList = new ArrayList<String>();
 		stuList.add("Brandon Simmons");
@@ -51,16 +42,29 @@ public class AdvisorIndexServlet extends HttpServlet {
 		// error message for JSP
 		String errorMessage = null;
 		
-		// create new model
-		AdvisorModel model = new AdvisorModel();
 //		AdvisorController controller = new AdvisorController();
 //		controller.setModel(model);
 		
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
 		
+		HttpSession session = req.getSession(false);
+		
+		AdvisorModel model = (AdvisorModel) session.getAttribute("advisor");
+		
 		req.setAttribute("advisor", model);
 		req.setAttribute("stuList", stuList);
+
+
+		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		System.out.println("AdvisorIndex Servlet: doPost");
+		
 		
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);

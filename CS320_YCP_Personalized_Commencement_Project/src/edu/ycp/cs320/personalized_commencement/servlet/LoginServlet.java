@@ -119,7 +119,6 @@ public class LoginServlet extends HttpServlet{
 		
 		
 		// determines where to send the user
-		
 		for(StudentModel studentIter: studentController.getStudents()) {
 			// if user is a student
 			if(studentIter.getLogin()) {
@@ -137,7 +136,7 @@ public class LoginServlet extends HttpServlet{
 			if(advisorIter.getLogin()) {
 				HttpSession session = req.getSession(true);
 				System.out.println("User Session: " + session.getId());
-//				session.setAttribute("ainfo", studentController.getStudent(1).getStudentInfo());
+				session.setAttribute("advisor", advisorIter);
 				AdvisorIndexServlet advisorIndex = new AdvisorIndexServlet();
 				advisorIndex.doGet(req, resp);
 				return;

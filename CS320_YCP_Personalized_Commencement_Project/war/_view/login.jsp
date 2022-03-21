@@ -48,7 +48,7 @@
 				<tr>
 					<td>
 						<div class="button"> 
-							<input type="Submit" name="login" value="Login">
+							<input class="btn btn-success" type="Submit" name="login" value="Login">
 						</div>
 					</td>
 				</tr>

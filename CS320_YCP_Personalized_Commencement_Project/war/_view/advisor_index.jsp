@@ -21,7 +21,7 @@
 
 	<!-- styling and layout of the body  -->
 	<body>
-		<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.servletContext.contextPath}/advisor_index" method="get" enctype="multipart/form-data">
 		<%@page import="java.util.ArrayList"%>      <%--Importing all the dependent classes--%>
 		<%@page import="java.util.Iterator"%>
 
@@ -73,15 +73,11 @@
 			  %>
 			</tbody>
 			</table>
-		<!-- Idea is for students to be shown automatically with view buttons next to each student -->
-		<!-- First student is example, will add on-clicks later in the project -->
-
-		<input class="btn btn-primary" type="submit" name="view" value="Load Students"> </td>
 
 
 		<!-- Logout button -->
 		<div id="logoutDiv">
-			<input class="logoutBut" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
+			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
 		</div>
 	</form>
 	</body>
