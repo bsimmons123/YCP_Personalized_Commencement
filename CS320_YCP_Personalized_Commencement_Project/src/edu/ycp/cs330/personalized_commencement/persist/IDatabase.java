@@ -12,5 +12,5 @@ public interface IDatabase {
 
 	public Advisor getAdvisor(String email);
 
-	public Student getStudent(String email);
+	public Student getStudent(String email, String password);
 }

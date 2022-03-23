@@ -14,6 +14,8 @@ import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 import edu.ycp.cs320.personalized_commencement.model.User;
+import edu.ycp.cs330.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs330.personalized_commencement.persist.IDatabase;
 
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -35,7 +37,7 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("Login Servlet: doPost");
 		// Checks if student or advisor has entered the correct information
 		// Used later
-		boolean student = false;
+		Student student = null;
 		boolean advisor = false;
 
 //		// Creates advisor and student controller
@@ -125,6 +127,26 @@ public class LoginServlet extends HttpServlet{
 			System.out.println("Error message is: " + "Invalid Username/Password");
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		
+	}
+	
+	/**
+	 * get student account
+	 * @param email		students email
+	 * @return			students account
+	 */
+	public Student getStudent(String email, String password) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		Student student = db.getStudent(email, password);
+		
+		// check if anything was returned and output the list
+		if (student != null) {
+				return student;
+			}
+		return null;
 	}
 	
 	/**
