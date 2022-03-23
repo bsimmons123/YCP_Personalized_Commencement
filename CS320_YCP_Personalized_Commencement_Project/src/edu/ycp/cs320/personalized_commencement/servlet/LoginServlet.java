@@ -109,31 +109,17 @@ public class LoginServlet extends HttpServlet{
 		
 		req.setAttribute("user", jspUser);
 		
-//		
-//		// determines where to send the user
-//		for(Student studentIter: studentController.getStudents()) {
-//			// if user is a student
-//			if(studentIter.getLogin()) {
-//				HttpSession session = req.getSession(true);
-//				System.out.println("User Session: " + session.getId());
-//				System.out.println(studentIter.getEmail());
-//				session.setAttribute("sinfo", studentIter);
-//				StudentIndexServlet studentIndex = new StudentIndexServlet();
-//				studentIndex.doGet(req, resp);
-//				return;
-//			}
-//		}
-//		for(Advisor advisorIter: advisorController.getAdvisors()) {
-//			// user is advisor
-//			if(advisorIter.getLogin()) {
-//				HttpSession session = req.getSession(true);
-//				System.out.println("User Session: " + session.getId());
-//				session.setAttribute("advisor", advisorIter);
-//				AdvisorIndexServlet advisorIndex = new AdvisorIndexServlet();
-//				advisorIndex.doGet(req, resp);
-//				return;
-//			}
-//		}
+		// check student login
+		if(checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) {
+			System.out.println("\t\tStudent Logged in");
+			HttpSession session = req.getSession(true);
+			System.out.println("\t\tUser Session: " + session.getId());
+			student = getStudent(jspUser.getEmail(), jspUser.getPassword());
+			session.setAttribute("sinfo", student);
+			StudentIndexServlet studentIndex = new StudentIndexServlet();
+			studentIndex.doGet(req, resp);
+			return;
+		}
 			// redirects the user to the login page and shows invalid info error message
 			req.setAttribute("errorMessage",  "Invalid Username/Password");
 			System.out.println("Error message is: " + "Invalid Username/Password");
