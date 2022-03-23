@@ -58,7 +58,7 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public Advisor getAdvisor(String email) {
+	public Advisor getAdvisor(String email, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}
