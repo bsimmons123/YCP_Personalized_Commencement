@@ -59,7 +59,6 @@
 					%>
 					<tr>
 						<td><%=name.getFirst()%> <%=name.getLast()%></td>
-						<input name="user<%=i%>" type="hidden" value="${i}" >
 						<td><input class="btn btn-secondary" type="button" name="view" onclick="window.location='http://localhost:8081/pcomm/presentation'" value="View"></td>
 					</tr>
 					<%

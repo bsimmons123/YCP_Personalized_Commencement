@@ -68,44 +68,18 @@ public class LoginServlet extends HttpServlet{
 //		// Creates user to interact with controller
 		User jspUser = new User();
 		
-//		// get username and password from form
-//		try {
-//			// pull parameters from JSP
-//			String email = req.getParameter("email");
-//			String password = req.getParameter("password");
-//			
-//			// set parameters in user to check in controller
-//			jspUser.setEmail(email);
-//			jspUser.setPassword(password);
-//			if(email == null || password == null) {
-//				System.out.println("\tInvalid Username/Password");
-//			}else {
-//				// Check if user is Student
-//				System.out.println("\tChecking user login");
-//				// for each loop that iterates over each user
-//				for(Student studentIter: studentController.getStudents()) {
-//					// if user is a student
-//					if(studentController.checkStudentLogin(studentIter, jspUser)) {
-//						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
-//						student = true;
-//						studentController.setLogin(studentIter);
-//						req.setAttribute("student", studentIter);
-////						req.setAttribute("sinfo", studentController.getStudent(1).getStudentInfo());
-//					}
-//				}
-//				for(Advisor advisorIter: advisorController.getAdvisors()) {
-//					// user is advisor
-//					if(advisorController.checkAdvisorLogin(advisorIter, jspUser)) {
-//						System.out.println("\t\t" + advisorIter.getEmail() + ": Logged in");
-//						advisor = true;
-//						advisorController.setLogin(advisorIter);
-//						req.setAttribute("advisor", advisorIter);
-//					}
-//				}
-//			}
-//		}catch(NullPointerException e) {
-//			System.out.println("Setting error");
-//		}
+		// get username and password from form (USER)
+		try {
+			// pull parameters from JSP
+			String email = req.getParameter("email");
+			String password = req.getParameter("password");
+			
+			// set parameters in user to check in controller
+			jspUser.setEmail(email);
+			jspUser.setPassword(password);
+		}catch(NullPointerException e) {
+			System.out.println("\tSetting error");
+		}
 		
 		
 		System.out.println("\tPosting Login results");
@@ -113,6 +87,7 @@ public class LoginServlet extends HttpServlet{
 		req.setAttribute("user", jspUser);
 		
 		// check student login
+		System.out.println("\tChecking user login");
 		if(checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) {
 			System.out.println("\t\tStudent Logged in");
 			HttpSession session = req.getSession(true);

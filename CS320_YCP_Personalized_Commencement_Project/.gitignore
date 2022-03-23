@@ -1,1 +1,3 @@
 /.gradle/
+/test.db/
+/derby.log
