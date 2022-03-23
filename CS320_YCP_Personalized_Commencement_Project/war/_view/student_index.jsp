@@ -24,7 +24,7 @@
 		<div id="instructions">
 		<c:if test="${! empty student }">
 			<div id="Welcome">
-				<p> Welcome, ${student.email}! I hope you enjoy your stay XD</p>
+				<p> Welcome, ${student.email}!</p>
 			</div>
 		</c:if>
 		<c:if test="${! empty message}">
