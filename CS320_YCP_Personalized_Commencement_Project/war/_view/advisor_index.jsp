@@ -30,8 +30,8 @@
 		<div id="instructions">
 			<c:if test="${! empty advisor }">
 				<!-- Welcome message -->
-				<div id="Welcome">
-					<p>Welcome, ${advisor.email}!</p>
+				<div class="alert alert-success" role="alert">
+					Welcome, ${advisor.email}!
 				</div>
 				<!-- List of instructions -->
 				<p>
