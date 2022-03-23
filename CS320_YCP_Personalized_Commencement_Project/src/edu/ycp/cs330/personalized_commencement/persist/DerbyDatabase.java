@@ -14,7 +14,6 @@ import java.util.Scanner;
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Pair;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.sqldemo.DBUtil;
 
 public class DerbyDatabase implements IDatabase {
 	static {
