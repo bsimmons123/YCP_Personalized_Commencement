@@ -376,7 +376,7 @@ public class DerbyDatabase implements IDatabase {
 	 * Update student associated with email and password
 	 */
 	@Override
-	public Boolean updateStudent(String userEmail, int advisorId, String email, String password, 
+	public Boolean updateStudents(String userEmail, 
 			String first, String last, String major, String minor, String extraCur, 
 			String picture, String sound) {
 		return executeTransaction(new Transaction<Boolean>() {
@@ -390,22 +390,18 @@ public class DerbyDatabase implements IDatabase {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
 							"update students\r\n" + 
-							"set advisor_id = ?, email = ?, password = ?, firstname = ?, lastname = ?, major = ?,\r\n" + 
-							"  extcur = ?, img = ?, audio = ?\r\n" + 
+							"set firstname = ?, lastname = ?, major = ?, minor = ?,\n" + 
+							"  extcur = ?, img = ?, audio = ?\n" + 
 							"where email = ?"
 					);
-					
-					stmt.setInt(1, advisorId);
-					stmt.setString(2, email);
-					stmt.setString(3, password);
-					stmt.setString(4, first);
-					stmt.setString(5, last);
-					stmt.setString(6, major);
-					stmt.setString(7, minor);
-					stmt.setString(8, extraCur);
-					stmt.setString(9, picture);
-					stmt.setString(10, sound);
-					stmt.setString(11, userEmail);
+					stmt.setString(1, first);
+					stmt.setString(2, last);
+					stmt.setString(3, major);
+					stmt.setString(4, minor);
+					stmt.setString(5, extraCur);
+					stmt.setString(6, picture);
+					stmt.setString(7, sound);
+					stmt.setString(8, userEmail);
 					
 					resultSet = stmt.executeUpdate();
 					
@@ -419,7 +415,7 @@ public class DerbyDatabase implements IDatabase {
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("<" + email + "> was not found in the authors table");
+						System.out.println("<" + userEmail + "> was not found in the Student table");
 					}
 					
 					return found;

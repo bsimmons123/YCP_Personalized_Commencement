@@ -40,31 +40,6 @@ public class LoginServlet extends HttpServlet{
 		// Used later
 		Student student = null;
 		Advisor advisor = null;
-
-//		// Creates advisor and student controller
-//		AdvisorController advisorController = new AdvisorController();
-//		StudentController studentController = new StudentController();
-//
-//		// Add students to arraylist
-//		studentController.addStudent("teststudent@ycp.edu", "test"); 			// index 0
-//		studentController.addStudent("bsimmons1@ycp.edu", "test");				// index 1
-//		studentController.addStudent("rwood7@ycp.edu", "test");					// index 2
-//		studentController.addStudent("erosenberry@ycp.edu", "test"); 					// index 3
-//		studentController.addStudent("amott@ycp.edu", "test");					// index 4
-//		
-//		//Add advisors to arraylist
-//		advisorController.addAdvisor("testadvisor@ycp.edu", "test");			// index 0
-//		advisorController.addAdvisor("jmoscola@ycp.edu", "test");				// index 1
-//		// index 0
-//		studentController.setStudentInfo(studentController.getStudent(1),"Brandon", "P", "Simmons", "Computer Science", "Philosophy - Math", "RockClimbing Club", "Faceshot.png", "Null");
-//		// index 1
-//		studentController.setStudentInfo(studentController.getStudent(2),"Robert", "P", "Wood", "Computer Science", "Cocks", "Face Palming", "Faceshot.png", "Null");
-//		// index 2
-//		studentController.setStudentInfo(studentController.getStudent(3),"Ethan", "P", "Rosenberry", "Electrical Engineering", "Sleep", "N/A", "Faceshot.png", "Null");
-//		// index 3
-//		studentController.setStudentInfo(studentController.getStudent(4),"Andrew", "P", "Mott", "Electrical Engineering", "Math", "Twack und felid", "Faceshot.png", "Null");
-//		
-//		
 //		// Creates user to interact with controller
 		User jspUser = new User();
 		

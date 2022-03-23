@@ -21,6 +21,9 @@ import org.apache.commons.io.output.CountingOutputStream;
 
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs330.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs330.personalized_commencement.persist.DerbyDatabase;
+import edu.ycp.cs330.personalized_commencement.persist.IDatabase;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
@@ -51,11 +54,11 @@ public class UploadServlet extends HttpServlet {
         	String img = null;
         	String audio = null;
         	
-//        	HttpSession session = req.getSession(false);
-//        	
-//        	Student student = new Student();
-//        	
-//        	student = (Student) session.getAttribute("sinfo");
+        	HttpSession session = req.getSession(false);
+        	
+        	Student student = new Student();
+        	
+        	student = (Student) session.getAttribute("sinfo");
 //        	
 //        	String first = req.getParameter("firstname");
 //        	
@@ -108,8 +111,9 @@ public class UploadServlet extends HttpServlet {
             	lastName = multiparts.get(1).getString();
             	major = multiparts.get(2).getString();
             	minor = multiparts.get(3).getString();
-            	img = new File(multiparts.get(4).getName()).getName();
-            	audio = new File(multiparts.get(5).getName()).getName();
+            	extraCur = multiparts.get(4).getString();
+            	img = new File(multiparts.get(5).getName()).getName();
+            	audio = new File(multiparts.get(6).getName()).getName();
             }
                //File uploaded successfully
             } catch (Exception ex) {
@@ -118,10 +122,13 @@ public class UploadServlet extends HttpServlet {
             	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
             }finally {
             	
-            	System.out.println("First Name: " + firstName + " Last Name: " 
-            	+ lastName + " Major: " + major + " Minor: " + minor);
-            	// sets student info
-//            	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
+            	System.out.println(img + " | " + audio);
+            	if(updateStudent(student.getEmail(), student.getAdvisorId(), 
+            			student.getEmail(), student.getPassword(), firstName, 
+            			lastName, major, minor, extraCur, img, audio)) {
+            		student = getStudent(student.getEmail(), student.getPassword());
+            		session.setAttribute("sinfo", student);
+            	}
             }
         }
 
@@ -129,4 +136,40 @@ public class UploadServlet extends HttpServlet {
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
 
     }
-   }
+	
+	/**
+	 * get student account
+	 * @param email		students email
+	 * @return			students account
+	 */
+	public Student getStudent(String email, String password) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		Student student = db.getStudent(email, password);
+		
+		// check if anything was returned and output the list
+		if (student != null) {
+				return student;
+			}
+		return null;
+	}
+	
+	public Boolean updateStudent(String userEmail, int advisorId, String email, String password, 
+			String first, String last, String major, String minor, String extraCur, 
+			String picture, String sound) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		Boolean update = db.updateStudents(userEmail, first, last, 
+				major, minor, extraCur, picture, sound);
+		
+		return update;
+			
+	}
+		
+}
