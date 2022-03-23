@@ -38,12 +38,12 @@
 				<!-- User Email -->
 				<tr>
 					<td class="tdPrompt">Email:</td>
-					<td><input type="text" name="email" size="20" value="${user.email}"></td>
+					<td class="tdPrompt"><input type="text" name="email" size="20" value="${user.email}"></td>
 				</tr>
 				<!-- User Password -->
 				<tr>
 					<td class="tdPrompt">Password:</td>
-					<td><input type="password" name="password" size="20" value="${user.password}"></td>
+					<td class="tdPrompt"><input type="password" name="password" size="20" value="${user.password}"></td>
 				</tr>
 				<tr>
 					<td>

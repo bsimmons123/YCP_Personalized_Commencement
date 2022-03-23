@@ -15,10 +15,6 @@
 		<%@ include file="header.jsp" %>
 	</head>
 
-	<style>
-
-	</style>
-
 	<!-- styling and layout of the body  -->
 	<body>
 		<form action="${pageContext.servletContext.contextPath}/advisor_index" method="get" enctype="multipart/form-data">
@@ -26,23 +22,24 @@
 		<%@page import="java.util.Iterator"%>
 
 		<% ArrayList<String> studentList = (ArrayList) request.getAttribute("stuList"); %> <%--Assigning ArrayList object containing Employee data to the local object --%>
+		
 		<!-- Header of the page -->
 		<div id="pageheader">
 			<h1 class="title">List of Submissions For Review</h1>
 		</div>
 		<div id="instructions">
 			<c:if test="${! empty advisor }">
+				<!-- Welcome message -->
 				<div id="Welcome">
-					<p> Welcome, ${advisor.email}! I hope you enjoy your stay XD</p>
+					<p>Welcome, ${advisor.email}!</p>
 				</div>
+				<!-- List of instructions -->
+				<p>
+				Here you can find a list of submissions from your students that need to be reviewed.<br>
+				To view a student's submission, simply click the "view" button next to their name.<br>
+				</p>
 			</c:if>
-		<!-- List of instructions -->
-
-			<p>
-			Here you can find a list of submissions from your students that need to be reviewed.<br>
-			To view a student's submission, simply click the "view" button next to their name.<br>
-			</p>
-
+	
 			<table class="table table-secondary table-striped table-hover">
 			  <thead>
 			    <tr>
@@ -54,7 +51,6 @@
 			<tbody>
 				<%
 				// Iterating through subjectList
-
 				if(request.getAttribute("stuList") != null)  // Null check for the object
 				{
 					Iterator<String> iterator = studentList.iterator();  // Iterator interface
@@ -74,7 +70,7 @@
 			</tbody>
 			</table>
 
-
+		</div>
 		<!-- Logout button -->
 		<div id="logoutDiv">
 			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">

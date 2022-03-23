@@ -15,9 +15,9 @@ tr.row td{
 	border-bottom: 3px solid green;
 }
 #Welcome{
-	margin: auto;
 	width: 50%;
-	padding-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: center;
 	font-size: 18px;
 	font-weight: bold;
