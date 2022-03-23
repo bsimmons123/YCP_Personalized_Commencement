@@ -324,8 +324,11 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
+	/**
+	 * Get student associated with email and password
+	 */
 	@Override
-	public Student getStudent(String email) {
+	public Student getStudent(String email, String password) {
 		return executeTransaction(new Transaction<Student>() {
 			@Override
 			public Student execute(Connection conn) throws SQLException {
@@ -336,10 +339,11 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
-							"select * from students where email = ?"
+							"select * from students where email = ? and password = ?"
 					);
 					
 					stmt.setString(1, email);
+					stmt.setString(2, password);
 					
 					resultSet = stmt.executeQuery();
 					
