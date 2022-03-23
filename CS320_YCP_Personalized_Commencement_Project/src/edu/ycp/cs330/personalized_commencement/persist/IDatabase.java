@@ -12,5 +12,17 @@ public interface IDatabase {
 
 	public Advisor getAdvisor(String email, String password);
 
+	/**
+	 * return student 
+	 * @param email			student email
+	 * @param password		student password
+	 * @return
+	 */
 	public Student getStudent(String email, String password);
+
+	/**
+	 * Update student associated with email and password
+	 */
+	public Boolean updateStudent(String userEmail, int advisorId, String email, String password, String first, String last,
+			String major, String minor, String extraCur, String picture, String sound);
 }

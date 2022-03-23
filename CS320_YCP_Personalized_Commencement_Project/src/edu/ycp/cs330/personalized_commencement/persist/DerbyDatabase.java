@@ -371,4 +371,62 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+	
+	/**
+	 * Update student associated with email and password
+	 */
+	@Override
+	public Boolean updateStudent(String userEmail, int advisorId, String email, String password, 
+			String first, String last, String major, String minor, String extraCur, 
+			String picture, String sound) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				int resultSet = -1;
+				Student student = null;
+				
+				try {
+					// retreive all attributes from both Books and Authors tables
+					stmt = conn.prepareStatement(
+							"update students\r\n" + 
+							"set advisor_id = ?, email = ?, password = ?, firstname = ?, lastname = ?, major = ?,\r\n" + 
+							"  extcur = ?, img = ?, audio = ?\r\n" + 
+							"where email = ?"
+					);
+					
+					stmt.setInt(1, advisorId);
+					stmt.setString(2, email);
+					stmt.setString(3, password);
+					stmt.setString(4, first);
+					stmt.setString(5, last);
+					stmt.setString(6, major);
+					stmt.setString(7, minor);
+					stmt.setString(8, extraCur);
+					stmt.setString(9, picture);
+					stmt.setString(10, sound);
+					stmt.setString(11, userEmail);
+					
+					resultSet = stmt.executeUpdate();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					if (resultSet != -1) {
+						found = true;
+						return found;
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("<" + email + "> was not found in the authors table");
+					}
+					
+					return found;
+				} finally {
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 }

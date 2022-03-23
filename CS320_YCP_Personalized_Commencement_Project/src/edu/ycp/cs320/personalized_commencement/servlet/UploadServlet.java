@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -49,19 +50,31 @@ public class UploadServlet extends HttpServlet {
         	String extraCur = null;
         	String img = null;
         	String audio = null;
-
+        	
+//        	HttpSession session = req.getSession(false);
+//        	
+//        	Student student = new Student();
+//        	
+//        	student = (Student) session.getAttribute("sinfo");
+//        	
+//        	String first = req.getParameter("firstname");
+//        	
+//        	System.out.println(first);
+//        	
+//        	System.out.println(student.getEmail() + "First Name: " + student.getFirst());
+        	
         	// try-catch for file upload
         	try {
         		// retrieves all form fields
         		List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
-        		System.out.println(multiparts.size());
-        		System.out.println(multiparts.get(0));
-        		System.out.println(multiparts.get(1));
-        		System.out.println(multiparts.get(2));
-        		System.out.println(multiparts.get(3));
-        		System.out.println(multiparts.get(4));
-        		System.out.println(multiparts.get(5));
-        		System.out.println(multiparts.get(6));
+//        		System.out.println(multiparts.size());
+//        		System.out.println(multiparts.get(0));
+//        		System.out.println(multiparts.get(1));
+//        		System.out.println(multiparts.get(2));
+//        		System.out.println(multiparts.get(3));
+//        		System.out.println(multiparts.get(4));
+//        		System.out.println(multiparts.get(5));
+//        		System.out.println(multiparts.get(6));
         		
         		// iterates through all form fields
         	for(FileItem item : multiparts){
@@ -104,6 +117,9 @@ public class UploadServlet extends HttpServlet {
             	System.out.println("\tFile Upload Failed due to " + ex);
             	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
             }finally {
+            	
+            	System.out.println("First Name: " + firstName + " Last Name: " 
+            	+ lastName + " Major: " + major + " Minor: " + minor);
             	// sets student info
 //            	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
             }

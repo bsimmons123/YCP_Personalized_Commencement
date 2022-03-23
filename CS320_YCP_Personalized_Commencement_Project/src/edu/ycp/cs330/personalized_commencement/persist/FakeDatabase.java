@@ -68,4 +68,11 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Boolean updateStudent(String userEmail, int advisorId, String email, String password, String first,
+			String last, String major, String minor, String extraCur, String picture, String sound) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
