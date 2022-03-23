@@ -45,13 +45,13 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public List<Pair<Student, Advisor>> findStudentsByAdvisor(String email) {
-		List<Pair<Student, Advisor>> result = new ArrayList<Pair<Student,Advisor>>();
+	public ArrayList<Student> findStudentsByAdvisor(String email) {
+		ArrayList<Student> result = new ArrayList<Student>();
 		Advisor advisor = findAdvisorByEmail(email);
 		if (advisor != null)
 		for (Student student : studentList) {
 			if (student.getAdvisorId() == advisor.getAdvisorId()) {
-				result.add(new Pair<Student, Advisor>(student, advisor));
+				result.add(student);
 			}
 		}
 		return result;
