@@ -1,4 +1,4 @@
-package edu.ycp.cs330.personalized_commencement.sqldemo;
+package edu.ycp.cs320.personalized_commencement.sqldemo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
