@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
-import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
+import edu.ycp.cs320.personalized_commencement.model.Advisor;
 
 public class AdvisorIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,7 +49,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession(false);
 		
-		AdvisorModel model = (AdvisorModel) session.getAttribute("advisor");
+		Advisor model = (Advisor) session.getAttribute("advisor");
 		
 		req.setAttribute("advisor", model);
 		req.setAttribute("stuList", stuList);

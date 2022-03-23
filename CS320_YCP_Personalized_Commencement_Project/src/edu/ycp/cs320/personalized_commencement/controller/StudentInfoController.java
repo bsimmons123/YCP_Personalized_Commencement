@@ -2,8 +2,8 @@ package edu.ycp.cs320.personalized_commencement.controller;
 
 import java.util.ArrayList;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
 
 /**
  * Acts as the controller for the Student model class.
@@ -12,7 +12,7 @@ public class StudentInfoController extends UserController{
 	
 	// Initialize the arrays for student
 	StudentInfoModel stuInfo;
-	StudentModel students;
+	Student students;
 	ArrayList<StudentInfoModel> stuInfos;
 	
 	/**
@@ -39,7 +39,7 @@ public class StudentInfoController extends UserController{
 	 * Set student model
 	 * @param students		Students array
 	 */
-	public void setStudentModel(StudentModel students) {
+	public void setStudentModel(Student students) {
 		this.students = students;
 	}
 	

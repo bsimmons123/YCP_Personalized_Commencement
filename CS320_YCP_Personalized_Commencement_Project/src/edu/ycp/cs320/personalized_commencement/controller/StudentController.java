@@ -2,21 +2,21 @@ package edu.ycp.cs320.personalized_commencement.controller;
 
 import java.util.ArrayList;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 /**
  * Acts as the controller for the Student model class.
  */
 public class StudentController extends UserController{
 	
-	ArrayList<StudentModel> students;
+	ArrayList<Student> students;
 	
 	/**
 	 * Contructor
 	 */
 	public StudentController() {
-		students = new ArrayList<StudentModel>();
+		students = new ArrayList<Student>();
 	}
 	
 	/**
@@ -25,7 +25,7 @@ public class StudentController extends UserController{
 	 * @param password	Password for student
 	 */
 	public void addStudent(String email, String password) {
-		StudentModel student = new StudentModel();
+		Student student = new Student();
 		student.setEmail(email);
 		student.setPassword(password);
 		student.setStudent(true);
@@ -37,7 +37,7 @@ public class StudentController extends UserController{
 	 * @param index		Index of a particular student
 	 * @return			Student
 	 */
-	public StudentModel getStudent(int index) {
+	public Student getStudent(int index) {
 		return students.get(index);
 	}
 	
@@ -45,14 +45,14 @@ public class StudentController extends UserController{
 	 * 
 	 * @return			Students array
 	 */
-	public ArrayList<StudentModel> getStudents(){
+	public ArrayList<Student> getStudents(){
 		return students;
 	}
 	
 	/**
 	 * set login for student
 	 */
-	public void setLogin(StudentModel student) {
+	public void setLogin(Student student) {
 		student.setLogin(true);
 	}
 
@@ -62,7 +62,7 @@ public class StudentController extends UserController{
 	 * @param user		User from JSP
 	 * @return			User is logged in
 	 */
-	public boolean checkStudentLogin(StudentModel student,UserModel user) {
+	public boolean checkStudentLogin(Student student,User user) {
 		if(student.getEmail().equals(user.getEmail()) && student.getPassword().equals(user.getPassword()) && student.getStudent()) {
 			return true;
 		}

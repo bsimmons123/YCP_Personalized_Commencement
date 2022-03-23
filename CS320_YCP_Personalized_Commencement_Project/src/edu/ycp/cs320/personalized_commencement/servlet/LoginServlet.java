@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
 import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
-import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.Advisor;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet{
 		studentController.getStudent(4).setStudentInfo(stuInfo.getStudentInfo(3));
 		
 		// Creates user to interact with controller
-		UserModel jspUser = new UserModel();
+		User jspUser = new User();
 		
 		// get username and password from form
 		try {
@@ -88,7 +88,7 @@ public class LoginServlet extends HttpServlet{
 				// Check if user is Student
 				System.out.println("\tChecking user login");
 				// for each loop that iterates over each user
-				for(StudentModel studentIter: studentController.getStudents()) {
+				for(Student studentIter: studentController.getStudents()) {
 					// if user is a student
 					if(studentController.checkStudentLogin(studentIter, jspUser)) {
 						System.out.println("\t\t" + studentIter.getEmail() + ": Logged in");
@@ -98,7 +98,7 @@ public class LoginServlet extends HttpServlet{
 //						req.setAttribute("sinfo", studentController.getStudent(1).getStudentInfo());
 					}
 				}
-				for(AdvisorModel advisorIter: advisorController.getAdvisors()) {
+				for(Advisor advisorIter: advisorController.getAdvisors()) {
 					// user is advisor
 					if(advisorController.checkAdvisorLogin(advisorIter, jspUser)) {
 						System.out.println("\t\t" + advisorIter.getEmail() + ": Logged in");
@@ -119,7 +119,7 @@ public class LoginServlet extends HttpServlet{
 		
 		
 		// determines where to send the user
-		for(StudentModel studentIter: studentController.getStudents()) {
+		for(Student studentIter: studentController.getStudents()) {
 			// if user is a student
 			if(studentIter.getLogin()) {
 				HttpSession session = req.getSession(true);
@@ -131,7 +131,7 @@ public class LoginServlet extends HttpServlet{
 				return;
 			}
 		}
-		for(AdvisorModel advisorIter: advisorController.getAdvisors()) {
+		for(Advisor advisorIter: advisorController.getAdvisors()) {
 			// user is advisor
 			if(advisorIter.getLogin()) {
 				HttpSession session = req.getSession(true);

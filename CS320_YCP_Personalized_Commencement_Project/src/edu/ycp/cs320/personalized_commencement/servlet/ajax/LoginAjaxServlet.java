@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
-import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.Advisor;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 
 public class LoginAjaxServlet extends HttpServlet {
@@ -32,11 +32,11 @@ public class LoginAjaxServlet extends HttpServlet {
 	private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Set models
 		@SuppressWarnings("unused")
-		StudentModel studentModel = new StudentModel();
+		Student studentModel = new Student();
 		@SuppressWarnings("unused")
-		AdvisorModel advisorModel = new AdvisorModel();
+		Advisor advisorModel = new Advisor();
 		
-		UserModel user = new UserModel();
+		User user = new User();
 		
 		// Get parameters
 		String email = req.getParameter("email");

@@ -5,17 +5,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 public class AdvisorControllerTest {
-private UserModel user;
+private User user;
 private AdvisorController controller;
 	
 	@Before
 	public void setup() {
 		
 		//set up user
-		user = new UserModel();
+		user = new User();
 		
 		// set up controller
 		controller = new AdvisorController();

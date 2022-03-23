@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
+import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
 
 public class PresentationServlet_Advisor_View extends HttpServlet {
 	private static final long serialVersionUID = 1L;

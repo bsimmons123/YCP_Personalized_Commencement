@@ -5,25 +5,25 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 public class StudentControllerTest {
-	private StudentModel model;
-	private UserModel user;
+	private Student model;
+	private User user;
 	private StudentController controller;
 		
 		@Before
 		public void setup() {
 			//set up model
-			model = new StudentModel();
+			model = new Student();
 			model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 			model.setPassword("Brandon'sMom1");
 			model.setStudent(true);
 			
 			
 			//set up user
-			user = new UserModel();
+			user = new User();
 			
 			// set up controller
 			controller = new StudentController();

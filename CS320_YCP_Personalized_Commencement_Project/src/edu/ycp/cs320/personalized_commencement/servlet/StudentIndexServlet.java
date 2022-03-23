@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
-//import edu.ycp.cs320.personalized_commencement.controller.StudentController;
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
 
 public class StudentIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +39,7 @@ public class StudentIndexServlet extends HttpServlet {
 		String errorMessage = null;
 		
 		// create new model
-		StudentModel model = new StudentModel();
+		Student model = new Student();
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
 		

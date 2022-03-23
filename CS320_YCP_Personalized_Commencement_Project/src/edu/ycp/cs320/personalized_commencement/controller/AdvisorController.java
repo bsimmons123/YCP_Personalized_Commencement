@@ -2,8 +2,8 @@ package edu.ycp.cs320.personalized_commencement.controller;
 
 import java.util.ArrayList;
 
-import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.Advisor;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 /**
  * Acts as a controller for the Advisor model class.
@@ -11,13 +11,13 @@ import edu.ycp.cs320_personalized_commencement.model.UserModel;
 public class AdvisorController extends UserController{
 	
 	// Create an arraylist of advisor users
-	ArrayList<AdvisorModel> advisors = new ArrayList<AdvisorModel>();
+	ArrayList<Advisor> advisors = new ArrayList<Advisor>();
 	
 	/**
 	 * Contructor
 	 */
 	public AdvisorController() {
-		advisors = new ArrayList<AdvisorModel>();
+		advisors = new ArrayList<Advisor>();
 	}
 	
 	/**
@@ -25,7 +25,7 @@ public class AdvisorController extends UserController{
 	 * @param index		Index of advisor in arraylist
 	 * @return			Advisor
 	 */
-	public AdvisorModel getAdvisor(int index) {
+	public Advisor getAdvisor(int index) {
 		return advisors.get(index);
 	}
 	
@@ -33,14 +33,14 @@ public class AdvisorController extends UserController{
 	 * 
 	 * @return			Arraylist of advisors
 	 */
-	public ArrayList<AdvisorModel> getAdvisors(){
+	public ArrayList<Advisor> getAdvisors(){
 		return advisors;
 	}
 	
 	/**
 	 * set login for advisor
 	 */
-	public void setLogin(AdvisorModel advisor) {
+	public void setLogin(Advisor advisor) {
 		advisor.setLogin(true);
 	}
 	
@@ -50,7 +50,7 @@ public class AdvisorController extends UserController{
 	 * @param user	 	User from JSP
 	 * @return if		User is logged in
 	 */
-	public boolean checkAdvisorLogin(AdvisorModel advisor, UserModel user) {
+	public boolean checkAdvisorLogin(Advisor advisor, User user) {
 		if(advisor.getEmail().equals(user.getEmail()) && advisor.getPassword().equals(user.getPassword()) && !advisor.getStudent()) {
 			return true;
 		}
@@ -63,7 +63,7 @@ public class AdvisorController extends UserController{
 	 * @param password	Password for Advisor
 	 */
 	public void addAdvisor(String email, String password) {
-		AdvisorModel advisor = new AdvisorModel();
+		Advisor advisor = new Advisor();
 		advisor.setEmail(email);
 		advisor.setPassword(password);
 		advisor.setStudent(false);;

@@ -20,9 +20,9 @@
 		<form action="${pageContext.servletContext.contextPath}/advisor_index" method="get" enctype="multipart/form-data">
 		<%@page import="java.util.ArrayList"%>      <%--Importing all the dependent classes--%>
 		<%@page import="java.util.Iterator"%>
+		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
 
-		<% ArrayList<String> studentList = (ArrayList) request.getAttribute("stuList"); %> <%--Assigning ArrayList object containing Employee data to the local object --%>
-		
+		<% ArrayList<Student> studentList = (ArrayList) request.getAttribute("stuList"); %> <%--Assigning ArrayList object containing Student data to the local object --%>
 		<!-- Header of the page -->
 		<div id="pageheader">
 			<h1 class="title">List of Submissions For Review</h1>
@@ -45,22 +45,21 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Submission</th>
-			      <th colspan="1"></th>
 			    </tr>
 			  </thead>
 			<tbody>
 				<%
 				// Iterating through subjectList
+
 				if(request.getAttribute("stuList") != null)  // Null check for the object
 				{
-					Iterator<String> iterator = studentList.iterator();  // Iterator interface
+					for(int i = 0; i < studentList.size(); i++){
+						Student name = studentList.get(i);
 
-					while(iterator.hasNext())  // iterate through all the data until the last record
-					{
-						String Name = iterator.next(); //assign individual employee record to the employee class object
 					%>
 					<tr>
-						<td><%=Name%></td>
+						<td><%=name.getFirst()%> <%=name.getLast()%></td>
+						<input name="user<%=i%>" type="hidden" value="${i}" >
 						<td><input class="btn btn-secondary" type="button" name="view" onclick="window.location='http://localhost:8081/pcomm/presentation'" value="View"></td>
 					</tr>
 					<%

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
+import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
 
 public class StudentInfoControllerTest {
 	private StudentInfoModel model;

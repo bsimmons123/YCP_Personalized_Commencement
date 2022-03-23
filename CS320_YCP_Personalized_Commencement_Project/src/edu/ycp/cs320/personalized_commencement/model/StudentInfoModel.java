@@ -1,4 +1,4 @@
-package edu.ycp.cs320_personalized_commencement.model;
+package edu.ycp.cs320.personalized_commencement.model;
 
 public class StudentInfoModel{
 	
