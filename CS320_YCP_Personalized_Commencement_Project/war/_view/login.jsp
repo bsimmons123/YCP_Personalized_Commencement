@@ -35,23 +35,26 @@
 			</c:if>
 			<!-- User Login Table-->
 			<table class="table">
-				<!-- User Email -->
-				<tr>
-					<td class="tdPrompt">Email:</td>
-					<td class="tdPrompt"><input type="text" name="email" size="20" value="${user.email}"></td>
-				</tr>
-				<!-- User Password -->
-				<tr>
-					<td class="tdPrompt">Password:</td>
-					<td class="tdPrompt"><input type="password" name="password" size="20" value="${user.password}"></td>
-				</tr>
-				<tr>
-					<td>
-						<div class="button"> 
-							<input class="btn btn-success" type="Submit" name="login" value="Login">
-						</div>
-					</td>
-				</tr>
+				<tbody>
+				    <tr>
+				    <!-- User Email -->
+				      <th scope="row"></th>
+				      <td class="tdPrompt">Email:</td>
+				      <td class="tdPrompt"><input type="text" name="email" size="20" value="${user.email}"></td>
+				    </tr>
+				    <tr>
+				    <!-- User Password -->
+				      <th scope="row"></th>
+				      <td class="tdPrompt">Password:</td>
+					  <td class="tdPrompt"><input type="password" name="password" size="20" value="${user.password}"></td>
+				    </tr>
+				    <tr>
+				    <!-- Login Button -->
+				      <th scope="row"></th>
+				     
+					  <td><input class="btn btn-success" type="Submit" name="login" value="Login"></td>
+				    </tr>
+		    	</tbody>
 			</table>
 			</div>
 			<input name="studentModel" type="hidden" value="${sinfo}" />

@@ -22,17 +22,21 @@
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 		<div id="instructions">
+		
+		<!-- Welcome message -->
 		<c:if test="${! empty student }">
 			<div id="Welcome">
 				<p> Welcome, ${student.email}!</p>
 			</div>
 		</c:if>
+		
 		<c:if test="${! empty message}">
 			<div class="alert alert-success" role="alert">
 				<div id="uploadSM">${message}:
 				</div>
 			</div>
 		</c:if>
+		
 		<c:if test="${! empty errorMessage}">
 			<div class="alert alert-warning" role="alert">
 				${errorMessage}
@@ -70,6 +74,7 @@
 			  <hr class="my-4">
 			</div>
 
+
 		<!--Button for adding new content-->
 		<div id="buttons">
 			<input class="btn btn-secondary" type="button"onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
@@ -80,6 +85,7 @@
 		</div>
 
 		<input name="studentModel" type="hidden" value="${student}" />
+		</div>
 		</form>
 	</body>
 </html>
