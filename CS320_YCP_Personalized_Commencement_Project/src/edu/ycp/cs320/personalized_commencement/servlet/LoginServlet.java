@@ -15,6 +15,7 @@ import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 import edu.ycp.cs320.personalized_commencement.model.User;
 import edu.ycp.cs330.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs330.personalized_commencement.persist.DerbyDatabase;
 import edu.ycp.cs330.personalized_commencement.persist.IDatabase;
 
 public class LoginServlet extends HttpServlet{
