@@ -11,10 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
-import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
 import edu.ycp.cs320.personalized_commencement.model.User;
 
 public class LoginServlet extends HttpServlet{
@@ -43,8 +41,6 @@ public class LoginServlet extends HttpServlet{
 		// Creates advisor and student controller
 		AdvisorController advisorController = new AdvisorController();
 		StudentController studentController = new StudentController();
-		StudentInfoController stuInfo = new StudentInfoController();
-		StudentInfoModel stuInfoModel = new StudentInfoModel();
 
 		// Add students to arraylist
 		studentController.addStudent("teststudent@ycp.edu", "test"); 			// index 0
@@ -57,18 +53,14 @@ public class LoginServlet extends HttpServlet{
 		advisorController.addAdvisor("testadvisor@ycp.edu", "test");			// index 0
 		advisorController.addAdvisor("jmoscola@ycp.edu", "test");				// index 1
 		// index 0
-		stuInfo.setStudentInfo("Brandon", "P", "Simmons", "Computer Science", "Philosophy - Math", "RockClimbing Club", "Faceshot.png", "Null");
+		studentController.setStudentInfo(studentController.getStudent(1),"Brandon", "P", "Simmons", "Computer Science", "Philosophy - Math", "RockClimbing Club", "Faceshot.png", "Null");
 		// index 1
-		stuInfo.setStudentInfo("Robert", "P", "Wood", "Computer Science", "Cocks", "Face Palming", "Faceshot.png", "Null");
+		studentController.setStudentInfo(studentController.getStudent(2),"Robert", "P", "Wood", "Computer Science", "Cocks", "Face Palming", "Faceshot.png", "Null");
 		// index 2
-		stuInfo.setStudentInfo("Ethan", "P", "Rosenberry", "Electrical Engineering", "Sleep", "N/A", "Faceshot.png", "Null");
+		studentController.setStudentInfo(studentController.getStudent(3),"Ethan", "P", "Rosenberry", "Electrical Engineering", "Sleep", "N/A", "Faceshot.png", "Null");
 		// index 3
-		stuInfo.setStudentInfo("Andrew", "P", "Mott", "Electrical Engineering", "Math", "Twack und felid", "Faceshot.png", "Null");
+		studentController.setStudentInfo(studentController.getStudent(4),"Andrew", "P", "Mott", "Electrical Engineering", "Math", "Twack und felid", "Faceshot.png", "Null");
 		
-		studentController.getStudent(1).setStudentInfo(stuInfo.getStudentInfo(0));
-		studentController.getStudent(2).setStudentInfo(stuInfo.getStudentInfo(1));
-		studentController.getStudent(3).setStudentInfo(stuInfo.getStudentInfo(2));
-		studentController.getStudent(4).setStudentInfo(stuInfo.getStudentInfo(3));
 		
 		// Creates user to interact with controller
 		User jspUser = new User();
@@ -125,7 +117,7 @@ public class LoginServlet extends HttpServlet{
 				HttpSession session = req.getSession(true);
 				System.out.println("User Session: " + session.getId());
 				System.out.println(studentIter.getEmail());
-				session.setAttribute("sinfo", studentIter.getStudentInfo());
+				session.setAttribute("sinfo", studentIter);
 				StudentIndexServlet studentIndex = new StudentIndexServlet();
 				studentIndex.doGet(req, resp);
 				return;

@@ -55,6 +55,28 @@ public class StudentController extends UserController{
 	public void setLogin(Student student) {
 		student.setLogin(true);
 	}
+	
+	/**
+	 * Set the student model from user input
+	 * @param firstName			Firstname from user 
+	 * @param middleInitial		MiddleInitial from user
+	 * @param lastName			Lastnae from user
+	 * @param major				user's major
+	 * @param minor				user's minor
+	 * @param extraCur			user's extra curr
+	 * @param img				image uploaded by user
+	 * @param audio				audio file uploaded from user
+	 */
+	public void setStudentInfo(Student student, String firstName, String middleInitial, String lastName, String major, String minor, String extraCur, String img, String audio) {
+		student.setFirstName(firstName);
+		student.setMiddleInitial(middleInitial);
+		student.setLastName(lastName);
+		student.setMajor(major);
+		student.setMinor(minor);
+		student.setExtraCur(extraCur);
+		student.setPicture(img);
+		student.setNameSound(audio);
+	}
 
 	/**
 	 * Checks if the user has entered the correct credentials

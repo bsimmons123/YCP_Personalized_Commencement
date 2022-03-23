@@ -19,9 +19,7 @@ import org.apache.commons.io.FileExistsException;
 import org.apache.commons.io.output.CountingOutputStream;
 
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
-import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.model.StudentInfoModel;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
@@ -33,9 +31,7 @@ public class UploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// create controllers for info and student
-		StudentInfoController infoController = new StudentInfoController();
 		StudentController stuController = new StudentController();
-		StudentInfoModel stuInfo = new StudentInfoModel();
 
 		if(ServletFileUpload.isMultipartContent(req)){
 
@@ -109,7 +105,7 @@ public class UploadServlet extends HttpServlet {
             	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
             }finally {
             	// sets student info
-            	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
+//            	infoController.setStudentInfo(firstName, middleInitial, lastName, major, minor, extraCur, img, audio);
             }
         }
 
