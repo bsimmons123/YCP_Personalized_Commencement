@@ -21,9 +21,9 @@ import org.apache.commons.io.output.CountingOutputStream;
 
 import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs330.personalized_commencement.persist.DatabaseProvider;
-import edu.ycp.cs330.personalized_commencement.persist.DerbyDatabase;
-import edu.ycp.cs330.personalized_commencement.persist.IDatabase;
+import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
+import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig

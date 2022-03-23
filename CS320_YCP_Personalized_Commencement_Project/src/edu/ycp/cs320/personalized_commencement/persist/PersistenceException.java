@@ -1,4 +1,4 @@
-package edu.ycp.cs330.personalized_commencement.persist;
+package edu.ycp.cs320.personalized_commencement.persist;
 
 public class PersistenceException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
