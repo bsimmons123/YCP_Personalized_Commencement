@@ -122,6 +122,15 @@ public class LoginServlet extends HttpServlet{
 			StudentIndexServlet studentIndex = new StudentIndexServlet();
 			studentIndex.doGet(req, resp);
 			return;
+		}else if(checkAdvisorLogin(jspUser.getEmail(), jspUser.getPassword())) { // check advisor login
+			System.out.println("\t\tAdvisor Logged in");
+			HttpSession session = req.getSession(true); // create a new http session
+			System.out.println("\t\tUser Session: " + session.getId()); // print out session id
+			advisor = getAdvisor(jspUser.getEmail(), jspUser.getPassword()); // get advisor's email to send to session
+			session.setAttribute("advisor", advisor); // set session
+			AdvisorIndexServlet advisorIndex = new AdvisorIndexServlet();
+			advisorIndex.doGet(req, resp); // creates a guarenteed push to get in advisor index
+			return; // break from code
 		}
 			// redirects the user to the login page and shows invalid info error message
 			req.setAttribute("errorMessage",  "Invalid Username/Password");
@@ -149,6 +158,23 @@ public class LoginServlet extends HttpServlet{
 			}
 		return null;
 	}
+	
+	/**
+	 * boolean if advisor exists in db
+	 * @param email		email to check records with
+	 * @return			true if user exists
+	 */
+	public boolean checkAdvisorLogin(String email, String password) {
+		Advisor advisor = new Advisor();
+		
+		advisor = getAdvisor(email, password);
+		
+		// check if anything was returned and output the list
+		if (advisor != null) {
+				return true;
+			}
+		return false;
+		}
 	
 	/**
 	 * boolean if student exists in db
