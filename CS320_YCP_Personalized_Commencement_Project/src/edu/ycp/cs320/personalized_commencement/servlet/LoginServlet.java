@@ -140,4 +140,21 @@ public class LoginServlet extends HttpServlet{
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		
 	}
+	
+	/**
+	 * boolean if student exists in db
+	 * @param email		email to check records with
+	 * @return			true if user exists
+	 */
+	public boolean checkStudentLogin(String email, String password) {
+		Student student = new Student();
+		
+		student = getStudent(email, password);
+		
+		// check if anything was returned and output the list
+		if (student != null) {
+				return true;
+			}
+		return false;
+		}
 }
