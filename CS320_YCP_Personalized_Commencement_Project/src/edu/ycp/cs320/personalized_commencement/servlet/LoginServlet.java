@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet{
 		// Checks if student or advisor has entered the correct information
 		// Used later
 		Student student = null;
-		boolean advisor = false;
+		Advisor advisor = null;
 
 //		// Creates advisor and student controller
 //		AdvisorController advisorController = new AdvisorController();
@@ -137,6 +137,26 @@ public class LoginServlet extends HttpServlet{
 			System.out.println("Error message is: " + "Invalid Username/Password");
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		
+	}
+	
+	/**
+	 * get advisor account
+	 * @param email		advisors email
+	 * @return			advisor account
+	 */
+	public Advisor getAdvisor(String email, String password) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		Advisor advisor = db.getAdvisor(email, password);
+		
+		// check if anything was returned and output the list
+		if (advisor != null) {
+				return advisor;
+			}
+		return null;
 	}
 	
 	/**

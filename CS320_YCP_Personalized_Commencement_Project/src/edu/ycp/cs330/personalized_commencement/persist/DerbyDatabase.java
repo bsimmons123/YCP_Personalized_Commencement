@@ -282,7 +282,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 	
 	@Override
-	public Advisor getAdvisor(String email) {
+	public Advisor getAdvisor(String email, String password) {
 		return executeTransaction(new Transaction<Advisor>() {
 			@Override
 			public Advisor execute(Connection conn) throws SQLException {
@@ -293,10 +293,11 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
-							"select * from advisors where email = ?"
+							"select * from advisors where email = ? and password = ?"
 					);
 					
 					stmt.setString(1, email);
+					stmt.setString(2, password);
 					
 					resultSet = stmt.executeQuery();
 					

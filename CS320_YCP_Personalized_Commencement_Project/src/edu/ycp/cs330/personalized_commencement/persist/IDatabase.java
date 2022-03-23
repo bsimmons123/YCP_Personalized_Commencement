@@ -10,7 +10,7 @@ import edu.ycp.cs320.personalized_commencement.model.Student;
 public interface IDatabase {
 	public ArrayList<Student> findStudentsByAdvisor(String advisor);
 
-	public Advisor getAdvisor(String email);
+	public Advisor getAdvisor(String email, String password);
 
 	public Student getStudent(String email, String password);
 }
