@@ -3,6 +3,8 @@ package edu.ycp.cs320.personalized_commencement.model;
 public class User {
 	private String email, password;
 	
+	private int studentId, advisorId;
+	
 	private boolean login, student, advisor; // student to check if student is an advisor or not or logged in or not
 	
 	private String firstName;
@@ -16,25 +18,20 @@ public class User {
 	
 	
 	// setters
-	/**
-	 * Sets the user's password.
-	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	/**
-	 * Sets the user's email.
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	/**
-	 * Check to see if user is a student
-	 */
 	public void setStudent(boolean student) {
 		this.student = student;
+	}
+	public void setAdvisorId(int id) {
+		this.advisorId = id;
+	}
+	public void setStudentId(int id) {
+		this.studentId = id;
 	}
 	
 	/**
@@ -53,32 +50,23 @@ public class User {
 	
 	
 	// getters
-	/**
-	 * Returns the user's password.
-	 */
 	public String getPassword() {
 		return password;
 	}
-	
-	/**
-	 * Returns the user's email.
-	 */
 	public String getEmail() {
 		return email;
 	}
-	
-	/**
-	 * Returns if user is student
-	 */
 	public boolean getStudent() {
 		return student;
 	}
-	
-	/**
-	 * Returns true if the user is an advisor
-	 */
 	public boolean getAdvisor() {
 		return advisor;
+	}
+	public int getAdvisorId() {
+		return advisorId;
+	}
+	public int getStudentId() {
+		return studentId;
 	}
 	
 	/**
@@ -87,7 +75,8 @@ public class User {
 	public boolean getLogin() {
 		return login;
 	}
-	//setters
+	
+	//setters for student info
 	public void setFirstName(String firstName){
 		this.firstName = firstName;
 	}
