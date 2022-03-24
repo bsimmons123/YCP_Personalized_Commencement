@@ -71,9 +71,9 @@
 						Student student = studentList.get(i);
 						if(student.getApproval() == 1){
 						%>
-						<div class="card" style="padding:20px;background-color:#cedddd;float:left;width: 18rem;">
+						<div class="card" style="padding:20px;background-color:rgb(240,240,240);float:left;width: 18rem;">
 						  <div class="card-body">
-						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%> <img src="${pageContext.request.contextPath}/browser-images/Check.png" style="width: 45px; height: 50px;"></h5>
 						    </div>
 						  <ul class="list-group list-group-flush">
 						    <p class="card-text">Major: <%=student.getMajor() %></p>
@@ -85,13 +85,13 @@
 					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-	
+						 	<img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;">
 						  </div>
 						</div>
 						<%
-						}else{
+						} else {
 						%>
-						<div class="card" style="padding:20px;background-color:#A92F2F;float:left;width: 18rem;">
+						<div class="card" style="padding:20px; background-color:rgb(240,240,240); float:left; width: 18rem;">
 						  <div class="card-body">
 						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
 						    </div>
@@ -105,7 +105,7 @@
 					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-
+							<img src="${pageContext.request.contextPath}/browser-images/Denied.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;">
 						  </div>
 						</div>
 						<%
@@ -113,11 +113,11 @@
 					}
 				}
 			  %>
+			  <!-- Logout button -->
+			<div id="logoutDiv" style="margin-left: 80%; width: auto;">
+				<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
 			</div>
-		<!-- Logout button -->
-		<div id="logoutDiv">
-			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
-		</div>
+			</div>
 	</form>
 	</body>
 </html>
