@@ -113,11 +113,11 @@
 					}
 				}
 			  %>
+			  <!-- Logout button -->
+			<div id="logoutDiv" style="margin-left: 80%; width: auto;">
+				<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
 			</div>
-		<!-- Logout button -->
-		<div id="logoutDiv">
-			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
-		</div>
+			</div>
 	</form>
 	</body>
 </html>
