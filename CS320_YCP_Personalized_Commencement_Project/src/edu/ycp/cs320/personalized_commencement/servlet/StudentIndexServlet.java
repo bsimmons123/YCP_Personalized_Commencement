@@ -21,7 +21,7 @@ public class StudentIndexServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession(false);
 		Student stuInfo = new Student();
-		stuInfo = (Student) session.getAttribute("sinfo");
+		stuInfo = (Student) session.getAttribute("student");
 		req.setAttribute("sinfo", stuInfo);
 
 		// call JSP to generate empty form

@@ -13,6 +13,8 @@
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<%@ include file="header.jsp" %>
+		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
+		<% Student student = (Student) session.getAttribute("student"); %>
 	</head>
 
 	<!-- styling and layout of the body  -->
@@ -30,6 +32,21 @@
 				Welcome, ${student.email}!
 			</div>
 		</c:if>
+			<% 
+			if(student.getApproval() == 1) {
+			%>
+			<div class="alert alert-primary" role="alert">
+				You are approved for graduation!
+			</div>
+			<%
+			}else{
+			%>
+			<div class="alert alert-danger" role="alert">
+				You have not been approved for graduation
+			</div>
+			<%
+			} 
+			%>
 		
 		<c:if test="${empty student }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>

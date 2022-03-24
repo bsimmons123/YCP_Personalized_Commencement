@@ -69,7 +69,7 @@
 				{
 					for(int i = 0; i < studentList.size(); i++){
 						Student student = studentList.get(i);
-						if(student.getApproval()){
+						if(student.getApproval() == 1){
 						%>
 						<div class="card" style="padding:20px;background-color:#cedddd;float:left;width: 18rem;">
 						  <div class="card-body">
