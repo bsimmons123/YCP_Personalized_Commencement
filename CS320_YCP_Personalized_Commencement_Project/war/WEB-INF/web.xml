@@ -67,7 +67,6 @@
   		<servlet-name>PresentationServlet_Advisor_View</servlet-name>
   		<url-pattern>/presentation</url-pattern>
  	</servlet-mapping>
- 	
 
   
   <!--  AJAX servlet mappings. -->
