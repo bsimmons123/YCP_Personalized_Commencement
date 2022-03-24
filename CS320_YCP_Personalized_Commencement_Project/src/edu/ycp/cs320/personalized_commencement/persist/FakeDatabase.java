@@ -2,11 +2,9 @@ package edu.ycp.cs320.personalized_commencement.persist;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
-import edu.ycp.cs320.personalized_commencement.model.Pair;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 
 public class FakeDatabase implements IDatabase {

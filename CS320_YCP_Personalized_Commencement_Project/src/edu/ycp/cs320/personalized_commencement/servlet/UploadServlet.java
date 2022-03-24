@@ -16,10 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileExistsException;
-import org.apache.commons.io.output.CountingOutputStream;
 
-import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
 import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
@@ -35,7 +32,6 @@ public class UploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// create controllers for info and student
-		StudentController stuController = new StudentController();
 
 		if(ServletFileUpload.isMultipartContent(req)){
 

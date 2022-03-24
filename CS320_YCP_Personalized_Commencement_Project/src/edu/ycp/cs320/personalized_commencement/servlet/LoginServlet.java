@@ -1,7 +1,6 @@
 package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
-import edu.ycp.cs320.personalized_commencement.controller.StudentController;
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 import edu.ycp.cs320.personalized_commencement.model.User;
