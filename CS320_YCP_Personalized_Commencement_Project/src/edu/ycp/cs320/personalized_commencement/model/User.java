@@ -3,9 +3,12 @@ package edu.ycp.cs320.personalized_commencement.model;
 public class User {
 	private String email, password;
 	
-	private int studentId, advisorId;
+	// approval = 1 if approved
+	private int studentId, advisorId, approval;
 	
-	private boolean login, student, advisor, approval; // student to check if student is an advisor or not or logged in or not
+	private boolean login, student, advisor; // student to check if student is an advisor or not or logged in or not
+	
+	
 	
 	private String firstName;
 	private String middleInitial;
@@ -101,7 +104,7 @@ public class User {
 	public void setNameSound(String nameSound) {
 		this.nameSound = nameSound;
 	}
-	public void setApproval(boolean approval) {
+	public void setApproval(int approval) {
 		this.approval = approval;
 	}
 	
@@ -130,7 +133,7 @@ public class User {
 	public String getNameSound() {
 		return nameSound;
 	}
-	public boolean getApproval() {
+	public int getApproval() {
 		return approval;
 	}
 }

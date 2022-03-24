@@ -95,6 +95,7 @@ public class DerbyDatabase implements IDatabase {
 		student.setExtraCur(resultSet.getString(index++));
 		student.setPicture(resultSet.getString(index++));;
 		student.setNameSound(resultSet.getString(index++));;
+		student.setApproval(resultSet.getInt(index++));
 	}
 	
 	private void loadAdvisor(Advisor advisor, ResultSet resultSet, int index) throws SQLException {
@@ -122,7 +123,8 @@ public class DerbyDatabase implements IDatabase {
 									"minor varchar(40)," +
 									"extcur varchar(40)," +
 									"img varchar(40)," +
-									"audio varchar(40))"
+									"audio varchar(40),"
+									+ "approval int)"
 					);	
 					stmt1.executeUpdate();
 					
@@ -162,8 +164,8 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
 					insertStudent = conn.prepareStatement("INSERT INTO students (advisor_id, email, password, " + 
-							"firstname, lastname, major, minor, extcur, img, audio)" + 
-							"values(?,?,?,?,?,?,?,?,?,?)");
+							"firstname, lastname, major, minor, extcur, img, audio, approval)" + 
+							"values(?,?,?,?,?,?,?,?,?,?,?)");
 					for (Student student : studentList) {
 						insertStudent.setInt(1, student.getAdvisorId());
 						insertStudent.setString(2, student.getEmail());
@@ -175,6 +177,7 @@ public class DerbyDatabase implements IDatabase {
 						insertStudent.setString(8, student.getExtraCur());
 						insertStudent.setString(9, student.getPicture());
 						insertStudent.setString(10, student.getNameSound());
+						insertStudent.setInt(11, student.getApproval());
 						insertStudent.addBatch();
 					}
 					insertStudent.executeBatch();

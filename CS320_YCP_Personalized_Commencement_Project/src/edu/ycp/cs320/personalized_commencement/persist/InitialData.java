@@ -34,6 +34,7 @@ public class InitialData {
 				student.setExtraCur(i.next());
 				student.setPicture(i.next());
 				student.setNameSound(i.next());
+				student.setApproval(Integer.parseInt(i.next()));
 				studentList.add(student);
 			}
 			return studentList;
