@@ -64,8 +64,7 @@
 
 			  <p class="lead">
 			    <strong>Image/Video to display (optional):</strong>
-			    <img src="${pageContext.servletContext.contextPath}/img/${sinfo.picture}" width="500" 
-     height="500">
+			    <img src="${pageContext.servletContext.contextPath}/img/${sinfo.picture}" width="500" height="500">
 			  </p>
 
 			  <p class="lead">

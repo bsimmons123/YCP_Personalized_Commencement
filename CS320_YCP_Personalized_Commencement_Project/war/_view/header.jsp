@@ -1,14 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-full" style="background-color: green">
-  <a class="navbar-brand" href="#">YCP Personal Commencement</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-  <ul class="nav justify-content-end nav-tabs">
-	<!-- Logout button -->
-    <li class="nav-item">
-      <a class="nav-link active" href="http://localhost:8081/pcomm/login">logout <span class="sr-only">(current)</span></a>
-    </li>
-  </ul>
+<!-- Overall navbar styling -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; margin-bottom:30px;">
+  <!-- Project Name as a link that takes the user to the login page -->
+  <a class="navbar-brand mr-auto" style="pointer-events: none;font-size: 24px;">YCP Personal Commencement</a>
+  <div id="navbarNavAltMarkup ml-auto">
+    <div class="navbar-nav">
+      <a class="nav-link active" href="http://localhost:8081/pcomm/login" 
+      style="text-align: center;width: 100px; border-radius: 5px; color: green; background-color: white; font-size: 20px;">
+      Logout<span class="sr-only">(current)</span>
+      </a>
+    </div>
+  </div>
 </nav>
-<br>
+

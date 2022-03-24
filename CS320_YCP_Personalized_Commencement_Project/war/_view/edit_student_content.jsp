@@ -35,9 +35,7 @@
 		</c:if>
 
 		<c:if test="${! empty errorMessage}">
-      <div class="alert alert-success" role="alert">
-        ${errorMessage}
-      </div>
+		    <div class="alert alert-success" role="alert">${errorMessage}</div>
 			<div class="error">${errorMessage}</div>
 		</c:if>
 			<p>
