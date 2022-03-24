@@ -30,22 +30,6 @@
 	  	<servlet-name>UploadServlet</servlet-name>
 	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.UploadServlet</servlet-class>
   	</servlet>
-  
-  <!-- AJAX servlets. -->
- 	<servlet>
-		<servlet-name>AdvisorIndexAjaxServlet</servlet-name>
-		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.AdvisorIndexAjaxServlet</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>LoginAjaxServlet</servlet-name>
-		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.LoginAjaxServlet</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>StudentIndexAjaxServlet</servlet-name>
-		<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.ajax.StudentIndexAjaxServlet</servlet-class>
-	</servlet>
 
   <!-- Servlet mappings -->
 	<servlet-mapping>
@@ -69,7 +53,7 @@
  	</servlet-mapping>
 
   
-  <!--  AJAX servlet mappings. -->
+  <!--  Welcome files. -->
   	<welcome-file-list>
    		<welcome-file>studentindex.html</welcome-file>
  	</welcome-file-list>
