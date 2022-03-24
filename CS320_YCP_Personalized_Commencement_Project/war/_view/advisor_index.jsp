@@ -91,7 +91,7 @@
 						<%
 						} else {
 						%>
-						<div class="card" style="padding:20px;background-color:rgb(240,240,240);float:left;width: 18rem;">
+						<div class="card" style="padding:20px; background-color:rgb(240,240,240); float:left; width: 18rem;">
 						  <div class="card-body">
 						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
 						    </div>
