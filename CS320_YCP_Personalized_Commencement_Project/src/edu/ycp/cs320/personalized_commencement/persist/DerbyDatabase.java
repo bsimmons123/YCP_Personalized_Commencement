@@ -313,7 +313,7 @@ public class DerbyDatabase implements IDatabase {
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("<" + email + "> was not found in the authors table");
+						System.out.println("\t<" + email + "> was not found in the Advisors table");
 					}
 					
 					return advisor;
@@ -360,7 +360,7 @@ public class DerbyDatabase implements IDatabase {
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("<" + email + "> was not found in the authors table");
+						System.out.println("\t<" + email + "> was not found in the Students table");
 					}
 					
 					return student;

@@ -28,6 +28,12 @@
 				<p> Welcome, ${student.email}! I hope you enjoy your stay XD</p>
 			</div>
 		</c:if>
+		
+		<!-- Redirect student if not logged in -->
+		<c:if test="${empty student }">
+			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
+		</c:if>
+		
 		<c:if test="${! empty message}">
 			<div id="uploadSM">${message}:
 				<div id="uploadS">FileName: ${img}<br>FileSize: ${imgSize}</div>

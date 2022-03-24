@@ -16,6 +16,12 @@
 
 	<!-- Body layout and formatting -->
 	<body>
+	
+		<!-- Redirect advisor if not logged in -->
+		<c:if test="${empty advisor }">
+			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
+		</c:if>
+		
 		<form action="${pageContext.servletContext.contextPath}/presentation" method="get">
 			<!-- Header of the page -->
 			<div id="pageheader">

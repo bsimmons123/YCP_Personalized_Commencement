@@ -76,7 +76,7 @@
 		</div>
 		<!-- Logout button -->
 		<div id="logoutDiv">
-			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
+			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
 		</div>
 	</form>
 	</body>
