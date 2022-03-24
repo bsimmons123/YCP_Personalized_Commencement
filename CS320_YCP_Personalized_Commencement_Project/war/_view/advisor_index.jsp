@@ -73,7 +73,7 @@
 						%>
 						<div class="card" style="padding:20px;background-color:rgb(240,240,240);float:left;width: 18rem;">
 						  <div class="card-body">
-						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%> <img src="${pageContext.request.contextPath}/browser-images/Check.png" style="width: 45px; height: 50px;"></h5>
+						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
 						    </div>
 						  <ul class="list-group list-group-flush">
 						    <p class="card-text">Major: <%=student.getMajor() %></p>
