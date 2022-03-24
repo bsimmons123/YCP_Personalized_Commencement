@@ -32,6 +32,10 @@
 				Welcome, ${student.email}!
 			</div>
 		</c:if>
+		
+		<c:if test="${empty student }">
+			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
+		</c:if>
 			<% 
 			if(student.getApproval() == 1) {
 			%>
@@ -48,9 +52,7 @@
 			} 
 			%>
 		
-		<c:if test="${empty student }">
-			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
-		</c:if>
+		
 		
 		<c:if test="${! empty message}">
 			<div class="alert alert-success" role="alert">
