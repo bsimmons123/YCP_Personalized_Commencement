@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Submission - ${student.last}, ${student.first}</title>
-		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Logo.png">
+		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Tab Logo.png">
 		<!-- CSS styling that takes the path of the site and imports the respective style sheet -->
 		<link href="${pageContext.request.contextPath}/css/PresentationSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->

@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Student/Advisor Login</title>
-		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Logo.png">
+		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Tab Logo.png">
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/LoginSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
@@ -16,7 +16,7 @@
 	
 	<!-- Navigation bar for use only on the login page since there is no need to logout -->
 	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; margin-bottom:20px;">
-	  <a class="navbar-brand m-auto p-auto" style="pointer-events: none; font-size: 24px;">YCP Personal Commencement Portal</a>
+	  <a class="navbar-brand m-auto p-auto" style="pointer-events: none; font-size: 24px;"><img src="${pageContext.request.contextPath}/browser-images/YCP Logo.png" style="width: 45px; height: 50px;"> Personal Commencement Portal</a>
 	</nav>
 	
 	<!-- Body styling and layout -->
