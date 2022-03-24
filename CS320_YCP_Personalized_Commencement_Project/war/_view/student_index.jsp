@@ -31,6 +31,10 @@
 			</div>
 		</c:if>
 		
+		<c:if test="${empty student }">
+			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
+		</c:if>
+		
 		<c:if test="${! empty message}">
 			<div class="alert alert-success" role="alert">
 				${message}
