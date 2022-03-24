@@ -26,7 +26,7 @@ import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "war/img";
+	private final String UPLOAD_DIRECTORY = "war/files";
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -55,26 +55,10 @@ public class UploadServlet extends HttpServlet {
         	Student student = new Student();
         	
         	student = (Student) session.getAttribute("sinfo");
-//        	
-//        	String first = req.getParameter("firstname");
-//        	
-//        	System.out.println(first);
-//        	
-//        	System.out.println(student.getEmail() + "First Name: " + student.getFirst());
-        	
         	// try-catch for file upload
         	try {
         		// retrieves all form fields
         		List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
-//        		System.out.println(multiparts.size());
-//        		System.out.println(multiparts.get(0));
-//        		System.out.println(multiparts.get(1));
-//        		System.out.println(multiparts.get(2));
-//        		System.out.println(multiparts.get(3));
-//        		System.out.println(multiparts.get(4));
-//        		System.out.println(multiparts.get(5));
-//        		System.out.println(multiparts.get(6));
-        		
         		// iterates through all form fields
         	for(FileItem item : multiparts){
         		// checks if the item is a field param and not a file
@@ -89,7 +73,7 @@ public class UploadServlet extends HttpServlet {
                     System.out.println(fsize);
                     if(!fsize.equals("0")) {
                     // writes file to project folder
-                    item.write( new File(UPLOAD_DIRECTORY + File.separator + fname));
+                    item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + File.separator + fname));
 
                     // successfull upload message
                     System.out.println("\tFile: " + fname + " Uploaded Successfully");
@@ -118,12 +102,35 @@ public class UploadServlet extends HttpServlet {
             	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
             }finally {
             	
-            	System.out.println(img + " | " + audio);
-            	if(updateStudent(student.getEmail(), student.getAdvisorId(), 
-            			student.getEmail(), student.getPassword(), firstName, 
-            			lastName, major, minor, extraCur, img, audio)) {
-            		student = getStudent(student.getEmail(), student.getPassword());
-            		session.setAttribute("sinfo", student);
+            	System.out.println("\t" + img + " | " + audio);
+            	if(img.isEmpty() && audio.isEmpty()) {
+            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
+	            			student.getEmail(), student.getPassword(), firstName, 
+	            			lastName, major, minor, extraCur, student.getPicture(), student.getNameSound())) {
+	            		student = getStudent(student.getEmail(), student.getPassword());
+	            		session.setAttribute("sinfo", student);
+	            	}
+            	}else if(audio.isEmpty()) {
+            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
+	            			student.getEmail(), student.getPassword(), firstName, 
+	            			lastName, major, minor, extraCur, img, student.getNameSound())) {
+	            		student = getStudent(student.getEmail(), student.getPassword());
+	            		session.setAttribute("sinfo", student);
+            		}
+            	}else if (img.isEmpty()){
+            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
+	            			student.getEmail(), student.getPassword(), firstName, 
+	            			lastName, major, minor, extraCur, student.getPicture(), student.getNameSound())) {
+	            		student = getStudent(student.getEmail(), student.getPassword());
+	            		session.setAttribute("sinfo", student);
+            		}
+            	}else {
+            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
+	            			student.getEmail(), student.getPassword(), firstName, 
+	            			lastName, major, minor, extraCur, img, audio)) {
+	            		student = getStudent(student.getEmail(), student.getPassword());
+	            		session.setAttribute("sinfo", student);
+            		}
             	}
             }
         }

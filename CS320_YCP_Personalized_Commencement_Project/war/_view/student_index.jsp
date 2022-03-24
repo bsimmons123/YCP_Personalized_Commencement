@@ -65,12 +65,12 @@
 
 			  <p class="lead">
 			    <strong>Image/Video to display (optional):</strong>
-			    <img src="${pageContext.servletContext.contextPath}/img/${sinfo.picture}" width="500" height="500">
+			    <img src="${pageContext.servletContext.contextPath}/files/${sinfo.first}/${sinfo.picture}" width="500" height="500">
 			  </p>
 
 			  <p class="lead">
 			    <strong>Custom Audio for Commencement (optional):</strong>
-			    <audio controls src="${pageContext.servletContext.contextPath}/Audio/${sinfo.nameSound}"></audio>
+			    <audio controls src="${pageContext.servletContext.contextPath}/files/${sinfo.first}/${sinfo.nameSound}"></audio>
 			  </p>
 			  <hr class="my-4">
 			</div>
