@@ -5,7 +5,7 @@ public class User {
 	
 	private int studentId, advisorId;
 	
-	private boolean login, student, advisor; // student to check if student is an advisor or not or logged in or not
+	private boolean login, student, advisor, approval; // student to check if student is an advisor or not or logged in or not
 	
 	private String firstName;
 	private String middleInitial;
@@ -101,6 +101,9 @@ public class User {
 	public void setNameSound(String nameSound) {
 		this.nameSound = nameSound;
 	}
+	public void setApproval(boolean approval) {
+		this.approval = approval;
+	}
 	
 	//getters
 	public String getFirst(){
@@ -126,5 +129,8 @@ public class User {
 	}
 	public String getNameSound() {
 		return nameSound;
+	}
+	public boolean getApproval() {
+		return approval;
 	}
 }
