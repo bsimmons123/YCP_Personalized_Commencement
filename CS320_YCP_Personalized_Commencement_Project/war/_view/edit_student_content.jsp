@@ -7,6 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Student Index View</title>
+		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Logo.png">
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/StudentInSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->

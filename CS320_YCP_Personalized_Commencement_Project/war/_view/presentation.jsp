@@ -5,12 +5,13 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<title>Submission - ${student.last}, ${student.first}</title>
+		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Logo.png">
 		<!-- CSS styling that takes the path of the site and imports the respective style sheet -->
 		<link href="${pageContext.request.contextPath}/css/PresentationSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<%@ include file="header.jsp" %>
-		<title>Submission - ${student.last}, ${student.first}</title>
 	</head>
 
 	<!-- Body layout and formatting -->
