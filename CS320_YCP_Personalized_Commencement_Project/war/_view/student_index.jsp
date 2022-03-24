@@ -26,15 +26,14 @@
 		
 		<!-- Welcome message -->
 		<c:if test="${! empty student }">
-			<div id="Welcome">
-				<p> Welcome, ${student.email}!</p>
+			<div class="alert alert-success" role="alert">
+				Welcome, ${student.email}!
 			</div>
 		</c:if>
 		
 		<c:if test="${! empty message}">
 			<div class="alert alert-success" role="alert">
-				<div id="uploadSM">${message}:
-				</div>
+				${message}
 			</div>
 		</c:if>
 		
@@ -46,31 +45,31 @@
 
 			<div class="jumbotron">
 			  <h1 class="display-4">
-			    ${sinfo.first} ${sinfo.last}
+			    ${student.first} ${student.last}
 			  </h1>
 			  <p class="lead">
 			    <strong>Major(s):</strong>
-			    ${sinfo.major}
+			    ${student.major}
 			  </p>
 
 			  <p class="lead">
 			    <strong>Minor(s):</strong>
-			    ${sinfo.minor}
+			    ${student.minor}
 			  </p>
 
 			  <p class="lead">
 			    <strong>Sports, Clubs, or Organizations (optional):</strong>
-			    ${sinfo.extraCur}
+			    ${student.extraCur}
 			  </p>
 
 			  <p class="lead">
 			    <strong>Image/Video to display (optional):</strong>
-			    <img src="${pageContext.servletContext.contextPath}/files/${sinfo.first}/${sinfo.picture}" width="500" height="500">
+			    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
 			  </p>
 
 			  <p class="lead">
 			    <strong>Custom Audio for Commencement (optional):</strong>
-			    <audio controls src="${pageContext.servletContext.contextPath}/files/${sinfo.first}/${sinfo.nameSound}"></audio>
+			    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 			  </p>
 			  <hr class="my-4">
 			</div>

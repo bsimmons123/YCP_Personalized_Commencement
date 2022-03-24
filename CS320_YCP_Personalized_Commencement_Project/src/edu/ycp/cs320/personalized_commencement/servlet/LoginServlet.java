@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet{
 			HttpSession session = req.getSession(true);
 			System.out.println("\t\tUser Session: " + session.getId());
 			student = getStudent(jspUser.getEmail(), jspUser.getPassword());
-			session.setAttribute("sinfo", student);
+			session.setAttribute("student", student);
 			StudentIndexServlet studentIndex = new StudentIndexServlet();
 			studentIndex.doGet(req, resp);
 			return;

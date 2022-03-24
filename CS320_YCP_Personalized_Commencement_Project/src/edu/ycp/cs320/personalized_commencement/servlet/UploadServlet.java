@@ -54,7 +54,7 @@ public class UploadServlet extends HttpServlet {
         	
         	Student student = new Student();
         	
-        	student = (Student) session.getAttribute("sinfo");
+        	student = (Student) session.getAttribute("student");
         	// try-catch for file upload
         	try {
         		// retrieves all form fields
@@ -70,7 +70,7 @@ public class UploadServlet extends HttpServlet {
                     fname = new File(item.getName()).getName();
                     fsize = new Long(item.getSize()).toString();
                     ftype = item.getContentType();
-                    System.out.println(fsize);
+                    System.out.println("\tFile Size (bits): " + fsize);
                     if(!fsize.equals("0")) {
                     // writes file to project folder
                     item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + File.separator + fname));
@@ -99,10 +99,11 @@ public class UploadServlet extends HttpServlet {
             } catch (Exception ex) {
             	// files not uploaded
             	System.out.println("\tFile Upload Failed due to " + ex);
-            	req.setAttribute("errorMessage", "File Upload Failed due to " + ex);
+            	req.setAttribute("errorMessage", "File already uploaded!");
             }finally {
             	
-            	System.out.println("\t" + img + " | " + audio);
+            	System.out.println("\tImage: " + img + " | Audio: " + audio);
+            	// Chekc if user is uploading a file or not
             	if(img.isEmpty() && audio.isEmpty()) {
             		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
 	            			student.getEmail(), student.getPassword(), firstName, 
@@ -134,10 +135,8 @@ public class UploadServlet extends HttpServlet {
             	}
             }
         }
-
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
-
     }
 	
 	/**
