@@ -71,27 +71,7 @@
 						Student student = studentList.get(i);
 						if(student.getApproval() == 1){
 						%>
-						<div class="card" style="padding:20px;background-color:rgb(240,240,240);float:left;width: 18rem;">
-						  <div class="card-body">
-						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%> <img src="${pageContext.request.contextPath}/browser-images/Check.png" style="width: 45px; height: 50px;"></h5>
-						    </div>
-						  <ul class="list-group list-group-flush">
-						    <p class="card-text">Major: <%=student.getMajor() %></p>
-						    <p class="card-text">Minor: <%=student.getMinor() %></p>
-						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
-						  </ul>
-						  <div class="card-body">
-					  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
-					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
-				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
-							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-						 	<img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;">
-						  </div>
-						</div>
-						<%
-						} else {
-						%>
-						<div class="card" style="padding:20px; background-color:rgb(240,240,240); float:left; width: 18rem;">
+						<div class="card" style="padding:20px;background-color:#69a95d;float:left;width: 18rem; min-height: 27rem;">
 						  <div class="card-body">
 						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
 						    </div>
@@ -105,7 +85,26 @@
 					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-							<img src="${pageContext.request.contextPath}/browser-images/Denied.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;">
+						 	<!-- <img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;"> -->
+						  </div>
+						</div>
+						<%
+						} else {
+						%>
+						<div class="card" style="padding:20px; background-color:#a95d5d; float:left; width: 18rem; min-height: 27rem;">
+						  <div class="card-body">
+						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    </div>
+						  <ul class="list-group list-group-flush">
+						    <p class="card-text">Major: <%=student.getMajor() %></p>
+						    <p class="card-text">Minor: <%=student.getMinor() %></p>
+						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
+						  </ul>
+						  <div class="card-body">
+					  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
+					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
+				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
+							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
 						  </div>
 						</div>
 						<%
