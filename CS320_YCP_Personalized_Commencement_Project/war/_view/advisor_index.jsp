@@ -85,7 +85,7 @@
 					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-						 	<!-- <img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;"> -->
+						 	<!-- <img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;">  -->
 						  </div>
 						</div>
 						<%
@@ -105,6 +105,7 @@
 					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
+						 	<!-- <img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;"> -->
 						  </div>
 						</div>
 						<%
