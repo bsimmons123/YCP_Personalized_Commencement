@@ -85,18 +85,17 @@
 				  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 			  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 						<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-
 					  </div>
 					</div>
 					<%
 					}
 				}
 			  %>
+			  <!-- Logout button -->
+			  <div id="logoutDiv" style="margin-left: 80%; width: auto;">
+			    <input class="btn btn-danger" type="button" style="padding-top: 5%;" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
+			  </div>
 			</div>
-		<!-- Logout button -->
-		<div id="logoutDiv">
-			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
-		</div>
-	</form>
+		</form>
 	</body>
 </html>
