@@ -69,26 +69,47 @@
 				{
 					for(int i = 0; i < studentList.size(); i++){
 						Student student = studentList.get(i);
+						if(student.getApproval()){
+						%>
+						<div class="card" style="padding:20px;background-color:#cedddd;float:left;width: 18rem;">
+						  <div class="card-body">
+						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    </div>
+						  <ul class="list-group list-group-flush">
+						    <p class="card-text">Major: <%=student.getMajor() %></p>
+						    <p class="card-text">Minor: <%=student.getMinor() %></p>
+						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
+						  </ul>
+						  <div class="card-body">
+					  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
+					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
+				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
+							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
+	
+						  </div>
+						</div>
+						<%
+						}else{
+						%>
+						<div class="card" style="padding:20px;background-color:#A92F2F;float:left;width: 18rem;">
+						  <div class="card-body">
+						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    </div>
+						  <ul class="list-group list-group-flush">
+						    <p class="card-text">Major: <%=student.getMajor() %></p>
+						    <p class="card-text">Minor: <%=student.getMinor() %></p>
+						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
+						  </ul>
+						  <div class="card-body">
+					  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
+					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
+				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
+							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
 
-					%>
-					<div class="card" style="padding:20px;background-color:#cedddd;float:left;width: 18rem;">
-					  <div class="card-body">
-					    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
-					    </div>
-					  <ul class="list-group list-group-flush">
-					    <p class="card-text">Major: <%=student.getMajor() %></p>
-					    <p class="card-text">Minor: <%=student.getMinor() %></p>
-					    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
-					  </ul>
-					  <div class="card-body">
-				  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
-				  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
-			  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
-						<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-
-					  </div>
-					</div>
-					<%
+						  </div>
+						</div>
+						<%
+						}
 					}
 				}
 			  %>
