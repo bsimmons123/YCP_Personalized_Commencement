@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import edu.ycp.cs320.personalized_commencement.controller.AdvisorController;
-import edu.ycp.cs320_personalized_commencement.model.AdvisorModel;
+import edu.ycp.cs320.personalized_commencement.model.Advisor;
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
+import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 public class AdvisorIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,39 +24,31 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		System.out.println("Advisor Index Servlet: doGet");
 		
-		ArrayList<String> stuList = new ArrayList<String>();
-		stuList.add("Brandon Simmons");
-		stuList.add("Rob Wood");
-		stuList.add("Ethan Rosenberry");
-		stuList.add("Andrew Mott");
-		stuList.add("John Appleseed");
-		stuList.add("Gwegowy Thunderballz");
-		stuList.add("Ethan RosesN'Berries");
-		stuList.add("Andrew \"Expostulate\" Mott");
-		stuList.add("Michael Jackson");
-		stuList.add("Ben(Brandon) Simmons");
-		stuList.add("Bobert Forest");
-		stuList.add("Cassidy Patchel");
-		stuList.add("Grant MacDonald");
-		stuList.add("Ricky Berwick");
-		stuList.add("Spider Man");
-		stuList.add("Bologna Boy");
+		Advisor advisor = new Advisor();
+		
+		HttpSession session = req.getSession(false);
+		
+		advisor = (Advisor) session.getAttribute("advisor");
+		
+		// if no session then kick user to login page
+		if(advisor == null) {
+			LoginServlet login = new LoginServlet();
+			login.doGet(req, resp);
+		}
+		
+		// arraylist of adivsors students
+		ArrayList<Student> students;
+		
+		// get all students for particular advisor
+		students = getAdvisorsStudents(advisor.getEmail());
 		
 		// error message for JSP
 		String errorMessage = null;
 		
-//		AdvisorController controller = new AdvisorController();
-//		controller.setModel(model);
-		
 		req.setAttribute("errorMessage", errorMessage);
-		System.out.println("\tPosting index");
 		
-		HttpSession session = req.getSession(false);
-		
-		AdvisorModel model = (AdvisorModel) session.getAttribute("advisor");
-		
-		req.setAttribute("advisor", model);
-		req.setAttribute("stuList", stuList);
+		req.setAttribute("advisor", advisor);
+		req.setAttribute("stuList", students);
 
 
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
@@ -70,4 +65,21 @@ public class AdvisorIndexServlet extends HttpServlet {
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
 	}
 
+	public ArrayList<Student> getAdvisorsStudents(String AdvisorEmail) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		ArrayList<Student> studentAdvisorList = db.findStudentsByAdvisor(AdvisorEmail);
+		
+		// check if anything was returned and output the list
+		if (studentAdvisorList.isEmpty()) {
+			System.out.println("\tNo students found for <" + AdvisorEmail + ">");
+			return null;
+		}
+		else {
+			return studentAdvisorList;
+		}
+	}
 }

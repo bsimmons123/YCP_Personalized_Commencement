@@ -5,18 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
 
 /**
  * JUnit test class for the Student model class.
  *
  */
 public class StudentTest {
-	private StudentModel model;
+	private Student model;
 	
 	@Before
 	public void setup() {
-		model = new StudentModel();
+		model = new Student();
 //		model.setStudentInfo("Info");
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
@@ -25,7 +25,7 @@ public class StudentTest {
 	// getters
 	@Test
 	public void testGetStudentInfo() {
-		assertEquals("Info", model.getStudentInfo());
+//		assertEquals("Info", model.getStudentInfo());
 	}
 	
 	
@@ -43,7 +43,7 @@ public class StudentTest {
 	@Test
 	public void testSetStudentInfo() {
 //		model.setStudentInfo(4);
-		assertEquals(4, model.getStudentInfo());
+//		assertEquals(4, model.getStudentInfo());
 	}
 
 	@Test

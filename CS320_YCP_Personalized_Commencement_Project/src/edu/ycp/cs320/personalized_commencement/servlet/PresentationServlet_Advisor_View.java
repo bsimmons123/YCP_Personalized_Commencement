@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
 
 public class PresentationServlet_Advisor_View extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,22 +17,21 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("Presentation Servlet: doGet");
-		
-		// create new model
-		StudentInfoModel info = new StudentInfoModel();
+
+		Student student = new Student();
 
 			
 		// hard-code information for the advisor view
-		info.setFirstName("John");
-		info.setLastName("Appleseed");
-		info.setMajor("Biology");
-		info.setMinor("Philosophy");
-		info.setMiddleInitial("A.");
-		info.setExtraCur("Gardening Club President");
+		student.setFirstName("John");
+		student.setLastName("Appleseed");
+		student.setMajor("Biology");
+		student.setMinor("Philosophy");
+		student.setMiddleInitial("A.");
+		student.setExtraCur("Gardening Club President");
 		//picture will be hard coded into presentation jsp
 				
 				
-		req.setAttribute("student", info);
+		req.setAttribute("student", student);
 
 		// call JSP to generate empty form
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);

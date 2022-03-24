@@ -1,7 +1,11 @@
-package edu.ycp.cs320_personalized_commencement.model;
+package edu.ycp.cs320.personalized_commencement.model;
 
-public class StudentInfoModel{
+public class User {
+	private String email, password;
 	
+	private int studentId, advisorId;
+	
+	private boolean login, student, advisor; // student to check if student is an advisor or not or logged in or not
 	
 	private String firstName;
 	private String middleInitial;
@@ -12,7 +16,67 @@ public class StudentInfoModel{
 	private String picture; // String holding the name of the users file
 	private String nameSound; // String of users file
 	
-	//setters
+	
+	// setters
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setStudent(boolean student) {
+		this.student = student;
+	}
+	public void setAdvisorId(int id) {
+		this.advisorId = id;
+	}
+	public void setStudentId(int id) {
+		this.studentId = id;
+	}
+	
+	/**
+	 * Check to see if the user is an advisor
+	 */
+	public void setAdvisor(boolean advisor) {
+		this.advisor = advisor;
+	}
+	
+	/**
+	 * Check for login state
+	 */
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
+	
+	
+	// getters
+	public String getPassword() {
+		return password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public boolean getStudent() {
+		return student;
+	}
+	public boolean getAdvisor() {
+		return advisor;
+	}
+	public int getAdvisorId() {
+		return advisorId;
+	}
+	public int getStudentId() {
+		return studentId;
+	}
+	
+	/**
+	 * Returns users login state
+	 */
+	public boolean getLogin() {
+		return login;
+	}
+	
+	//setters for student info
 	public void setFirstName(String firstName){
 		this.firstName = firstName;
 	}

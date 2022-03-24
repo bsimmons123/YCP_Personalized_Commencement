@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.ycp.cs320.personalized_commencement.controller.StudentInfoController;
-import edu.ycp.cs320_personalized_commencement.model.StudentInfoModel;
-//import edu.ycp.cs320.personalized_commencement.controller.StudentController;
-import edu.ycp.cs320_personalized_commencement.model.StudentModel;
+import edu.ycp.cs320.personalized_commencement.model.Student;
 
 public class StudentIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,8 +20,8 @@ public class StudentIndexServlet extends HttpServlet {
 		System.out.println("Student Index Servlet: doGet");
 		
 		HttpSession session = req.getSession(false);
-		StudentInfoModel stuInfo = new StudentInfoModel();
-		stuInfo = (StudentInfoModel) session.getAttribute("sinfo");
+		Student stuInfo = new Student();
+		stuInfo = (Student) session.getAttribute("sinfo");
 		req.setAttribute("sinfo", stuInfo);
 
 		// call JSP to generate empty form
@@ -40,7 +37,7 @@ public class StudentIndexServlet extends HttpServlet {
 		String errorMessage = null;
 		
 		// create new model
-		StudentModel model = new StudentModel();
+		Student model = new Student();
 		req.setAttribute("errorMessage", errorMessage);
 		System.out.println("\tPosting index");
 		

@@ -5,17 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320_personalized_commencement.model.UserModel;
+import edu.ycp.cs320.personalized_commencement.model.User;
 
 /**
  * JUnit test class for the User model.
  */
 public class UserTest {
-private UserModel model;
+private User model;
 	
 	@Before
 	public void setUp() {
-		model = new UserModel();
+		model = new User();
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 		model.setLogin(true);

@@ -64,12 +64,13 @@
 
 			  <p class="lead">
 			    <strong>Image/Video to display (optional):</strong>
-			    <img src="../UserImages/filename">
+			    <img src="${pageContext.servletContext.contextPath}/img/${sinfo.picture}" width="500" 
+     height="500">
 			  </p>
 
 			  <p class="lead">
 			    <strong>Custom Audio for Commencement (optional):</strong>
-			    audio
+			    <audio controls src="${pageContext.servletContext.contextPath}/Audio/${sinfo.nameSound}"></audio>
 			  </p>
 			  <hr class="my-4">
 			</div>
@@ -83,8 +84,6 @@
 		<div id="logoutDiv">
 			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
 		</div>
-
-		<input name="studentModel" type="hidden" value="${student}" />
 		</div>
 		</form>
 	</body>

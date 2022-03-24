@@ -50,7 +50,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">First Name</span>
         </div>
-        <input type="text" class="form-control" placeholder="John" aria-label="firstname" aria-describedby="basic-addon1" value="${sinfo.first}">
+        <input type="text" class="form-control" placeholder="John" name="firstname" aria-describedby="basic-addon1" value="${sinfo.first}">
       </div>
 
       <div class="input-group mb-3">

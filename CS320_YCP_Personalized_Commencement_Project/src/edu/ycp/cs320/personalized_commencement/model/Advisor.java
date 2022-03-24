@@ -1,11 +1,11 @@
-package edu.ycp.cs320_personalized_commencement.model;
+package edu.ycp.cs320.personalized_commencement.model;
 
 // does this work question mark
 
 /**
  * Stores the advisors information.
  */
-public class AdvisorModel extends UserModel {
+public class Advisor extends User {
 
 	// variable to be set as true if content is accepted or false if it is rejected.
 	boolean decision;
