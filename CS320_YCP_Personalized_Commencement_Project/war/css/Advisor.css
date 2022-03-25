@@ -29,7 +29,8 @@ tr.row td{
 	width: 100%;
 }
 #instructions {
-	width: 600px;
+	width: 70%;
+	padding-left: 30px;
 	margin: auto;
 	font-size: 16px;
 	text-align: center;
