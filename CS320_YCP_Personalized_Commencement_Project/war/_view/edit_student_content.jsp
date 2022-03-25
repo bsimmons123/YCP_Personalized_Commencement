@@ -103,7 +103,7 @@
 
 
 		<!--Button for adding new content-->
-		<div id="buttons">
+		<div id="buttons" style="padding-left: 13%;">
 			<input class="btn btn-primary" type="Submit" name="login" value="Save">
 		</div>
     </form>
