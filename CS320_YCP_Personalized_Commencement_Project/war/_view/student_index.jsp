@@ -33,7 +33,7 @@
 			</div>
 		</c:if>
 		
-		redirects to login page if
+		<!-- redirects to login page if -->
 		<c:if test="${empty student }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
 		</c:if>
