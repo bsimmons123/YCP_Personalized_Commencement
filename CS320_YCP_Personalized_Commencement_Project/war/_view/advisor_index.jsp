@@ -10,7 +10,7 @@
 		<title>Advisor Index View</title>
 		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Tab Logo.png">
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
-		<link href="${pageContext.request.contextPath}/css/AdvisorInSS.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/AdvisorIndex.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<!-- Script for popups -->
@@ -46,7 +46,7 @@
 		<div id="pageheader">
 			<h1 class="title">List of Submissions For Review</h1>
 		</div>
-		<div id="instructions">
+		<div id="instructions" class="clearfix">
 			<c:if test="${! empty advisor }">
 				<!-- Welcome message -->
 				<div class="alert alert-success" role="alert">
@@ -71,53 +71,51 @@
 						Student student = studentList.get(i);
 						if(student.getApproval() == 1){
 						%>
-						<div class="card" style="padding:20px;background-color:#69a95d;float:left;width: 18rem; min-height: 27rem;">
+						<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%;padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">
 						  <div class="card-body">
-						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    <h5 class="card-title" style="padding-top: 10px;"><%=student.getFirst()%> <%=student.getLast()%></h5>
 						    </div>
-						  <ul class="list-group list-group-flush">
+						  <ul class="list-group list-group-flush" style="margin-top: 0px;">
 						    <p class="card-text">Major: <%=student.getMajor() %></p>
 						    <p class="card-text">Minor: <%=student.getMinor() %></p>
 						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
 						  </ul>
+						  <!--
 						  <div class="card-body">
-					  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
-					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-						 	<!-- <img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;">  -->
 						  </div>
+						  -->
 						</div>
 						<%
 						} else {
 						%>
-						<div class="card" style="padding:20px; background-color:#a95d5d; float:left; width: 18rem; min-height: 27rem;">
+						<div class="card" style="margin-right: 3.1%; margin-top: 20px; margin-left: 3.1%; padding: 10px;background-color:#a95d5d; float:left; width: 18rem; min-height: 20rem;">
 						  <div class="card-body">
-						    <h5 class="card-title"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    <h5 class="card-title" style="padding-top: 10px;"><%=student.getFirst()%> <%=student.getLast()%></h5>
 						    </div>
-						  <ul class="list-group list-group-flush">
+						  <ul class="list-group list-group-flush" style="margin-top: 0px;">
 						    <p class="card-text">Major: <%=student.getMajor() %></p>
 						    <p class="card-text">Minor: <%=student.getMinor() %></p>
 						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
 						  </ul>
+						  <!--
 						  <div class="card-body">
-					  		<!-- <button type="button" class="btn btn-lg btn-secondary" data-toggle="popover" title="Popover title" 
-					  			data-content="And here's some amazing content. It's very engaging. Right?">Image</button> -->
 				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
 							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-						 	<!-- <img src="${pageContext.request.contextPath}/browser-images/Approved.png" style="width: 35px; height: 35px; margin-left: 80%; margin-top: 20px;"> -->
 						  </div>
+						  -->
 						</div>
 						<%
 						}
 					}
 				}
 			  %>
-			  <!-- Logout button -->
-			<div id="logoutDiv" style="margin-left: 80%; width: auto;">
-				<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
-			</div>
-			</div>
-	</form>
+		</div>
+		<!-- Logout button -->
+		<div id="logoutDiv" style="width: auto;">
+			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
+		</div>
+		</form>
 	</body>
 </html>
