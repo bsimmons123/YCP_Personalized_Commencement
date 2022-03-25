@@ -22,7 +22,7 @@ public class StudentIndexServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		Student stuInfo = new Student();
 		stuInfo = (Student) session.getAttribute("student");
-		req.setAttribute("sinfo", stuInfo);
+		req.setAttribute("student", stuInfo);
 
 		// call JSP to generate empty form
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);

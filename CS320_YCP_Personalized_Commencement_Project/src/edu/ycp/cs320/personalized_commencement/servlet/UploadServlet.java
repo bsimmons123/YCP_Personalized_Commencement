@@ -104,28 +104,28 @@ public class UploadServlet extends HttpServlet {
 	            			student.getEmail(), student.getPassword(), firstName, 
 	            			lastName, major, minor, extraCur, student.getPicture(), student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("sinfo", student);
+	            		session.setAttribute("student", student);
 	            	}
             	}else if(audio.isEmpty()) {
             		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
 	            			student.getEmail(), student.getPassword(), firstName, 
 	            			lastName, major, minor, extraCur, img, student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("sinfo", student);
+	            		session.setAttribute("student", student);
             		}
             	}else if (img.isEmpty()){
             		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
 	            			student.getEmail(), student.getPassword(), firstName, 
 	            			lastName, major, minor, extraCur, student.getPicture(), student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("sinfo", student);
+	            		session.setAttribute("student", student);
             		}
             	}else {
             		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
 	            			student.getEmail(), student.getPassword(), firstName, 
 	            			lastName, major, minor, extraCur, img, audio)) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("sinfo", student);
+	            		session.setAttribute("student", student);
             		}
             	}
             }

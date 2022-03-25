@@ -28,11 +28,12 @@
 		
 		<!-- Welcome message -->
 		<c:if test="${! empty student }">
-			<div class="alert alert-success" role="alert">
+			<div class="alert alert-success" role="alert" style="text-align: center;">
 				Welcome, ${student.email}!
 			</div>
 		</c:if>
 		
+		redirects to login page if
 		<c:if test="${empty student }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
 		</c:if>
