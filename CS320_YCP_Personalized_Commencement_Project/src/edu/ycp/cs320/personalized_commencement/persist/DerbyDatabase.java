@@ -5,14 +5,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
-import edu.ycp.cs320.personalized_commencement.model.Pair;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 
 public class DerbyDatabase implements IDatabase {
@@ -387,7 +384,6 @@ public class DerbyDatabase implements IDatabase {
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
 				int resultSet = -1;
-				Student student = null;
 				
 				try {
 					// retreive all attributes from both Books and Authors tables

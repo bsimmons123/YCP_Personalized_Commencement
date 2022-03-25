@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320.personalized_commencement.model.Student;
-
 /**
  * JUnit test class for the Student model class.
  *

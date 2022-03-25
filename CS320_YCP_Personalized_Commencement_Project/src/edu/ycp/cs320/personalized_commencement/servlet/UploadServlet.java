@@ -38,11 +38,9 @@ public class UploadServlet extends HttpServlet {
 			// field names for file uploads
         	String fname = null;
         	String fsize = null;
-        	String ftype = null;
 
         	// field names for form params
         	String firstName = null;
-        	String middleInitial = null;
         	String lastName = null;
         	String major = null;
         	String minor = null;
@@ -63,13 +61,10 @@ public class UploadServlet extends HttpServlet {
         	for(FileItem item : multiparts){
         		// checks if the item is a field param and not a file
                 if(!item.isFormField()){
-                	// stores the field name of the file
-                	String field = item.getFieldName();
 
                 	// retrieves the file name and file to send to jsp
                     fname = new File(item.getName()).getName();
                     fsize = new Long(item.getSize()).toString();
-                    ftype = item.getContentType();
                     System.out.println("\tFile Size (bits): " + fsize);
                     if(!fsize.equals("0")) {
                     // writes file to project folder
