@@ -73,4 +73,10 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Boolean updateAdvisorComment(String userEmail, String comment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -18,6 +18,7 @@ public class User {
 	private String extraCur;
 	private String picture; // String holding the name of the users file
 	private String nameSound; // String of users file
+	private String comment; // Advisors comment on student info
 	
 	
 	// setters
@@ -35,6 +36,9 @@ public class User {
 	}
 	public void setStudentId(int id) {
 		this.studentId = id;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 	/**
@@ -135,5 +139,8 @@ public class User {
 	}
 	public int getApproval() {
 		return approval;
+	}
+	public String getComment() {
+		return comment;
 	}
 }

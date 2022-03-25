@@ -93,6 +93,7 @@ public class DerbyDatabase implements IDatabase {
 		student.setPicture(resultSet.getString(index++));;
 		student.setNameSound(resultSet.getString(index++));;
 		student.setApproval(resultSet.getInt(index++));
+		student.setComment(resultSet.getString(index++));
 	}
 	
 	private void loadAdvisor(Advisor advisor, ResultSet resultSet, int index) throws SQLException {
@@ -121,7 +122,8 @@ public class DerbyDatabase implements IDatabase {
 									"extcur varchar(40)," +
 									"img varchar(40)," +
 									"audio varchar(40),"
-									+ "approval int)"
+									+ "approval int,"
+									+ "comment varchar(500))"
 					);	
 					stmt1.executeUpdate();
 					
@@ -161,8 +163,8 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
 					insertStudent = conn.prepareStatement("INSERT INTO students (advisor_id, email, password, " + 
-							"firstname, lastname, major, minor, extcur, img, audio, approval)" + 
-							"values(?,?,?,?,?,?,?,?,?,?,?)");
+							"firstname, lastname, major, minor, extcur, img, audio, approval, comment)" + 
+							"values(?,?,?,?,?,?,?,?,?,?,?,?)");
 					for (Student student : studentList) {
 						insertStudent.setInt(1, student.getAdvisorId());
 						insertStudent.setString(2, student.getEmail());
@@ -175,6 +177,7 @@ public class DerbyDatabase implements IDatabase {
 						insertStudent.setString(9, student.getPicture());
 						insertStudent.setString(10, student.getNameSound());
 						insertStudent.setInt(11, student.getApproval());
+						insertStudent.setString(12, student.getComment());
 						insertStudent.addBatch();
 					}
 					insertStudent.executeBatch();
@@ -401,6 +404,50 @@ public class DerbyDatabase implements IDatabase {
 					stmt.setString(6, picture);
 					stmt.setString(7, sound);
 					stmt.setString(8, userEmail);
+					
+					resultSet = stmt.executeUpdate();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					if (resultSet != -1) {
+						found = true;
+						return found;
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("<" + userEmail + "> was not found in the Student table");
+					}
+					
+					return found;
+				} finally {
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	/**
+	 * Update student associated with email and password
+	 */
+	@Override
+	public Boolean updateAdvisorComment(String userEmail, String comment) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				int resultSet = -1;
+				
+				try {
+					// retreive all attributes from both Books and Authors tables
+					stmt = conn.prepareStatement(
+							"update students\r\n" + 
+							"set comment = ?" + 
+							"where email = ?"
+					);
+					stmt.setString(1, comment);
+					stmt.setString(2, userEmail);
 					
 					resultSet = stmt.executeUpdate();
 					

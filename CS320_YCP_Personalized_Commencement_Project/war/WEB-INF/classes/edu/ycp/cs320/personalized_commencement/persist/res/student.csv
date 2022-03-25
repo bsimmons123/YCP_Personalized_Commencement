@@ -1,18 +1,20 @@
-1|bsimmons1@ycp.edu|test|Brandon|Simmons|Computer Science|Math|Climbing|null|null|1
-1|rwood7@ycp.edu|test|Robert|Wood|Computer Science|Who Knows|Sleep|null|null|1
-2|emains@ycp.edu|test|Elizabeth|Mains|Computer Science|Math|Lacrose|null|null|0
-3|jappleseed@ycp.edu|test|Johnny|Appleseed|Apple Picking|N/A|N/A|null|null|0
-3|scarell@ycp.edu|test|Steve|Carell|Branch Manager|Dry|N/A|null|null|0
-4|jfischer@ycp.edu|test|Jenna|Fischer|Who Knows|N/A|N/A|null|null|0
-2|kflannery@ycp.edu|test|Kate|Flannery|Mechanical Eng|N/A|N/A|null|null|0
-4|ehelms@ycp.edu|test|Ed|Helms|Mechanical Eng|N/A|N/A|null|null|0
-5|mkaling@ycp.edu|test|Mindy|Kaling|Cars|N/A|N/A|null|null|0
-4|rwilson@ycp.edu|test|Rainn|Wilson|Mechanical Eng|N/A|N/A|null|null|0
-3|mscott@ycp.edu|test|Michael|Scott|Mechanical Eng|N/A|N/A|null|null|0
-1|jhalpert@ycp.edu|test|Jim|Halpert|Mechanical Eng|N/A|N/A|null|null|1
-3|pbeesly@ycp.edu|test|Pam|Beesly|Receptionist|N/A|N/A|null|null|0
-1|mpalmer@ycp.edu|test|Meredith|Palmer|Mechanical Eng|N/A|N/A|null|null|0
-3|abernard@ycp.edu|test|Andy|Bernard|Cornell|N/A|N/A|null|null|0
-2|kkapoor@ycp.edu|test|Kelly|Kapoor|Mechanical Eng|N/A|N/A|null|null|0
-3|dschrute@ycp.edu|test|Dwight|Schrute|Mechanical Eng|N/A|N/A|null|null|0
-2|ehannon@ycp.edu|test|Erin|Hannon|Mechanical Eng|N/A|N/A|null|null|0
+1|bsimmons1@ycp.edu|test|Brandon|Simmons|Computer Science|Math|Climbing|null|null|1|null
+1|rwood7@ycp.edu|test|Robert|Wood|Computer Science|Who Knows|Sleep|null|null|1|null
+5|erosenberry@ycp.edu|test|Ethan|Rosenberry|Electrical Eng|N/A|N/A|null|null|0|null
+5|amott@ycp.edu|test|Andrew|Mott|Being silly|N/A|N/A|null|null|0|null
+2|emains@ycp.edu|test|Elizabeth|Mains|Computer Science|Math|Lacrose|null|null|0|null
+3|jappleseed@ycp.edu|test|Johnny|Appleseed|Apple Picking|N/A|N/A|null|null|0|null
+3|scarell@ycp.edu|test|Steve|Carell|Branch Manager|Dry|N/A|null|null|0|null
+4|jfischer@ycp.edu|test|Jenna|Fischer|Who Knows|N/A|N/A|null|null|0|null
+2|kflannery@ycp.edu|test|Kate|Flannery|Mechanical Eng|N/A|N/A|null|null|0|null
+4|ehelms@ycp.edu|test|Ed|Helms|Mechanical Eng|N/A|N/A|null|null|0|null
+5|mkaling@ycp.edu|test|Mindy|Kaling|Cars|N/A|N/A|null|null|0|null
+4|rwilson@ycp.edu|test|Rainn|Wilson|Mechanical Eng|N/A|N/A|null|null|0|null
+3|mscott@ycp.edu|test|Michael|Scott|Mechanical Eng|N/A|N/A|null|null|0|null
+1|jhalpert@ycp.edu|test|Jim|Halpert|Mechanical Eng|N/A|N/A|null|null|1|null
+3|pbeesly@ycp.edu|test|Pam|Beesly|Receptionist|N/A|N/A|null|null|0|null
+1|mpalmer@ycp.edu|test|Meredith|Palmer|Mechanical Eng|N/A|N/A|null|null|0|null
+3|abernard@ycp.edu|test|Andy|Bernard|Cornell|N/A|N/A|null|null|0|null
+2|kkapoor@ycp.edu|test|Kelly|Kapoor|Mechanical Eng|N/A|N/A|null|null|0|null
+3|dschrute@ycp.edu|test|Dwight|Schrute|Mechanical Eng|N/A|N/A|null|null|0|null
+2|ehannon@ycp.edu|test|Erin|Hannon|Mechanical Eng|N/A|N/A|null|null|0|null

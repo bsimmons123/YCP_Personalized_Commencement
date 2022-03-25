@@ -32,6 +32,7 @@ public class UploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// create controllers for info and student
+		System.out.println("\tUpload Servlet: doPost");
 
 		if(ServletFileUpload.isMultipartContent(req)){
 
