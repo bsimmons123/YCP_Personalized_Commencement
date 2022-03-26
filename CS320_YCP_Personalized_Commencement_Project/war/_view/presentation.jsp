@@ -37,17 +37,17 @@
 				</p>
 			<div class="jumbotron">
 				<h1 class="display-4">
-					${student.first} ${student.last}
+					${studentInfo.first} ${studentInfo.last}
 				</h1>
 				<p class="lead">
 					<strong>Major(s):</strong>
-					${student.major}
+					${studentInfo.major}
 					<input type="checkbox" name="major_approval">
 				</p>
 
 				<p class="lead">
 					<strong>Minor(s):</strong>
-					${student.minor}
+					${studentInfo.minor}
 					<input type="checkbox" name="minor_approval">
 				</p>
 
@@ -59,7 +59,7 @@
 
 				<p class="lead">
 					<strong>Image/Video to display (optional):</strong>
-					<img src="https://images-na.ssl-images-amazon.com/images/I/71Y6FwLwTfL.jpg" alt="User Image" width="460" height="345">
+			    	<img src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded float-right img-fluid" >
 					<%-- <img src="${pageContext.servletContext.contextPath}/img/Edge.jpg" alt="User Image" width="460" height="345"> --%>
 					<input type="checkbox" name="image_approval">
 				</p>
@@ -72,8 +72,9 @@
 				<hr class="my-4">
 			</div>
 
-			<!-- Submit button -->
-			<div class="button">
+			<!-- Submit button and Back Button -->
+			<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
+				<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/advisor_index'" value="Back">
 				<input class="btn btn-success" type="Submit" name="Status" value="Submit">
 			</div>
 			</div>

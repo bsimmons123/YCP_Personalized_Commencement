@@ -31,6 +31,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		advisor = (Advisor) session.getAttribute("advisor");
 		
+		session.setAttribute("studentInfo", null);
+		
 		// if no session then kick user to login page
 		if(advisor == null) {
 			LoginServlet login = new LoginServlet();
@@ -65,11 +67,17 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		Student student = getStudentById(student_id);
 		
-		System.out.println(student.getFirst());
+		System.out.println("\tAdvisor Viewing: " + student.getFirst() + student.getLast());
+		
+		HttpSession session = req.getSession(false);
+		
+		session.setAttribute("studentInfo", student);
+		
+		
 		
 		
 		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
 	}
 	
 	// gets an Integer from the Posted form data, for the given attribute name
