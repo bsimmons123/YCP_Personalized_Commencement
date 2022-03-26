@@ -53,7 +53,7 @@
 
 				<p class="lead">
 					<strong>Sports, Clubs, or Organizations (optional):</strong>
-					${student.extraCur}
+					${studentInfo.extraCur}
 					<input type="checkbox" name="extracur_approval">
 				</p>
 
