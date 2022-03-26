@@ -21,11 +21,13 @@ public interface IDatabase {
 	/**
 	 * Update student associated with email and password
 	 */
-	Boolean updateStudents(String userEmail, String first, String last, String major, String minor, String extraCur,
+	public Boolean updateStudents(String userEmail, String first, String last, String major, String minor, String extraCur,
 			String picture, String sound);
 
 	/**
 	 * Update student associated with email and password
 	 */
-	Boolean updateAdvisorComment(String userEmail, String comment);
+	public Boolean updateAdvisorComment(String userEmail, String comment);
+
+	public Student findStudentsById(int id);
 }

@@ -79,4 +79,10 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Student findStudentsById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

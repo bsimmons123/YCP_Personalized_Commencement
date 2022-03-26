@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.model.User;
 import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
 import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
 import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
@@ -60,9 +61,20 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		System.out.println("AdvisorIndex Servlet: doPost");
 		
+		int student_id = getInteger(req, "student");
+		
+		Student student = getStudentById(student_id);
+		
+		System.out.println(student.getFirst());
+		
 		
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
+	}
+	
+	// gets an Integer from the Posted form data, for the given attribute name
+	private int getInteger(HttpServletRequest req, String name) {
+		return Integer.parseInt(req.getParameter(name));
 	}
 
 	public ArrayList<Student> getAdvisorsStudents(String AdvisorEmail) {
@@ -81,5 +93,23 @@ public class AdvisorIndexServlet extends HttpServlet {
 		else {
 			return studentAdvisorList;
 		}
+	}
+	
+	private Student getStudentById(int id) {
+		// Create the default IDatabase instance
+				DatabaseProvider.setInstance(new DerbyDatabase());
+				
+				// get the DB instance and execute transaction
+				IDatabase db = DatabaseProvider.getInstance();
+				Student student = db.findStudentsById(id);
+				
+				// check if anything was returned and output the list
+				if (student == null) {
+					System.out.println("\tNo students found for ID <" + id + ">");
+					return null;
+				}
+				else {
+					return student;
+				}
 	}
 }

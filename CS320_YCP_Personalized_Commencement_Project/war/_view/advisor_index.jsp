@@ -22,13 +22,9 @@
 
 	<!-- styling and layout of the body  -->
 	<body>
-		<form action="${pageContext.servletContext.contextPath}/advisor_index" method="get" enctype="multipart/form-data">
+		
 		<%@page import="java.util.ArrayList"%>      <%--Importing all the dependent classes--%>
 		<%@page import="java.util.Iterator"%>
-		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
-
-		<% ArrayList<Student> studentList = (ArrayList) request.getAttribute("stuList"); %> <%--Assigning ArrayList object containing Student data to the local object --%>		
-
 		<!-- Enable popups -->
 		<script>             
 			$(function() {
@@ -62,60 +58,25 @@
 			Here you can find a list of submissions from your students that need to be reviewed.<br>
 			To view a student's submission, simply click the "view" button next to their name.<br>
 			</p>
-				<%
-				// Iterating through subjectList
-
-				if(request.getAttribute("stuList") != null)  // Null check for the object
-				{
-					for(int i = 0; i < studentList.size(); i++){
-						Student student = studentList.get(i);
-						if(student.getApproval() == 1){
-						%>
+						<c:forEach var="student" items="${stuList}">
+						<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 						<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%;padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">
 						  <div class="card-body">
-						    <h5 class="card-title" style="padding-top: 10px;"><%=student.getFirst()%> <%=student.getLast()%></h5>
+						    <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
 						    </div>
 						  <ul class="list-group list-group-flush" style="margin-top: 0px;">
-						    <p class="card-text">Major: <%=student.getMajor() %></p>
-						    <p class="card-text">Minor: <%=student.getMinor() %></p>
-						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
+						    <p class="card-text">Major: <c:out value="${student.major}"/></p>
+						    <p class="card-text">Minor: <c:out value="${student.minor}"/></p>
+						    <p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+						    <input name="student" type="hidden" value="${student.studentId}" />
+						    <input type="submit" class="btn btn-secondary" value="View Student">
 						  </ul>
-						  <!--
-						  <div class="card-body">
-				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
-							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
 						  </div>
-						  -->
-						</div>
-						<%
-						} else {
-						%>
-						<div class="card" style="margin-right: 3.1%; margin-top: 20px; margin-left: 3.1%; padding: 10px;background-color:#a95d5d; float:left; width: 18rem; min-height: 20rem;">
-						  <div class="card-body">
-						    <h5 class="card-title" style="padding-top: 10px;"><%=student.getFirst()%> <%=student.getLast()%></h5>
-						    </div>
-						  <ul class="list-group list-group-flush" style="margin-top: 0px;">
-						    <p class="card-text">Major: <%=student.getMajor() %></p>
-						    <p class="card-text">Minor: <%=student.getMinor() %></p>
-						    <p class="card-text">Extracurricular: <%=student.getExtraCur() %></p>
-						  </ul>
-						  <!--
-						  <div class="card-body">
-				  			<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getPicture()%>" title="" height="130" width="100">
-							<img class="imgzm" src="${pageContext.servletContext.contextPath}/files/<%=student.getFirst()%>/<%=student.getNameSound()%>" title="" height="130" width="100">
-						  </div>
-						  -->
-						</div>
-						<%
-						}
-					}
-				}
-			  %>
-		</div>
+						  </form>
+						  </c:forEach>
 		<!-- Logout button -->
 		<div id="logoutDiv" style="width: auto;">
 			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
 		</div>
-		</form>
 	</body>
 </html>
