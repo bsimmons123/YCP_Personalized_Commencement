@@ -100,7 +100,8 @@
 
 
 		<!--Button for adding new content-->
-		<div id="buttons">
+		<div id="buttons" style="padding-left:5%;">
+			<input class="btn btn-secondary" type="button"onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Edit Content">
 			<input class="btn btn-secondary" type="button"onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
 		</div>
 

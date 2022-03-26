@@ -12,6 +12,11 @@
   	</servlet>
   	
   	<servlet>
+	  	<servlet-name>GradViewServlet</servlet-name>
+	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.GradViewServlet</servlet-class>
+  	</servlet>
+  	
+  	<servlet>
 	  	<servlet-name>LoginServlet</servlet-name>
 	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.LoginServlet</servlet-class>
   	</servlet>
@@ -37,9 +42,14 @@
   		<url-pattern>/advisor_index</url-pattern>
 	</servlet-mapping>
   
- 	 <servlet-mapping>
+ 	<servlet-mapping>
 	  	<servlet-name>LoginServlet</servlet-name>
 	  	<url-pattern>/login</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet-mapping>
+	  	<servlet-name>GradViewServlet</servlet-name>
+	  	<url-pattern>/graduation_preview</url-pattern>
   	</servlet-mapping>
   
   	<servlet-mapping>
