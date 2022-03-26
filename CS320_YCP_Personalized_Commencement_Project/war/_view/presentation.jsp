@@ -22,12 +22,12 @@
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
 		</c:if>
 		
-		<form action="${pageContext.servletContext.contextPath}/presentation" method="get">
+		
 			<!-- Header of the page -->
 			<div id="pageheader">
 				<h1 class="title">Submission Preview for ${student.first} ${student.last}</h1>
 			</div>
-
+			<form action="${pageContext.servletContext.contextPath}/presentation" method="post">
 			<!-- Instructions for advisor -->
 			<div id="instructions">
 				<p>
@@ -36,6 +36,7 @@
 				When you are finished, simply click the submit button to confirm your decision.
 				</p>
 			<div class="jumbotron">
+			
 				<h1 class="display-4">
 					${studentInfo.first} ${studentInfo.last}
 				</h1>
@@ -70,6 +71,7 @@
 					<input type="checkbox" name="audio_approval">
 				</p>
 				<hr class="my-4">
+				
 			</div>
 
 			<!-- Submit button and Back Button -->
@@ -78,6 +80,7 @@
 				<input class="btn btn-success" type="Submit" name="Status" value="Submit">
 			</div>
 			</div>
-		</form>
+			</form>
+		
 	</body>
 </html>
