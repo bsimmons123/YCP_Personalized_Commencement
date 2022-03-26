@@ -27,10 +27,13 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		Advisor advisor = new Advisor();
 		
+		// get current session
 		HttpSession session = req.getSession(false);
 		
+		// get the current advisor logged in
 		advisor = (Advisor) session.getAttribute("advisor");
 		
+		// set student info to null so info does not overlap
 		session.setAttribute("studentInfo", null);
 		
 		// if no session then kick user to login page
@@ -42,8 +45,21 @@ public class AdvisorIndexServlet extends HttpServlet {
 		// arraylist of adivsors students
 		ArrayList<Student> students;
 		
+		// arraylist of approved students
+		ArrayList<Student> approvedStudents = new ArrayList<Student>();
+		// arraylist of pending approval students
+		ArrayList<Student> pendingStudents = new ArrayList<Student>();
 		// get all students for particular advisor
 		students = getAdvisorsStudents(advisor.getEmail());
+		
+		for(Student student: students) {
+			if(student.getApproval() == 1) {
+				approvedStudents.add(student);
+			}
+			else {
+				pendingStudents.add(student);
+			}
+		}
 		
 		// error message for JSP
 		String errorMessage = null;
@@ -51,7 +67,10 @@ public class AdvisorIndexServlet extends HttpServlet {
 		req.setAttribute("errorMessage", errorMessage);
 		
 		req.setAttribute("advisor", advisor);
-		req.setAttribute("stuList", students);
+		// list of approved students
+		req.setAttribute("stuList", approvedStudents);
+		// list of students pending approval
+		req.setAttribute("pendingStuList", pendingStudents);
 
 
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
