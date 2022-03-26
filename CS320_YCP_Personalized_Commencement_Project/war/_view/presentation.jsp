@@ -67,7 +67,7 @@
 
 				<p class="lead">
 					<strong>Custom Audio for Commencement (optional):</strong>
-					<audio controls src="${pageContext.servletContext.contextPath}/Audio/johnny_appleseed.mp3"></audio>
+					<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
 					<input type="checkbox" name="audio_approval">
 				</p>
 				<hr class="my-4">

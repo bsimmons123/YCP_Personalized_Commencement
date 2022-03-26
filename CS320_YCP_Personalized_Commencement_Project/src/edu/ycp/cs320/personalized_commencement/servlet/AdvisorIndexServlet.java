@@ -65,8 +65,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		String errorMessage = null;
 		
 		req.setAttribute("errorMessage", errorMessage);
-		
 		req.setAttribute("advisor", advisor);
+		
 		// list of approved students
 		req.setAttribute("stuList", approvedStudents);
 		// list of students pending approval
