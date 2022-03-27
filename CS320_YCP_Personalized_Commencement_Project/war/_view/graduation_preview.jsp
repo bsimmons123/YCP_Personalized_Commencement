@@ -65,7 +65,7 @@
 		    </div>
 		  </div>
 		  		<!-- Slide controls for testing pt.2 (uncomment to use them) -->
-		  <!-- 
+		  
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 		    <span class="sr-only">Previous</span>
@@ -74,7 +74,9 @@
 		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		    <span class="sr-only">Next</span>
 		  </a>
-		   -->
+		</div>
+		<div id="buttons" style="margin-left:47%; padding:0px; display: inline;">
+			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Back">
 		</div>
 	</body>
 </html>

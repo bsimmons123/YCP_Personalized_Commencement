@@ -103,7 +103,8 @@
 
 
 		<!--Button for adding new content-->
-		<div id="buttons" style="padding-left: 13%;">
+		<div id="buttons" style="margin-left:40%; padding:0px; display: inline;">
+			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Cancel">
 			<input class="btn btn-primary" type="Submit" name="login" value="Save">
 		</div>
     </form>
