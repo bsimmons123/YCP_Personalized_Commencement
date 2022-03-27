@@ -42,7 +42,7 @@
 	    	  </c:if>
 	    	  -->
 	    	  <!-- Image shown on slide -->
-		      <img class="d-block w-100" style="width:100%;height:620px;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
+		      <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
 		      <!-- Student name majors and minors div -->
 		      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 		      	<!-- name -->
@@ -54,7 +54,7 @@
 		    <!-- Second Carousel Slide -->
 		    <div class="carousel-item">
 		      <!-- YCP image shown for second slide -->
-		      <img class="d-block w-100" style="width:100%;height:620px;" src="${pageContext.request.contextPath}/files/carouselTests/York.png">
+		      <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/files/carouselTests/York.png">
 		      <!-- Student extracurricular div -->
 		      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 			    <!-- Sports clubs activities -->
@@ -75,7 +75,7 @@
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
-		<div id="buttons" style="margin-left:47%; padding:0px; display: inline;">
+		<div id="buttons" style="padding-left:93.5%; margin-top::0px; padding-bottom: 20px;display: inline; width: auto;">
 			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Back">
 		</div>
 	</body>
