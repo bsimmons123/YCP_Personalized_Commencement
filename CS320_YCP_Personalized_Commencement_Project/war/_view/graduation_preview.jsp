@@ -19,12 +19,12 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
+	 
 	<!-- body layout and styling -->
 	<body style="background-color: rgb(0, 128, 0);">
 		<audio autoplay src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 95%; height: 70%; margin-left: 2.5%; margin-right: 2.5%; margin-bottom: 30px; border: 3px solid black;">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 95%; height: 70%; margin-top: 100px; margin-left: 2.5%; margin-right: 2.5%; margin-bottom: 30px; border: 3px solid black;">
 		  		<!-- Slide controls for testing pt.1 (uncomment to use them) -->
 		  <!--
 		  <ol class="carousel-indicators">

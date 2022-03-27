@@ -1,5 +1,5 @@
 <!-- Overall navbar styling -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; margin-bottom:30px;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; position: fixed; width: 100%; top: 0px; z-index: 1000;">
   <!-- Project Name as a link that takes the user to the login page -->
   <a class="navbar-brand mr-auto" style="pointer-events: none;font-size: 24px;"><img src="${pageContext.request.contextPath}/browser-images/YCP Logo.png" style="width: 45px; height: 50px;"> Personal Commencement Portal</a>
   <div id="navbarNavAltMarkup ml-auto">

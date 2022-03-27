@@ -34,6 +34,15 @@ tr.row td{
 	font-size: 16px;
 	text-align: center;
 }
+#Approved {
+	margin: 0px;
+	width: 100%;
+	height: auto;
+}
+#Unapproved {
+	width: 100%;
+	height: auto;
+}
 #logoutDiv {
 	text-align: center;
 	margin-left: 60%;

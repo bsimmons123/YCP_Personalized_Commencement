@@ -18,7 +18,7 @@
 	<!-- styling and layout of the body  -->
 	<body>
 		<!-- div for the title of the page -->
-		<div id="pageheader">
+		<div id="pageheader"  style="padding-top: 100px;">
 			<h1 class="title">Personalized Senior Commencement Form</h1>
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
