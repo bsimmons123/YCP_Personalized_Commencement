@@ -52,11 +52,11 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		}
 		
 		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
+		AdvisorIndexServlet advisorServlet = new AdvisorIndexServlet();
+		advisorServlet.doGet(req, resp);
 	}
 	
 	private int toInt(String param) {
-		System.out.println("\t"+param);
 		if(param == null) {
 			return 0;
 		}
