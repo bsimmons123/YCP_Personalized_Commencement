@@ -27,25 +27,26 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		
 		Student student = (Student) session.getAttribute("studentInfo");
 		
+		// pull attributes from page
 		String major = req.getParameter("major_approval");
 		String minor = req.getParameter("minor_approval");
 		String extraCur = req.getParameter("extracur_approval");
 		String image = req.getParameter("image_approval");
 		String audio = req.getParameter("audio_approval");
+		String comment = req.getParameter("submissioncomment");
 		
 		System.out.println("\tMajor: " + major + " | Minor: " + minor +
 				" | ExtraCur: " + extraCur + " | Image: " + image + 
 				" | Audio: " + audio);
 		
+		System.out.println("\tSubmission Comment: " + comment);
+		
+		// cast them to ints for database
 		int checkMajor = toInt(major);
 		int checkMinor = toInt(minor);
 		int checkExtCur = toInt(extraCur);
 		int checkImg = toInt(image);
 		int checkAudio = toInt(audio);
-		
-		System.out.println("\tMajor: " + checkMajor + " | Minor: " + checkMinor +
-				" | ExtraCur: " + checkExtCur + " | Image: " + checkImg + 
-				" | Audio: " + checkAudio);
 		
 		if(updateStudentContent(student.getStudentId(), checkMajor, checkMinor, checkExtCur, checkImg, checkAudio)) {
 			System.out.println("\tAdvisor's comments saved");

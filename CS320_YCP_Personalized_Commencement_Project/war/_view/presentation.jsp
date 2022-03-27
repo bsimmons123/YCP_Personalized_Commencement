@@ -5,7 +5,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Submission - ${student.last}, ${student.first}</title>
+		<title>Submission - ${studentInfo.last}, ${studentInfo.first}</title>
 		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Tab Logo.png">
 		<!-- CSS styling that takes the path of the site and imports the respective style sheet -->
 		<link href="${pageContext.request.contextPath}/css/PresentationSS.css" rel="stylesheet" type="text/css">
@@ -71,7 +71,11 @@
 					<input type="checkbox" name="audio_approval">
 				</p>
 				<hr class="my-4">
-				
+				<div class="input-group">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text">Submission Comment</span>
+				</div>
+				<textarea class="form-control" name="submissioncomment" aria-label="With textarea"></textarea>
 			</div>
 
 			<!-- Submit button and Back Button -->
