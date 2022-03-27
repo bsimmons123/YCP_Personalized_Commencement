@@ -59,43 +59,48 @@
 			To view a student's submission, simply click the "view" button next to their name.<br>
 			</p>
 			
-			<!-- if student has been approved for graduation -->
-			<h3 style="width: 100%; margin: auto; margin-bottom: 20px; color:green;">Reviewed Student Content</h3>
-			<c:forEach var="student" items="${stuList}">
-				<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
-					<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 30px; padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">
-						<div class="card-body">
-						  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
-						</div>
-						<ul class="list-group list-group-flush" style="margin-top: 0px;">
-							<p class="card-text">Major: <c:out value="${student.major}"/></p>
-							<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
-							<p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
-							<input name="student" type="hidden" value="${student.studentId}" />
-						  	<input type="submit" class="btn btn-secondary" value="View Student">
-						</ul>
-					</div>
-				</form>
-			</c:forEach>
-			
 			<!-- if student is pending approval -->
-			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green;">Unreviewed Student Content</h3>
-			<c:forEach var="student" items="${pendingStuList}">
-				<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
-					<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 30px; padding:10px;background-color:#808080;float:left;width: 18rem; min-height: 18rem;">
-						<div class="card-body">
-						  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
-					  	</div>
-						<ul class="list-group list-group-flush" style="margin-top: 0px;">
-							<p class="card-text">Major: <c:out value="${student.major}"/></p>
-							<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
-							<p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
-							<input name="student" type="hidden" value="${student.studentId}">
-						  	<input type="submit" class="btn btn-primary" value="View Student">
-						</ul>
-					</div>
-				</form>
-			</c:forEach>
+			<h3 style="width: 100%; margin: auto; margin-bottom: 20px; color:green; text-align:center">Unreviewed Student Content</h3>
+			<div style="width: 100%; height: 350px;">
+				<c:forEach var="student" items="${pendingStuList}">
+					<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
+						<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#808080;float:left;width: 18rem; min-height: 18rem;">
+							<div class="card-body">
+							  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
+						  	</div>
+							<ul class="list-group list-group-flush" style="margin-top: 0px;">
+								<p class="card-text">Major: <c:out value="${student.major}"/></p>
+								<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
+								<p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+								<input name="student" type="hidden" value="${student.studentId}">
+							  	<input type="submit" class="btn btn-success" value="View Student">
+							</ul>
+						</div>
+					</form>
+				</c:forEach>
+			</div>
+			
+			<!-- if student has been approved for graduation -->
+			<h3 style="width: 100%; margin: auto; margin-bottom: 20px; color:green; text-align:center">Reviewed Student Content</h3>
+			<div style="width: 100%; height: 350px;">
+				<c:forEach var="student" items="${stuList}">
+					<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
+						<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">
+							<div class="card-body">
+							  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
+							</div>
+							<ul class="list-group list-group-flush" style="margin-top: 0px;">
+								<p class="card-text">Major: <c:out value="${student.major}"/></p>
+								<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
+								<p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+								<input name="student" type="hidden" value="${student.studentId}" />
+							  	<input type="submit" class="btn btn-secondary" value="View Student">
+							</ul>
+						</div>
+					</form>
+				</c:forEach>
+			</div>
+			
 		</div>
 		
 		<!-- Logout button -->

@@ -35,14 +35,17 @@
 		  <div class="carousel-inner">
 		  	<!-- First Carousel Slide -->
 		    <div class="carousel-item active">
+		    
 	    	  		<!-- Need an if statement to tell if user has a picture submitted, if they don't: use a default YCP image -->
 	    	  <!-- 
-	    	  <c:if test="">
+	    	  <c:if test="empty ${student.picture}">
 	    	    <img class="d-block w-100" style="width:950px;height:620px;" src="${pageContext.request.contextPath}/files/carouselTests/York.png">
 	    	  </c:if>
 	    	  -->
+	    	  
 	    	  <!-- Image shown on slide -->
 		      <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
+		      
 		      <!-- Student name majors and minors div -->
 		      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 		      	<!-- name -->
@@ -75,6 +78,7 @@
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
+		
 		<div id="buttons" style="padding-left:93.5%; margin-top::0px; padding-bottom: 20px;display: inline; width: auto;">
 			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Back">
 		</div>
