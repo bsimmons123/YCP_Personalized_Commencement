@@ -71,7 +71,7 @@
 						<input type="checkbox" name="audio_approval">
 					</p>
 					<hr class="my-4">
-					<div class="input-group">
+					<div class="input-group" style="margin-bottom: 20px;">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text">Submission Comment</span>
 					  </div>

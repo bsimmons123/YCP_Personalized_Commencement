@@ -107,9 +107,8 @@
 
 			<!--Buttons for editing content, previewing content, and logging out -->
 			<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
-				<input class="btn btn-primary" style="width: 20%; margin-right: 15%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
+				<input class="btn btn-primary" style="width: 20%; margin-right: 51.2%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
 				<input class="btn btn-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
-				<input class="btn btn-danger" style="width: 20%; margin-left:15.5%;" type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" value="Logout">
 			</div>
 		</div>
 		</form>

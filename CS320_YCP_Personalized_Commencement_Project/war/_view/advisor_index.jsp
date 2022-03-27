@@ -42,7 +42,7 @@
 		<div id="pageheader" style="padding-top: 100px;">
 			<h1 class="title">List of Student Submissions</h1>
 		</div>
-		<div id="instructions" class="clearfix">
+		<div id="instructions" class="clearfix" style="margin-bottom: 5%">
 			<c:if test="${! empty advisor }">
 				<!-- Welcome message -->
 				<div class="alert alert-success" role="alert" style="width: auto; margin-bottom: 20px;">
