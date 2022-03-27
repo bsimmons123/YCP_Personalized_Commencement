@@ -46,11 +46,12 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		// arraylist of approved students
 		ArrayList<Student> approvedStudents = new ArrayList<Student>();
+		
 		// arraylist of pending approval students
 		ArrayList<Student> pendingStudents = new ArrayList<Student>();
+		
 		// get all students for particular advisor
 		students = getAdvisorsStudents(advisor.getEmail());
-		
 		for(Student student: students) {
 			if(student.getApproval() == 1) {
 				approvedStudents.add(student);
@@ -68,6 +69,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		// list of approved students
 		req.setAttribute("stuList", approvedStudents);
+		
 		// list of students pending approval
 		req.setAttribute("pendingStuList", pendingStudents);
 
@@ -90,10 +92,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		
 		session.setAttribute("studentInfo", student);
-		
-		
-		
-		
+	
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
 	}
