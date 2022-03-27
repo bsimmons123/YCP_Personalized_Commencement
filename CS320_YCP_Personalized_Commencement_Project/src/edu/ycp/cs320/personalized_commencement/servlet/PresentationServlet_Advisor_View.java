@@ -48,8 +48,13 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		int checkImg = toInt(image);
 		int checkAudio = toInt(audio);
 		
+		// update student content
 		if(updateStudentContent(student.getStudentId(), checkMajor, checkMinor, checkExtCur, checkImg, checkAudio)) {
-			System.out.println("\tAdvisor's comments saved");
+			System.out.println("\tAdvisor's checkBoxes saved");
+		}
+		
+		if(updateStudentComment(student.getEmail(), comment)){
+			System.out.println("\tAdvisor's Comment saved");
 		}
 		
 		// Forward to view to render the result HTML document
@@ -57,6 +62,24 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		advisorServlet.doGet(req, resp);
 	}
 	
+	private boolean updateStudentComment(String email, String comment) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+		
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		Boolean student = db.updateAdvisorComment(email, comment);
+		
+		// check if anything was returned and output the list
+		if (student == null) {
+			System.out.println("\tNo students found for email <" + email + ">");
+			return false;
+		}
+		else {
+			return student;
+		}
+	}
+
 	private int toInt(String param) {
 		if(param == null) {
 			return 0;

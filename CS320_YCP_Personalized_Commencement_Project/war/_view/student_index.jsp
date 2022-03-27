@@ -95,6 +95,15 @@
 			    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 			  </p>
 			</div>
+			
+			<div class="card">
+			  <div class="card-header">
+			    Advisor Comment
+			  </div>
+			  <div class="card-body">
+			    <p class="card-text">${student.comment}</p>
+			  </div>
+			</div>
 
 			<!--Buttons for editing content, previewing content, and logging out -->
 			<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">

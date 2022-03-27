@@ -94,6 +94,12 @@ public class DerbyDatabase implements IDatabase {
 		student.setNameSound(resultSet.getString(index++));;
 		student.setApproval(resultSet.getInt(index++));
 		student.setComment(resultSet.getString(index++));
+		student.setCheckMajor(resultSet.getInt(index++));
+		student.setCheckMinor(resultSet.getInt(index++));
+		student.setCheckExtCur(resultSet.getInt(index++));
+		student.setCheckImg(resultSet.getInt(index++));
+		student.setCheckAudio(resultSet.getInt(index++));
+		
 	}
 	
 	private void loadAdvisor(Advisor advisor, ResultSet resultSet, int index) throws SQLException {
@@ -446,13 +452,13 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
-				int resultSet = -1;
+				int resultSet = 0;
 				
 				try {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
-							"update students\r\n" + 
-							"set comment = ?" + 
+							"update students\n" + 
+							"set comment = ? " + 
 							"where email = ?"
 					);
 					stmt.setString(1, comment);
@@ -460,10 +466,12 @@ public class DerbyDatabase implements IDatabase {
 					
 					resultSet = stmt.executeUpdate();
 					
+					System.out.println(resultSet);
+					
 					// for testing that a result was returned
 					Boolean found = false;
 					
-					if (resultSet != -1) {
+					if (resultSet != 0) {
 						found = true;
 						return found;
 					}
