@@ -94,6 +94,12 @@ public class DerbyDatabase implements IDatabase {
 		student.setNameSound(resultSet.getString(index++));;
 		student.setApproval(resultSet.getInt(index++));
 		student.setComment(resultSet.getString(index++));
+		student.setCheckMajor(resultSet.getInt(index++));
+		student.setCheckMinor(resultSet.getInt(index++));
+		student.setCheckExtCur(resultSet.getInt(index++));
+		student.setCheckImg(resultSet.getInt(index++));
+		student.setCheckAudio(resultSet.getInt(index++));
+		
 	}
 	
 	private void loadAdvisor(Advisor advisor, ResultSet resultSet, int index) throws SQLException {
@@ -123,7 +129,12 @@ public class DerbyDatabase implements IDatabase {
 									"img varchar(40)," +
 									"audio varchar(40),"
 									+ "approval int,"
-									+ "comment varchar(500))"
+									+ "comment varchar(500),"
+									+ "checkmajor int,"
+									+ "checkminor int,"
+									+ "checkextcur int,"
+									+ "checkimg int,"
+									+ "checkaudio int)"
 					);	
 					stmt1.executeUpdate();
 					
@@ -163,8 +174,9 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
 					insertStudent = conn.prepareStatement("INSERT INTO students (advisor_id, email, password, " + 
-							"firstname, lastname, major, minor, extcur, img, audio, approval, comment)" + 
-							"values(?,?,?,?,?,?,?,?,?,?,?,?)");
+							"firstname, lastname, major, minor, extcur, img, audio, approval, comment, checkmajor, checkminor, "
+							+ "checkextcur, checkimg, checkaudio)" + 
+							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 					for (Student student : studentList) {
 						insertStudent.setInt(1, student.getAdvisorId());
 						insertStudent.setString(2, student.getEmail());
@@ -178,6 +190,11 @@ public class DerbyDatabase implements IDatabase {
 						insertStudent.setString(10, student.getNameSound());
 						insertStudent.setInt(11, student.getApproval());
 						insertStudent.setString(12, student.getComment());
+						insertStudent.setInt(13, student.getCheckMajor());
+						insertStudent.setInt(14, student.getCheckMinor());
+						insertStudent.setInt(15, student.getCheckExtCur());
+						insertStudent.setInt(16, student.getCheckImg());
+						insertStudent.setInt(17, student.getCheckAudio());
 						insertStudent.addBatch();
 					}
 					insertStudent.executeBatch();
@@ -380,7 +397,7 @@ public class DerbyDatabase implements IDatabase {
 	 */
 	@Override
 	public Boolean updateStudents(String userEmail, 
-			String first, String last, String major, String minor, String extraCur, 
+			String major, String minor, String extraCur, 
 			String picture, String sound) {
 		return executeTransaction(new Transaction<Boolean>() {
 			@Override
@@ -392,18 +409,16 @@ public class DerbyDatabase implements IDatabase {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
 							"update students\r\n" + 
-							"set firstname = ?, lastname = ?, major = ?, minor = ?,\n" + 
+							"set major = ?, minor = ?,\n" + 
 							"  extcur = ?, img = ?, audio = ?\n" + 
 							"where email = ?"
 					);
-					stmt.setString(1, first);
-					stmt.setString(2, last);
-					stmt.setString(3, major);
-					stmt.setString(4, minor);
-					stmt.setString(5, extraCur);
-					stmt.setString(6, picture);
-					stmt.setString(7, sound);
-					stmt.setString(8, userEmail);
+					stmt.setString(1, major);
+					stmt.setString(2, minor);
+					stmt.setString(3, extraCur);
+					stmt.setString(4, picture);
+					stmt.setString(5, sound);
+					stmt.setString(6, userEmail);
 					
 					resultSet = stmt.executeUpdate();
 					
@@ -437,13 +452,13 @@ public class DerbyDatabase implements IDatabase {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
-				int resultSet = -1;
+				int resultSet = 0;
 				
 				try {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
-							"update students\r\n" + 
-							"set comment = ?" + 
+							"update students\n" + 
+							"set comment = ? " + 
 							"where email = ?"
 					);
 					stmt.setString(1, comment);
@@ -451,10 +466,12 @@ public class DerbyDatabase implements IDatabase {
 					
 					resultSet = stmt.executeUpdate();
 					
+					System.out.println(resultSet);
+					
 					// for testing that a result was returned
 					Boolean found = false;
 					
-					if (resultSet != -1) {
+					if (resultSet != 0) {
 						found = true;
 						return found;
 					}
@@ -509,6 +526,51 @@ public class DerbyDatabase implements IDatabase {
 					return student;
 				} finally {
 					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	@Override
+	public Boolean updateStudentContentSubmissions(int student_id, int major, int minor, int extraCur, int img, int audio) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				int resultSet = -1;
+				
+				try {
+					// retreive all attributes from both Books and Authors tables
+					stmt = conn.prepareStatement(
+							"update students\r\n" + 
+							"set checkmajor = ?, checkminor = ?, checkextcur = ?, checkimg = ?, checkaudio = ?" +
+							"where student_id = ?"
+					);
+					stmt.setInt(1, major);
+					stmt.setInt(2, minor);
+					stmt.setInt(3, extraCur);
+					stmt.setInt(4, img);
+					stmt.setInt(5, audio);
+					stmt.setInt(6, student_id);
+					
+					resultSet = stmt.executeUpdate();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					if (resultSet != -1) {
+						found = true;
+						return found;
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("< Student_id: " + student_id + "> was not found in the Student table");
+					}
+					
+					return found;
+				} finally {
 					DBUtil.closeQuietly(stmt);
 				}
 			}

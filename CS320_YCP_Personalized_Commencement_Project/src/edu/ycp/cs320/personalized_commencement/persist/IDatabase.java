@@ -21,13 +21,23 @@ public interface IDatabase {
 	/**
 	 * Update student associated with email and password
 	 */
-	public Boolean updateStudents(String userEmail, String first, String last, String major, String minor, String extraCur,
-			String picture, String sound);
+	public Boolean updateAdvisorComment(String userEmail, String comment);
+
+	public Student findStudentsById(int id);
+
+	/**
+	 * Student submissions check
+	 * @param major			Check for major
+	 * @param minor
+	 * @param extraCur
+	 * @param img
+	 * @param audio
+	 * @return				If student content booleans have been successfully updated
+	 */
+	public Boolean updateStudentContentSubmissions(int student_id, int major, int minor, int extraCur, int img, int audio);
 
 	/**
 	 * Update student associated with email and password
 	 */
-	public Boolean updateAdvisorComment(String userEmail, String comment);
-
-	public Student findStudentsById(int id);
+	public Boolean updateStudents(String userEmail, String major, String minor, String extraCur, String picture, String sound);
 }

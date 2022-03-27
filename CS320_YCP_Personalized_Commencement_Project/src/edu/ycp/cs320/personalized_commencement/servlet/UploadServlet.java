@@ -101,30 +101,22 @@ public class UploadServlet extends HttpServlet {
             	System.out.println("\tImage: " + img + " | Audio: " + audio);
             	// Chekc if user is uploading a file or not
             	if(img.isEmpty() && audio.isEmpty()) {
-            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
-	            			student.getEmail(), student.getPassword(), firstName, 
-	            			lastName, major, minor, extraCur, student.getPicture(), student.getNameSound())) {
+            		if(updateStudent(student.getEmail(), major, minor, extraCur, student.getPicture(), student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
 	            	}
             	}else if(audio.isEmpty()) {
-            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
-	            			student.getEmail(), student.getPassword(), firstName, 
-	            			lastName, major, minor, extraCur, img, student.getNameSound())) {
+            		if(updateStudent(student.getEmail(), major, minor, extraCur, img, student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}else if (img.isEmpty()){
-            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
-	            			student.getEmail(), student.getPassword(), firstName, 
-	            			lastName, major, minor, extraCur, student.getPicture(), student.getNameSound())) {
+            		if(updateStudent(student.getEmail(), major, minor, extraCur, student.getPicture(), student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}else {
-            		if(updateStudent(student.getEmail(), student.getAdvisorId(), 
-	            			student.getEmail(), student.getPassword(), firstName, 
-	            			lastName, major, minor, extraCur, img, audio)) {
+            		if(updateStudent(student.getEmail(), major, minor, extraCur, img, audio)) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
@@ -155,16 +147,14 @@ public class UploadServlet extends HttpServlet {
 		return null;
 	}
 	
-	public Boolean updateStudent(String userEmail, int advisorId, String email, String password, 
-			String first, String last, String major, String minor, String extraCur, 
+	public Boolean updateStudent(String userEmail, String major, String minor, String extraCur, 
 			String picture, String sound) {
 		// Create the default IDatabase instance
 		DatabaseProvider.setInstance(new DerbyDatabase());
 		
 		// get the DB instance and execute transaction
 		IDatabase db = DatabaseProvider.getInstance();
-		Boolean update = db.updateStudents(userEmail, first, last, 
-				major, minor, extraCur, picture, sound);
+		Boolean update = db.updateStudents(userEmail, major, minor, extraCur, picture, sound);
 		
 		return update;
 			

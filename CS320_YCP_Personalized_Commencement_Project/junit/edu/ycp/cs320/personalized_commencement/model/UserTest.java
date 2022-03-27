@@ -17,8 +17,8 @@ private User model;
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 		model.setLogin(true);
-		model.setStudent(true);
-		model.setAdvisor(false);
+//		model.setStudent(true);
+//		model.setAdvisor(false);
 	}
 	
 	
@@ -37,16 +37,16 @@ private User model;
 	public void testGetLogin() {
 		assertEquals(true, model.getLogin());
 	}
-	
-	@Test
-	public void testGetStudent() {
-		assertEquals(true, model.getStudent());
-	}
-	
-	@Test
-	public void testGetAdvisor() {
-		assertEquals(false, model.getAdvisor());
-	}
+//	
+//	@Test
+//	public void testGetStudent() {
+//		assertEquals(true, model.getStudent());
+//	}
+//	
+//	@Test
+//	public void testGetAdvisor() {
+//		assertEquals(false, model.getAdvisor());
+//	}
 	
 	
 	// setters
@@ -67,16 +67,16 @@ private User model;
 		model.setLogin(false);
 		assertEquals(false, model.getLogin());
 	}
-	
-	@Test
-	public void testSetStudent() {
-		model.setStudent(false);
-		assertEquals(false, model.getStudent());
-	}
-	
-	@Test
-	public void testSetAdvisor() {
-		model.setAdvisor(true);
-		assertEquals(true, model.getAdvisor());
-	}
+//	
+//	@Test
+//	public void testSetStudent() {
+//		model.setStudent(false);
+//		assertEquals(false, model.getStudent());
+//	}
+//	
+//	@Test
+//	public void testSetAdvisor() {
+//		model.setAdvisor(true);
+//		assertEquals(true, model.getAdvisor());
+//	}
 }
