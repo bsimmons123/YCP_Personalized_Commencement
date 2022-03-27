@@ -6,6 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
+import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 public class PresentationServlet_Advisor_View extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -15,6 +21,11 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("Presentation Servlet: doPost");
+		
+		// get current session
+		HttpSession session = req.getSession(false); 
+		
+		Student student = (Student) session.getAttribute("studentInfo");
 		
 		String major = req.getParameter("major_approval");
 		String minor = req.getParameter("minor_approval");
@@ -26,9 +37,49 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 				" | ExtraCur: " + extraCur + " | Image: " + image + 
 				" | Audio: " + audio);
 		
+		int checkMajor = toInt(major);
+		int checkMinor = toInt(minor);
+		int checkExtCur = toInt(extraCur);
+		int checkImg = toInt(image);
+		int checkAudio = toInt(audio);
 		
+		System.out.println("\tMajor: " + checkMajor + " | Minor: " + checkMinor +
+				" | ExtraCur: " + checkExtCur + " | Image: " + checkImg + 
+				" | Audio: " + checkAudio);
+		
+		if(updateStudentContent(student.getStudentId(), checkMajor, checkMinor, checkExtCur, checkImg, checkAudio)) {
+			System.out.println("\tAdvisor's comments saved");
+		}
 		
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
+	}
+	
+	private int toInt(String param) {
+		System.out.println("\t"+param);
+		if(param == null) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	
+	private Boolean updateStudentContent(int id, int major, int minor, int extcur, int img, int audio) {
+		// Create the default IDatabase instance
+				DatabaseProvider.setInstance(new DerbyDatabase());
+				
+				// get the DB instance and execute transaction
+				IDatabase db = DatabaseProvider.getInstance();
+				Boolean student = db.updateStudentContentSubmissions(id, major, minor, extcur, img, audio);
+				
+				// check if anything was returned and output the list
+				if (student == null) {
+					System.out.println("\tNo students found for ID <" + id + ">");
+					return null;
+				}
+				else {
+					return student;
+				}
 	}
 }

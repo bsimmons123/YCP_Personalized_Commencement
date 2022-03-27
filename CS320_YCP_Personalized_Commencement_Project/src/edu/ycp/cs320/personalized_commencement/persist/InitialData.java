@@ -36,6 +36,11 @@ public class InitialData {
 				student.setNameSound(i.next());
 				student.setApproval(Integer.parseInt(i.next()));
 				student.setComment(i.next());
+				student.setCheckMajor(Integer.parseInt(i.next()));
+				student.setCheckMinor(Integer.parseInt(i.next()));
+				student.setCheckExtCur(Integer.parseInt(i.next()));
+				student.setCheckImg(Integer.parseInt(i.next()));
+				student.setCheckAudio(Integer.parseInt(i.next()));
 				studentList.add(student);
 			}
 			return studentList;

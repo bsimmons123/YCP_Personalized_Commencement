@@ -68,13 +68,6 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public Boolean updateStudents(String userEmail, String first, String last, String major, String minor,
-			String extraCur, String picture, String sound) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Boolean updateAdvisorComment(String userEmail, String comment) {
 		// TODO Auto-generated method stub
 		return null;
@@ -82,6 +75,20 @@ public class FakeDatabase implements IDatabase {
 
 	@Override
 	public Student findStudentsById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean updateStudentContentSubmissions(int student_id, int major, int minor, int extraCur, int img,
+			int audio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean updateStudents(String userEmail, String major, String minor, String extraCur, String picture,
+			String sound) {
 		// TODO Auto-generated method stub
 		return null;
 	}
