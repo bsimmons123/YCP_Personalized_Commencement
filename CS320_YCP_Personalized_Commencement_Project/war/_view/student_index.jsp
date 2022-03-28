@@ -65,37 +65,84 @@
 				${errorMessage}
 			</div>
 		</c:if>
-
+		
 			<div class="jumbotron" style="margin-bottom:2.5%; padding-top: 2%;padding-bottom: 2%;">
 			  <h1 class="display-4">
 			    ${student.first} ${student.last}
 			  </h1>
+			  <c:if test="${student.checkMajor == 1}">
+			  <span class="badge badge-success">Good!</span>
+				  <p class="lead">
+				    <strong>Major(s):</strong>
+				    ${student.major}
+				  </p>
+			  </c:if>
+			  <c:if test="${student.checkMajor == 0}">
+			  <span class="badge badge-warning">Please Fix</span>
 			  <p class="lead">
-			    <strong>Major(s):</strong>
-			    ${student.major}
-			  </p>
-
+				    <strong>Major(s):</strong>
+				    ${student.major}
+				  </p>
+			  </c:if>
+			  <c:if test="${student.checkMinor == 1}">
+			  <span class="badge badge-success">Good!</span>
 			  <p class="lead">
 			    <strong>Minors (optional):</strong>
 			    ${student.minor}
 			  </p>
-
+			  </c:if>
+			  <c:if test="${student.checkMinor == 0}">
+			  <span class="badge badge-warning">Please Fix</span>
+			  <p class="lead">
+			    <strong>Minors (optional):</strong>
+			    ${student.minor}
+			  </p>
+			  </c:if>
+			  <c:if test="${student.checkExtCur == 1}">
+			  <span class="badge badge-success">Good!</span>
 			  <p class="lead">
 			    <strong>Sports, Clubs, or Organizations (optional):</strong>
 			    ${student.extraCur}
 			  </p>
-
+			  </c:if>
+			  <c:if test="${student.checkExtCur == 0}">
+			  <span class="badge badge-warning">Please Fix</span>
+			  <p class="lead">
+			    <strong>Sports, Clubs, or Organizations (optional):</strong>
+			    ${student.extraCur}
+			  </p>
+			  </c:if>
+			  <c:if test="${student.checkImg == 1}">
+			  <span class="badge badge-success">Good!</span>
 			  <p class="lead">
 			    <strong>Image/Video to display (optional):</strong>
 			    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
 			  </p>
-
+			  </c:if>
+			  <c:if test="${student.checkImg == 0}">
+			  <span class="badge badge-warning">Please Fix</span>
+			  <p class="lead">
+			    <strong>Image/Video to display (optional):</strong>
+			    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
+			  </p>
+			  </c:if>
+			  <c:if test="${student.checkAudio == 1}">
+			  <span class="badge badge-success">Good!</span>
 			  <p class="lead">
 			    <strong>Custom Audio for Commencement (optional):</strong>
 			    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 			  </p>
+			  </c:if>
+			  <c:if test="${student.checkAudio == 0}">
+			  <span class="badge badge-warning">Please Fix</span>
+			  <p class="lead">
+			    <strong>Custom Audio for Commencement (optional):</strong>
+			    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+			  </p>
+			  </c:if>
 			</div>
 			
+			<c:if test="${student.comment != ''}">
 			<div class="card" style="margin-bottom:20px;">
 			  <div class="card-header">
 			    Advisor Comment
@@ -104,6 +151,7 @@
 			    <p class="card-text">${student.comment}</p>
 			  </div>
 			</div>
+			</c:if>
 
 			<!--Buttons for editing content, previewing content, and logging out -->
 			<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
