@@ -40,8 +40,7 @@
 		    	  <%
 		    	  }
 		    	  %>
-	    	      
-		    	  	      
+	    	            
 			      <!-- Student name majors and minors div -->
 			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 			      	<!-- name -->
