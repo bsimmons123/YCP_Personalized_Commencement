@@ -11,7 +11,6 @@ import org.junit.Test;
  */
 public class StudentTest {
 	private Student model;
-	private Student model2;
 	
 	@Before
 	public void setup() {
