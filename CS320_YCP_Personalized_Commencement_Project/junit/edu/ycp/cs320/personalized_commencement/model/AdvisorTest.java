@@ -11,6 +11,7 @@ import org.junit.Test;
  */
 public class AdvisorTest {
 private Advisor model;
+private Advisor model2;
 	
 	@Before
 	public void setup() {
@@ -18,6 +19,12 @@ private Advisor model;
 		model.setDecision(true);
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
+		
+		model2 = new Advisor();
+		model2.setDecision(true);
+		model2.setPassword("Brandon'sDad1");
+		model2.setEmail("EthanLicksLinux@yahoo.com");
+		
 	}
 	
 	// getters
@@ -34,6 +41,21 @@ private Advisor model;
 	@Test
 	public void testGetEmail() {
 		assertEquals("EthanLicksWindows@hotmail.yahoo.brown", model.getEmail());
+	}
+	
+	@Test
+	public void testGetDecision2() {
+		assertEquals(true, model2.getDecision());
+	}
+	// getters for second model
+	@Test
+	public void testGetPassword2() {
+		assertEquals("Brandon'sDad1", model2.getPassword());
+	}
+	
+	@Test
+	public void testGetEmail2() {
+		assertEquals("EthanLicksLinux@yahoo.com", model2.getEmail());
 	}
 	
 	// setters
@@ -53,6 +75,25 @@ private Advisor model;
 	public void testSetEmail() {
 		model.setEmail("MyEmail@stuff.gov");
 		assertEquals("MyEmail@stuff.gov", model.getEmail());
+	}
+	
+	//setters for model 2
+	@Test
+	public void testSetDecision2() {
+		model.setDecision(true);
+		assertEquals(true, model2.getDecision());
+	}
+	
+	@Test
+	public void testSetPassword2() {
+		model2.setPassword("emoaddict");
+		assertEquals("emoaddict", model2.getPassword());
+	}
+	
+	@Test
+	public void testSetEmail2() {
+		model2.setEmail("email@gov.gov");
+		assertEquals("email@gov.gov", model2.getEmail());
 	}
 	
 }
