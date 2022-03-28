@@ -41,8 +41,6 @@ public class UploadServlet extends HttpServlet {
         	String fsize = null;
 
         	// field names for form params
-        	String firstName = null;
-        	String lastName = null;
         	String major = null;
         	String minor = null;
         	String extraCur = null;
@@ -83,13 +81,11 @@ public class UploadServlet extends HttpServlet {
                     }
                 }
                 // retrieves info from form field
-                firstName = multiparts.get(0).getString();
-            	lastName = multiparts.get(1).getString();
-            	major = multiparts.get(2).getString();
-            	minor = multiparts.get(3).getString();
-            	extraCur = multiparts.get(4).getString();
-            	img = new File(multiparts.get(5).getName()).getName();
-            	audio = new File(multiparts.get(6).getName()).getName();
+            	major = multiparts.get(0).getString();
+            	minor = multiparts.get(1).getString();
+            	extraCur = multiparts.get(2).getString();
+            	img = new File(multiparts.get(3).getName()).getName();
+            	audio = new File(multiparts.get(4).getName()).getName();
             }
                //File uploaded successfully
             } catch (Exception ex) {
