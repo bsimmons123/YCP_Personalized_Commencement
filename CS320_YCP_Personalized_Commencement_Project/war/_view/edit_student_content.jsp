@@ -48,19 +48,6 @@
 			When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so.<br><br>
 			File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files.<br>
 			</p>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">First Name</span>
-        </div>
-        <input type="text" class="form-control" placeholder="John" name="firstname" aria-describedby="basic-addon1" value="${student.first}">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Last Name</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Smith" name="lastname" aria-describedby="basic-addon1" value="${student.last}">
-      </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
