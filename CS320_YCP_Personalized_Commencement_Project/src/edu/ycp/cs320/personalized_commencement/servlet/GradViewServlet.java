@@ -54,6 +54,7 @@ public class GradViewServlet extends HttpServlet{
 		}
 		
 		
+		
 		System.out.println("\tPosting Login results");
 		
 		req.setAttribute("user", jspUser);
@@ -83,7 +84,6 @@ public class GradViewServlet extends HttpServlet{
 			req.setAttribute("errorMessage",  "Invalid Username/Password");
 			System.out.println("Error message is: " + "Invalid Username/Password");
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
-		
 	}
 	
 	/**
