@@ -89,11 +89,6 @@ public class StudentTest {
 	}
 	
 	// setters
-	@Test
-	public void testSetStudentInfo() {
-//		model.setStudentInfo(4);
-//		assertEquals(4, model.getStudentInfo());
-	}
 
 	@Test
 	public void testSetPassword() {

@@ -576,4 +576,45 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+	
+	@Override
+	public Boolean updateStudentApproval(int student_id, int approval) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				int resultSet = -1;
+				
+				try {
+					// retreive all attributes from both Books and Authors tables
+					stmt = conn.prepareStatement(
+							"update students\r\n" + 
+							"set approval = ? " +
+							"where student_id = ?"
+					);
+					stmt.setInt(1, approval);
+					stmt.setInt(2, student_id);
+					
+					resultSet = stmt.executeUpdate();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					if (resultSet != -1) {
+						found = true;
+						return found;
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("< Student_id: " + student_id + "> was not found in the Student table");
+					}
+					
+					return found;
+				} finally {
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 }

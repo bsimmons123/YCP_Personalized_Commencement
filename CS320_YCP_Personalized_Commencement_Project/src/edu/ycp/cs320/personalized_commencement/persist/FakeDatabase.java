@@ -92,4 +92,10 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Boolean updateStudentApproval(int student_id, int approval) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

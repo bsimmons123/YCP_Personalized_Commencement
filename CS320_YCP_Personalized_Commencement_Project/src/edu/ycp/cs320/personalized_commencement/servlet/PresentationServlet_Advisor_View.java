@@ -96,14 +96,15 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 				// get the DB instance and execute transaction
 				IDatabase db = DatabaseProvider.getInstance();
 				Boolean student = db.updateStudentContentSubmissions(id, major, minor, extcur, img, audio);
-				
+				if(major == 1 && minor == 1 && extcur == 1 && img == 1 && audio == 1) {
+					return db.updateStudentApproval(id, 1);
+				}else {
+					db.updateStudentApproval(id, 0);
+				}
 				// check if anything was returned and output the list
 				if (student == null) {
 					System.out.println("\tNo students found for ID <" + id + ">");
-					return null;
 				}
-				else {
-					return student;
-				}
+				return false;
 	}
 }

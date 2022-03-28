@@ -40,4 +40,12 @@ public interface IDatabase {
 	 * Update student associated with email and password
 	 */
 	public Boolean updateStudents(String userEmail, String major, String minor, String extraCur, String picture, String sound);
+
+	/**
+	 * updates student approval state
+	 * @param student_id
+	 * @param approval
+	 * @return
+	 */
+	public Boolean updateStudentApproval(int student_id, int approval);
 }

@@ -47,16 +47,6 @@ private User model;
 	public void testGetStudentId() {
 		assertEquals(69,model.getStudentId());
 	}
-//	
-//	@Test
-//	public void testGetStudent() {
-//		assertEquals(true, model.getStudent());
-//	}
-//	
-//	@Test
-//	public void testGetAdvisor() {
-//		assertEquals(false, model.getAdvisor());
-//	}
 	
 	
 	// setters
@@ -87,16 +77,4 @@ private User model;
 		model.setStudentId(44);
 		assertEquals(44,model.getStudentId());
 	}
-//	
-//	@Test
-//	public void testSetStudent() {
-//		model.setStudent(false);
-//		assertEquals(false, model.getStudent());
-//	}
-//	
-//	@Test
-//	public void testSetAdvisor() {
-//		model.setAdvisor(true);
-//		assertEquals(true, model.getAdvisor());
-//	}
 }

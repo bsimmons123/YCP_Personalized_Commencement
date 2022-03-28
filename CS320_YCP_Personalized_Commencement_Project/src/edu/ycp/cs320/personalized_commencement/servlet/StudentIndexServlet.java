@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.personalized_commencement.model.Student;
+import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
+import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
+import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 public class StudentIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +25,9 @@ public class StudentIndexServlet extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		Student stuInfo = new Student();
 		stuInfo = (Student) session.getAttribute("student");
+		
 		System.out.println("Student Comment: " + stuInfo.getComment());
+		
 		req.setAttribute("student", stuInfo);
 
 		// call JSP to generate empty form
