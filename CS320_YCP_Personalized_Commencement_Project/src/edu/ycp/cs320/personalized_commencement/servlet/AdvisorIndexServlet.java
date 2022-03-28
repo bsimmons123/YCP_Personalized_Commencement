@@ -87,7 +87,7 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		Student student = getStudentById(student_id);
 		
-		System.out.println("\tAdvisor Viewing: " + student.getFirst() + student.getLast());
+		System.out.println("\tAdvisor Viewing: " + student.getFirst() + " " +  student.getLast());
 		
 		HttpSession session = req.getSession(false);
 		

@@ -466,8 +466,6 @@ public class DerbyDatabase implements IDatabase {
 					
 					resultSet = stmt.executeUpdate();
 					
-					System.out.println(resultSet);
-					
 					// for testing that a result was returned
 					Boolean found = false;
 					
