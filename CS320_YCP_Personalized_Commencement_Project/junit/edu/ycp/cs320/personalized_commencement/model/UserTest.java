@@ -17,6 +17,8 @@ private User model;
 		model.setPassword("Brandon'sMom1");
 		model.setEmail("EthanLicksWindows@hotmail.yahoo.brown");
 		model.setLogin(true);
+		model.setAdvisorId(1);
+		model.setStudentId(69);
 //		model.setStudent(true);
 //		model.setAdvisor(false);
 	}
@@ -36,6 +38,14 @@ private User model;
 	@Test
 	public void testGetLogin() {
 		assertEquals(true, model.getLogin());
+	}
+	@Test
+	public void testGetAdvisorId() {
+		assertEquals(1,model.getAdvisorId());
+	}
+	@Test
+	public void testGetStudentId() {
+		assertEquals(69,model.getStudentId());
 	}
 //	
 //	@Test
@@ -66,6 +76,16 @@ private User model;
 	public void testSetLogin() {
 		model.setLogin(false);
 		assertEquals(false, model.getLogin());
+	}
+	@Test
+	public void testSetAdvisorId() {
+		model.setAdvisorId(55);
+		assertEquals(55,model.getAdvisorId());
+	}
+	@Test
+	public void testSetStudentId() {
+		model.setStudentId(44);
+		assertEquals(44,model.getStudentId());
 	}
 //	
 //	@Test
