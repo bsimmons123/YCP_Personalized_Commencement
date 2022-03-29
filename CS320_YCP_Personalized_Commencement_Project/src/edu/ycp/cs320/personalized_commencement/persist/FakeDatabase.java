@@ -80,15 +80,14 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public Boolean updateStudentContentSubmissions(int student_id, int major, int minor, int extraCur, int img,
+	public Boolean updateStudentContentSubmissions(int student_id, int extraCur, int img,
 			int audio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Boolean updateStudents(String userEmail, String major, String minor, String extraCur, String picture,
-			String sound) {
+	public Boolean updateStudents(String userEmail, String extraCur, String picture, String sound) {
 		// TODO Auto-generated method stub
 		return null;
 	}

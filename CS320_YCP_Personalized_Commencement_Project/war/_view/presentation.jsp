@@ -20,12 +20,10 @@
 		<c:if test="${empty advisor }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
 		</c:if>
-		
 		<!-- Header of the page -->
 		<div id="pageheader" style="padding-top: 100px;">
 			<h1 class="title">Submission Preview for ${studentInfo.first} ${studentInfo.last}</h1>
 		</div>
-		
 		<form action="${pageContext.servletContext.contextPath}/presentation" method="post">
 			<!-- Instructions for advisor -->
 			<div id="instructions">
@@ -34,50 +32,49 @@
 				If you disapprove of any of the information, leave the check box for it blank.<br>
 				When you are finished, simply click the submit button to confirm your decision.
 				</p>
-				
+				<!-- Card holding student info -->
 				<div class="jumbotron">
-			
+					<!-- Student name -->
 					<h1 class="display-4">
 						${studentInfo.first} ${studentInfo.last}
 					</h1>
+					<!-- Student major -->
 					<p class="lead">
 						<strong>Major(s):</strong>
 						${studentInfo.major}
-						<input type="checkbox" name="major_approval">
 					</p>
-	
+					<!-- Student minor -->
 					<p class="lead">
 						<strong>Minor(s):</strong>
 						${studentInfo.minor}
-						<input type="checkbox" name="minor_approval">
 					</p>
-	
+					<!-- Student extracurricular activities -->
 					<p class="lead">
 						<strong>Sports, Clubs, or Organizations (optional):</strong>
 						${studentInfo.extraCur}
 						<input type="checkbox" name="extracur_approval">
 					</p>
-	
+					<!-- Student picture -->
 					<p class="lead">
 						<strong>Image/Video to display (optional):</strong>
 				    	<img src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded float-right img-fluid" >
 						<%-- <img src="${pageContext.servletContext.contextPath}/img/Edge.jpg" alt="User Image" width="460" height="345"> --%>
 						<input type="checkbox" name="image_approval">
 					</p>
-	
+					<!-- Student audio -->
 					<p class="lead">
 						<strong>Custom Audio for Commencement (optional):</strong>
 						<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
 						<input type="checkbox" name="audio_approval">
 					</p>
-					<hr class="my-4">
+					<hr class="my-4"> <!-- Horizontal rule to end info -->
+					<!-- Advisor comment section -->
 					<div class="input-group" style="margin-bottom: 20px;">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text">Submission Comment</span>
 					  </div>
 					  <textarea class="form-control" name="submissioncomment" aria-label="With textarea"></textarea>
 					</div>
-	
 					<!-- Submit button and Back Button -->
 					<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
 						<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/advisor_index'" value="Back">

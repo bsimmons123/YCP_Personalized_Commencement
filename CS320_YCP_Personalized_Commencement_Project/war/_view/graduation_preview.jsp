@@ -32,7 +32,7 @@
 		    	  <%
 		    	  if (student.getPicture().equalsIgnoreCase("null")) {
 		    	  	  %>
-			          <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/files/carouselTests/York.jpeg">
+			          <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
 			      <%  
 		    	  } else {
 		    		  %>
@@ -40,7 +40,6 @@
 		    	  <%
 		    	  }
 		    	  %>
-	    	            
 			      <!-- Student name majors and minors div -->
 			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 			      	<!-- name -->
@@ -52,7 +51,7 @@
 		      <!-- Second Carousel Slide -->
 		      <div class="carousel-item">
 		        <!-- YCP image shown for second slide -->
-		        <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/files/carouselTests/York.jpeg">
+		        <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
 		        <!-- Student extracurricular div -->
 		        <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 				    <!-- Sports clubs activities -->

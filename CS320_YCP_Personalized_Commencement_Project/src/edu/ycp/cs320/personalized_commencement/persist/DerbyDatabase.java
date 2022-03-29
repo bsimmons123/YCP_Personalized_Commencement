@@ -396,9 +396,7 @@ public class DerbyDatabase implements IDatabase {
 	 * Update student associated with email and password
 	 */
 	@Override
-	public Boolean updateStudents(String userEmail, 
-			String major, String minor, String extraCur, 
-			String picture, String sound) {
+	public Boolean updateStudents(String userEmail, String extraCur, String picture, String sound) {
 		return executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
@@ -409,16 +407,13 @@ public class DerbyDatabase implements IDatabase {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
 							"update students\r\n" + 
-							"set major = ?, minor = ?,\n" + 
-							"  extcur = ?, img = ?, audio = ?\n" + 
+							"set extcur = ?, img = ?, audio = ?\n" + 
 							"where email = ?"
 					);
-					stmt.setString(1, major);
-					stmt.setString(2, minor);
-					stmt.setString(3, extraCur);
-					stmt.setString(4, picture);
-					stmt.setString(5, sound);
-					stmt.setString(6, userEmail);
+					stmt.setString(1, extraCur);
+					stmt.setString(2, picture);
+					stmt.setString(3, sound);
+					stmt.setString(4, userEmail);
 					
 					resultSet = stmt.executeUpdate();
 					
@@ -531,7 +526,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 	
 	@Override
-	public Boolean updateStudentContentSubmissions(int student_id, int major, int minor, int extraCur, int img, int audio) {
+	public Boolean updateStudentContentSubmissions(int student_id, int extraCur, int img, int audio) {
 		return executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
@@ -542,15 +537,13 @@ public class DerbyDatabase implements IDatabase {
 					// retreive all attributes from both Books and Authors tables
 					stmt = conn.prepareStatement(
 							"update students\r\n" + 
-							"set checkmajor = ?, checkminor = ?, checkextcur = ?, checkimg = ?, checkaudio = ?" +
+							"set checkextcur = ?, checkimg = ?, checkaudio = ?" +
 							"where student_id = ?"
 					);
-					stmt.setInt(1, major);
-					stmt.setInt(2, minor);
-					stmt.setInt(3, extraCur);
-					stmt.setInt(4, img);
-					stmt.setInt(5, audio);
-					stmt.setInt(6, student_id);
+					stmt.setInt(1, extraCur);
+					stmt.setInt(2, img);
+					stmt.setInt(3, audio);
+					stmt.setInt(4, student_id);
 					
 					resultSet = stmt.executeUpdate();
 					
@@ -562,7 +555,7 @@ public class DerbyDatabase implements IDatabase {
 						return found;
 					}
 					
-					// check if the title was found
+					// check if the id was found
 					if (!found) {
 						System.out.println("< Student_id: " + student_id + "> was not found in the Student table");
 					}

@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
-import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
-import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 public class StudentIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -51,20 +51,6 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Major(s)</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Computer Science, etc." name="majors" aria-describedby="basic-addon1" value="${student.major}">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Minor(s)</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Math, etc." name="minors" aria-describedby="basic-addon1" value="${student.minor}">
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
           <span class="input-group-text">Sports, Clubs, or Organizations:</span>
         </div>
         <input type="text" class="form-control" name="sportsclubsactivities" aria-label="Amount (to the nearest dollar)" value="${student.extraCur}">

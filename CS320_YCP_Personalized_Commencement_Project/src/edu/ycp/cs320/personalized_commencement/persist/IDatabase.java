@@ -34,12 +34,12 @@ public interface IDatabase {
 	 * @param audio
 	 * @return				If student content booleans have been successfully updated
 	 */
-	public Boolean updateStudentContentSubmissions(int student_id, int major, int minor, int extraCur, int img, int audio);
+	public Boolean updateStudentContentSubmissions(int student_id, int extraCur, int img, int audio);
 
 	/**
 	 * Update student associated with email and password
 	 */
-	public Boolean updateStudents(String userEmail, String major, String minor, String extraCur, String picture, String sound);
+	public Boolean updateStudents(String userEmail, String extraCur, String picture, String sound);
 
 	/**
 	 * updates student approval state

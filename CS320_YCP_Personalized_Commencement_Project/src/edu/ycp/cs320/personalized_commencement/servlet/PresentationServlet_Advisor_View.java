@@ -42,14 +42,12 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		System.out.println("\tSubmission Comment: " + comment);
 		
 		// cast them to ints for database
-		int checkMajor = toInt(major);
-		int checkMinor = toInt(minor);
 		int checkExtCur = toInt(extraCur);
 		int checkImg = toInt(image);
 		int checkAudio = toInt(audio);
 		
 		// update student content
-		if(updateStudentContent(student.getStudentId(), checkMajor, checkMinor, checkExtCur, checkImg, checkAudio)) {
+		if(updateStudentContent(student.getStudentId(), checkExtCur, checkImg, checkAudio)) {
 			System.out.println("\tAdvisor's checkBoxes saved");
 		}
 		
@@ -89,14 +87,14 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		}
 	}
 	
-	private Boolean updateStudentContent(int id, int major, int minor, int extcur, int img, int audio) {
+	private Boolean updateStudentContent(int id, int extcur, int img, int audio) {
 		// Create the default IDatabase instance
 				DatabaseProvider.setInstance(new DerbyDatabase());
 				
 				// get the DB instance and execute transaction
 				IDatabase db = DatabaseProvider.getInstance();
-				Boolean student = db.updateStudentContentSubmissions(id, major, minor, extcur, img, audio);
-				if(major == 1 && minor == 1 && extcur == 1 && img == 1 && audio == 1) {
+				Boolean student = db.updateStudentContentSubmissions(id, extcur, img, audio);
+				if(extcur == 1 && img == 1 && audio == 1) {
 					return db.updateStudentApproval(id, 1);
 				}else {
 					db.updateStudentApproval(id, 0);

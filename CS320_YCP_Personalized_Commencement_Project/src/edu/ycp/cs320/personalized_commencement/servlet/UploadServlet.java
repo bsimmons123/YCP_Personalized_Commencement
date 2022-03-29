@@ -41,8 +41,6 @@ public class UploadServlet extends HttpServlet {
         	String fsize = null;
 
         	// field names for form params
-        	String major = null;
-        	String minor = null;
         	String extraCur = null;
         	String img = null;
         	String audio = null;
@@ -81,11 +79,9 @@ public class UploadServlet extends HttpServlet {
                     }
                 }
                 // retrieves info from form field
-            	major = multiparts.get(0).getString();
-            	minor = multiparts.get(1).getString();
-            	extraCur = multiparts.get(2).getString();
-            	img = new File(multiparts.get(3).getName()).getName();
-            	audio = new File(multiparts.get(4).getName()).getName();
+            	extraCur = multiparts.get(0).getString();
+            	img = new File(multiparts.get(1).getName()).getName();
+            	audio = new File(multiparts.get(2).getName()).getName();
             }
                //File uploaded successfully
             } catch (Exception ex) {
@@ -97,22 +93,22 @@ public class UploadServlet extends HttpServlet {
             	System.out.println("\tImage: " + img + " | Audio: " + audio);
             	// Chekc if user is uploading a file or not
             	if(img.isEmpty() && audio.isEmpty()) {
-            		if(updateStudent(student.getEmail(), major, minor, extraCur, student.getPicture(), student.getNameSound())) {
+            		if(updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
 	            	}
             	}else if(audio.isEmpty()) {
-            		if(updateStudent(student.getEmail(), major, minor, extraCur, img, student.getNameSound())) {
+            		if(updateStudent(student.getEmail(), extraCur, img, student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}else if (img.isEmpty()){
-            		if(updateStudent(student.getEmail(), major, minor, extraCur, student.getPicture(), student.getNameSound())) {
+            		if(updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}else {
-            		if(updateStudent(student.getEmail(), major, minor, extraCur, img, audio)) {
+            		if(updateStudent(student.getEmail(), extraCur, img, audio)) {
 	            		student = getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
@@ -143,14 +139,13 @@ public class UploadServlet extends HttpServlet {
 		return null;
 	}
 	
-	public Boolean updateStudent(String userEmail, String major, String minor, String extraCur, 
-			String picture, String sound) {
+	public Boolean updateStudent(String userEmail, String extraCur, String picture, String sound) {
 		// Create the default IDatabase instance
 		DatabaseProvider.setInstance(new DerbyDatabase());
 		
 		// get the DB instance and execute transaction
 		IDatabase db = DatabaseProvider.getInstance();
-		Boolean update = db.updateStudents(userEmail, major, minor, extraCur, picture, sound);
+		Boolean update = db.updateStudents(userEmail, extraCur, picture, sound);
 		
 		return update;
 			
