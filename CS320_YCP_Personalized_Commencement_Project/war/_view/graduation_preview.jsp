@@ -24,7 +24,7 @@
 	<body style="background-color: rgb(0, 128, 0);">
 		<audio autoplay src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 95%; height: 70%; margin-top: 100px; margin-left: 2.5%; margin-right: 2.5%; margin-bottom: 30px; border: 3px solid black;">
+		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 95%; height: 70%; margin-top: 100px; margin-left: 2.5%; margin-right: 2.5%; margin-bottom: 30px; border: 3px solid black;">
 		    <div class="carousel-inner">
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active">
