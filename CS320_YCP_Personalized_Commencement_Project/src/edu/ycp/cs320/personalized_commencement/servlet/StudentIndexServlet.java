@@ -23,7 +23,9 @@ public class StudentIndexServlet extends HttpServlet {
 		Student stuInfo = new Student();
 		stuInfo = (Student) session.getAttribute("student");
 		
-		System.out.println("Student Comment: " + stuInfo.getComment());
+		if (!stuInfo.getComment().isEmpty()) {
+			System.out.println("Student Comment: " + stuInfo.getComment());
+		}
 		
 		req.setAttribute("student", stuInfo);
 

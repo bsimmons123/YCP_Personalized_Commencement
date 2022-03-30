@@ -60,8 +60,8 @@
 			</p>
 			
 			<!-- if student is pending approval -->
-			<h3 style="width: 100%; margin: auto; margin-bottom: 20px; color:green; text-align:center">Unreviewed Student Content</h3>
-			<div style="width: 100%; height: 350px;">
+			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">Unreviewed Student Content</h3>
+			<div style="width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: rgb(212,237,218); margin-bottom: 4%;">
 				<c:forEach var="student" items="${pendingStuList}">
 					<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 						<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#808080;float:left;width: 18rem; min-height: 18rem;">
@@ -81,8 +81,8 @@
 			</div>
 			
 			<!-- if student has been approved for graduation -->
-			<h3 style="width: 100%; margin: auto; margin-bottom: 20px; color:green; text-align:center">Reviewed Student Content</h3>
-			<div style="width: 100%; height: 350px;">
+			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">Reviewed Student Content</h3>
+			<div style="width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: rgb(212,237,218); margin-bottom: 4%;">
 				<c:forEach var="student" items="${stuList}">
 					<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 						<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">

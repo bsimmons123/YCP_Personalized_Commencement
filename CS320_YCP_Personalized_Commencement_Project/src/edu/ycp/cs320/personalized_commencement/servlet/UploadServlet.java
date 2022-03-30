@@ -17,16 +17,15 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
-import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
-import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final String UPLOAD_DIRECTORY = "war/files";
+	private ServletsController controller = new ServletsController();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -89,27 +88,26 @@ public class UploadServlet extends HttpServlet {
             	System.out.println("\tFile Upload Failed due to " + ex);
             	req.setAttribute("errorMessage", "File already uploaded!");
             }finally {
-            	
             	System.out.println("\tImage: " + img + " | Audio: " + audio);
             	// Chekc if user is uploading a file or not
             	if(img.isEmpty() && audio.isEmpty()) {
-            		if(updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
-	            		student = getStudent(student.getEmail(), student.getPassword());
+            		if(controller.updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
+	            		student = controller.getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
 	            	}
             	}else if(audio.isEmpty()) {
-            		if(updateStudent(student.getEmail(), extraCur, img, student.getNameSound())) {
-	            		student = getStudent(student.getEmail(), student.getPassword());
+            		if(controller.updateStudent(student.getEmail(), extraCur, img, student.getNameSound())) {
+	            		student = controller.getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}else if (img.isEmpty()){
-            		if(updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
-	            		student = getStudent(student.getEmail(), student.getPassword());
+            		if(controller.updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
+	            		student = controller.getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}else {
-            		if(updateStudent(student.getEmail(), extraCur, img, audio)) {
-	            		student = getStudent(student.getEmail(), student.getPassword());
+            		if(controller.updateStudent(student.getEmail(), extraCur, img, audio)) {
+	            		student = controller.getStudent(student.getEmail(), student.getPassword());
 	            		session.setAttribute("student", student);
             		}
             	}
@@ -118,37 +116,5 @@ public class UploadServlet extends HttpServlet {
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
     }
-	
-	/**
-	 * get student account
-	 * @param email		students email
-	 * @return			students account
-	 */
-	public Student getStudent(String email, String password) {
-		// Create the default IDatabase instance
-		DatabaseProvider.setInstance(new DerbyDatabase());
-		
-		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
-		Student student = db.getStudent(email, password);
-		
-		// check if anything was returned and output the list
-		if (student != null) {
-				return student;
-			}
-		return null;
-	}
-	
-	public Boolean updateStudent(String userEmail, String extraCur, String picture, String sound) {
-		// Create the default IDatabase instance
-		DatabaseProvider.setInstance(new DerbyDatabase());
-		
-		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
-		Boolean update = db.updateStudents(userEmail, extraCur, picture, sound);
-		
-		return update;
-			
-	}
 		
 }

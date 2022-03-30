@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
-import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
-import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 public class AdvisorIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ServletsController controller = new ServletsController();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
 		System.out.println("Advisor Index Servlet: doGet");
 		
 		Advisor advisor = new Advisor();
@@ -51,7 +49,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		ArrayList<Student> pendingStudents = new ArrayList<Student>();
 		
 		// get all students for particular advisor
-		students = getAdvisorsStudents(advisor.getEmail());
+		students = controller.getAdvisorsStudents(advisor.getEmail());
+		
 		for(Student student: students) {
 			if(student.getApproval() == 1) {
 				approvedStudents.add(student);
@@ -63,7 +62,6 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		// error message for JSP
 		String errorMessage = null;
-		
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("advisor", advisor);
 		
@@ -72,20 +70,18 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		// list of students pending approval
 		req.setAttribute("pendingStuList", pendingStudents);
-
-
+		
 		req.getRequestDispatcher("/_view/advisor_index.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
 		System.out.println("AdvisorIndex Servlet: doPost");
 		
-		int student_id = getInteger(req, "student");
+		int student_id = controller.getInteger(req, "student");
 		
-		Student student = getStudentById(student_id);
+		Student student = controller.getStudentById(student_id);
 		
 		System.out.println("\tAdvisor Viewing: " + student.getFirst() + " " +  student.getLast());
 		
@@ -95,46 +91,5 @@ public class AdvisorIndexServlet extends HttpServlet {
 	
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);
-	}
-	
-	// gets an Integer from the Posted form data, for the given attribute name
-	private int getInteger(HttpServletRequest req, String name) {
-		return Integer.parseInt(req.getParameter(name));
-	}
-
-	public ArrayList<Student> getAdvisorsStudents(String AdvisorEmail) {
-		// Create the default IDatabase instance
-		DatabaseProvider.setInstance(new DerbyDatabase());
-		
-		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
-		ArrayList<Student> studentAdvisorList = db.findStudentsByAdvisor(AdvisorEmail);
-		
-		// check if anything was returned and output the list
-		if (studentAdvisorList.isEmpty()) {
-			System.out.println("\tNo students found for <" + AdvisorEmail + ">");
-			return null;
-		}
-		else {
-			return studentAdvisorList;
-		}
-	}
-	
-	private Student getStudentById(int id) {
-		// Create the default IDatabase instance
-				DatabaseProvider.setInstance(new DerbyDatabase());
-				
-				// get the DB instance and execute transaction
-				IDatabase db = DatabaseProvider.getInstance();
-				Student student = db.findStudentsById(id);
-				
-				// check if anything was returned and output the list
-				if (student == null) {
-					System.out.println("\tNo students found for ID <" + id + ">");
-					return null;
-				}
-				else {
-					return student;
-				}
 	}
 }

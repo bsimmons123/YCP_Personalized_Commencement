@@ -17,13 +17,13 @@ public class LogoutServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
 		HttpSession session = req.getSession(false);
+		
 		if(session != null) {
 			System.out.println("Logout Servlet: doGet");
 			System.out.println("Deleting current user session: " + session.getId());
 			session.invalidate(); // delete the current user session
-		}else {
+		} else {
 			System.out.println("No session to logout from");
 		}
 		

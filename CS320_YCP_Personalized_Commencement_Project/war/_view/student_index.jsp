@@ -38,7 +38,7 @@
 				
 				<!-- Outputs approval status message depending on if the student has been approved or not -->
 				<% 
-				if(student.getApproval() == 1) {
+				if (student.getApproval() == 1) {
 				%>
 					<div class="alert alert-success" role="alert" style="text-align: center;">
 						Your content has been approved for the commencement ceremony!

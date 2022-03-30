@@ -8,13 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
-import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
-import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 
 public class PresentationServlet_Advisor_View extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ServletsController controller = new ServletsController();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -41,68 +40,22 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		
 		System.out.println("\tSubmission Comment: " + comment);
 		
-		// cast them to ints for database
-		int checkExtCur = toInt(extraCur);
-		int checkImg = toInt(image);
-		int checkAudio = toInt(audio);
+		// cast them to integers for database
+		int checkExtCur = controller.toInt(extraCur);
+		int checkImg = controller.toInt(image);
+		int checkAudio = controller.toInt(audio);
 		
 		// update student content
-		if(updateStudentContent(student.getStudentId(), checkExtCur, checkImg, checkAudio)) {
+		if(controller.updateStudentContent(student.getStudentId(), checkExtCur, checkImg, checkAudio)) {
 			System.out.println("\tAdvisor's checkBoxes saved");
 		}
 		
-		if(updateStudentComment(student.getEmail(), comment)){
+		if(controller.updateStudentComment(student.getEmail(), comment)){
 			System.out.println("\tAdvisor's Comment saved");
 		}
 		
 		// Forward to view to render the result HTML document
 		AdvisorIndexServlet advisorServlet = new AdvisorIndexServlet();
 		advisorServlet.doGet(req, resp);
-	}
-	
-	private boolean updateStudentComment(String email, String comment) {
-		// Create the default IDatabase instance
-		DatabaseProvider.setInstance(new DerbyDatabase());
-		
-		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
-		Boolean student = db.updateAdvisorComment(email, comment);
-		
-		// check if anything was returned and output the list
-		if (student == null) {
-			System.out.println("\tNo students found for email <" + email + ">");
-			return false;
-		}
-		else {
-			return student;
-		}
-	}
-
-	private int toInt(String param) {
-		if(param == null) {
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
-	
-	private Boolean updateStudentContent(int id, int extcur, int img, int audio) {
-		// Create the default IDatabase instance
-				DatabaseProvider.setInstance(new DerbyDatabase());
-				
-				// get the DB instance and execute transaction
-				IDatabase db = DatabaseProvider.getInstance();
-				Boolean student = db.updateStudentContentSubmissions(id, extcur, img, audio);
-				if(extcur == 1 && img == 1 && audio == 1) {
-					return db.updateStudentApproval(id, 1);
-				}else {
-					db.updateStudentApproval(id, 0);
-				}
-				// check if anything was returned and output the list
-				if (student == null) {
-					System.out.println("\tNo students found for ID <" + id + ">");
-				}
-				return false;
 	}
 }
