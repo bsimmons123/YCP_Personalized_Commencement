@@ -13,7 +13,7 @@
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<!-- Imports navbar -->
-		<%@ include file="header.jsp" %> 
+		<%@ include file="header.jsp" %>
 		<!-- imports student model -->
 		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
 		<!-- sets session's student model -->
@@ -28,16 +28,16 @@
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 			<div id="instructions">
-			
+
 				<!-- Welcome message -->
 				<c:if test="${! empty student }">
 					<div class="alert alert-info" role="alert" style="text-align: center;">
 						Welcome, ${student.email}!
 					</div>
 				</c:if>
-				
+
 				<!-- Outputs approval status message depending on if the student has been approved or not -->
-				<% 
+				<%
 				if (student.getApproval() == 1) {
 				%>
 					<div class="alert alert-success" role="alert" style="text-align: center;">
@@ -50,28 +50,28 @@
 						Your content has not yet been approved for the commencement ceremony.
 					</div>
 				<%
-				} 
+				}
 				%>
-				
+
 				<!-- Outputs success message if files were uploaded -->
 				<c:if test="${! empty message}">
 					<div class="alert alert-success" role="alert" style="text-align: center;">
 						${message}
 					</div>
 				</c:if>
-				
+
 				<!-- Outputs failure message if files were already uploaded or no files were uploaded -->
 				<c:if test="${! empty errorMessage}">
 					<div class="alert alert-warning" role="alert" style="text-align: center;">
 						${errorMessage}
 					</div>
 				</c:if>
-				
+
 				<!-- redirects to login page if -->
 				<c:if test="${empty student }">
 					<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
 				</c:if>
-				
+
 				<!-- Card for all of the student's information -->
 				<div class="jumbotron" style="margin-bottom:2.5%; padding-top: 2%;padding-bottom: 2%;">
 				  <h1 class="display-4">
@@ -85,48 +85,108 @@
 				    <strong>Minors:</strong>
 				    ${student.minor}
 				  </p>
-				  <c:if test="${student.checkExtCur == 1}">
-				  <span class="badge badge-success">Approved!</span>
-				  <p class="lead">
-				    <strong>Sports, Clubs, or Organizations (optional):</strong>
-				    ${student.extraCur}
-				  </p>
-				  </c:if>
-				  <c:if test="${student.checkExtCur == 0}">
-				  <span class="badge badge-secondary">Under Review</span>
-				  <p class="lead">
-				    <strong>Sports, Clubs, or Organizations (optional):</strong>
-				    ${student.extraCur}
-				  </p>
-				  </c:if>
-				  <c:if test="${student.checkImg == 1}">
-				  <span class="badge badge-success">Approved!</span>
-				  <p class="lead">
-				    <strong>Image/Video to display (optional):</strong>
-				    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
-				  </p>
-				  </c:if>
-				  <c:if test="${student.checkImg == 0}">
-				  <span class="badge badge-secondary">Under Review</span>
-				  <p class="lead">
-				    <strong>Image/Video to display (optional):</strong>
-				    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
-				  </p>
-				  </c:if>
-				  <c:if test="${student.checkAudio == 1}">
-				  <span class="badge badge-success" style="margin-top: 5%;">Approved!</span>
-				  <p class="lead">
-				    <strong>Custom Audio for Commencement (optional):</strong>
-				    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
-				  </p>
-				  </c:if>
-				  <c:if test="${student.checkAudio == 0}">
-				  <span class="badge badge-secondary" style="margin-top: 5%;">Under Review</span>
-				  <p class="lead">
-				    <strong>Custom Audio for Commencement (optional):</strong>
-				    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
-				  </p>
-				  </c:if>
+					<c:choose>
+						<c:when test="${student.extraCur != ''}">
+							<c:if test="${student.checkExtCur == 1}">
+							  <span class="badge badge-success">Approved!</span>
+							  <p class="lead">
+							    <strong>Sports, Clubs, or Organizations (optional):</strong>
+							    ${student.extraCur}
+							  </p>
+						  </c:if>
+						  <c:if test="${student.checkExtCur == 0}">
+							  <span class="badge badge-secondary">Under Review</span>
+							  <p class="lead">
+							    <strong>Sports, Clubs, or Organizations (optional):</strong>
+							    ${student.extraCur}
+							  </p>
+						  </c:if>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${student.checkExtCur == 1}">
+							  <span class="badge badge-success">Approved!</span>
+							  <p class="lead">
+							    <strong>Sports, Clubs, or Organizations (optional):</strong>
+							    None Entered
+							  </p>
+						  </c:if>
+						  <c:if test="${student.checkExtCur == 0}">
+							  <span class="badge badge-secondary">Under Review</span>
+							  <p class="lead">
+							    <strong>Sports, Clubs, or Organizations (optional):</strong>
+							    None Entered
+							  </p>
+						  </c:if>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${student.picture != ''}">
+							<c:if test="${student.checkImg == 1}">
+							  <span class="badge badge-success">Approved!</span>
+							  <p class="lead">
+							    <strong>Image/Video to display (optional):</strong>
+							    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
+							  </p>
+						  </c:if>
+						  <c:if test="${student.checkImg == 0}">
+							  <span class="badge badge-secondary">Under Review</span>
+							  <p class="lead">
+							    <strong>Image/Video to display (optional):</strong>
+							    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
+							  </p>
+						  </c:if>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${student.checkImg == 1}">
+							  <span class="badge badge-success">Approved!</span>
+							  <p class="lead">
+							    <strong>Image/Video to display (optional):</strong>
+								  None Uploaded
+							  </p>
+						  </c:if>
+						  <c:if test="${student.checkImg == 0}">
+							  <span class="badge badge-secondary">Under Review</span>
+								<p class="lead">
+							    <strong>Image/Video to display (optional):</strong>
+								  None Uploaded
+							  </p>
+						  </c:if>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${student.nameSound != ''}">
+							<c:if test="${student.checkAudio == 1}">
+							  <span class="badge badge-success" style="margin-top: 5%;">Approved!</span>
+							  <p class="lead">
+							    <strong>Custom Audio for Commencement (optional):</strong>
+							    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							  </p>
+						  </c:if>
+						  <c:if test="${student.checkAudio == 0}">
+							  <span class="badge badge-secondary" style="margin-top: 5%;">Under Review</span>
+							  <p class="lead">
+							    <strong>Custom Audio for Commencement (optional):</strong>
+							    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							  </p>
+						  </c:if>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${student.checkAudio == 1}">
+							  <span class="badge badge-success">Approved!</span>
+							  <p class="lead">
+							    <strong>Custom Audio for Commencement (optional):</strong>
+								  None Uploaded
+							  </p>
+						  </c:if>
+						  <c:if test="${student.checkAudio == 0}">
+							  <span class="badge badge-secondary">Under Review</span>
+								<p class="lead">
+							    <strong>Custom Audio for Commencement (optional):</strong>
+								  None Uploaded
+							  </p>
+						  </c:if>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<!-- Comment section below student's info card -->
 				<c:if test="${student.comment != ''}">
