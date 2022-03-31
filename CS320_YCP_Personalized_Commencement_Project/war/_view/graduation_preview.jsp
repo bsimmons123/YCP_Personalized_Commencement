@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<%@ include file="header.jsp" %>
 		<%@ page import="edu.ycp.cs320.personalized_commencement.model.Student" %>
-		<% Student student = (Student) session.getAttribute("student"); %>
 	</head>
 	
 	<!-- Bootstrap js script imports for carousel -->
@@ -29,17 +28,15 @@
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active">
 		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
-		    	  <%
-		    	  if (student.getPicture().equalsIgnoreCase("null")) {
-		    	  	  %>
-			          <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
-			      <%  
-		    	  } else {
-		    		  %>
-			          <img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
-		    	  <%
-		    	  }
-		    	  %>
+		    	  <c:choose>
+		    	  	<c:when test="${student.picture == ''}">
+		    	  		<img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
+		    	  	</c:when>
+		    	  	<c:otherwise>
+		    	  		<img class="d-block w-100" style="width:100%;height:550px;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
+		    	  	</c:otherwise>
+		    	  </c:choose>
+			          
 			      <!-- Student name majors and minors div -->
 			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 			      	<!-- name -->
