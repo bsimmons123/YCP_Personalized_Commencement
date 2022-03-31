@@ -54,19 +54,38 @@
 						${studentInfo.extraCur}
 						<input type="checkbox" name="extracur_approval">
 					</p>
-					<!-- Student picture -->
-					<p class="lead">
-						<strong>Image/Video to display (optional):</strong>
-				    	<img src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded float-right img-fluid" >
-						<%-- <img src="${pageContext.servletContext.contextPath}/img/Edge.jpg" alt="User Image" width="460" height="345"> --%>
-						<input type="checkbox" name="image_approval">
-					</p>
-					<!-- Student audio -->
-					<p class="lead">
-						<strong>Custom Audio for Commencement (optional):</strong>
-						<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
-						<input type="checkbox" name="audio_approval">
-					</p>
+					<c:choose> 
+						<c:when test="${studentInfo.picture != ''}">
+							<p class="lead">
+								<strong>Image/Video to display (optional):</strong>
+									<img src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded float-right img-fluid" >
+								<input type="checkbox" name="image_approval">
+							</p>
+						</c:when>
+						<c:otherwise>
+						  	<p class="lead">
+								<strong>Image/Video to display (optional):</strong>
+									No Image Uploaded
+								<input type="checkbox" name="image_approval">
+							</p>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${studentInfo.nameSound != ''}">
+							<p class="lead">
+								<strong>Custom Audio for Commencement (optional):</strong>
+								<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
+								<input type="checkbox" name="audio_approval">
+							</p>
+						</c:when>
+						<c:otherwise>
+						  <p class="lead">
+								<strong>Custom Audio for Commencement (optional):</strong>
+									No Audio Uploaded
+								<input type="checkbox" name="audio_approval">
+							</p>
+						</c:otherwise>
+					</c:choose>
 					<hr class="my-4"> <!-- Horizontal rule to end info -->
 					<!-- Advisor comment section -->
 					<div class="input-group" style="margin-bottom: 20px;">
