@@ -43,11 +43,11 @@ public class UploadServlet extends HttpServlet {
         	String extraCur = null;
         	String img = null;
         	String audio = null;
-        	
+
         	HttpSession session = req.getSession(false);
-        	
+
         	Student student = new Student();
-        	
+
         	student = (Student) session.getAttribute("student");
         	// try-catch for file upload
         	try {
@@ -91,30 +91,23 @@ public class UploadServlet extends HttpServlet {
             	System.out.println("\tImage: " + img + " | Audio: " + audio);
             	// Chekc if user is uploading a file or not
             	if(img.isEmpty() && audio.isEmpty()) {
-            		if(controller.updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
-	            		student = controller.getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("student", student);
-	            	}
+            		controller.updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound());
             	}else if(audio.isEmpty()) {
-            		if(controller.updateStudent(student.getEmail(), extraCur, img, student.getNameSound())) {
-	            		student = controller.getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("student", student);
-            		}
+            		controller.updateStudent(student.getEmail(), extraCur, img, student.getNameSound());
             	}else if (img.isEmpty()){
-            		if(controller.updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound())) {
-	            		student = controller.getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("student", student);
-            		}
+            		controller.updateStudent(student.getEmail(), extraCur, student.getPicture(), student.getNameSound());
             	}else {
-            		if(controller.updateStudent(student.getEmail(), extraCur, img, audio)) {
-	            		student = controller.getStudent(student.getEmail(), student.getPassword());
-	            		session.setAttribute("student", student);
-            		}
+            		controller.updateStudent(student.getEmail(), extraCur, img, audio);
+            	}
+            	if(controller.updateStudentApproval(student.getStudentId(), 0)) {
+            		System.out.println("\t\tStudent's approval has been set to false");
+            		student = controller.getStudent(student.getEmail(), student.getPassword());
+            		session.setAttribute("student", student);
             	}
             }
         }
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
     }
-		
+
 }
