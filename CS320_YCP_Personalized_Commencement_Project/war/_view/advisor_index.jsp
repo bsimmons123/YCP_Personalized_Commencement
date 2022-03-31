@@ -70,8 +70,22 @@
 						  	</div>
 							<ul class="list-group list-group-flush" style="margin-top: 0px;">
 								<p class="card-text">Major: <c:out value="${student.major}"/></p>
-								<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
-								<p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+								<c:choose>
+									<c:when test="${student.minor != ''}">
+								  		<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
+									</c:when>
+									<c:otherwise>
+									  <p class="card-text">Minor: Student Has no Minor</p>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${student.extraCur != ''}">
+									  <p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+									</c:when>
+									<c:otherwise>
+									  <p class="card-text">Extracurricular: None Selected</p>
+									</c:otherwise>
+								</c:choose>
 								<input name="student" type="hidden" value="${student.studentId}">
 							  	<input type="submit" class="btn btn-success" value="View Student">
 							</ul>
@@ -91,8 +105,22 @@
 							</div>
 							<ul class="list-group list-group-flush" style="margin-top: 0px;">
 								<p class="card-text">Major: <c:out value="${student.major}"/></p>
-								<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
-								<p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+								<c:choose>
+									<c:when test="${student.minor != ''}">
+								  		<p class="card-text">Minor: <c:out value="${student.minor}"/></p>
+									</c:when>
+									<c:otherwise>
+									  <p class="card-text">Minor: Student Has no Minor</p>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${student.extraCur != ''}">
+									  <p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
+									</c:when>
+									<c:otherwise>
+									  <p class="card-text">Extracurricular: None Selected</p>
+									</c:otherwise>
+								</c:choose>
 								<input name="student" type="hidden" value="${student.studentId}" />
 							  	<input type="submit" class="btn btn-secondary" value="View Student">
 							</ul>
