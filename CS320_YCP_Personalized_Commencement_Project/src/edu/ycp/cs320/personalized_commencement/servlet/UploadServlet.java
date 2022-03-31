@@ -101,6 +101,10 @@ public class UploadServlet extends HttpServlet {
             	}
             	if(controller.updateStudentApproval(student.getStudentId(), 0)) {
             		System.out.println("\t\tStudent's approval has been set to false");
+            		controller.updateStudentContent(student.getStudentId(), 0, 0, 0);
+            		if(!student.getComment().isEmpty())
+	            		if(!student.getComment().subSequence(0, 4).equals("Was:"))
+	            			controller.updateStudentComment(student.getEmail(), "Was: " + student.getComment());
             		student = controller.getStudent(student.getEmail(), student.getPassword());
             		session.setAttribute("student", student);
             	}
