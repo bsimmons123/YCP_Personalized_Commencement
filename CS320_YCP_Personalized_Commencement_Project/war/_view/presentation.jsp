@@ -48,25 +48,35 @@
 						<strong>Minor(s):</strong>
 						${studentInfo.minor}
 					</p>
+					<!-- Student GPA -->
+					<p class="lead">
+						<strong>GPA:</strong>
+						${studentInfo.GPA}
+					</p>
+					<!-- Student Awards -->
+					<p class="lead">
+						<strong>Awards:</strong>
+						${studentInfo.award}
+					</p>
 					<!-- Student extracurricular activities -->
 					<p class="lead">
 						<strong>Sports, Clubs, or Organizations (optional):</strong>
-						${studentInfo.extraCur}
 						<input type="checkbox" name="extracur_approval">
+						<br>${studentInfo.extraCur}
 					</p>
 					<c:choose> 
 						<c:when test="${studentInfo.picture != ''}">
 							<p class="lead">
 								<strong>Image/Video to display (optional):</strong>
-									<img src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded float-right img-fluid" >
 								<input type="checkbox" name="image_approval">
+								<img style="margin-left: auto; margin-right: auto; width: 50%; display: block;"src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded img-fluid" >
 							</p>
 						</c:when>
 						<c:otherwise>
 						  	<p class="lead">
 								<strong>Image/Video to display (optional):</strong>
-									No Image Uploaded
 								<input type="checkbox" name="image_approval">
+								<br>  No Image Uploaded
 							</p>
 						</c:otherwise>
 					</c:choose>
@@ -74,15 +84,15 @@
 						<c:when test="${studentInfo.nameSound != ''}">
 							<p class="lead">
 								<strong>Custom Audio for Commencement (optional):</strong>
-								<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
 								<input type="checkbox" name="audio_approval">
+								<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
 							</p>
 						</c:when>
 						<c:otherwise>
 						  <p class="lead">
 								<strong>Custom Audio for Commencement (optional):</strong>
-									No Audio Uploaded
 								<input type="checkbox" name="audio_approval">
+								<br> No Audio Uploaded
 							</p>
 						</c:otherwise>
 					</c:choose>

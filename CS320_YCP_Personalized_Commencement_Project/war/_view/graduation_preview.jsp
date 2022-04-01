@@ -42,7 +42,11 @@
 			      	<!-- name -->
 				    <h3 style="border-bottom: 2px solid white; width: 500px; margin-left: 26%;">${student.first} ${student.last}</h3>
 				    <!-- Majors and minors -->
-				    <p>Majors: ${student.major}<br>Minors: ${student.minor}</p>
+				    <p>
+				    	<strong>Majors</strong>: ${student.major}<br>
+				    	<strong>Minors</strong>: ${student.minor}<br>
+				    	<strong>GPA</strong>: ${student.GPA}<br>
+			    	</p>
 				  </div>
 		      </div>
 		      <!-- Second Carousel Slide -->
@@ -52,9 +56,12 @@
 		        <!-- Student extracurricular div -->
 		        <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
 				    <!-- Sports clubs activities -->
-				    <h3 style="border-bottom: 2px solid white; width: 500px; margin-left: 26%;">Sports, Clubs, and Organizations</h3>
+				    <h3 style="border-bottom: 2px solid white; width: 500px; margin-left: 26%;">${student.first} ${student.last}</h3>
 				    <!-- student extracurricular info -->
-				    <p><br>${student.extraCur}<br></p>
+				    <p>
+				    	<strong>Awards</strong>: ${student.award}<br>
+				    	<strong>Extracurricular Activities</strong>: ${student.extraCur}<br>
+				    </p>
 			    </div>
 		      </div>
 		    </div>

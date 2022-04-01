@@ -11,6 +11,7 @@ public class Student extends User{
 	private int checkMajor, checkMinor, checkExtCur, checkImg, checkAudio, checkApproval;
 
 	private double gpa;
+	private String GPA;
 
 	private String firstName;
 	private String lastName;
@@ -123,4 +124,12 @@ public class Student extends User{
 		return comment;
 	}
 
+	public void setGPAString(double GPA) {
+		this.GPA = String.valueOf(GPA);
+	}
+	
+	// converts gpa to string for use in jsp's
+	public String getGPAString() {
+		return GPA;
+	}
 }

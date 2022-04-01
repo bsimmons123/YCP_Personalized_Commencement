@@ -85,12 +85,21 @@
 				    <strong>Minors:</strong>
 				    ${student.minor}
 				  </p>
+				  <p class="lead">
+				    <strong>GPA:</strong>
+				    ${student.GPA}
+				  </p>
+				  <p class="lead">
+				    <strong>Awards:</strong>
+				    ${student.award}
+				  </p>
 					<c:choose>
 						<c:when test="${student.extraCur != ''}">
 							<c:if test="${student.checkExtCur == 1}">
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
 							    <strong>Sports, Clubs, or Organizations (optional):</strong>
+							    <br>
 							    ${student.extraCur}
 							  </p>
 						  </c:if>
@@ -98,6 +107,7 @@
 							  <span class="badge badge-secondary">Under Review</span>
 							  <p class="lead">
 							    <strong>Sports, Clubs, or Organizations (optional):</strong>
+							    <br>
 							    ${student.extraCur}
 							  </p>
 						  </c:if>
@@ -107,14 +117,14 @@
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
 							    <strong>Sports, Clubs, or Organizations (optional):</strong>
-							    None Entered
+							    <br>  None Entered
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkExtCur == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 							  <p class="lead">
 							    <strong>Sports, Clubs, or Organizations (optional):</strong>
-							    None Entered
+							    <br>  None Entered
 							  </p>
 						  </c:if>
 						</c:otherwise>
@@ -125,14 +135,18 @@
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
 							    <strong>Image/Video to display (optional):</strong>
-							    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
+							    <br>
+							    <br>
+							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded img-fluid" >
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkImg == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 							  <p class="lead">
 							    <strong>Image/Video to display (optional):</strong>
-							    <img src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded float-right img-fluid" >
+							    <br>
+							    <br>
+							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded img-fluid" >
 							  </p>
 						  </c:if>
 						</c:when>
@@ -141,14 +155,14 @@
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
 							    <strong>Image/Video to display (optional):</strong>
-								  None Uploaded
+								<br>  None Uploaded
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkImg == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 								<p class="lead">
 							    <strong>Image/Video to display (optional):</strong>
-								  None Uploaded
+								<br>  None Uploaded
 							  </p>
 						  </c:if>
 						</c:otherwise>
@@ -159,14 +173,16 @@
 							  <span class="badge badge-success" style="margin-top: 5%;">Approved!</span>
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
-							    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							    <br><br>
+							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
 							  <span class="badge badge-secondary" style="margin-top: 5%;">Under Review</span>
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
-							    <audio controls src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							    <br><br>
+							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 							  </p>
 						  </c:if>
 						</c:when>
@@ -175,14 +191,14 @@
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
-								  None Uploaded
+								<br>  None Uploaded
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 								<p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
-								  None Uploaded
+							    <br>  None Uploaded
 							  </p>
 						  </c:if>
 						</c:otherwise>

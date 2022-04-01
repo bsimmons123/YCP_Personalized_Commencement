@@ -32,6 +32,7 @@ public class InitialData {
 				student.setMajor(i.next());
 				student.setMinor(i.next());
 				student.setGPA(Double.parseDouble(i.next()));
+				student.setGPAString(student.getGPA());
 				student.setAward(i.next());
 				student.setExtraCur(i.next());
 				student.setPicture(i.next());
