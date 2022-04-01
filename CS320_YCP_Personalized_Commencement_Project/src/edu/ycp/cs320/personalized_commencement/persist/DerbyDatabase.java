@@ -89,6 +89,8 @@ public class DerbyDatabase implements IDatabase {
 		student.setLastName(resultSet.getString(index++));
 		student.setMajor(resultSet.getString(index++));
 		student.setMinor(resultSet.getString(index++));
+		student.setGPA(resultSet.getDouble(index++));
+		student.setAward(resultSet.getString(index++));
 		student.setExtraCur(resultSet.getString(index++));
 		student.setPicture(resultSet.getString(index++));;
 		student.setNameSound(resultSet.getString(index++));;
@@ -125,7 +127,9 @@ public class DerbyDatabase implements IDatabase {
 									"lastname varchar(40)," +
 									"major varchar(40)," +
 									"minor varchar(40)," +
-									"extcur varchar(40)," +
+									"gpa double,"
+									+ "awards varchar(100),"
+									+ "extcur varchar(40)," +
 									"img varchar(40)," +
 									"audio varchar(40),"
 									+ "approval int,"
@@ -174,9 +178,9 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
 					insertStudent = conn.prepareStatement("INSERT INTO students (advisor_id, email, password, " + 
-							"firstname, lastname, major, minor, extcur, img, audio, approval, comment, checkmajor, checkminor, "
+							"firstname, lastname, major, minor, gpa, awards, extcur, img, audio, approval, comment, checkmajor, checkminor, "
 							+ "checkextcur, checkimg, checkaudio)" + 
-							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 					for (Student student : studentList) {
 						insertStudent.setInt(1, student.getAdvisorId());
 						insertStudent.setString(2, student.getEmail());
@@ -185,16 +189,18 @@ public class DerbyDatabase implements IDatabase {
 						insertStudent.setString(5, student.getLast());
 						insertStudent.setString(6, student.getMajor());
 						insertStudent.setString(7, student.getMinor());
-						insertStudent.setString(8, student.getExtraCur());
-						insertStudent.setString(9, student.getPicture());
-						insertStudent.setString(10, student.getNameSound());
-						insertStudent.setInt(11, student.getApproval());
-						insertStudent.setString(12, student.getComment());
-						insertStudent.setInt(13, student.getCheckMajor());
-						insertStudent.setInt(14, student.getCheckMinor());
-						insertStudent.setInt(15, student.getCheckExtCur());
-						insertStudent.setInt(16, student.getCheckImg());
-						insertStudent.setInt(17, student.getCheckAudio());
+						insertStudent.setDouble(8, student.getGPA());
+						insertStudent.setString(9, student.getAward());
+						insertStudent.setString(10, student.getExtraCur());
+						insertStudent.setString(11, student.getPicture());
+						insertStudent.setString(12, student.getNameSound());
+						insertStudent.setInt(13, student.getApproval());
+						insertStudent.setString(14, student.getComment());
+						insertStudent.setInt(15, student.getCheckMajor());
+						insertStudent.setInt(16, student.getCheckMinor());
+						insertStudent.setInt(17, student.getCheckExtCur());
+						insertStudent.setInt(18, student.getCheckImg());
+						insertStudent.setInt(19, student.getCheckAudio());
 						insertStudent.addBatch();
 					}
 					insertStudent.executeBatch();

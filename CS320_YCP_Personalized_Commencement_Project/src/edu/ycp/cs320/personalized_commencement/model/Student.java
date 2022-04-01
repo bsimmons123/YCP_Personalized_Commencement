@@ -9,16 +9,19 @@ package edu.ycp.cs320.personalized_commencement.model;
 public class Student extends User{
 	// all methods extend user
 	private int checkMajor, checkMinor, checkExtCur, checkImg, checkAudio, checkApproval;
-	
+
+	private double gpa;
+
 	private String firstName;
 	private String lastName;
 	private String major;
 	private String minor;
+	private String award;
 	private String extraCur;
 	private String picture; // String holding the name of the users file
 	private String nameSound; // String of users file
 	private String comment; // Advisors comment on student info
-	
+
 	// setters
 	public void setCheckMajor(int checkMajor) {
 		this.checkMajor = checkMajor;
@@ -48,6 +51,12 @@ public class Student extends User{
 	public void setMinor(String minor) {
 		this.minor = minor;
 	}
+	public void setGPA(double gpa){
+		this.gpa = gpa;
+	}
+	public void setAward(String award){
+		this.award = award;
+	}
 	public void setExtraCur(String extraCur) {
 		this.extraCur = extraCur;
 	}
@@ -63,8 +72,8 @@ public class Student extends User{
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
-	// Getters 
+
+	// Getters
 	public int getCheckMajor() {
 		return checkMajor;
 	}
@@ -92,6 +101,12 @@ public class Student extends User{
 	public String getMinor() {
 		return minor;
 	}
+	public double getGPA(){
+		return gpa;
+	}
+	public String getAward(){
+		return award;
+	}
 	public String getExtraCur() {
 		return extraCur;
 	}
@@ -107,5 +122,5 @@ public class Student extends User{
 	public String getComment() {
 		return comment;
 	}
-	
+
 }

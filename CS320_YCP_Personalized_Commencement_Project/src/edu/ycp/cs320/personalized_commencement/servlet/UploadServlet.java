@@ -61,7 +61,6 @@ public class UploadServlet extends HttpServlet {
                 	// retrieves the file name and file to send to jsp
                     fname = new File(item.getName()).getName();
                     fsize = new Long(item.getSize()).toString();
-                    System.out.println("\tFile Size (bits): " + fsize);
                     if(!fsize.equals("0")) {
                     // writes file to project folder
                     item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + File.separator + fname));

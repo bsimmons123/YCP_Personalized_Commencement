@@ -31,6 +31,8 @@ public class InitialData {
 				student.setLastName(i.next());
 				student.setMajor(i.next());
 				student.setMinor(i.next());
+				student.setGPA(Double.parseDouble(i.next()));
+				student.setAward(i.next());
 				student.setExtraCur(i.next());
 				student.setPicture(i.next());
 				student.setNameSound(i.next());
