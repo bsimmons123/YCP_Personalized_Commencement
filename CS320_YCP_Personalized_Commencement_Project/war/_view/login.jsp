@@ -12,12 +12,11 @@
 		<link href="${pageContext.request.contextPath}/css/LoginSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<%@ include file="navbar.jsp" %>
 	</head>
 	
 	<!-- Navigation bar for use only on the login page since there is no need to logout -->
-	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; margin-bottom:20px;">
-	  <a class="navbar-brand m-auto p-auto" style="pointer-events: none; font-size: 24px;"><img src="${pageContext.request.contextPath}/browser-images/YCP Logo.png" style="width: 45px; height: 50px;"> Personal Commencement Portal</a>
-	</nav>
+	
 	
 	<!-- Body styling and layout -->
 	<body>

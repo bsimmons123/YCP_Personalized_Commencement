@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.4.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-io-2.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Derby"/>
+	<classpathentry kind="lib" path="C:/Users/robertWood/OneDrive - ycp.edu/Desktop/core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/robertWood/OneDrive - ycp.edu/Desktop/javase-3.3.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

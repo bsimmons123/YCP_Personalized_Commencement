@@ -175,6 +175,8 @@
 							    <strong>Custom Audio for Commencement (optional):</strong>
 							    <br><br>
 							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							    <br>
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
@@ -183,6 +185,8 @@
 							    <strong>Custom Audio for Commencement (optional):</strong>
 							    <br><br>
 							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							    <br>
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						</c:when>
@@ -191,14 +195,16 @@
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
-								<br>  None Uploaded
+								<br>  None Uploaded<br>
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 								<p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
-							    <br>  None Uploaded
+							    <br>  None Uploaded<br>
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						</c:otherwise>

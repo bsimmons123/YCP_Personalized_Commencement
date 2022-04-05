@@ -6,16 +6,18 @@
 	<!-- head elements and imports -->
 	<head>
 		<meta charset="UTF-8">
-		<title>Graduation Preview</title>
+		<!-- title of the tab -->
+		<title>Commencement Ceremony</title>
+		<!-- import for the logo in the page's tab -->
 		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Tab Logo.png">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-		<%@ include file="header.jsp" %>
+		<!-- import for the navbar of each page -->
+		<%@ include file="navbar.jsp" %>
 		<!-- imports student model -->
 		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
 		<!-- sets session's student model -->
 		<% Student student = (Student) session.getAttribute("student"); %>
-		
 	</head>
 	
 	<!-- Bootstrap js script imports for carousel -->
@@ -34,18 +36,17 @@
 	      console.log(audio.currentTime);
 	      setInterval(function(){
 	        if(audio.currentTime>10){
-	          
 	          audio.pause();
 	        }
 	      },1000);
 	  }
-  </script>
-	 
+  	</script>
+  
 	<!-- body layout and styling -->
-	<body style="background-color: rgb(0, 128, 0); height: 90%">
+	<body style="background-color: rgb(0, 128, 0); height: 85%">
 		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 40%; height: 90%; margin-top: 5%;margin-left: auto; margin-right:auto;border: 5px solid gray;">
+		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 40%; height: 90%; margin-top: 0px;margin-left: auto; margin-right:auto;border: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active" style="height: inherit;">
@@ -73,8 +74,23 @@
 			    	</p>
 				  </div>
 		      </div>
+		      
+		      <!-- Second Carousel Slide -->
+		      <div class="carousel-item">
+		        <!-- YCP image shown for second slide -->
+		        <img class="d-block w-100" style="width:100%;" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
+		        <!-- Student extracurricular div -->
+		        <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 128, 0, .7);">
+				    <!-- Sports clubs activities -->
+				    <h3 style="border-bottom: 2px solid white; width: 500px; margin-left: 26%;">${student.first} ${student.last}</h3>
+				    <!-- student extracurricular info -->
+				    <p>
+				    	
+				    </p>
+			    </div>
+		      </div>
 		    </div>
-		    
+		  		
 		  		<!-- Slide controls for testing pt.2 (uncomment to use them) -->
 		    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -84,10 +100,6 @@
 		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		      <span class="sr-only">Next</span>
 		    </a>  -->
-	    </div>
-		
-		  <div id="buttons" style="padding-left:93.5%; margin-top::0px; padding-bottom: 20px;display: inline; width: auto;">
-			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Back">
 		  </div>
 	</body>
 </html>

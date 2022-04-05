@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GradViewServlet extends HttpServlet{
+public class CeremonyServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("GradView Servlet: doGet");
+		System.out.println("Ceremony Servlet: doGet");
 		// call JSP to generate empty form
-		resp.sendRedirect(req.getContextPath() + "/_view/graduation_preview.jsp");
+		resp.sendRedirect(req.getContextPath() + "/_view/ceremony.jsp");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("GradView Servlet: doPost");
+		System.out.println("Ceremony Servlet: doPost");
 	}
 }
