@@ -86,8 +86,8 @@
 									  <p class="card-text">Extracurricular: None Selected</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="card-text">Major: <c:out value="${student.GPA}"/></p>
-								<p class="card-text">Major: <c:out value="${student.award}"/></p>
+								<p class="card-text">GPA: <c:out value="${student.GPA}"/></p>
+								<p class="card-text">Awards: <c:out value="${student.award}"/></p>
 								<input name="student" type="hidden" value="${student.studentId}">
 							  	<input type="submit" class="btn btn-success" value="View Student">
 							</ul>
@@ -123,8 +123,8 @@
 									  <p class="card-text">Extracurricular: None Selected</p>
 									</c:otherwise>
 								</c:choose>
-								<p class="card-text">Major: <c:out value="${student.GPA}"/></p>
-								<p class="card-text">Major: <c:out value="${student.award}"/></p>
+								<p class="card-text">GPA: <c:out value="${student.GPA}"/></p>
+								<p class="card-text">Awards: <c:out value="${student.award}"/></p>
 								<input name="student" type="hidden" value="${student.studentId}" />
 							  	<input type="submit" class="btn btn-secondary" value="View Student">
 							</ul>
