@@ -10,7 +10,7 @@
 		<!-- CSS styling that takes the path of the site and imports the respective style sheet -->
 		<link href="${pageContext.request.contextPath}/css/PresentationSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<%@ include file="header.jsp" %>
 	</head>
 
@@ -38,26 +38,6 @@
 					<h1 class="display-4">
 						${studentInfo.first} ${studentInfo.last}
 					</h1>
-					<!-- Student major -->
-					<p class="lead">
-						<strong>Major(s):</strong>
-						${studentInfo.major}
-					</p>
-					<!-- Student minor -->
-					<p class="lead">
-						<strong>Minor(s):</strong>
-						${studentInfo.minor}
-					</p>
-					<!-- Student GPA -->
-					<p class="lead">
-						<strong>GPA:</strong>
-						${studentInfo.GPA}
-					</p>
-					<!-- Student Awards -->
-					<p class="lead">
-						<strong>Awards:</strong>
-						${studentInfo.award}
-					</p>
 					<!-- Student extracurricular activities -->
 					<p class="lead">
 						<strong>Sports, Clubs, or Organizations (optional):</strong>
