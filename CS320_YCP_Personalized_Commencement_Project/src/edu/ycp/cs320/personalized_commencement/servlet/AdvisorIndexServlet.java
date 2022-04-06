@@ -68,6 +68,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		// list of approved students
 		req.setAttribute("stuList", approvedStudents);
 		
+		System.out.print(approvedStudents);
+		
 		// list of students pending approval
 		req.setAttribute("pendingStuList", pendingStudents);
 		

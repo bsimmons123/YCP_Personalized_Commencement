@@ -134,6 +134,26 @@ public class ServletsController {
 			return studentAdvisorList;
 		}
 	}
+	
+	/**
+	 * @returns the list of students that belong to a specific advisor.
+	 */
+	public ArrayList<Student> getAllStudents() {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		ArrayList<Student> studentsList = db.getEveryStudent();
+
+		// check if anything was returned and output the list
+		if (studentsList.isEmpty()) {
+			System.out.println("\tNo students in this list");
+			return null;
+		} else {
+			return studentsList;
+		}
+	}
 
 	/**
 	 * Gets an integer from the posted form data, for the given attribute name.

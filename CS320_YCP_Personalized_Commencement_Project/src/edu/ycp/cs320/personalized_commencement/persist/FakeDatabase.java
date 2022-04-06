@@ -97,4 +97,10 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<Student> getEveryStudent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

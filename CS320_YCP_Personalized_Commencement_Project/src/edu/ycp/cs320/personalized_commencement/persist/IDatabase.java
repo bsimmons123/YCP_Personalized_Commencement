@@ -18,6 +18,8 @@ public interface IDatabase {
 	 */
 	public Student getStudent(String email, String password);
 
+	public ArrayList<Student> getEveryStudent();
+	
 	/**
 	 * Update student associated with email and password
 	 */

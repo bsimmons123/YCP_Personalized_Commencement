@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet{
 		
 		// check student login
 		System.out.println("\tChecking user login");
-		if(controller.checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) {
+		if (controller.checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) {
 			System.out.println("\t\tStudent Logged in");
 			HttpSession session = req.getSession(true);
 			System.out.println("\t\tUser Session: " + session.getId());
@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet{
 			StudentIndexServlet studentIndex = new StudentIndexServlet();
 			studentIndex.doGet(req, resp);
 			return;
-		}else if(controller.checkAdvisorLogin(jspUser.getEmail(), jspUser.getPassword())) { // check advisor login
+		} else if(controller.checkAdvisorLogin(jspUser.getEmail(), jspUser.getPassword())) { // check advisor login
 			System.out.println("\t\tAdvisor Logged in");
 			HttpSession session = req.getSession(true); // create a new http session
 			System.out.println("\t\tUser Session: " + session.getId()); // print out session id
@@ -77,7 +77,13 @@ public class LoginServlet extends HttpServlet{
 			AdvisorIndexServlet advisorIndex = new AdvisorIndexServlet();
 			advisorIndex.doGet(req, resp); // creates a guaranteed push to get in advisor index
 			return; // break from code
+		} else if(!controller.checkAdvisorLogin(jspUser.getEmail(), jspUser.getPassword()) || !controller.checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) { // check advisor login
+			System.out.println("\t\tViewing Ceremony");
+			CeremonyServlet ceremony = new CeremonyServlet();
+			ceremony.doGet(req, resp);
+			return;
 		}
+		
 		
 		// redirects the user to the login page and shows invalid info error message
 		req.setAttribute("errorMessage",  "Invalid Username/Password");

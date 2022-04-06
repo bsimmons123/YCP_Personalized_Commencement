@@ -614,4 +614,47 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+
+	@Override
+	public ArrayList<Student> getEveryStudent() {
+		return executeTransaction(new Transaction<ArrayList<Student>>() {
+			@Override
+			public ArrayList<Student> execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement("select students.*\n from students\n");
+					
+					ArrayList<Student> result = new ArrayList<Student>();
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						// create new Student object
+						// retrieve attributes from resultSet starting with index 1
+						Student student = new Student();
+						loadStudent(student, resultSet, 1);
+						
+						result.add(student);
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("Student was not found in the students table");
+					}
+
+					return result;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 }

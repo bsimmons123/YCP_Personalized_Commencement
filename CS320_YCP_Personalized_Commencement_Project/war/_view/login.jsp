@@ -11,7 +11,7 @@
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/LoginSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn">
 		<%@ include file="navbar.jsp" %>
 	</head>
 	
@@ -64,5 +64,10 @@
 			</div>
 			<input name="studentModel" type="hidden" value="${sinfo}" />
 		</form>
+		<br>
+		<br>
+		<div id="pageheader"> 
+			<h1 class="title" style="font-size: 20px;">Watch The Ceremony Here: <input class="btn btn-outline-success" style="margin-left: 2%;" type="button" onclick="window.location='http://localhost:8081/pcomm/ceremony'" value="Watch Ceremony"></h1>
+		</div>
 	</body>
 </html>

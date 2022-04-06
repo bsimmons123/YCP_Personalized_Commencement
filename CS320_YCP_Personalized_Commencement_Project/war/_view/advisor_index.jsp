@@ -53,6 +53,7 @@
 			<c:if test="${empty advisor }">
 				<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
 			</c:if>
+			
 			<!-- List of instructions -->
 			<p>
 			Here you can find a list of submissions from your students that need to be reviewed.<br>

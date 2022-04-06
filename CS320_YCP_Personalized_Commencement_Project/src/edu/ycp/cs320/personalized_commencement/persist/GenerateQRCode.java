@@ -50,7 +50,7 @@ public class GenerateQRCode {
 		String str= "https://www.beatbuddybot.com";  
 		
 		//path where we want to get QR Code
-		String path = "C:\\Users\\QR.png";  
+		String path = "C:\\Users\\robertWood\\QR.png";  
 		
 		//Encoding charset to be used  
 		String charset = "UTF-8";  
