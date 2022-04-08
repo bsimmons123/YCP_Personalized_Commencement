@@ -3,10 +3,8 @@ package edu.ycp.cs320.personalized_commencement.controller;
 import static org.junit.Assert.*;
 
 //import javax.servlet.http.HttpServletRequest;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import edu.ycp.cs320.personalized_commencement.model.Student;
 
 //
@@ -87,10 +85,11 @@ public class ServletsControllerTest {
 		assertEquals("Quality Assurance", serv.getAllStudents().get(9).getMajor());
 	}
 	
-	//Cannot get serv.getInteger to return a non-null value. Must revisit
+	// You can't test getInteger outside of the web app because there is no HttpServletRequest to get attributes from
 	@Test
 	public void testGetInteger() {
-		//assertEquals(4, serv.getInteger(req, sController2.getComment()));
+		//req.setAttribute("comment", sController2.getComment());
+		//assertEquals(4, serv.getInteger(req, "comment"));
 	}
 	
 	@Test
@@ -99,11 +98,25 @@ public class ServletsControllerTest {
 		assertEquals(0, serv.toInt(sController2.getPassword()));
 	}
 	
-	//Fake student email is not returning false for updateStudent
+	// Fake student email is not returning false for updateStudent
+	// In derby, updateStudent never returns false since it just executes the query and outputs results to the console.
+	// It returns the query meaning it always returns as true since it executes no matter what, so you must create a student
+	// and set its values and try to return that after you do update students in order to see if it was updated in the db.  Basically
+	// the test should return null when you try to get the student just created since the student is not in the database 
 	@Test
 	public void testUpdateStudent() {
 		assertTrue(serv.updateStudent(serv.getStudentById(1).getEmail(), "Lifting", "Arnold.jpg", "monkeyspinningmonkeys.mp4"));
-		//assertFalse(serv.updateStudent("hackerman87@gmail.com", "hacking", "hacker.jpg", "hackerTyping.mp4"));
+		
+		Student student = new Student();
+		student.setEmail("hackerman87@gmail.com");
+		student.setPassword("Shart");
+		student.setStudentId(7);
+		student.setExtraCur("hacking");
+		student.setPicture("hacker.jpg");
+		student.setNameSound("hackerTyping.mp4");
+		serv.updateStudent(student.getEmail(), "Crying and throwing up", "andrewCrying.jpg", "RamRanch.mp3");
+		
+		assertNull(null, serv.getStudent(student.getEmail(), student.getPassword()));
 	}
 	
 	@Test
@@ -112,11 +125,16 @@ public class ServletsControllerTest {
 		assertFalse(serv.updateStudentContent(serv.getStudentById(7).getStudentId(), 1, 0, 0));
 	}
 	
-	//AssertFalse doesn't work even though there is no student with ID 25
 	@Test
 	public void testUpdateStudentApproval() {
 		assertTrue(serv.updateStudentApproval(1, 1));
-		//assertFalse(serv.updateStudentApproval(25, 0));
+		
+		Student student = new Student();
+		student.setStudentId(25);
+		student.setApproval(1);
+		serv.updateStudentApproval(25, 0);
+		
+		assertFalse(student.getApproval() == 0);
 	}
 	
 	@Test
