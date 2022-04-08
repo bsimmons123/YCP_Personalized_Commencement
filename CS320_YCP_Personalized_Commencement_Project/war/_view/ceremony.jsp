@@ -47,19 +47,78 @@
 	<body style="background-color: rgb(0, 128, 0); height: 88%">
 	<form action="${pageContext.servletContext.contextPath}/ceremony" method="post" style="height: 100%">
 		<!-- carousel window size and styling -->
-		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
-		<!-- carousel window size and styling -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: 2.5%; margin-right:auto;border-left: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active" style="height: inherit;">
 		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
+		    	  <img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
+		      </div>
+		      
+		      <!-- First Carousel Slide -->
+		      <div class="carousel-item" style="height: inherit;">
+		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
+		    	  <img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
+		      </div>
+		      
+		      <c:forEach var="student" items="${stuList}">
+		        <div class="carousel-item" style="height: inherit;">
+		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
 		    	  <c:choose>
 		    	  	<c:when test="${student.picture == ''}">
-		    	  		<img class="d-block w-100" style="width:100%; height: inherit;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
+		    	  		<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
 		    	  	</c:when>
 		    	  	<c:otherwise>
+		    	  		<img class="d-block w-100" style="width:100%; height: inherit;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
+		    	  	</c:otherwise>
+		    	  </c:choose>		      
+			      <!-- Student name majors and minors div -->
+			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;">
+			      	<!-- name -->
+				    <h5 style="border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;">${student.first} ${student.last}</h5>
+				    <!-- Majors and minors -->
+				    <p style="text-align: left; margin-left: 5%; font-size: 14px;">
+				    	<strong>Majors</strong>: ${student.major}<br>
+				    	<strong>Minors</strong>: ${student.minor}<br>
+				    	<strong>GPA</strong>: ${student.GPA}<br>
+				    	<strong>Awards</strong>: ${student.award}<br>
+				    	<strong>Extracurricular Activities</strong>: ${student.extraCur}<br>
+			    	</p>
+				  </div>
+		      	</div>
+		      </c:forEach>
+		    </div>
+		    
+		  		<!-- Slide controls for testing pt.2 (uncomment to use them) -->
+		    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+		      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		      <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		      <span class="sr-only">Next</span>
+		    </a>-->
+	    </div>
+
+		<!-- carousel window size and styling -->
+		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: auto; margin-right:2.5%;border-right: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
+		    <div class="carousel-inner" style="height: 100%; width: 100%;">
+		  	  <!-- First Carousel Slide -->
+		      <div class="carousel-item active" style="height: inherit;">
+		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
+		    	  <img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
+		      </div>
+		  	  
+		      <c:forEach var="student" items="${stuList}">
+		        <div class="carousel-item" style="height: inherit;">
+		        <audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
+		    	  <c:choose>
+		    	  	<c:when test="${student.picture == ''}">
 		    	  		<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
+		    	  	</c:when>
+		    	  	<c:otherwise>
+		    	  		<img class="d-block w-100" style="width:100%; height: inherit;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
 		    	  	</c:otherwise>
 		    	  </c:choose>
 			      			      
@@ -76,7 +135,8 @@
 				    	<strong>Extracurricular Activities</strong>: ${student.extraCur}<br>
 			    	</p>
 				  </div>
-		      </div>
+		      	</div>
+		      </c:forEach>
 		    </div>
 		    
 		  		<!-- Slide controls for testing pt.2 (uncomment to use them) -->
@@ -87,50 +147,7 @@
 		    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
 		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		      <span class="sr-only">Next</span>
-		    </a>  -->
-	    </div>
-	    
-	    <audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
-		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: auto; margin-right:2.5%;border-right: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
-		    <div class="carousel-inner" style="height: 100%; width: 100%;">
-		  	  <!-- First Carousel Slide -->
-		      <div class="carousel-item active" style="height: inherit;">
-		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
-		    	  <c:choose>
-		    	  	<c:when test="${student.picture == ''}">
-		    	  		<img class="d-block w-100" style="width:100%; height: inherit;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
-		    	  	</c:when>
-		    	  	<c:otherwise>
-		    	  		<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/Squiddyboy.jpg">
-		    	  	</c:otherwise>
-		    	  </c:choose>
-			          
-			      <!-- Student name majors and minors div -->
-			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;">
-			      	<!-- name -->
-				    <h5 style="border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;">${student.first} ${student.last}</h5>
-				    <!-- Majors and minors -->
-				    <p style="text-align: left; margin-left: 5%; font-size: 14px;">
-				    	<strong>Majors</strong>: ${student.major}<br>
-				    	<strong>Minors</strong>: ${student.minor}<br>
-				    	<strong>GPA</strong>: ${student.GPA}<br>
-				    	<strong>Awards</strong>: ${student.award}<br>
-				    	<strong>Extracurricular Activities</strong>: ${student.extraCur}<br>
-			    	</p>
-				  </div>
-		      </div>
-		    </div>
-		    
-		  		<!-- Slide controls for testing pt.2 (uncomment to use them) -->
-		    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		      <span class="sr-only">Previous</span>
-		    </a>
-		    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		      <span class="sr-only">Next</span>
-		    </a>  -->
+		    </a> -->
 	    </div>
 		  
 	</form>
