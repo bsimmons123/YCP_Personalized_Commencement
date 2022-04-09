@@ -23,26 +23,9 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-	<% //<c:forEach var="student" items="${stuList}">%>
-	<!-- Script below limits the students audio to 10 seconds -->
-	<script type="text/javascript">
-	  document.addEventListener("DOMContentLoaded", function() {
-	  	setTime();
-	  });
-	  function setTime() {
-	      var audio= document.getElementById("audio");
-	      audio.currentTime=0;
-	      audio.play();
-	      console.log(audio.currentTime);
-	      setInterval(function(){
-	        if(audio.currentTime>10){
-	          audio.pause();
-	        }
-	      },1000);
-	  }
-  	</script>
-  
+	<script src="https://unpkg.com/html5-qrcode" type="text/javascript"/>
+	<script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script>
+ 
 	<!-- body layout and styling -->
 	<body style="background-color: rgb(0, 128, 0); height: 88%">
 	<form action="${pageContext.servletContext.contextPath}/ceremony" method="post" style="height: 100%">
@@ -148,8 +131,117 @@
 		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		      <span class="sr-only">Next</span>
 		    </a> -->
-	    </div>
-		  
+	    </div> 	
 	</form>
+	
+	<div id="qr-window" style="width: 40%; margin-left: auto; margin-right: auto;"></div>
+	<div id="qr-reader" style="width: 40%; margin-left: auto; margin-right: auto;"></div>
+	<div id="qr-reader-results" style="width: 40%; margin-left: auto; margin-right: auto;"></div>
+    <script type="text/javascript">
+	// This method will trigger user permissions
+	Html5Qrcode.getCameras().then(devices => {
+		  /**
+		   * devices would be an array of objects of type:
+		   * { id: "id", label: "label" }
+		   */
+		  if (devices && devices.length) {
+		    var cameraId = devices[0].id;
+		    // .. use this to start scanning.
+		  }
+		}).catch(err => {
+		  // handle err
+	});
+	 
+	function onScanSuccess(decodedText, decodedResult) {
+		// handle the scanned code as you like, for example:
+	 	console.log(`Code matched = ${decodedText}`, decodedResult);
+	}
+	
+	function onScanFailure(error) {
+	  	// handle scan failure, usually better to ignore and keep scanning.
+		// for example:
+		console.warn(`Code scan error = ${error}`);
+	}
+	 
+	let html5QrcodeScanner = new Html5QrcodeScanner(
+		"qr-window",
+		{ fps: 10, qrbox: {width: 600, height: 100} },
+		/* verbose= */ false);
+		html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+	 
+	// This method will trigger user permissions
+	Html5Qrcode.getCameras().then(devices => {
+	   /**
+	    * devices would be an array of objects of type:
+	    * { id: "id", label: "label" }
+	    */
+		if (devices && devices.length) {
+		    const cameraId = devices[0].id;
+		    // .. use this to start scanning.
+		  	// Create instance of the object. The only argument is the "id" of HTML element created above.
+		 	const html5QrCode = new Html5Qrcode("qr-window");
+				html5QrCode.start(
+					cameraId,     // retreived in the previous step.
+					{
+					  fps: 10,    // sets the framerate to 10 frame per second
+					  qrbox: 350  // sets only 250 X 250 region of viewfinder to
+					              // scannable, rest shaded.
+					},
+					qrCodeMessage => {
+					  // do something when code is read. For example:
+					  console.log(`QR Code detected: ${qrCodeMessage}`);
+					},
+					errorMessage => {
+					  // parse error, ideally ignore it. For example:
+					})
+				.catch(err => {
+					// Start failed, handle it. For example,
+					console.log(`Unable to start scanning, error: ${err}`);
+				});
+			}
+		}).catch(err => {
+		// handle err
+		});
+	
+	function docReady(fn) {
+	     // see if DOM is already available
+	     if (document.readyState === "complete" || document.readyState === "interactive") {
+	         // call on next available tick
+	         setTimeout(fn, 1);
+	     } else {
+	         document.addEventListener("DOMContentLoaded", fn);
+	     }
+	 } 
+	
+	 docReady(function() {
+	     var resultContainer = document.getElementById('qr-reader-results');
+	     
+	     var lastResult, countResults = 0;
+	     
+	     var html5QrcodeScanner = new Html5QrcodeScanner(
+	         "qr-window", { fps: 10, qrbox: 250 });
+	     
+	     function onScanSuccess(decodedText, decodedResult) {
+	         if (decodedText !== lastResult) {
+	             ++countResults;
+	             lastResult = decodedText;
+	             console.log(`Scan result = ${decodedText}`, decodedResult);
+	  
+	             resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
+	             
+	             // Optional: To close the QR code scannign after the result is found
+	             html5QrcodeScanner.clear();
+	         }
+	     }
+	     
+	     // Optional callback for error, can be ignored.
+	     function onScanError(qrCodeError) {
+	         // This callback would be called in case of qr code scan error or setup error.
+	         // You can avoid this callback completely, as it can be very verbose in nature.
+	     }
+	     
+	     html5QrcodeScanner.render(onScanSuccess, onScanError);
+	 });
+  	</script>
 	</body>
 </html>

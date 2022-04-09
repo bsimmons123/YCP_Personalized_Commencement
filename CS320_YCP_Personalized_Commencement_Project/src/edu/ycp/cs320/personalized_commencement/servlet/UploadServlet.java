@@ -127,7 +127,7 @@ public class UploadServlet extends HttpServlet {
             	
         		// for scanning on mobile replace this IP address with the address of the PC running the project, we'll use this
         		// method for testing until it is polished and ready to go live.
-            	data = "http://localhost:8081/pcomm/qrcode.scan?studentId=" + student.getStudentId();
+            	data = Integer.toString(student.getStudentId());
             	
             	try {
             		// generates QR code with Low level(L) error correction capability  

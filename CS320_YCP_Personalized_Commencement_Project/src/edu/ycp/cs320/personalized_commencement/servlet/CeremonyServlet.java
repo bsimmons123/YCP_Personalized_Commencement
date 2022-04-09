@@ -2,6 +2,8 @@ package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +24,14 @@ public class CeremonyServlet extends HttpServlet{
 		
 		// arraylist of adivsors students
 		ArrayList<Student> students;
+		Queue<Student> studentsQ = new LinkedList<Student>();
 		ArrayList<Integer> studentIDs = new ArrayList<Integer>();
 		
-		// get all students for particular advisor
+		// get all students in the database
 		students = controller.getAllStudents();
+		
+		
+		studentsQ.add(new Student());
 		
 		for(Student student: students) {
 			if(student.getStudentId() != 0) {
