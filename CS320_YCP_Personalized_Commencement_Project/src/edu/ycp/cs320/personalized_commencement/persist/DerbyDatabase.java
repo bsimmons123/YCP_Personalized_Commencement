@@ -79,7 +79,7 @@ public class DerbyDatabase implements IDatabase {
 		
 		return conn;
 	}
-	
+	// loads the students information from
 	private void loadStudent(Student student, ResultSet resultSet, int index) throws SQLException {
 		student.setStudentId(resultSet.getInt(index++));
 		student.setAdvisorId(resultSet.getInt(index++));
@@ -109,7 +109,7 @@ public class DerbyDatabase implements IDatabase {
 		advisor.setEmail(resultSet.getString(index++));
 		advisor.setPassword(resultSet.getString(index++));	
 	}
-	
+	// creates the SQL table for students and advisors, assigning types to each variable
 	public void createTables() {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
@@ -118,6 +118,7 @@ public class DerbyDatabase implements IDatabase {
 				PreparedStatement stmt2 = null;
 				
 				try {
+					// creates student's table
 					stmt1 = conn.prepareStatement(
 							"create table students (student_id int primary key generated always as identity (start with 1, increment by 1)," +
 									"advisor_id int," +
@@ -142,6 +143,7 @@ public class DerbyDatabase implements IDatabase {
 					);	
 					stmt1.executeUpdate();
 					
+					// creates advisor's table
 					stmt2 = conn.prepareStatement(
 							"create table advisors (advisor_id int primary key generated always as identity (start with 1, increment by 1),\r\n" + 
 							"email varchar(40),\r\n" + 
@@ -158,6 +160,7 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
+	// load the data from CSV files into the database tables, both student and advisor tables
 	public void loadInitialData() {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
@@ -240,7 +243,8 @@ public class DerbyDatabase implements IDatabase {
 		
 		System.out.println("Success!");
 	}
-
+	
+	// returns all of the students that correspond with a specific advisor
 	@Override
 	public ArrayList<Student> findStudentsByAdvisor(String email) {
 		return executeTransaction(new Transaction<ArrayList<Student>>() {
