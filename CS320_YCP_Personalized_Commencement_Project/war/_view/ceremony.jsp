@@ -14,6 +14,9 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<!-- import for the navbar of each page -->
 		<%@ include file="navbar.jsp" %>
+		<!-- imports student model -->
+		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
+		<%@page import="edu.ycp.cs320.personalized_commencement.controller.ServletsController"%>
 	</head>
 	
 	<%@page import="java.util.ArrayList"%>      <%--Importing all the dependent classes--%>
@@ -23,8 +26,8 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/html5-qrcode" type="text/javascript"/>
-	<script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script>
+	<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+	
  
 	<!-- body layout and styling -->
 	<body style="background-color: rgb(0, 128, 0); height: 88%">
@@ -32,6 +35,7 @@
 		<!-- carousel window size and styling -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: 2.5%; margin-right:auto;border-left: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
+		    <input type="hidden" id="hiddenField"/>
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active" style="height: inherit;">
 		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
@@ -134,76 +138,15 @@
 	    </div> 	
 	</form>
 	
-	<div id="qr-window" style="width: 40%; margin-left: auto; margin-right: auto;"></div>
 	<div id="qr-reader" style="width: 40%; margin-left: auto; margin-right: auto;"></div>
 	<div id="qr-reader-results" style="width: 40%; margin-left: auto; margin-right: auto;"></div>
+	
+	<!-- Script for the in-browser QR scanner -->
     <script type="text/javascript">
-	// This method will trigger user permissions
-	Html5Qrcode.getCameras().then(devices => {
-		  /**
-		   * devices would be an array of objects of type:
-		   * { id: "id", label: "label" }
-		   */
-		  if (devices && devices.length) {
-		    var cameraId = devices[0].id;
-		    // .. use this to start scanning.
-		  }
-		}).catch(err => {
-		  // handle err
-	});
-	 
-	function onScanSuccess(decodedText, decodedResult) {
-		// handle the scanned code as you like, for example:
-	 	console.log(`Code matched = ${decodedText}`, decodedResult);
-	}
-	
-	function onScanFailure(error) {
-	  	// handle scan failure, usually better to ignore and keep scanning.
-		// for example:
-		console.warn(`Code scan error = ${error}`);
-	}
-	 
-	let html5QrcodeScanner = new Html5QrcodeScanner(
-		"qr-window",
-		{ fps: 10, qrbox: {width: 600, height: 100} },
-		/* verbose= */ false);
-		html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-	 
-	// This method will trigger user permissions
-	Html5Qrcode.getCameras().then(devices => {
-	   /**
-	    * devices would be an array of objects of type:
-	    * { id: "id", label: "label" }
-	    */
-		if (devices && devices.length) {
-		    const cameraId = devices[0].id;
-		    // .. use this to start scanning.
-		  	// Create instance of the object. The only argument is the "id" of HTML element created above.
-		 	const html5QrCode = new Html5Qrcode("qr-window");
-				html5QrCode.start(
-					cameraId,     // retreived in the previous step.
-					{
-					  fps: 10,    // sets the framerate to 10 frame per second
-					  qrbox: 350  // sets only 250 X 250 region of viewfinder to
-					              // scannable, rest shaded.
-					},
-					qrCodeMessage => {
-					  // do something when code is read. For example:
-					  console.log(`QR Code detected: ${qrCodeMessage}`);
-					},
-					errorMessage => {
-					  // parse error, ideally ignore it. For example:
-					})
-				.catch(err => {
-					// Start failed, handle it. For example,
-					console.log(`Unable to start scanning, error: ${err}`);
-				});
-			}
-		}).catch(err => {
-		// handle err
-		});
-	
-	function docReady(fn) {
+    /**
+    * Function that checks if scanner is ready to go and adds event listener 
+    */
+    function docReady(fn) {
 	     // see if DOM is already available
 	     if (document.readyState === "complete" || document.readyState === "interactive") {
 	         // call on next available tick
@@ -212,36 +155,65 @@
 	         document.addEventListener("DOMContentLoaded", fn);
 	     }
 	 } 
-	
-	 docReady(function() {
-	     var resultContainer = document.getElementById('qr-reader-results');
-	     
-	     var lastResult, countResults = 0;
-	     
-	     var html5QrcodeScanner = new Html5QrcodeScanner(
-	         "qr-window", { fps: 10, qrbox: 250 });
-	     
-	     function onScanSuccess(decodedText, decodedResult) {
-	         if (decodedText !== lastResult) {
-	             ++countResults;
-	             lastResult = decodedText;
-	             console.log(`Scan result = ${decodedText}`, decodedResult);
-	  
-	             resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
-	             
-	             // Optional: To close the QR code scannign after the result is found
-	             html5QrcodeScanner.clear();
-	         }
-	     }
-	     
-	     // Optional callback for error, can be ignored.
-	     function onScanError(qrCodeError) {
-	         // This callback would be called in case of qr code scan error or setup error.
-	         // You can avoid this callback completely, as it can be very verbose in nature.
-	     }
-	     
-	     html5QrcodeScanner.render(onScanSuccess, onScanError);
-	 });
+    
+ 	/**
+ 	* Triggers user permissions (but skips the approval) and activates docReady function if there is a camera.
+ 	*/
+	Html5Qrcode.getCameras().then(devices => {
+	   /**
+	    * devices would be an array of objects of type:
+	    * { id: "id", label: "label" }
+	    */
+		if (devices && devices.length) {
+			
+			docReady(function() {
+			    
+			    let resultContainer = document.getElementById('qr-reader-results');
+			    
+			    var lastResult = 0;
+			    let count = 0;
+			    
+			    const html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
+			    
+			    function onScanSuccess(decodedText, decodedResult) {
+			        if (decodedText !== lastResult) {
+			        	// initialize the id
+			    		let id;
+			    		// let student;
+			    		// let controller = new ServletsController();
+			    		
+			    		// try set the decodedText as the hidden field value, take the id from that elem
+			    		try {
+			    			// if the decoded text string contains an integer, parse the text to int and assign it to the id variable
+			    			id = parseInt(decodedText);
+			    			document.getElementById("hiddenField").value = decodedText;
+			    			// id = Integer.parseInt(request.getParameter("hiddenField"));
+			    			// student = controller.getStudentById(id);
+			    		} catch {
+			    			// cancel the scan if qr data can't be read
+			    			console.log("Couldn't convert QR data to integer.");
+			    			return;
+			    		}
+		
+			    		++count;
+			            lastResult = decodedText;
+			            console.log("Student ID is: " + id);
+			 
+			            resultContainer.innerHTML += "<div style='color: white; width: 20%; margin-left: auto; margin-right: auto; padding-bottom: 30px; font-size: 18px;'>[#" + count + "] - ID Number " + id + "</div>";
+			            
+			            // Optional: To close the QR code scanning after the result is found.
+			            // Not necessary as we'll want to leave it running so that the next student can scan and so on
+			            //html5QrcodeScanner.clear();
+			        }
+			    }
+				// render the qr scan on success
+			    html5QrcodeScanner.render(onScanSuccess);
+			});
+		}
+	}).catch(err => {
+		// handle error if unable to get camera ID
+		console.log(err);
+	});
   	</script>
 	</body>
 </html>
