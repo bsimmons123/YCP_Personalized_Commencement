@@ -2,8 +2,6 @@ package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,31 +20,48 @@ public class CeremonyServlet extends HttpServlet{
 			throws ServletException, IOException {
 		System.out.println("Ceremony Servlet: doGet");
 		
-		// arraylist of adivsors students
+		// Create and initalize all of the student's properties
 		ArrayList<Student> students;
-		Queue<Student> studentsQ = new LinkedList<Student>();
-		ArrayList<Integer> studentIDs = new ArrayList<Integer>();
+		ArrayList<String> studentIDs = new ArrayList<String>();
+		ArrayList<String> studentFirstNames = new ArrayList<String>();
+		ArrayList<String> studentLastNames = new ArrayList<String>();
+		ArrayList<String> studentMajors = new ArrayList<String>();
+		ArrayList<String> studentMinors = new ArrayList<String>();
+		ArrayList<String> studentGPAs = new ArrayList<String>();
+		ArrayList<String> studentExtras = new ArrayList<String>();
+		ArrayList<String> studentAwards = new ArrayList<String>();
+		ArrayList<String> studentPictures = new ArrayList<String>();
+		ArrayList<String> studentAudios = new ArrayList<String>();
 		
-		// get all students in the database
-		students = controller.getAllStudents();
+		// add all students from database to student arrayList
+		students = controller.getAllStudents(); // list is sorted by id number ascending
 		
-		
-		studentsQ.add(new Student());
-		
-		for(Student student: students) {
-			if(student.getStudentId() != 0) {
-				studentIDs.add(student.getStudentId());
-			}
-			else {
-				continue;
-			}
+		// populate each property list
+		for (Student stud : students) {
+			studentIDs.add(String.valueOf(stud.getStudentId()));
+			studentFirstNames.add(stud.getFirst());
+			studentLastNames.add(stud.getLast());
+			studentMajors.add(stud.getMajor());
+			studentMinors.add(stud.getMinor());
+			studentGPAs.add(String.valueOf(stud.getGPA()));
+			studentExtras.add(stud.getExtraCur());
+			studentAwards.add(stud.getAward());
+			studentPictures.add(stud.getPicture());
+			studentAudios.add(stud.getNameSound());
 		}
 		
-		// list of all students
+		// set all property lists as request attributes and send user to the page
 		req.setAttribute("stuList", students);
-		req.setAttribute("stuIDList", studentIDs);
-		
-		// call JSP to generate empty form
+		req.setAttribute("studentIDs", studentIDs);
+		req.setAttribute("studentFirstNames", studentFirstNames);
+		req.setAttribute("studentLastNames", studentLastNames);
+		req.setAttribute("studentMajors", studentMajors);
+		req.setAttribute("studentMinors", studentMinors);
+		req.setAttribute("studentGPAs", studentGPAs);
+		req.setAttribute("studentExtras", studentExtras);
+		req.setAttribute("studentAwards", studentAwards);
+		req.setAttribute("studentPictures", studentPictures);
+		req.setAttribute("studentAudios", studentAudios);
 		req.getRequestDispatcher("/_view/ceremony.jsp").forward(req, resp);
 	}
 	
@@ -54,25 +69,18 @@ public class CeremonyServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("Ceremony Servlet: doPost");
-		// arraylist of adivsors students
-				ArrayList<Student> students;
-				ArrayList<Integer> studentIDs = new ArrayList<Integer>();
-				
-				// get all students for particular advisor
-				students = controller.getAllStudents();
-				
-				for(Student student: students) {
-					if(student.getStudentId() != 0) {
-						studentIDs.add(student.getStudentId());
-					}
-					else {
-						continue;
-					}
-				}
-				
-				// list of all students
-				req.setAttribute("stuList", students);
-				req.setAttribute("stuIDList", studentIDs);
-				req.getRequestDispatcher("/_view/ceremony.jsp").forward(req, resp);
+		
+		// List of every student in the database
+		ArrayList<Student> students;
+		ArrayList<Integer> studentIDs = new ArrayList<Integer>();
+		students = controller.getAllStudents();
+		for (Student stud : students) {
+			studentIDs.add(stud.getStudentId());
+		}
+		
+		// set list of students as attribute and send user to the page
+		req.setAttribute("stuList", students);
+		req.setAttribute("studentIDs", studentIDs);
+		req.getRequestDispatcher("/_view/ceremony.jsp").forward(req, resp);
 	}
 }
