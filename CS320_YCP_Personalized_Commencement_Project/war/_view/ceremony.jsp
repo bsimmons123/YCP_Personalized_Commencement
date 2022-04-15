@@ -186,11 +186,9 @@
 	    </div> 	
 	</form>
 	<div id="qr-reader" style="z-index: -1; width: 20%; height: 20%; margin-top: 2px; margin-left: auto; margin-right: auto;"></div>
+	
 	<!-- Script for the in-browser QR scanner that updates html elements as each scan rolls in -->
     <script type="text/javascript">
-    
-    // ***** once all students have scanned, scan any QR one more time to get the final screen to pop up *****//
-    
     /**
     * Function that checks if scanner is ready to go and adds the event listener 
     */
@@ -203,6 +201,8 @@
 	         document.addEventListener("DOMContentLoaded", fn);
 	     }
 	 } 
+    
+ 				// ***** once all students have scanned, scan any QR one more time to get the final slides to pop up *****//
     
  	/**
  	* Triggers user permissions (but skips the approval) and activates docReady function if there is a camera.
