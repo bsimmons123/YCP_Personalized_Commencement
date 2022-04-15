@@ -11,6 +11,7 @@
 		<!-- import for the logo in the page's tab -->
 		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/browser-images/YCP Tab Logo.png">
 		<!-- Styling with bootstrap -->
+		<link href="${pageContext.request.contextPath}/css/CeremonySS.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<!-- import for the navbar of each page -->
 		<%@ include file="ceremonynav.jsp" %>
@@ -162,37 +163,34 @@
 	<!-- body layout and styling -->
 	<body style="background-color: rgb(0, 128, 0); height: 88%">
 	<form action="${pageContext.servletContext.contextPath}/ceremony" method="post" style="height: 100%">
+		<!-- audio div that changes on each scan -->
 		<div id='audio' style="width: 0px; height: 0px;">
 			<audio autoplay id='sound' src=''></audio>
 		</div>
 		<!-- carousel window size and styling -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: 2.5%; margin-right:auto;border-left: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
 		    <div id="left-inner" class="carousel-inner" style="height: 100%; width: 100%;">
-    			<!-- First Carousel Slide -->
     			<div class="carousel-item active" id="left-slide" style="height: inherit;">
-		    	  	<!-- Image shown on first slide depending on if student submitted an image or not -->
 		    	  	<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/LiveStreamQR.png">
 		      	</div>
 		    </div>
 	    </div>
-
 		<!-- carousel window size and styling -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: auto; margin-right:2.5%;border-right: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
 		    <div id="right-inner" class="carousel-inner" style="height: 100%; width: 100%;">
 		    	<input type="hidden" id="Left-ID"/>
-		  	  	<!-- First Carousel Slide -->
 		      	<div class="carousel-item active" id="right-slide" style="height: inherit;">
-		          	<!-- Image shown on first slide depending on if student submitted an image or not -->
 		    	  	<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/LiveStreamQR.png">
 		      	</div>
 		    </div>
 	    </div> 	
 	</form>
-	
-	<div id="qr-reader" style="width: 20%; margin-top: 2px; margin-left: auto; margin-right: auto;"></div>
-	
+	<div id="qr-reader" style="z-index: -1; width: 20%; height: 20%; margin-top: 2px; margin-left: auto; margin-right: auto;"></div>
 	<!-- Script for the in-browser QR scanner that updates html elements as each scan rolls in -->
     <script type="text/javascript">
+    
+    // ***** once all students have scanned, scan any QR one more time to get the final screen to pop up *****//
+    
     /**
     * Function that checks if scanner is ready to go and adds the event listener 
     */
@@ -214,7 +212,7 @@
 		if (devices && devices.length) {
 			docReady(function() {
 				// create a const for the QR scanner (this will render each result later on)
-				const html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 205 });
+				const html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 200 });
 				
 				// initalize the carousels and audio div to be used throughout the onSuccess method.
 				let rightCarousel = document.getElementById("right-inner");
@@ -264,6 +262,7 @@
 			    function onScanSuccess(decodedText, decodedResult) {
 					// if the value pulled from new scan is not the same as the value pulled from the last scan
 			        if (decodedText !== lastResult) {
+			        	
 			        	// Initialize old audio and slide outside of for loop to save time
 			        	let oldAudio = audioDiv.innerHTML;
 			        	let oldSlide = rightCarousel.innerHTML;
@@ -277,41 +276,50 @@
 		    			
 		    			// set id scanned
 		    			scannedNow = parseInt(idString);
-			    		try {
-			    			for (let i = 0; i < IDs.length; i++) { // for loop to iterate through the array of student ID's
-			    				if (IDs[i].localeCompare(idString) == 0) { // if the studentID at i == the ID pulled from just scanned qr
-			    					if (pictures[i] === '') { // if no picture for student
-			    						if (audios[i] === '') { // if no audio for student
-			    							newAudio = "<audio autoplay id='sound' src=''>";
-			    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
-			    						} else { // if student has audio
-			    							newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
-			    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
-			    						}
-			    					} else { // if student has picture
-			    						if (audios[i] === '') { // if no audio for student
-			    							newAudio = "<audio autoplay id='sound' src=''>";
-			    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit;' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
-			    						} else { // if student has audio
-			    							newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
-			    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit;' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
-			    						}
-			    					}
-			    					// set the innerHTML of the audio and slides to replace what was just on the screen
-			    					audioDiv.innerHTML = audioDiv.innerHTML.replace(oldAudio, newAudio)
-	    							leftCarousel.innerHTML = leftCarousel.innerHTML.replace(leftCarousel.innerHTML, oldSlide);
-			    					rightCarousel.innerHTML = rightCarousel.innerHTML.replace(oldSlide, newSlide);
-			    				}
-			    			}
-			    		} catch {
-			    			// cancel the scan if qr data can't be read (i.e. A smudged QR -- Not applicable in our case except for testing purposes)
-			    			console.log("Can't read the QR data.");
-			    			return;
-			    		};
-			    		// increase the counter, set last result to idString, and set old id to scanned id
-			    		++count; 
-			            lastResult = idString; 
-			            scannedBefore = scannedNow; 
+		    			
+			        	if (count <= IDs.length) {
+				    		try {
+				    			for (let i = 0; i < IDs.length; i++) { // for loop to iterate through the array of student ID's
+				    				if (IDs[i].localeCompare(idString) == 0) { // if the studentID at i == the ID pulled from just scanned qr
+				    					if (pictures[i] === '') { // if no picture for student
+				    						if (audios[i] === '') { // if no audio for student
+				    							newAudio = "<audio autoplay id='sound' src=''>";
+				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    						} else { // if student has audio
+				    							newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
+				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    						}
+				    					} else { // if student has picture
+				    						if (audios[i] === '') { // if no audio for student
+				    							newAudio = "<audio autoplay id='sound' src=''>";
+				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit;' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    						} else { // if student has audio
+				    							newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
+				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit;' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    						}
+				    					}
+				    					// set the innerHTML of the audio and slides to replace what was just on the screen
+				    					audioDiv.innerHTML = audioDiv.innerHTML.replace(oldAudio, newAudio)
+		    							leftCarousel.innerHTML = leftCarousel.innerHTML.replace(leftCarousel.innerHTML, oldSlide);
+				    					rightCarousel.innerHTML = rightCarousel.innerHTML.replace(oldSlide, newSlide);
+				    				}
+				    			}
+				    		} catch {
+				    			// cancel the scan if qr data can't be read (i.e. A smudged QR -- Not applicable in our case except for testing purposes)
+				    			console.log("Can't read the QR data.");
+				    			return;
+				    		};
+				    		// increase the counter, set last result to idString, and set old id to scanned id
+				    		++count; 
+				            lastResult = idString; 
+				            scannedBefore = scannedNow; 
+			        	} else { 
+			        		// set the innerHTML of the final slides after all students have scanned
+			        		let finalLeft = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='height: inherit' src='${pageContext.request.contextPath}/browser-images/finalSlideLeft.png'></div>";
+			        		let finalRight = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='height: inherit' src='${pageContext.request.contextPath}/browser-images/finalSlideRight.png'></div>";
+			        		leftCarousel.innerHTML = leftCarousel.innerHTML.replace(leftCarousel.innerHTML, finalLeft);
+			        		rightCarousel.innerHTML = rightCarousel.innerHTML.replace(rightCarousel.innerHTML, finalRight);
+			        	}
 			        }
 			    }
 				// render the new innerHTML content of each slide on a successful scan
