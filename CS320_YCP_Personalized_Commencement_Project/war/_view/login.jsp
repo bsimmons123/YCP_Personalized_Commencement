@@ -63,7 +63,7 @@
 		<br>
 		<br>
 		<div id="pageheader"> 
-			<h1 class="title" style="font-size: 20px;">Watch The Ceremony Here: <input class="btn btn-outline-success" style="margin-left: 2%;" type="button" onclick="window.location='http://localhost:8081/pcomm/ceremony'" value="Watch Ceremony"></h1>
+			<h1 class="title" style="font-size: 20px;">Watch The Ceremony Here: <input class="btn btn-outline-success" style="margin-left: 2%;" type="button" onclick="window.location='https://www.twitch.tv/b0bgurtWoog'" value="Watch Ceremony"></h1>
 		</div>
 	</body>
 </html>

@@ -77,11 +77,9 @@ public class LoginServlet extends HttpServlet{
 			AdvisorIndexServlet advisorIndex = new AdvisorIndexServlet();
 			advisorIndex.doGet(req, resp); // creates a guaranteed push to get in advisor index
 			return; // break from code
-		} else if(!controller.checkAdvisorLogin(jspUser.getEmail(), jspUser.getPassword()) || !controller.checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) { // check advisor login
-			System.out.println("\t\tViewing Ceremony");
-			CeremonyServlet ceremony = new CeremonyServlet();
-			ceremony.doGet(req, resp);
-			return;
+		} else if(jspUser.getEmail().equals("Admin") && jspUser.getPassword().equals("YorkGrads2022")) {
+			CeremonyServlet ceremonyServlet = new CeremonyServlet();
+			ceremonyServlet.doGet(req, resp);
 		}
 		
 		
