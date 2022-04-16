@@ -18,7 +18,7 @@ public class CeremonyServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("Ceremony Servlet: doGet");
+System.out.println("Ceremony Servlet: doGet");
 		
 		// Create and initalize all of the student's properties
 		ArrayList<Student> students;
@@ -70,17 +70,48 @@ public class CeremonyServlet extends HttpServlet{
 			throws ServletException, IOException {
 		System.out.println("Ceremony Servlet: doPost");
 		
-		// List of every student in the database
+		// Create and initalize all of the student's properties
 		ArrayList<Student> students;
-		ArrayList<Integer> studentIDs = new ArrayList<Integer>();
-		students = controller.getAllStudents();
+		ArrayList<String> studentIDs = new ArrayList<String>();
+		ArrayList<String> studentFirstNames = new ArrayList<String>();
+		ArrayList<String> studentLastNames = new ArrayList<String>();
+		ArrayList<String> studentMajors = new ArrayList<String>();
+		ArrayList<String> studentMinors = new ArrayList<String>();
+		ArrayList<String> studentGPAs = new ArrayList<String>();
+		ArrayList<String> studentExtras = new ArrayList<String>();
+		ArrayList<String> studentAwards = new ArrayList<String>();
+		ArrayList<String> studentPictures = new ArrayList<String>();
+		ArrayList<String> studentAudios = new ArrayList<String>();
+		
+		// add all students from database to student arrayList
+		students = controller.getAllStudents(); // list is sorted by id number ascending
+		
+		// populate each property list
 		for (Student stud : students) {
-			studentIDs.add(stud.getStudentId());
+			studentIDs.add(String.valueOf(stud.getStudentId()));
+			studentFirstNames.add(stud.getFirst());
+			studentLastNames.add(stud.getLast());
+			studentMajors.add(stud.getMajor());
+			studentMinors.add(stud.getMinor());
+			studentGPAs.add(String.valueOf(stud.getGPA()));
+			studentExtras.add(stud.getExtraCur());
+			studentAwards.add(stud.getAward());
+			studentPictures.add(stud.getPicture());
+			studentAudios.add(stud.getNameSound());
 		}
 		
-		// set list of students as attribute and send user to the page
+		// set all property lists as request attributes and send user to the page
 		req.setAttribute("stuList", students);
 		req.setAttribute("studentIDs", studentIDs);
+		req.setAttribute("studentFirstNames", studentFirstNames);
+		req.setAttribute("studentLastNames", studentLastNames);
+		req.setAttribute("studentMajors", studentMajors);
+		req.setAttribute("studentMinors", studentMinors);
+		req.setAttribute("studentGPAs", studentGPAs);
+		req.setAttribute("studentExtras", studentExtras);
+		req.setAttribute("studentAwards", studentAwards);
+		req.setAttribute("studentPictures", studentPictures);
+		req.setAttribute("studentAudios", studentAudios);
 		req.getRequestDispatcher("/_view/ceremony.jsp").forward(req, resp);
 	}
 }

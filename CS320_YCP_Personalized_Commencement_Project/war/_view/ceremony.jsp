@@ -277,7 +277,7 @@
 		    			// set id scanned
 		    			scannedNow = parseInt(idString);
 		    			
-			        	if (count <= IDs.length) {
+			        	if (count < IDs.length) {
 				    		try {
 				    			for (let i = 0; i < IDs.length; i++) { // for loop to iterate through the array of student ID's
 				    				if (IDs[i].localeCompare(idString) == 0) { // if the studentID at i == the ID pulled from just scanned qr
