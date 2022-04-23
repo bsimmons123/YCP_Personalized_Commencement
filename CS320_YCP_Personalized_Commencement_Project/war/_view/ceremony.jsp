@@ -345,7 +345,7 @@
 				    							if (audioApprovals[i] === '0') { // if audio is not approved
 				    								newAudio = "<audio autoplay id='sound' src=''>";
 				    							} else { // if audio is approved
-				    								newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
+				    								newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + lNames[i] +  "/" + audios[i] + "'>";
 				    							}
 				    		
 				    							if (extraCurApprovals[i] === '0') { // if student has no picture, has audio, and extraCur is not approved:
@@ -376,7 +376,7 @@
 				    							if (audioApprovals[i] === '0') { // if audio is not approved
 				    								newAudio = "<audio autoplay id='sound' src=''>";
 				    							} else { // if audio is approved
-				    								newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
+				    								newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + lNames[i] +  "/" + audios[i] + "'>";
 				    							}
 				    							if (imageApprovals[i] ==='0') { // if image is not approved 
 				    								if (extraCurApprovals[i] ==='0') { // if extraCur is not approved
