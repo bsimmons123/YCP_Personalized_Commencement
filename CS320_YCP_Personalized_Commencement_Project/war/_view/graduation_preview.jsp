@@ -48,7 +48,7 @@
 		    	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/"></audio>
 		    	  	</c:when>
 		    	  	<c:otherwise>
-		    	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.first}/${student.nameSound}"></audio>
+		    	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.nameSound}"></audio>
 		    	  	</c:otherwise>
 		    	</c:choose>
 		<!-- carousel window size and styling -->

@@ -20,7 +20,7 @@
 		<% Student student = (Student) session.getAttribute("student"); %>
 	</head>
 	
-	<script src="${pageContext.servletContext.contextPath}/browser-images/confetti.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/javascript-files/confetti.js"></script>
 
 	<!-- styling and layout of the body  -->
 	<body>
@@ -204,7 +204,7 @@
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
 							    <br><br>
-							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.nameSound}"></audio>
 							    <br>
 							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
@@ -214,7 +214,7 @@
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
 							    <br><br>
-							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.nameSound}"></audio>
 							    <br>
 							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
