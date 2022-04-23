@@ -258,7 +258,7 @@
 	</form>
 	<div id="qr-reader" style="z-index: -1; width: 20%; height: 20%; margin-top: 30px; margin-left: auto; margin-right: auto;"></div>
 	
-	<!-- Script for the in-browser QR scanner that updates html elements as each scan rolls in -->
+	<!-- Script for the in-browser QR scanner that updates HTML elements as each scan rolls in -->
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/javascript-files/QRScanner.js"></script>
 	</body>
 </html>

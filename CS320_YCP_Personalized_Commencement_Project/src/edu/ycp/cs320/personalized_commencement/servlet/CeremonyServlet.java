@@ -16,11 +16,10 @@ public class CeremonyServlet extends HttpServlet{
 	private ServletsController controller = new ServletsController();
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-System.out.println("Ceremony Servlet: doGet");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Ceremony Servlet: doGet");
 		
-		// Create and initalize all of the student's properties
+		// Create and initialize all of the student's properties
 		ArrayList<Student> students;
 		ArrayList<String> studentIDs = new ArrayList<String>();
 		ArrayList<String> studentFirstNames = new ArrayList<String>();
@@ -75,10 +74,7 @@ System.out.println("Ceremony Servlet: doGet");
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("Ceremony Servlet: doPost");
-		
-		
 	}
 }

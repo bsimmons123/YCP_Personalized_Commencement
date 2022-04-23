@@ -161,12 +161,14 @@
 				</div>
 			</c:if>
 			
-			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">QR For Ending The Ceremony</h3>
-			<div style="width: 70%; min-height: 5%; height: auto; overflow: auto; background-color: white; margin: auto; margin-bottom: 4%;">
+			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">QR Codes For Commencement Ceremony</h3>
+			<div style="width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: white; margin: auto; margin-bottom: 4%;">
 				<div class="alert alert-success" role="alert" style="width: 70%; margin: auto; font-size: 14px;">
-					In the event that you are the faculty member running the ceremony, scan this QR after all students have scanned to end the ceremony.
+					In the event that you are the faculty member running the commencement ceremony, scan the QR on 
+					the left after all students present have scanned, then scan the QR on the right to end the ceremony.
 				</div>
-				<img src="${pageContext.servletContext.contextPath}/browser-images/EndCeremonyQR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+				<img src="${pageContext.servletContext.contextPath}/browser-images/MissingStudentsQR.png" style="pointer-events: none; display: inline; margin-left: 2.5%; margin-right:0px; width:40%; height: 40%;">
+				<img src="${pageContext.servletContext.contextPath}/browser-images/EndCeremonyQR.png" style="pointer-events: none; display: inline; margin-left: 0px; margin-right: 2.5%; width:40%; height: 40%;">
 			</div>
 		</div>
 		
