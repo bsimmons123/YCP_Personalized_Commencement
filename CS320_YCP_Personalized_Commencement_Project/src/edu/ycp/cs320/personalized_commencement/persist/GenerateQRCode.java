@@ -46,7 +46,7 @@ public class GenerateQRCode {
 	 */
 	public static void main(String args[]) throws WriterException, IOException, NotFoundException {  
 	
-		//data that we want to store in the QR code  
+		//data that we want to store in the QR code 
 		String str= "https://www.twitch.tv/b0bgurtWoog";  
 		
 		//path where we want to get QR Code

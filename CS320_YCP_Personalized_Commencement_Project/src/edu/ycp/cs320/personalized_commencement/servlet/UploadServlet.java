@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServlet;
 import java.io.File;
 import java.io.IOException;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,13 +18,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.WriterException;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-
 import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.persist.GenerateQRCode;
 
 @WebServlet(urlPatterns = "/upload.do") // both used for uploading files
 @MultipartConfig
@@ -40,11 +33,6 @@ public class UploadServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// create controllers for info and student
 		System.out.println("\tUpload Servlet: doPost");
-		String data;
-    	String charset = "UTF-8";  
-    	String path;
-    	Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
-		hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 
 		if(ServletFileUpload.isMultipartContent(req)){
 
@@ -121,21 +109,6 @@ public class UploadServlet extends HttpServlet {
             		student = controller.getStudent(student.getEmail(), student.getPassword());
             		session.setAttribute("student", student);
             	}
-            	
-            	// path where the students QR codes get stored
-            	path = "war/QRCodes/" + student.getFirst() + student.getLast() + student.getStudentId() + "QR.png"; 
-            	
-        		// for scanning on mobile replace this IP address with the address of the PC running the project, we'll use this
-        		// method for testing until it is polished and ready to go live.
-            	data = Integer.toString(student.getStudentId());
-            	
-            	try {
-            		// generates QR code with Low level(L) error correction capability  
-    				GenerateQRCode.generateQRcode(data, path, charset, hashMap, 100, 100);
-    			} catch (WriterException e) {
-    				// catch block
-    				e.printStackTrace();
-    			}
             }
         }
 		// Forward to view to render the result HTML document
