@@ -76,7 +76,7 @@
 		<!--Button for adding new content-->
 		<div id="buttons" style="width: 100%; margin: auto; display: inline;">
 			<input class="btn btn-secondary" style="margin-left: 0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Cancel">
-			<input class="btn btn-danger" style="margin-left: 31.5%; margin-right: 34.4%;" type="Submit" name="login" value="Reset">
+			<input class="btn btn-danger" style="margin-left: 31.5%; margin-right: 34.4%;" type="button" onclick="window.location='http://localhost:8081/pcomm/reset.do'" name="login" value="Reset">
 			<input class="btn btn-primary" style="margin-right: 0%; ;" type="Submit" name="login" value="Save">
 		</div>
     </form>
