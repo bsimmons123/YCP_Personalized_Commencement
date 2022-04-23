@@ -43,7 +43,14 @@
 	 
 	<!-- body layout and styling -->
 	<body style="background-color: rgb(0, 128, 0); height: 90%">
-		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
+	 			<c:choose>
+		    	  	<c:when test="${(student.nameSound == '') || (student.checkAudio == 0)}">
+		    	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/"></audio>
+		    	  	</c:when>
+		    	  	<c:otherwise>
+		    	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.first}/${student.nameSound}"></audio>
+		    	  	</c:otherwise>
+		    	</c:choose>
 		<!-- carousel window size and styling -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 40%; height: 90%; margin-top: 5%;margin-left: auto; margin-right:auto;border: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
@@ -51,11 +58,11 @@
 		      <div class="carousel-item active" style="height: inherit;">
 		    	  <!-- Image shown on first slide depending on if student submitted an image or not -->
 		    	  <c:choose>
-		    	  	<c:when test="${student.picture == ''}">
+		    	  	<c:when test="${(student.picture == '') || (student.checkImg == 0)}">
 		    	  		<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/York.jpeg">
 		    	  	</c:when>
 		    	  	<c:otherwise>
-		    	  		<img class="d-block w-100" style="width:100%; height: inherit;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}">
+		    	  		<img class="d-block w-100" style="width:100%; height: inherit;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.picture}">
 		    	  	</c:otherwise>
 		    	  </c:choose>
 			          
@@ -69,7 +76,14 @@
 				    	<strong>Minors</strong>: ${student.minor}<br>
 				    	<strong>GPA</strong>: ${student.GPA}<br>
 				    	<strong>Awards</strong>: ${student.award}<br>
-				    	<strong>Extracurricular Activities</strong>: ${student.extraCur}<br>
+				    	<c:choose>
+				    	  	<c:when test="${(student.extraCur == '') || (student.checkExtCur == 0)}">
+				    	  		<strong>Extracurricular Activities</strong>: None<br>
+				    	  	</c:when>
+				    	  	<c:otherwise>
+				    	  		<strong>Extracurricular Activities</strong>: ${student.extraCur}<br>
+				    	  	</c:otherwise>
+				    	</c:choose>
 			    	</p>
 				  </div>
 		      </div>
