@@ -41,13 +41,18 @@
 		
 		<!-- Header of the page -->
 		<div id="pageheader" style="padding-top: 100px;">
-			<h1 class="title">List of Student Submissions</h1>
+			<h1 class="title">Personalized Commencement Advisor Portal</h1>
 		</div>
 		<div id="instructions" class="clearfix" style="margin-bottom: 5%">
 			<c:if test="${! empty advisor }">
 				<!-- Welcome message -->
-				<div class="alert alert-success" role="alert" style="width: auto; margin-bottom: 20px;">
-					Welcome, ${advisor.email}!
+				<div class="alert alert-info" role="alert" style="width: 55%; margin: auto; margin-bottom: 20px;">
+					Welcome to your advisor portal, ${advisor.email}!
+					<!-- List of instructions -->
+					<p style="font-size: 13px; text-align: center;">
+					Here you can find a list of submissions from your students that need to be reviewed.<br>
+					To view a student's submission, simply click the "view student" button on their card.<br>
+					</p>
 				</div>
 
 			</c:if>
@@ -77,12 +82,6 @@
 					stop();
 				</script>
 			</c:if>
-			
-			<!-- List of instructions -->
-			<p>
-			Here you can find a list of submissions from your students that need to be reviewed.<br>
-			To view a student's submission, simply click the "view" button next to their name.<br>
-			</p>
 			
 			<!-- if student is pending approval -->
 			<c:if test="${!pendingStuList.isEmpty()}">
@@ -162,6 +161,13 @@
 				</div>
 			</c:if>
 			
+			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">QR For Ending The Ceremony</h3>
+			<div style="width: 70%; min-height: 5%; height: auto; overflow: auto; background-color: white; margin: auto; margin-bottom: 4%;">
+				<div class="alert alert-success" role="alert" style="width: 70%; margin: auto; font-size: 14px;">
+					In the event that you are the faculty member running the ceremony, scan this QR after all students have scanned to end the ceremony.
+				</div>
+				<img src="${pageContext.servletContext.contextPath}/browser-images/EndCeremonyQR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+			</div>
 		</div>
 		
 		<!-- Logout button -->

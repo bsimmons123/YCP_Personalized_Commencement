@@ -158,6 +158,42 @@
     for(int i = 0; i < studentAudios.size(); i++) {
     	stuAudios[i] = studentAudios.get(i);
     }
+    
+ 	// pulls list of all extraCur approval statuses of each student from attribute
+    ArrayList<String> extraApps = (ArrayList<String>) request.getAttribute("extraCurApprovals");
+    List<String> extCurApps = new ArrayList<>(extraApps.size());
+    for (Object object : extraApps) {
+        extCurApps.add(Objects.toString(object, null));
+    }
+    // array of extraCur approval statuses as strings that gets passed to the js QR function
+    String[] extraCurApprovals = new String[extCurApps.size()];
+    for(int i = 0; i < extCurApps.size(); i++) {
+    	extraCurApprovals[i] = extCurApps.get(i);
+    }
+    
+ 	// pulls list of all image approval satuses of each student from attribute
+    ArrayList<String> imgApps = (ArrayList<String>) request.getAttribute("imgApprovals");
+    List<String> imageApps = new ArrayList<>(imgApps.size());
+    for (Object object : imgApps) {
+        imageApps.add(Objects.toString(object, null));
+    }
+    // array of image approval statuses as strings that gets passed to the js QR function
+    String[] imageApprovals = new String[imageApps.size()];
+    for(int i = 0; i < imageApps.size(); i++) {
+    	imageApprovals[i] = imageApps.get(i);
+    }
+    
+ 	// pulls list of all audio approval statuses of each student from attribute
+    ArrayList<String> audioApps = (ArrayList<String>) request.getAttribute("audioApprovals");
+    List<String> audApps = new ArrayList<>(audioApps.size());
+    for (Object object : audioApps) {
+        audApps.add(Objects.toString(object, null));
+    }
+    // array of audio approval statuses as strings that gets passed to the js QR function
+    String[] audioApprovals = new String[audApps.size()];
+    for(int i = 0; i < audApps.size(); i++) {
+    	audioApprovals[i] = audApps.get(i);
+    }
     %>
 	
 	<!-- body layout and styling -->
@@ -254,14 +290,22 @@
 			    const extras = <%=getJSArray(stuExtras)%>; 
 			    const awards = <%=getJSArray(stuAwards)%>; 
 			    const pictures = <%=getJSArray(stuPictures)%>; 
-			    const audios = <%=getJSArray(stuAudios)%>; 
+			    const audios = <%=getJSArray(stuAudios)%>;     
+			    const extraCurApprovals = <%=getJSArray(extraCurApprovals)%>;
+			    const imageApprovals = <%=getJSArray(imageApprovals)%>;
+			    const audioApprovals = <%=getJSArray(audioApprovals)%>;
+			    
+			    // instantiate list of scanned QR codes that will hold each qr that gets scanned from here on.
+			    let scannedQRCodes = [];
 			    
 			    /**
 			    * On a successful QR scan, update the slides in the HTML document based off of the student ID read from the scanned QR code.
 			    */
 			    function onScanSuccess(decodedText, decodedResult) {
-					// if the value pulled from new scan is not the same as the value pulled from the last scan
-			        if (decodedText !== lastResult) {
+					// if the value pulled from the qr is an id that was not already scanned, continue; otherwise, do nothing.
+			        if (!scannedQRCodes.includes(decodedText)) {	
+			        	// prevents the same student from scanning again by adding the id scanned to a list of scanned id's
+			        	scannedQRCodes.push(decodedText); 
 			        	
 			        	// Initialize old audio and slide outside of for loop to save time
 			        	let oldAudio = audioDiv.innerHTML;
@@ -277,26 +321,78 @@
 		    			// set id scanned
 		    			scannedNow = parseInt(idString);
 		    			
-			        	if (count < IDs.length) {
+		    			// if the qr scanned does not contain the number 101 (This specific QR [101] will output the end slides of the ceremony when scanned.)
+			        	if (idString != "101") {
 				    		try {
 				    			for (let i = 0; i < IDs.length; i++) { // for loop to iterate through the array of student ID's
 				    				if (IDs[i].localeCompare(idString) == 0) { // if the studentID at i == the ID pulled from just scanned qr
+				    					
+				    					
 				    					if (pictures[i] === '') { // if no picture for student
+				    						
 				    						if (audios[i] === '') { // if no audio for student
 				    							newAudio = "<audio autoplay id='sound' src=''>";
-				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    							
+				    							if (extraCurApprovals[i] === '0') { // if student has no picture, no audio, and extraCur is not approved:
+				    								newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: <br></p></div></div>";
+				    							
+				    							} else { // if student has no picture, no audio, but extraCur is approved:
+				    								newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    							}
+				    							
 				    						} else { // if student has audio
-				    							newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
-				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    							
+				    							if (audioApprovals[i] === '0') { // if audio is not approved
+				    								newAudio = "<audio autoplay id='sound' src=''>";
+				    							} else { // if audio is approved
+				    								newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
+				    							}
+				    		
+				    							if (extraCurApprovals[i] === '0') { // if student has no picture, has audio, and extraCur is not approved:
+				    								newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: <br></p></div></div>";
+				    							} else { // if student has no picture, has audio, but extraCur is approved:
+				    								newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    							}	
 				    						}
+				    					
 				    					} else { // if student has picture
+				    						
 				    						if (audios[i] === '') { // if no audio for student
 				    							newAudio = "<audio autoplay id='sound' src=''>";
-				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit;' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    							if (imageApprovals[i] ==='0') { // if image is not approved 
+				    								if (extraCurApprovals[i] ==='0') { // if extraCur is not approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: <br></p></div></div>";
+						    						} else { // if extraCur is approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+						    						}
+					    						} else { // if image is approved
+					    							if (extraCurApprovals[i] ==='0') { // if extraCur is not approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: <br></p></div></div>";
+						    						} else { // if extraCur is approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+						    						}
+					    						}				    						
 				    						} else { // if student has audio
-				    							newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
-				    							newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit;' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+				    							if (audioApprovals[i] === '0') { // if audio is not approved
+				    								newAudio = "<audio autoplay id='sound' src=''>";
+				    							} else { // if audio is approved
+				    								newAudio = "<audio autoplay id='sound' src='${pageContext.servletContext.contextPath}/files/" + fNames[i] + "/" + audios[i] + "'>";
+				    							}
+				    							if (imageApprovals[i] ==='0') { // if image is not approved 
+				    								if (extraCurApprovals[i] ==='0') { // if extraCur is not approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: <br></p></div></div>";
+						    						} else { // if extraCur is approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/browser-images/York.jpeg'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+						    						}
+					    						} else { // if image is approved
+					    							if (extraCurApprovals[i] ==='0') { // if extraCur is not approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: <br></p></div></div>";
+						    						} else { // if extraCur is approved
+				    									newSlide = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='width:100%; height: inherit' src='${pageContext.request.contextPath}/files/" + fNames[i] + "/" + pictures[i] + "'><div class='carousel-caption d-none d-md-block' style='background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;'><h5 style='border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;'>" + fNames[i] + " " + lNames[i] + "</h5><p style='text-align: left; margin-left: 5%; font-size: 14px;'><strong>Majors</strong>: " + majors[i] + "<br><strong>Minors</strong>: " + minors[i] + "<br><strong>GPA</strong>: " + GPAs[i] + "<br><strong>Awards</strong>: " + awards[i] + "<br><strong>Extracurricular Activities</strong>: " + extras[i] + "<br></p></div></div>";
+						    						}
+					    						}
 				    						}
+				    					
 				    					}
 				    					// set the innerHTML of the audio and slides to replace what was just on the screen
 				    					audioDiv.innerHTML = audioDiv.innerHTML.replace(oldAudio, newAudio)
@@ -313,10 +409,12 @@
 				    		++count; 
 				            lastResult = idString; 
 				            scannedBefore = scannedNow; 
-			        	} else { 
+			        	} else { // if QR scanned reads "101"
 			        		// set the innerHTML of the final slides after all students have scanned
+			        		newAudio = "<audio autoplay id='sound' src=''>";
 			        		let finalLeft = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='height: inherit' src='${pageContext.request.contextPath}/browser-images/finalSlideLeft.png'></div>";
 			        		let finalRight = "<div class='carousel-item active' id='left-slide' style='height: inherit;'><img class='d-block w-100' style='height: inherit' src='${pageContext.request.contextPath}/browser-images/finalSlideRight.png'></div>";
+			        		audioDiv.innerHTML = audioDiv.innerHTML.replace(oldAudio, newAudio)
 			        		leftCarousel.innerHTML = leftCarousel.innerHTML.replace(leftCarousel.innerHTML, finalLeft);
 			        		rightCarousel.innerHTML = rightCarousel.innerHTML.replace(rightCarousel.innerHTML, finalRight);
 			        	}

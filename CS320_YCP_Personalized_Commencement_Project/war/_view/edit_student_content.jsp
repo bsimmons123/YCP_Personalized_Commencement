@@ -73,18 +73,13 @@
         <input type="file" name="customaudio" class="form-control" aria-describedby="basic-addon1">
       </div>
 
-
-
 		<!--Button for adding new content-->
-		<div id="buttons" style="margin-left:40%; padding:0px; display: inline;">
-			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Cancel">
-			<input class="btn btn-primary" type="Submit" name="login" value="Save">
+		<div id="buttons" style="width: 100%; margin: auto; display: inline;">
+			<input class="btn btn-secondary" style="margin-left: 0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Cancel">
+			<input class="btn btn-danger" style="margin-left: 31.5%; margin-right: 34.4%;" type="Submit" name="login" value="Reset">
+			<input class="btn btn-primary" style="margin-right: 0%; ;" type="Submit" name="login" value="Save">
 		</div>
     </form>
-
-		<div id="logoutDiv">
-			<input class="btn btn-danger" type="button" onclick="window.location='http://localhost:8081/pcomm/login'" value="Logout">
-		</div>
 
 	</body>
 </html>

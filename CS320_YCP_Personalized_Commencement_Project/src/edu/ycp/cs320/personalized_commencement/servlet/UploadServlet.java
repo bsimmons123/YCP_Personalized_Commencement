@@ -76,17 +76,17 @@ public class UploadServlet extends HttpServlet {
 	                    fname = new File(item.getName()).getName();
 	                    fsize = new Long(item.getSize()).toString();
 	                    if(!fsize.equals("0")) {
-	                    // writes file to project folder
-	                    item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + File.separator + fname));
-	
-	                    // successfull upload message
-	                    System.out.println("\tFile: " + fname + " Uploaded Successfully");
-	                    // checks if the file is image or audio
-	
-	                    // sets message that files uploaded
-	                    req.setAttribute("message", "Files Uploaded Successfully!");
-	                    }else {
-	                    	req.setAttribute("errorMessage", "No Files Selected");
+		                    // writes file to project folder
+		                    item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + File.separator + fname));
+		
+		                    // successfull upload message
+		                    System.out.println("\tFile: " + fname + " Uploaded Successfully");
+		                    // checks if the file is image or audio
+		
+		                    // sets message that files uploaded
+		                    req.setAttribute("message", "Files Uploaded Successfully!");
+	                    } else {
+	                    	// don't output a "no files selected" message as it can be assumed and sometimes outputs even though one type of file was uploaded
 	                    	System.out.println("\tFile not uploaded, File is Null");
 	                    }
 	                }

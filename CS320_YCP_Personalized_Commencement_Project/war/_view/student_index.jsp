@@ -26,7 +26,7 @@
 	<body>
 		<!-- div for the title of the page -->
 		<div id="pageheader"  style="padding-top: 100px;">
-			<h1 class="title">Personalized Senior Commencement Form</h1>
+			<h1 class="title">Student Profile For Personalized Commencement</h1>
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 			<div id="instructions">
@@ -34,9 +34,18 @@
 				<!-- Welcome message -->
 				<c:if test="${! empty student }">
 					<div class="alert alert-info" role="alert" style="text-align: center;">
-						Welcome, ${student.email}!
+						Welcome to your student portal, ${student.first}!
+						<p style="font-size: 13px; text-align: center;">
+							This is your student profile.  The content that you can customize consists of your Sports, Clubs, or Organizations, your background image, 
+							and the audio that will play.
+							To add or change your content, click the "edit content" button.  To preview what your content will look like during the ceremony, 
+							click the "preview content" button.
+							When it is your turn to walk the stage at the ceremony, scan the QR code below in order to display your content on the screens that are running the ceremony.
+						</p>
 					</div>
 				</c:if>
+				
+				
 
 				<!-- Outputs approval status message depending on if the student has been approved or not -->
 				<%
@@ -46,14 +55,14 @@
 						Your content has been approved for the commencement ceremony!
 					</div>
 					<script>
-					//for starting the confetti 
+					// for starting the confetti 
 					const start = () => {
 						setTimeout(function() {
 							confetti.start()
 						}, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
 					};
 
-					//for stopping the confetti 
+					// for stopping the confetti 
 					const stop = () => {
 						setTimeout(function() {
 							confetti.stop()
@@ -73,7 +82,7 @@
 				<%
 				}
 				%>
-
+				
 				<!-- Outputs success message if files were uploaded -->
 				<c:if test="${! empty message}">
 					<div class="alert alert-success" role="alert" style="text-align: center;">
@@ -197,7 +206,7 @@
 							    <br><br>
 							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 							    <br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
@@ -207,7 +216,7 @@
 							    <br><br>
 							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.nameSound}"></audio>
 							    <br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						</c:when>
@@ -217,7 +226,7 @@
 							  <p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
 								<br>  None Uploaded<br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
@@ -225,12 +234,13 @@
 								<p class="lead">
 							    <strong>Custom Audio for Commencement (optional):</strong>
 							    <br>  None Uploaded<br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
 							  </p>
 						  </c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>
+				
 				<!-- Comment section below student's info card -->
 				<c:if test="${student.comment != ''}">
 					<div class="card" style="margin-bottom:20px;">
