@@ -167,7 +167,7 @@
 							    <strong>Image/Video to display (optional):</strong>
 							    <br>
 							    <br>
-							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded img-fluid" >
+							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.picture}" class="rounded img-fluid" >
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkImg == 0}">
@@ -176,7 +176,7 @@
 							    <strong>Image/Video to display (optional):</strong>
 							    <br>
 							    <br>
-							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}/${student.picture}" class="rounded img-fluid" >
+							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.picture}" class="rounded img-fluid" >
 							  </p>
 						  </c:if>
 						</c:when>

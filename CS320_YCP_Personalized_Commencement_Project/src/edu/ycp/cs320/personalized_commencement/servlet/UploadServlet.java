@@ -65,7 +65,7 @@ public class UploadServlet extends HttpServlet {
 	                    fsize = new Long(item.getSize()).toString();
 	                    if(!fsize.equals("0")) {
 		                    // writes file to project folder
-		                    item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + File.separator + fname));
+		                    item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + student.getLast() + File.separator + fname));
 		
 		                    // successfull upload message
 		                    System.out.println("\tFile: " + fname + " Uploaded Successfully");

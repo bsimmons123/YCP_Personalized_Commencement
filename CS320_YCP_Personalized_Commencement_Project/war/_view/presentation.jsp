@@ -49,7 +49,7 @@
 							<p class="lead">
 								<strong>Image/Video to display (optional):</strong>
 								<input type="checkbox" name="image_approval">
-								<img style="margin-left: auto; margin-right: auto; width: 50%; display: block;"src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.picture}" class="rounded img-fluid" >
+								<img style="margin-left: auto; margin-right: auto; width: 50%; display: block;"src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}${studentInfo.last}/${studentInfo.picture}" class="rounded img-fluid" >
 							</p>
 						</c:when>
 						<c:otherwise>
@@ -65,7 +65,7 @@
 							<p class="lead">
 								<strong>Custom Audio for Commencement (optional):</strong>
 								<input type="checkbox" name="audio_approval">
-								<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}/${studentInfo.nameSound}"></audio>
+								<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}${studentInfo.last}/${studentInfo.nameSound}"></audio>
 							</p>
 						</c:when>
 						<c:otherwise>
