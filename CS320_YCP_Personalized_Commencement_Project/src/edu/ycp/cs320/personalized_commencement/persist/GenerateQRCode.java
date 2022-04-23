@@ -47,10 +47,10 @@ public class GenerateQRCode {
 	public static void main(String args[]) throws WriterException, IOException, NotFoundException {  
 	
 		//data that we want to store in the QR code 
-		String str= "https://www.twitch.tv/b0bgurtWoog";  
+		String str= "https://www.twitch.tv/ycp_pcomm_ceremony";  
 		
 		//path where we want to get QR Code
-		String path = "C:\\Users\\robertWood\\git\\YCP_Personalized_Commencement\\CS320_YCP_Personalized_Commencement_Project\\war\\browser-images\\LiveStreamQR.png";  
+		String path = "C:\\Users\\robertWood\\git\\YCP_Personalized_Commencement\\CS320_YCP_Personalized_Commencement_Project\\war\\browser-images\\CeremonyQR.png";  
 		
 		//Encoding charset to be used  
 		String charset = "UTF-8";  

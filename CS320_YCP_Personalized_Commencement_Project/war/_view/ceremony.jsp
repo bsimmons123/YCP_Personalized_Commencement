@@ -207,7 +207,7 @@
 		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="float:left;width: 47.5%; height: 90%; margin-top: 0px;margin-left: 2.5%; margin-right:auto;border-left: 5px solid gray;border-top: 5px solid gray;border-bottom: 5px solid gray;">
 		    <div id="left-inner" class="carousel-inner" style="height: 100%; width: 100%;">
     			<div class="carousel-item active" id="left-slide" style="height: inherit;">
-		    	  	<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/LiveStreamQR.png">
+		    	  	<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/CeremonyQR.png">
 		      	</div>
 		    </div>
 	    </div>
@@ -216,7 +216,7 @@
 		    <div id="right-inner" class="carousel-inner" style="height: 100%; width: 100%;">
 		    	<input type="hidden" id="Left-ID"/>
 		      	<div class="carousel-item active" id="right-slide" style="height: inherit;">
-		    	  	<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/LiveStreamQR.png">
+		    	  	<img class="d-block w-100" style="width:100%; height: inherit" src="${pageContext.request.contextPath}/browser-images/CeremonyQR.png">
 		      	</div>
 		    </div>
 	    </div> 	
