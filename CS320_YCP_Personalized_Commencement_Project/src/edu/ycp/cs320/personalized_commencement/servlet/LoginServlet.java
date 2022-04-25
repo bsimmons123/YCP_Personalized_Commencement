@@ -80,8 +80,8 @@ public class LoginServlet extends HttpServlet{
 		} else if(jspUser.getEmail().equals("Admin") && jspUser.getPassword().equals("YorkGrads2022")) {
 			CeremonyServlet ceremonyServlet = new CeremonyServlet();
 			ceremonyServlet.doGet(req, resp);
+			return;
 		}
-		
 		
 		// redirects the user to the login page and shows invalid info error message
 		req.setAttribute("errorMessage",  "Invalid Username/Password");

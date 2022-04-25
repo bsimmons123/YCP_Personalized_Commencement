@@ -24,6 +24,11 @@
 
 	<!-- styling and layout of the body  -->
 	<body>
+	
+		<!-- redirects to login page if -->
+		<c:if test="${empty student }">
+			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
+		</c:if>
 		<!-- div for the title of the page -->
 		<div id="pageheader"  style="padding-top: 100px;">
 			<h1 class="title">Student Profile For Personalized Commencement</h1>
@@ -97,10 +102,7 @@
 					</div>
 				</c:if>
 
-				<!-- redirects to login page if -->
-				<c:if test="${empty student }">
-					<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
-				</c:if>
+				
 
 				<!-- Card for all of the student's information -->
 				<div class="jumbotron" style="margin-bottom:2.5%; padding-top: 2%;padding-bottom: 2%;">
