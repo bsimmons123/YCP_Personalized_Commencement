@@ -2,19 +2,14 @@ package edu.ycp.cs320.personalized_commencement.controller;
 
 import static org.junit.Assert.*;
 
-//import javax.servlet.http.HttpServletRequest;
 import org.junit.Before;
 import org.junit.Test;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 
-//
-//Comments indicate which tests I have written which failed
-//
 
 public class ServletsControllerTest {
 	private Student sController2;
 	private ServletsController serv;
-	//private HttpServletRequest req;
 	
 	@Before
 	public void setup() {
@@ -81,13 +76,6 @@ public class ServletsControllerTest {
 	public void testGetAllStudents() {
 		assertEquals(20, serv.getAllStudents().size());
 		assertEquals("Computer Science", serv.getAllStudents().get(9).getMajor());
-	}
-	
-	// You can't test getInteger outside of the web app because there is no HttpServletRequest to get attributes from
-	@Test
-	public void testGetInteger() {
-		//req.setAttribute("comment", sController2.getComment());
-		//assertEquals(4, serv.getInteger(req, "comment"));
 	}
 	
 	@Test
