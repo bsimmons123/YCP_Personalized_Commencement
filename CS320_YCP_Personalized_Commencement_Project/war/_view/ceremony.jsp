@@ -196,24 +196,25 @@
     }
     %>
     
-    <%!
-    /**
-    * Method that converts the given array of strings to a readable js array.
-    */
-    public static String getJSArray(String[] items){
-   	 String result = "[";
-        for(int i = 0; i < items.length; i++) {
-            result += "\"" + items[i] + "\"";
-            if(i < items.length - 1) {
-                result += ", ";
-            }
-        }
-        result += "]";
-        return result;
-      }
-    %>
      <!-- Script that sets each converted array to a JS array for use in the QRScanner.js import below -->
     <script type="text/javascript">
+	    <%!
+	    /**
+	    * Method that converts the given array of strings to a readable js array.
+	    */
+	    public static String getJSArray(String[] items){
+	   	 String result = "[";
+	        for(int i = 0; i < items.length; i++) {
+	            result += "\"" + items[i] + "\"";
+	            if(i < items.length - 1) {
+	                result += ", ";
+	            }
+	        }
+	        result += "]";
+	        return result;
+	      }
+	    %>
+    
 		// create constant js list for every property containing each students value of that property
 	    const IDs = <%=getJSArray(stuIDs)%>; 
 	    const fNames = <%=getJSArray(stuFirstNames)%>;

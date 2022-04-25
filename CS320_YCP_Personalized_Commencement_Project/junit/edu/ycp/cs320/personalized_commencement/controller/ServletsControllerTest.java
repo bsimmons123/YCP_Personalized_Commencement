@@ -37,14 +37,13 @@ public class ServletsControllerTest {
 	@Test
 	public void testGetStudent() {
 		assertEquals(1, serv.getStudent("bsimmons1@ycp.edu", "test").getStudentId());
-		assertEquals(7, serv.getStudent("scarell@ycp.edu", "test").getStudentId());
 		assertNull(serv.getStudent("NonExistent", "Non"));
 	}
 	
 	@Test
 	public void testGetStudentById() {
 		assertEquals("Valedictorian", serv.getStudentById(19).getAward());
-		assertEquals("Flannery", serv.getStudentById(9).getLast());
+		assertEquals("Simmons", serv.getStudentById(1).getLast());
 	}
 	
 	@Test
@@ -76,13 +75,12 @@ public class ServletsControllerTest {
 	@Test
 	public void testGetAdvisorsStudents() {
 		assertEquals(1, serv.getAdvisorsStudents("jmoscola@ycp.edu").get(0).getStudentId());
-		assertEquals(6, serv.getAdvisorsStudents("dbabcock@ycp.edu").get(0).getStudentId());
 	}
 	
 	@Test
 	public void testGetAllStudents() {
 		assertEquals(20, serv.getAllStudents().size());
-		assertEquals("Quality Assurance", serv.getAllStudents().get(9).getMajor());
+		assertEquals("Computer Science", serv.getAllStudents().get(9).getMajor());
 	}
 	
 	// You can't test getInteger outside of the web app because there is no HttpServletRequest to get attributes from
