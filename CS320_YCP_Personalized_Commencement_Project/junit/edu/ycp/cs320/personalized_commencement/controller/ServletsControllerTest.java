@@ -30,6 +30,12 @@ public class ServletsControllerTest {
 	}
 	
 	@Test
+	public void testGetStudentByFirstAndLast() {
+		assertEquals(2, serv.getStudentByFirstAndLast("Robert", "Wood").getStudentId());
+		assertEquals(4, serv.getStudentByFirstAndLast("Andrew", "Mott").getStudentId());
+	}
+	
+	@Test
 	public void testGetStudent() {
 		assertEquals(1, serv.getStudent("bsimmons1@ycp.edu", "test").getStudentId());
 		assertNull(serv.getStudent("NonExistent", "Non"));
@@ -101,7 +107,6 @@ public class ServletsControllerTest {
 		student.setPicture("hacker.jpg");
 		student.setNameSound("hackerTyping.mp4");
 		serv.updateStudent(student.getEmail(), "Crying and throwing up", "andrewCrying.jpg", "RamRanch.mp3");
-		
 		assertNull(null, serv.getStudent(student.getEmail(), student.getPassword()));
 	}
 	

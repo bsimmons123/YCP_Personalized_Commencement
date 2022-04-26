@@ -38,17 +38,32 @@ public class LoginServlet extends HttpServlet{
 		
 		// Creates user to interact with controller
 		User jspUser = new User();
+		Student searchedStudent = new Student();
 		
 		// get user name and password from form (USER)
 		try {
 			// pull parameters from JSP
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
+			String nameSearched = req.getParameter("search");
+			String lastName = "";
+		    String firstName= "";
 			
 			// set parameters in user to check in controller
 			jspUser.setEmail(email);
 			jspUser.setPassword(password);
-			
+		
+		    if(nameSearched.split("\\w+").length>1){
+		       lastName = nameSearched.substring(nameSearched.lastIndexOf(" ")+1);
+		       firstName = nameSearched.substring(0, nameSearched.lastIndexOf(' '));
+		    } else{
+		       firstName = nameSearched;
+		    }
+		    if (controller.getStudentByFirstAndLast(firstName, lastName) != null) {
+		    	searchedStudent = controller.getStudentByFirstAndLast(firstName, lastName);
+		    } else {
+		    	searchedStudent = null;
+		    }
 		} catch (NullPointerException e) {
 			System.out.println("\tSetting error");
 		}
@@ -81,10 +96,17 @@ public class LoginServlet extends HttpServlet{
 			CeremonyServlet ceremonyServlet = new CeremonyServlet();
 			ceremonyServlet.doGet(req, resp);
 			return;
+		} else if (searchedStudent.getFirst() != null && searchedStudent.getLast() != null) {
+			HttpSession session = req.getSession(true);
+			student = controller.getStudent(searchedStudent.getEmail(), searchedStudent.getPassword());
+			session.setAttribute("student", student);
+			StudentSearchServlet studentSearchServ = new StudentSearchServlet();
+			studentSearchServ.doGet(req, resp);
+			return;
 		}
 		
 		// redirects the user to the login page and shows invalid info error message
-		req.setAttribute("errorMessage",  "Invalid Username/Password");
+		req.setAttribute("errorMessage",  "Invalid Username/Password or Student Search");
 		System.out.println("Error message is: " + "Invalid Username/Password");
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		

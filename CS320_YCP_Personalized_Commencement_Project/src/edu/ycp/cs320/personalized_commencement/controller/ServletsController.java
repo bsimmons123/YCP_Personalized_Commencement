@@ -154,6 +154,26 @@ public class ServletsController {
 			return studentsList;
 		}
 	}
+	
+	/**
+	 * @returns student requested from first and last name
+	 */
+	public Student getStudentByFirstAndLast(String first, String last) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		ArrayList<Student> studentsList = db.getEveryStudent();
+		
+		Student student = new Student();
+		for (Student stud : studentsList) {
+			if (stud.getFirst().equalsIgnoreCase(first) && stud.getLast().equalsIgnoreCase(last)) {
+				student = stud;
+			}
+		}
+		return student;
+	}
 
 	/**
 	 * Gets an integer from the posted form data, for the given attribute name.
