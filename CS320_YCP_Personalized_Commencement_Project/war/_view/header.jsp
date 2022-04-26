@@ -10,7 +10,7 @@
       Logout<span class="sr-only">(current)</span>
       </a>
     </form>
-    </div>
+  	</div>
   </div>
 </nav>
 

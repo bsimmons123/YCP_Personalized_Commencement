@@ -103,4 +103,10 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Student getStudentByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

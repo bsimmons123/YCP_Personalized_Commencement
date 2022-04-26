@@ -661,4 +661,47 @@ public class DerbyDatabase implements IDatabase {
 			}
 		});
 	}
+
+	@Override
+	public Student getStudentByEmail(String email) {
+		return executeTransaction(new Transaction<Student>() {
+			@Override
+			public Student execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				Student student = null;
+				
+				try {
+					// retreive all attributes from both Books and Authors tables
+					stmt = conn.prepareStatement(
+							"select * from students where email = ?"
+					);
+					
+					stmt.setString(1, email);
+					
+					resultSet = stmt.executeQuery();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						student = new Student();
+						loadStudent(student, resultSet, 1);
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("\t<" + email + "> was not found in the Students table");
+					}
+					
+					return student;
+				} finally {
+					DBUtil.closeQuietly(resultSet);
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
 }

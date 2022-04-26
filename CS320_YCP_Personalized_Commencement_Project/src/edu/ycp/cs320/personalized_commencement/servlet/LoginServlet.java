@@ -96,14 +96,7 @@ public class LoginServlet extends HttpServlet{
 			CeremonyServlet ceremonyServlet = new CeremonyServlet();
 			ceremonyServlet.doGet(req, resp);
 			return;
-		} else if (searchedStudent.getFirst() != null && searchedStudent.getLast() != null) {
-			HttpSession session = req.getSession(true);
-			student = controller.getStudent(searchedStudent.getEmail(), searchedStudent.getPassword());
-			session.setAttribute("student", student);
-			StudentSearchServlet studentSearchServ = new StudentSearchServlet();
-			studentSearchServ.doGet(req, resp);
-			return;
-		}
+		} 
 		
 		// redirects the user to the login page and shows invalid info error message
 		req.setAttribute("errorMessage",  "Invalid Username/Password or Student Search");

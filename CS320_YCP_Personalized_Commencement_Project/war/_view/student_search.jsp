@@ -13,7 +13,7 @@
 		<!-- imports student model -->
 		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
 		<!-- sets session's student model -->
-		<% Student student = (Student) session.getAttribute("stu"); %>
+		<% Student student = (Student) request.getAttribute("student"); %>
 		<!-- Bootstrap js script imports for carousel -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -41,6 +41,7 @@
 	
 	<!-- body layout and styling -->
 	<body style="background-color: rgb(0, 128, 0); height: 90%">
+	
 		<!-- Overall navbar styling -->
 		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; position: fixed; width: 100%; top: 0px; z-index: 1000;">
 		  <!-- Project Name as a link that takes the user to the login page -->
@@ -56,6 +57,16 @@
 		    </div>
 		  </div>
 		</nav>
+		<c:if test="${! empty errormessage }">
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="alert alert-warning" role="alert">
+		  ${errormessage}
+		</div>
+		</c:if>
+		<c:if test="${empty errormessage }">
 		<c:choose>
     	  	<c:when test="${(student.nameSound == '') || (student.checkAudio == 0)}">
     	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/"></audio>
@@ -112,6 +123,6 @@
 		      <span class="sr-only">Next</span>
 		    </a>  -->
 	    </div>
+	    </c:if>
 	</body>
-	<%session.invalidate();%> <!-- prevents the user from accessing any student indexes based off of their search query -->
 </html>

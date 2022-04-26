@@ -50,4 +50,6 @@ public interface IDatabase {
 	 * @return
 	 */
 	public Boolean updateStudentApproval(int student_id, int approval);
+
+	public Student getStudentByEmail(String email);
 }

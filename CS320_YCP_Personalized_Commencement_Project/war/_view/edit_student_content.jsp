@@ -23,9 +23,6 @@
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 		<div id="instructions">
-		<c:if test="${! empty student }">
-		</c:if>
-		
 		<!-- Redirect student if not logged in -->
 		<c:if test="${empty student }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>

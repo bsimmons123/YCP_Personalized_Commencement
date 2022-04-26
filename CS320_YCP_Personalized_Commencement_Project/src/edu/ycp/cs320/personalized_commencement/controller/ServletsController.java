@@ -166,7 +166,7 @@ public class ServletsController {
 		IDatabase db = DatabaseProvider.getInstance();
 		ArrayList<Student> studentsList = db.getEveryStudent();
 		
-		Student student = new Student();
+		Student student = null;
 		for (Student stud : studentsList) {
 			if (stud.getFirst().equalsIgnoreCase(first) && stud.getLast().equalsIgnoreCase(last)) {
 				student = stud;
@@ -287,5 +287,20 @@ public class ServletsController {
 		else {
 			return student;
 		}
+	}
+
+	public Student getStudentByEmail(String email) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		Student student = db.getStudentByEmail(email);
+
+		// check if anything was returned and output the list
+		if (student != null) {
+				return student;
+			}
+		return null;
 	}
 }

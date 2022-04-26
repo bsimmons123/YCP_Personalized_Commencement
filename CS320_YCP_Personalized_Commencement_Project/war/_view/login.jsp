@@ -11,7 +11,8 @@
 		<!-- CSS styling that takes the path of the site and imports the respective stylesheet -->
 		<link href="${pageContext.request.contextPath}/css/LoginSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<%@ include file="navbar.jsp"%>	
 	</head>
 	
 	<!-- Body styling and layout -->
@@ -19,11 +20,6 @@
 		<!-- if no error message (User enters correct credentials) -->
 		<form action="${pageContext.servletContext.contextPath}/login" method="post">
 			<!-- navbar styling with search area and submit button ONLY ON LOGIN PAGE -->
-			<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; margin-bottom:20px;">
-				<a class="navbar-brand" style="margin-left: 0%; pointer-events: none; font-size: 24px;"><img src="${pageContext.request.contextPath}/browser-images/YCP Logo.png" style="width: 45px; height: 50px;"> Personal Commencement Portal</a>
-	    		<input type="text" style="margin-left: 55%; margin-right: 0.5%;" placeholder="First and last name..." name="search">
-	    		<button type="submit" style="margin-right: 0%;">Search</button>
-			</nav>
 			
 			<!-- Header of the page -->
 			<div id="pageheader"> 
