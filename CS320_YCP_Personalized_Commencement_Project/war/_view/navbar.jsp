@@ -4,8 +4,8 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <form class="form-inline my-2 my-lg-0" action="${pageContext.servletContext.contextPath}/search.do" method="post">
-      <input class="form-control mr-sm-2" name="email" type="search" placeholder="Enter Student's Email or First and Last Name" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" name="email" type="search" placeholder="Enter Email/Full Name" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: white; color: green;" >Search</button>
     </form>
   </div>
 </nav>
