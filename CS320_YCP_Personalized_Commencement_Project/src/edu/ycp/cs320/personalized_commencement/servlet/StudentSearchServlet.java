@@ -14,6 +14,7 @@ public class StudentSearchServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("SearchStudent Servlet: doGet");
+		
 		// call JSP to generate empty form
 		resp.sendRedirect(req.getContextPath() + "/_view/student_search.jsp");
 	}

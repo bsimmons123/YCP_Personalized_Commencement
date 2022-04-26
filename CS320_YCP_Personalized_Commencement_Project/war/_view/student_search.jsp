@@ -13,7 +13,7 @@
 		<!-- imports student model -->
 		<%@page import="edu.ycp.cs320.personalized_commencement.model.Student"%>
 		<!-- sets session's student model -->
-		<% Student student = (Student) session.getAttribute("student"); %>
+		<% Student student = (Student) session.getAttribute("stu"); %>
 		<!-- Bootstrap js script imports for carousel -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -113,4 +113,5 @@
 		    </a>  -->
 	    </div>
 	</body>
+	<%session.invalidate();%> <!-- prevents the user from accessing any student indexes based off of their search query -->
 </html>
