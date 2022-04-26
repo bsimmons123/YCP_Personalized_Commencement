@@ -82,7 +82,7 @@
 					  <div class="input-group-prepend">
 					    <span class="input-group-text">Submission Comment</span>
 					  </div>
-					  <textarea class="form-control" maxlength="500" name="submissioncomment" aria-label="With textarea"></textarea>
+					  <textarea class="form-control" maxlength="495" name="submissioncomment" aria-label="With textarea"></textarea>
 					</div>
 					<!-- Submit button and Back Button -->
 					<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">

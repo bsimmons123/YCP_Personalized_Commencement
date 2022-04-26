@@ -50,7 +50,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Sports, Clubs, or Organizations:</span>
         </div>
-        <input type="text" class="form-control" name="sportsclubsactivities" aria-label="Amount (to the nearest dollar)" value="${student.extraCur}">
+        <input type="text" class="form-control" maxlength="39" name="sportsclubsactivities" aria-label="Amount (to the nearest dollar)" value="${student.extraCur}">
         <div class="input-group-append">
           <span class="input-group-text">Optional</span>
         </div>
