@@ -31,10 +31,12 @@
 			</div>
 			<!-- List of instructions -->
 			<div id="instructions"> 
-				<p>
-				Please log in using YCP credentials (student/advisor email and password).<br>
-				Once logged in, you will be taken to your respective home page.
-				</p>
+				<div class="alert alert-success" role="alert" style="width: 100%; margin-left: auto; margin-right: auto; font-size: 16px; text-align: center;">
+						If you want to view a specific student's content, please enter <br>their first
+						 and last names into the search bar and click search.<br><br>
+						If you are a student or an advisor, please log in using your YCP credentials.<br>
+						Once logged in, you will be taken to your respective home page.
+				</div>
 				<!-- if error message (User enters invalid credentials) -->
 				<c:if test="${! empty errorMessage}">
 					<div class="alert alert-danger" role="alert">
@@ -67,7 +69,6 @@
 			</div>
 			<input name="studentModel" type="hidden" value="${sinfo}" />
 		</form>
-		<br>
 		<br>
 		<div id="pageheader"> 
 			<h1 class="title" style="font-size: 20px;">Watch The Ceremony Here: <input class="btn btn-outline-success" style="margin-left: 2%;" type="button" onclick="window.location='https://www.twitch.tv/ycp_pcomm_ceremony'" value="Watch Ceremony"></h1>
