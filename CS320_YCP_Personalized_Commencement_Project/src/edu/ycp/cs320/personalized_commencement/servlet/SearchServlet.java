@@ -41,17 +41,23 @@ public class SearchServlet extends HttpServlet {
 			if(userStudent != null) {
 				req.setAttribute("student", userStudent);
 			}else {
-				req.setAttribute("errormessage", "That student was not found");
+				req.setAttribute("errorMessage", "Student with Email: '" + userInputEmail + "' was not found");
+				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+				return;
 			}
 		}else if(studentFirstLast.length == 2){ // check for First and Last name in DB
 			Student userStudent = controller.getStudentByFirstAndLast(studentFirstLast[0], studentFirstLast[1]);
 			if(userStudent != null) {
 				req.setAttribute("student", userStudent);
 			}else {
-				req.setAttribute("errormessage", "That student was not found");
+				req.setAttribute("errorMessage", "Student: '"+ studentFirstLast[0] + " " + studentFirstLast[1] + "' was not found");
+				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+				return;
 			}
 		}else {
-			req.setAttribute("errormessage", "That student was not found");
+			req.setAttribute("errorMessage", "That student was not found");
+			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+			return;
 		}
 		
 		System.out.println("\t\tSearch for: " + userInputEmail + " complete");
