@@ -38,32 +38,17 @@ public class LoginServlet extends HttpServlet{
 		
 		// Creates user to interact with controller
 		User jspUser = new User();
-		Student searchedStudent = new Student();
 		
 		// get user name and password from form (USER)
 		try {
 			// pull parameters from JSP
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
-			String nameSearched = req.getParameter("search");
-			String lastName = "";
-		    String firstName= "";
 			
 			// set parameters in user to check in controller
 			jspUser.setEmail(email);
 			jspUser.setPassword(password);
 		
-		    if(nameSearched.split("\\w+").length>1){
-		       lastName = nameSearched.substring(nameSearched.lastIndexOf(" ")+1);
-		       firstName = nameSearched.substring(0, nameSearched.lastIndexOf(' '));
-		    } else{
-		       firstName = nameSearched;
-		    }
-		    if (controller.getStudentByFirstAndLast(firstName, lastName) != null) {
-		    	searchedStudent = controller.getStudentByFirstAndLast(firstName, lastName);
-		    } else {
-		    	searchedStudent = null;
-		    }
 		} catch (NullPointerException e) {
 			System.out.println("\tSetting error");
 		}

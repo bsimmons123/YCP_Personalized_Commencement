@@ -28,8 +28,8 @@
 			<!-- List of instructions -->
 			<div id="instructions"> 
 				<div class="alert alert-success" role="alert" style="width: 100%; margin-left: auto; margin-right: auto; font-size: 16px; text-align: center;">
-						If you want to view a specific student's content, please enter <br>their first
-						 and last names into the search bar and click search.<br><br>
+						If you want to view a specific student's content, please enter their<br>email or 
+						first and last names into the search bar and click search.<br><br>
 						If you are a student or an advisor, please log in using your YCP credentials.<br>
 						Once logged in, you will be taken to your respective home page.
 				</div>
