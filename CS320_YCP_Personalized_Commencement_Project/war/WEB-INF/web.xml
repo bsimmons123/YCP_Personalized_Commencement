@@ -74,10 +74,7 @@
 
   
   <!--  Welcome files. -->
-  	<welcome-file-list>
-   		<welcome-file>studentindex.html</welcome-file>
- 	</welcome-file-list>
  	<welcome-file-list>
-  		<welcome-file>advisorindex.html</welcome-file>
+  		<welcome-file>login</welcome-file>
 	</welcome-file-list>
 </web-app>
