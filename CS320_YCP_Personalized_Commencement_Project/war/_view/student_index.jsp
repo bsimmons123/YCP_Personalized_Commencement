@@ -71,7 +71,7 @@
 					const stop = () => {
 						setTimeout(function() {
 							confetti.stop()
-						}, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+						}, 4000); // 4000 is time that after 4 second stop the confetti ( 4000 = 4 sec)
 					};
 
 					// after this here we are calling both the function so it works
