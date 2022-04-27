@@ -130,9 +130,9 @@ public class DerbyDatabase implements IDatabase {
 									"minor varchar(40)," +
 									"gpa double,"
 									+ "awards varchar(100),"
-									+ "extcur varchar(40)," +
-									"img varchar(40)," +
-									"audio varchar(40),"
+									+ "extcur varchar(500)," +
+									"img varchar(500)," +
+									"audio varchar(500),"
 									+ "approval int,"
 									+ "comment varchar(500),"
 									+ "checkmajor int,"

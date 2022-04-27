@@ -27,11 +27,13 @@
 		<form action="${pageContext.servletContext.contextPath}/presentation" method="post">
 			<!-- Instructions for advisor -->
 			<div id="instructions">
-				<p>
-				Please use the check boxes to approve the following student's information.<br>
-				If you disapprove of any of the information, leave the check box for it blank.<br>
-				When you are finished, simply click the submit button to confirm your decision.
-				</p>
+				<div class="alert alert-info" role="alert" style="text-align: center; color: black;">
+					<p style="text-align: center;">
+						Please use the check boxes to approve the following student's information. <br>
+						  If you disapprove of any of the information, leave the check box for it blank and add a comment regarding why it was denied.  When you are finished, click the submit button to confirm your decision.
+					</p>
+				</div>
+				
 				<!-- Card holding student info -->
 				<div class="jumbotron">
 					<!-- Student name -->
@@ -47,14 +49,14 @@
 					<c:choose> 
 						<c:when test="${studentInfo.picture != ''}">
 							<p class="lead">
-								<strong>Image/Video to display (optional):</strong>
+								<strong>Image to display (optional):</strong>
 								<input type="checkbox" name="image_approval">
 								<img style="margin-left: auto; margin-right: auto; width: 50%; display: block;"src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}${studentInfo.last}/${studentInfo.picture}" class="rounded img-fluid" >
 							</p>
 						</c:when>
 						<c:otherwise>
 						  	<p class="lead">
-								<strong>Image/Video to display (optional):</strong>
+								<strong>Image to display (optional):</strong>
 								<input type="checkbox" name="image_approval">
 								<br>  No Image Uploaded
 							</p>
@@ -63,14 +65,14 @@
 					<c:choose>
 						<c:when test="${studentInfo.nameSound != ''}">
 							<p class="lead">
-								<strong>Custom Audio for Commencement (optional):</strong>
+								<strong>Custom Audio (optional):</strong>
 								<input type="checkbox" name="audio_approval">
 								<audio controls src="${pageContext.servletContext.contextPath}/files/${studentInfo.first}${studentInfo.last}/${studentInfo.nameSound}"></audio>
 							</p>
 						</c:when>
 						<c:otherwise>
 						  <p class="lead">
-								<strong>Custom Audio for Commencement (optional):</strong>
+								<strong>Custom Audio (optional):</strong>
 								<input type="checkbox" name="audio_approval">
 								<br> No Audio Uploaded
 							</p>

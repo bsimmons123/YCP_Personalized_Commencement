@@ -46,7 +46,7 @@
 		<div id="instructions" class="clearfix" style="margin-bottom: 5%">
 			<c:if test="${! empty advisor }">
 				<!-- Welcome message -->
-				<div class="alert alert-info" role="alert" style="width: 55%; margin: auto; margin-bottom: 20px;">
+				<div class="alert alert-info" role="alert" style="width: 55%; margin: auto; margin-bottom: 20px; color: black;">
 					Welcome to your advisor portal, ${advisor.email}!
 					<!-- List of instructions -->
 					<p style="font-size: 13px; text-align: center;">
@@ -86,7 +86,7 @@
 			<!-- if student is pending approval -->
 			<c:if test="${!pendingStuList.isEmpty()}">
 				<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">Unreviewed Student Content</h3>
-				<div style="width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: rgb(212,237,218); margin-bottom: 4%;">
+				<div style="border: 1px solid grey; width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: rgb(212,237,218); margin-bottom: 4%;">
 					<c:forEach var="student" items="${pendingStuList}">
 						<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 							<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#808080;float:left;width: 18rem; min-height: 18rem;">
@@ -103,14 +103,6 @@
 										  <p class="card-text">Minor: Student Has no Minor</p>
 										</c:otherwise>
 									</c:choose>
-									<c:choose>
-										<c:when test="${student.extraCur != ''}">
-										  <p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
-										</c:when>
-										<c:otherwise>
-										  <p class="card-text">Extracurricular: None Selected</p>
-										</c:otherwise>
-									</c:choose>
 									<p class="card-text">GPA: <c:out value="${student.GPA}"/></p>
 									<p class="card-text">Awards: <c:out value="${student.award}"/></p>
 									<input name="student" type="hidden" value="${student.studentId}">
@@ -125,7 +117,7 @@
 			<!-- if student has been approved for graduation -->
 			<c:if test="${!stuList.isEmpty()}">
 				<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">Reviewed Student Content</h3>
-				<div style="width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: rgb(212,237,218); margin-bottom: 4%;">
+				<div style="border: 1px solid grey; width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: rgb(212,237,218); margin-bottom: 4%;">
 					<c:forEach var="student" items="${stuList}">
 						<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 							<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">
@@ -142,14 +134,6 @@
 										  <p class="card-text">Minor: Student Has no Minor</p>
 										</c:otherwise>
 									</c:choose>
-									<c:choose>
-										<c:when test="${student.extraCur != ''}">
-										  <p class="card-text">Extracurricular: <c:out value="${student.extraCur}"/></p>
-										</c:when>
-										<c:otherwise>
-										  <p class="card-text">Extracurricular: None Selected</p>
-										</c:otherwise>
-									</c:choose>
 									<p class="card-text">GPA: <c:out value="${student.GPA}"/></p>
 									<p class="card-text">Awards: <c:out value="${student.award}"/></p>
 									<input name="student" type="hidden" value="${student.studentId}" />
@@ -163,12 +147,22 @@
 			
 			<h3 style="width: 50%; margin: auto; margin-bottom: 20px; color:green; text-align:center; border-bottom: 2px solid green;">QR Codes For Commencement Ceremony</h3>
 			<div style="width: 100%; min-height: 5%; height: auto; overflow: auto; background-color: white; margin: auto; margin-bottom: 4%;">
-				<div class="alert alert-success" role="alert" style="width: 70%; margin: auto; font-size: 14px;">
+				<div class="alert alert-success" role="alert" style="width: 70%; margin: auto; font-size: 14px; color: black;">
 					In the event that you are the faculty member running the commencement ceremony, scan the QR on 
 					the left after all students present have scanned, then scan the QR on the right to end the ceremony.
 				</div>
-				<img src="${pageContext.servletContext.contextPath}/browser-images/MissingStudentsQR.png" style="pointer-events: none; display: inline; margin-left: 2.5%; margin-right:0px; width:40%; height: 40%;">
-				<img src="${pageContext.servletContext.contextPath}/browser-images/EndCeremonyQR.png" style="pointer-events: none; display: inline; margin-left: 0px; margin-right: 2.5%; width:40%; height: 40%;">
+				<div style="display: inline; width: auto; margin: auto;">
+					<div style="width: 40%; height: 50%; float: left; margin-left: 10%">
+						<br>
+						<h5 style="width: 50%; margin: auto; color: green;">Missing Students</h5>
+						<img src="${pageContext.servletContext.contextPath}/browser-images/MissingStudentsQR.png" style="pointer-events: none; border: 3px solid green;">
+					</div>
+					<div style="width: 40%; height: 50%; float: left;">
+						<br>
+						<h5 style="width: 50%; margin: auto; color: green;">End Ceremony</h5>
+						<img src="${pageContext.servletContext.contextPath}/browser-images/EndCeremonyQR.png" style="pointer-events: none; border: 3px solid green;">
+					</div>
+				</div>
 			</div>
 		</div>
 		

@@ -38,7 +38,7 @@
 
 				<!-- Welcome message -->
 				<c:if test="${! empty student }">
-					<div class="alert alert-info" role="alert" style="text-align: center;">
+					<div class="alert alert-info" role="alert" style="color: black; text-align: center;">
 						Welcome to your student portal, ${student.first}!
 						<p style="font-size: 13px; text-align: center;">
 							This is your student profile.  The content that you can customize consists of your Sports, Clubs, or Organizations, your background image, 
@@ -166,7 +166,7 @@
 							<c:if test="${student.checkImg == 1}">
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
-							    <strong>Image/Video to display (optional):</strong>
+							    <strong>Image to display (optional):</strong>
 							    <br>
 							    <br>
 							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.picture}" class="rounded img-fluid" >
@@ -175,7 +175,7 @@
 						  <c:if test="${student.checkImg == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 							  <p class="lead">
-							    <strong>Image/Video to display (optional):</strong>
+							    <strong>Image to display (optional):</strong>
 							    <br>
 							    <br>
 							    <img style="display:block; margin-left:auto; margin-right:auto; width:60%;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.picture}" class="rounded img-fluid" >
@@ -186,14 +186,14 @@
 							<c:if test="${student.checkImg == 1}">
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
-							    <strong>Image/Video to display (optional):</strong>
+							    <strong>Image to display (optional):</strong>
 								<br>  None Uploaded
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkImg == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 								<p class="lead">
-							    <strong>Image/Video to display (optional):</strong>
+							    <strong>Image to display (optional):</strong>
 								<br>  None Uploaded
 							  </p>
 						  </c:if>
@@ -204,40 +204,52 @@
 							<c:if test="${student.checkAudio == 1}">
 							  <span class="badge badge-success" style="margin-top: 5%;">Approved!</span>
 							  <p class="lead">
-							    <strong>Custom Audio for Commencement (optional):</strong>
+							    <strong>Custom Audio for (optional):</strong>
 							    <br><br>
 							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.nameSound}"></audio>
-							    <br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
-							  </p>
+							    <br><br>
+								<div style="margin-left:auto; margin-right:auto; width:100%;">
+									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
+									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+								</div>										  
+								</p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
 							  <span class="badge badge-secondary" style="margin-top: 5%;">Under Review</span>
 							  <p class="lead">
-							    <strong>Custom Audio for Commencement (optional):</strong>
+							    <strong>Custom Audio for (optional):</strong>
 							    <br><br>
 							    <audio controls style="display:block;width:60%;margin-left:auto;margin-right:auto;" src="${pageContext.servletContext.contextPath}/files/${student.first}${student.last}/${student.nameSound}"></audio>
-							    <br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
-							  </p>
+							    <br><br>
+								<div style="margin-left:auto; margin-right:auto; width:100%;">
+									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
+									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+								</div>			
+								</p>
 						  </c:if>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${student.checkAudio == 1}">
 							  <span class="badge badge-success">Approved!</span>
 							  <p class="lead">
-							    <strong>Custom Audio for Commencement (optional):</strong>
-								<br>  None Uploaded<br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+							    <strong>Custom Audio for (optional):</strong>
+								<br>  None Uploaded<br><br>
+								<div style="margin-left:auto; margin-right:auto; width:100%;">
+									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
+									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+								</div>
 							  </p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
 							  <span class="badge badge-secondary">Under Review</span>
 								<p class="lead">
-							    <strong>Custom Audio for Commencement (optional):</strong>
-							    <br>  None Uploaded<br>
-							    <img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="pointer-events: none; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
-							  </p>
+							    <strong>Custom Audio (optional):</strong>
+							    <br>  None Uploaded<br><br>
+								<div style="margin-left:auto; margin-right:auto; width:100%;">
+									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
+									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
+								</div>							 
+								 </p>
 						  </c:if>
 						</c:otherwise>
 					</c:choose>

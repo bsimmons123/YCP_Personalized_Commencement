@@ -91,7 +91,7 @@
 		    	  </c:choose>
 			          
 			      <!-- Student name majors and minors div -->
-			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;">
+			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 90, 0, .7); width: 60%; height: auto; margin-left: auto; margin-right: auto;">
 			      	<!-- name -->
 				    <h5 style="border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;">${student.first} ${student.last}</h5>
 				    <!-- Majors and minors -->

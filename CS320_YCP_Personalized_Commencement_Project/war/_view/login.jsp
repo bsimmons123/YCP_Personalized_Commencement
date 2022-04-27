@@ -27,12 +27,11 @@
 			</div>
 			<!-- List of instructions -->
 			<div id="instructions"> 
-				<div class="alert alert-success" role="alert" style="width: 100%; margin-left: auto; margin-right: auto; font-size: 16px; text-align: center;">
-						If you want to view a specific student's content, please enter their<br>email or 
-						first and last names into the search bar and click search.<br><br>
-						If you are a student or an advisor, please log in using your YCP credentials.<br>
-						Once logged in, you will be taken to your respective home page.
+				<div class="alert alert-success" role="alert" style="color: black; width: 100%; margin-left: auto; margin-right: auto; font-size: 16px; text-align: center;">
+						Students/Advisors: please log in using your YCP credentials. <br>
+						Others: Enter a student's email or first and last names into the search bar to their content.
 				</div>
+				
 				<!-- if error message (User enters invalid credentials) -->
 				<c:if test="${! empty errorMessage}">
 					<div class="alert alert-danger" role="alert">

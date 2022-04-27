@@ -66,7 +66,7 @@
 		    	  </c:choose>
 			          
 			      <!-- Student name majors and minors div -->
-			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 90, 0, .7); width: 60%; height: 30%; margin-left: auto; margin-right: auto;">
+			      <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 90, 0, .7); width: 60%; height: auto; margin-left: auto; margin-right: auto;">
 			      	<!-- name -->
 				    <h5 style="border-bottom: 2px solid white; width: 50%; margin-left: auto; margin-right: auto;">${student.first} ${student.last}</h5>
 				    <!-- Majors and minors -->
@@ -87,16 +87,6 @@
 				  </div>
 		      </div>
 		    </div>
-		    
-		  		<!-- Slide controls for testing pt.2 (uncomment to use them) -->
-		    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		      <span class="sr-only">Previous</span>
-		    </a>
-		    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		      <span class="sr-only">Next</span>
-		    </a>  -->
 	    </div>
 		
 		  <div id="buttons" style="padding-left:93.5%; margin-top::0px; padding-bottom: 20px;display: inline; width: auto;">

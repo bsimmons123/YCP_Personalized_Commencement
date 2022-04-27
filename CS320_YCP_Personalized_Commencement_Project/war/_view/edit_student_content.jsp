@@ -39,18 +39,21 @@
 		    <div class="alert alert-success" role="alert">${errorMessage}</div>
 			<div class="error">${errorMessage}</div>
 		</c:if>
-			<p>
-			Fill out the information in the text boxes and upload files to be displayed during the commencement ceremony.
-			If there is nothing to add to any of the optional categories, simply leave them blank.
-			When the form is completed, hit the save button.  If changes need to be made, click the edit button to do so.<br><br>
-			File types for images can be .JPEG, .JPG, or .PNG files, and file types for videos can be .MP4 or .MOV files.<br>
-			</p>
+		
+		<div class="alert alert-info" role="alert" style="color: black; text-align: center;">
+				Fill out the information in the text boxes and upload files to be displayed during the commencement ceremony.
+				If you do not want to upload specific content, simply leave that field empty.
+				When the form is completed, hit the save button.  If you would like to delete any content, click the reset button.
+		</div>
+		<div class="alert alert-warning" role="alert" style="text-align: center;">
+				Supported files extensions: .JPEG, .JPG, .PNG.  Audio: .MP3
+		</div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Sports, Clubs, or Organizations:</span>
         </div>
-        <input type="text" class="form-control" maxlength="39" name="sportsclubsactivities" aria-label="Amount (to the nearest dollar)" value="${student.extraCur}">
+        <input type="text" class="form-control" name="sportsclubsactivities" aria-label="Amount (to the nearest dollar)" value="${student.extraCur}">
         <div class="input-group-append">
           <span class="input-group-text">Optional</span>
         </div>
