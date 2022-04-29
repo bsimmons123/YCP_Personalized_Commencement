@@ -19,6 +19,21 @@
 		
 		<%@ include file="header.jsp" %>
 	</head>
+	
+	<script>
+	    $(function () {
+	        $('#cancelModal').appendTo('body');
+	    });
+	    
+	    $(function () {
+	        $('#resetModal').appendTo('body');
+	    });
+	    
+	    $(function () {
+	        $('#saveModal').appendTo('body');
+	    });
+	</script>
+	
 
 	<!-- styling and layout of the body  -->
 	<body>
@@ -80,9 +95,90 @@
 
 		<!--Button for adding new content-->
 		<div id="buttons" style="width: 100%; margin: auto; display: inline;">
-			<input class="btn btn-secondary" style="margin-left: 0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Cancel">
-			<input class="btn btn-danger" style="margin-left: 31.5%; margin-right: 34.4%;" type="button" onclick="window.location='http://localhost:8081/pcomm/reset.do'" name="login" value="Reset">
-			<input class="btn btn-primary" style="margin-right: 0%; ;" type="Submit" name="login" value="Save">
+		<!-- Button to Open the Modal -->
+		<button type="button" style="margin-left: 0%;" class="btn btn-outline-secondary" data-toggle="modal" data-target="#cancelModal">
+		 Cancel<span class="sr-only">(current)</span>
+		</button>
+		<!-- The Modal -->
+		<div class="modal" id="cancelModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">WARNING</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		        Changes made will not be saved if you leave 
+		      </div>
+		
+		      <!-- Modal footer -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
+		        <button type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" class="btn btn-danger" data-dismiss="modal">Leave</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<button type="button" style="margin-left: 31.5%; margin-right: 34.4%;" class="btn btn-outline-danger" data-toggle="modal" data-target="#resetModal">
+		 Reset<span class="sr-only">(current)</span>
+		</button>
+		<!-- The Modal -->
+		<div class="modal" id="resetModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">WARNING</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		        Are you sure that you want to reset your content?
+		      </div>
+		
+		      <!-- Modal footer -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
+		        <button type="button" onclick="window.location='http://localhost:8081/pcomm/reset.do'" class="btn btn-danger" data-dismiss="modal">Reset</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<button type="button" style="margin-right: 0%;" class="btn btn-outline-success" data-toggle="modal" data-target="#saveModal">
+		 Save<span class="sr-only">(current)</span>
+		</button>
+		<!-- The Modal -->
+		<div class="modal" id="saveModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">CONFIRMATION</h4>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		       	Are you ready to save your content?
+		      </div>
+		
+		      <!-- Modal footer -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
+		        <button type="button" onclick="window.location='http://localhost:8081/pcomm/reset.do'" class="btn btn-success" data-dismiss="modal">Yes, save my content</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		</div>
     </form>
 
