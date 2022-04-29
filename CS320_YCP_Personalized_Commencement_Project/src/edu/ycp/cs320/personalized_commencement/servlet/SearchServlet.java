@@ -1,6 +1,5 @@
 package edu.ycp.cs320.personalized_commencement.servlet;
 
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
@@ -13,19 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 
-@WebServlet(urlPatterns = "/search.do") // both used for uploading files
-@MultipartConfig
+@WebServlet(urlPatterns = "/search.do") // Web annotation for student search
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// create controllers for info and student
 		System.out.println("\tSearch Servlet: doPost");
 		
+		String confetti = "hake is the best professor";
+		
 		String userInputEmail = req.getParameter("email");
 		
 		ServletsController controller = new ServletsController();
+		
+		System.out.println("\t\t" + userInputEmail);
 		
 		String[] studentFirstLast = null;
 		
@@ -52,6 +55,10 @@ public class SearchServlet extends HttpServlet {
 				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 				return;
 			}
+		}else if(userInputEmail.toLowerCase().equals(confetti)) {
+			req.setAttribute("confetti", "CONFETTI!");
+			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+			return;
 		}else {
 			req.setAttribute("errorMessage", "That student was not found");
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);

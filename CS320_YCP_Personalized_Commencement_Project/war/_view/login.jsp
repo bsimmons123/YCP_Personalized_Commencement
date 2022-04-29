@@ -13,6 +13,8 @@
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 		<%@ include file="navbar.jsp"%>	
+		
+		<script src="${pageContext.servletContext.contextPath}/javascript-files/confetti.js"></script>
 	</head>
 	
 	<!-- Body styling and layout -->
@@ -38,6 +40,32 @@
 						${errorMessage}
 					</div>
 				</c:if>	    
+				
+				<c:if test="${! empty confetti }">
+					<div class="alert alert-success" role="alert">
+						${confetti}
+					</div>
+					<!-- CONFETTIIIIII!!!! -->
+					<script>
+					// for starting the confetti 
+					const start = () => {
+						setTimeout(function() {
+							confetti.start()
+						}, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+					};
+
+					// for stopping the confetti 
+					const stop = () => {
+						setTimeout(function() {
+							confetti.stop()
+						}, 4000); // 4000 is time that after 4 second stop the confetti ( 4000 = 4 sec)
+					};
+
+					// after this here we are calling both the function so it works
+					start();
+					stop();
+					</script>
+				</c:if>
 				<!-- Login Table-->
 				<table class="table">
 					<tbody>
