@@ -12,6 +12,10 @@
 		<link href="${pageContext.request.contextPath}/css/StudentInSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+		
 		<!-- Imports navbar -->
 		<%@ include file="header.jsp" %>
 		<!-- imports student model -->
@@ -24,7 +28,7 @@
 
 	<!-- styling and layout of the body  -->
 	<body>
-	
+		
 		<!-- redirects to login page if -->
 		<c:if test="${empty student }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
@@ -33,6 +37,7 @@
 		<div id="pageheader"  style="padding-top: 100px;">
 			<h1 class="title">Student Profile For Personalized Commencement</h1>
 		</div>
+		
 		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 			<div id="instructions">
 
@@ -102,7 +107,6 @@
 					</div>
 				</c:if>
 
-				
 
 				<!-- Card for all of the student's information -->
 				<div class="jumbotron" style="margin-bottom:2.5%; padding-top: 2%;padding-bottom: 2%;">
