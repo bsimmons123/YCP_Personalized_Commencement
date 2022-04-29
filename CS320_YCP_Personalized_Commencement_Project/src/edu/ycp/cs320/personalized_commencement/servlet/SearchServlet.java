@@ -22,8 +22,6 @@ public class SearchServlet extends HttpServlet {
 		// create controllers for info and student
 		System.out.println("\tSearch Servlet: doPost");
 		
-		String confetti = "big daddy hake";
-		
 		String userInputEmail = req.getParameter("email");
 		
 		ServletsController controller = new ServletsController();
@@ -41,34 +39,57 @@ public class SearchServlet extends HttpServlet {
 			Student userStudent  = controller.getStudentByEmail(userInputEmail);
 			if(userStudent != null) {
 				req.setAttribute("student", userStudent);
+				System.out.println("\t\tSearch for: " + userInputEmail + " complete");
+				System.out.println("\t\tPosting Results");
+				
+				// Forward to view to render the result HTML document
+				req.getRequestDispatcher("/_view/student_search.jsp").forward(req, resp);
+				return;
 			}else {
 				req.setAttribute("errorMessage", "Student with Email: '" + userInputEmail + "' was not found");
-				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
-				return;
 			}
 		}else if(studentFirstLast.length == 2){ // check for First and Last name in DB
 			Student userStudent = controller.getStudentByFirstAndLast(studentFirstLast[0], studentFirstLast[1]);
 			if(userStudent != null) {
 				req.setAttribute("student", userStudent);
+				System.out.println("\t\tSearch for: " + userInputEmail + " complete");
+				System.out.println("\t\tPosting Results");
+				
+				// Forward to view to render the result HTML document
+				req.getRequestDispatcher("/_view/student_search.jsp").forward(req, resp);
+				return;
 			}else {
 				req.setAttribute("errorMessage", "Student: '"+ studentFirstLast[0] + " " + studentFirstLast[1] + "' was not found");
-				req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
-				return;
 			}
-		}else if(userInputEmail.toLowerCase().equals(confetti)) {
-			req.setAttribute("confetti", "CONFETTI!");
+		}
+
+		if(confettiCannon("big daddy hake", userInputEmail)) { // confetti trigger
+			req.setAttribute("confetti", "CONFETTI!!!!");
+			req.setAttribute("errorMessage", null);
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 			return;
-		}else {
-			req.setAttribute("errorMessage", "That student was not found");
+		}else if(confettiCannon("confetti", userInputEmail)) {
+			req.setAttribute("confetti", "CONFETTI!!!!");
+			req.setAttribute("errorMessage", null);
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 			return;
 		}
 		
-		System.out.println("\t\tSearch for: " + userInputEmail + " complete");
-		System.out.println("\t\tPosting Results");
 		
-		// Forward to view to render the result HTML document
-		req.getRequestDispatcher("/_view/student_search.jsp").forward(req, resp);
+		// if all student is not found on search, push back to login
+		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		
     }
+	
+	/**
+	 * Check if user input equals condition
+	 * @param trigger		Target phrase
+	 * @param input			User input
+	 * @return
+	 */
+	private boolean confettiCannon(String trigger, String input) {
+		if(input.toLowerCase().equals(trigger)) 
+			return true;
+		return false;
+	}
 }
