@@ -49,7 +49,7 @@
 		  <div id="navbarNavAltMarkup ml-auto">
 		    <div class="navbar-nav">
 		    <form action="${pageContext.servletContext.contextPath}/logout" method="post">
-		      <a class="nav-link active" href="http://localhost:8081/pcomm/logout" 
+		      <a class="nav-link active" href="http://localhost:8081/pcomm" 
 		      style="text-align: center;width: 100px; border-radius: 5px; color: green; background-color: white; font-size: 20px;">
 		      Return<span class="sr-only">(current)</span>
 		      </a>
