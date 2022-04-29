@@ -22,7 +22,7 @@ public class SearchServlet extends HttpServlet {
 		// create controllers for info and student
 		System.out.println("\tSearch Servlet: doPost");
 		
-		String confetti = "hake is the best professor";
+		String confetti = "big daddy hake";
 		
 		String userInputEmail = req.getParameter("email");
 		
