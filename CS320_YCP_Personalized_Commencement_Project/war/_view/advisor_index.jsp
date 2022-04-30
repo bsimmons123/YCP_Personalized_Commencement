@@ -117,7 +117,7 @@
 						<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 							<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#808080;float:left;width: 18rem; min-height: 18rem;">
 								<div class="card-body">
-								  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
+								  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.last},"/> <c:out value="${student.first}"/></h5>
 							  	</div>
 								<ul class="list-group list-group-flush" style="margin-top: 0px;">
 									<p class="card-text">Major: <c:out value="${student.major}"/></p>
@@ -148,7 +148,7 @@
 						<form action="${pageContext.servletContext.contextPath}/advisor_index" method="post">
 							<div class="card" style="margin-left: 3.1%; margin-top: 20px; margin-right: 3.1%; margin-bottom: 20px; padding:10px;background-color:#69a95d;float:left;width: 18rem; min-height: 18rem;">
 								<div class="card-body">
-								  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.first}"/> <c:out value="${student.last}"/></h5>
+								  <h5 class="card-title" style="padding-top: 10px;"><c:out value="${student.last},"/> <c:out value="${student.first}"/></h5>
 								</div>
 								<ul class="list-group list-group-flush" style="margin-top: 0px;">
 									<p class="card-text">Major: <c:out value="${student.major}"/></p>
