@@ -114,7 +114,7 @@
 			
 							      <!-- Modal body -->
 							      <div class="modal-body">
-							        Are you sure that you want to reset your content?
+							        Are you sure that you go back?
 							      </div>
 			
 							      <!-- Modal footer -->

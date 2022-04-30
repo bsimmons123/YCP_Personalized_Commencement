@@ -20,6 +20,14 @@ public class StudentIndexServlet extends HttpServlet {
 		System.out.println("Student Index Servlet: doGet");
 		
 		HttpSession session = req.getSession(false);
+		
+		// redirect if no session
+		if(session == null) {
+			LoginServlet loginServlet = new LoginServlet();
+			loginServlet.doGet(req, resp);
+			return;
+		}
+		
 		Student stuInfo = new Student();
 		stuInfo = (Student) session.getAttribute("student");
 		

@@ -24,6 +24,13 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 		// get current session
 		HttpSession session = req.getSession(false); 
 		
+		// redirect if no session
+		if(session == null) {
+			LoginServlet loginServlet = new LoginServlet();
+			loginServlet.doGet(req, resp);
+			return;
+		}
+		
 		Student student = (Student) session.getAttribute("studentInfo");
 		
 		// pull attributes from page
