@@ -91,7 +91,7 @@
 	    </div>
 		
 		  <div id="buttons" style="padding-left:93.5%; margin-top::0px; padding-bottom: 20px;display: inline; width: auto;">
-			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Back">
+			<input class="btn btn-secondary" type="button" onclick="window.location='http://theyorkboys.uk.to:8081/pcomm/student_index'" value="Back">
 		  </div>
 	</body>
 </html>

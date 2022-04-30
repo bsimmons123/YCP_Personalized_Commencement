@@ -118,7 +118,7 @@
 				      <!-- Modal footer -->
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
-				        <button type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" class="btn btn-danger" data-dismiss="modal">Leave</button>
+				        <button type="button" onclick="window.location='http://theyorkboys.uk.to:8081/pcomm/student_index'" class="btn btn-danger" data-dismiss="modal">Leave</button>
 				      </div>
 				    </div>
 				  </div>
@@ -146,7 +146,7 @@
 					      <!-- Modal footer -->
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
-					        <button type="button" onclick="window.location='http://localhost:8081/pcomm/reset.do'" class="btn btn-danger" data-dismiss="modal">Reset</button>
+					        <button type="button" onclick="window.location='http://theyorkboys.uk.to:8081/pcomm/reset.do'" class="btn btn-danger" data-dismiss="modal">Reset</button>
 					      </div>
 	   					</div>
 	  				</div>

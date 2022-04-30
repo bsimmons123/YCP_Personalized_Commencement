@@ -272,8 +272,8 @@
 				</c:if>
 				<!--Buttons for editing content and previewing content -->
 				<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
-					<input class="btn btn-info" style="width: 20%; margin-right: 51.2%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
-					<input class="btn btn-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
+					<input class="btn btn-info" style="width: 20%; margin-right: 51.2%;" type="button" onclick="window.location='http://theyorkboys.uk.to:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
+					<input class="btn btn-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://theyorkboys.uk.to:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
 				</div>
 			</div>
 		</form>
