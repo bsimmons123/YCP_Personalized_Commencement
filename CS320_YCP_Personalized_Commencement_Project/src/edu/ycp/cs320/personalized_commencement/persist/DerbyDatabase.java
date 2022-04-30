@@ -275,6 +275,7 @@ public class DerbyDatabase implements IDatabase {
 							"	from students, advisors\n" + 
 							"	where advisors.advisor_id = students.advisor_id\n" + 
 							"		and students.advisor_id = ?"
+							+ "order by students.firstname"
 					);
 					
 					stmt.setLong(1, advisorId);
@@ -628,7 +629,7 @@ public class DerbyDatabase implements IDatabase {
 				ResultSet resultSet = null;
 				
 				try {
-					stmt = conn.prepareStatement("select students.*\n from students\n");
+					stmt = conn.prepareStatement("select students.*\n from students\n order by firstname");
 					
 					ArrayList<Student> result = new ArrayList<Student>();
 					
