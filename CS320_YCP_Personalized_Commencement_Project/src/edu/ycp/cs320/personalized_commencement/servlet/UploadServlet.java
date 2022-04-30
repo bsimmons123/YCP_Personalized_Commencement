@@ -46,6 +46,13 @@ public class UploadServlet extends HttpServlet {
         	String audio = null;
 
         	HttpSession session = req.getSession(false);
+        	
+        	// redirect if no session
+    		if(session == null) {
+    			LoginServlet loginServlet = new LoginServlet();
+    			loginServlet.doGet(req, resp);
+    			return;
+    		}
 
         	Student student = new Student();
 

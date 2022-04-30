@@ -27,6 +27,13 @@ public class AdvisorIndexServlet extends HttpServlet {
 		// get current session
 		HttpSession session = req.getSession(false);
 		
+		// redirect if no session
+		if(session == null) {
+			LoginServlet loginServlet = new LoginServlet();
+			loginServlet.doGet(req, resp);
+			return;
+		}
+		
 		// get the current advisor logged in
 		advisor = (Advisor) session.getAttribute("advisor");
 		
@@ -68,8 +75,6 @@ public class AdvisorIndexServlet extends HttpServlet {
 		// list of approved students
 		req.setAttribute("stuList", approvedStudents);
 		
-		System.out.print(approvedStudents);
-		
 		// list of students pending approval
 		req.setAttribute("pendingStuList", pendingStudents);
 		
@@ -88,6 +93,13 @@ public class AdvisorIndexServlet extends HttpServlet {
 		System.out.println("\tAdvisor Viewing: " + student.getFirst() + " " +  student.getLast());
 		
 		HttpSession session = req.getSession(false);
+		
+		// redirect if no session
+		if(session == null) {
+			LoginServlet loginServlet = new LoginServlet();
+			loginServlet.doGet(req, resp);
+			return;
+		}
 		
 		session.setAttribute("studentInfo", student);
 	
