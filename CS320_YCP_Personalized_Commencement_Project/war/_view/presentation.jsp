@@ -19,6 +19,12 @@
 		<%@ include file="header.jsp" %>
 	</head>
 
+	<script type="text/javascript">
+	$(function () {
+        $('#backButtonModal').appendTo('body');
+    });
+	</script>
+
 	<!-- Body layout and formatting -->
 	<body>
 		<!-- Redirect advisor if not logged in -->
@@ -92,9 +98,34 @@
 					  <textarea class="form-control" maxlength="495" name="submissioncomment" aria-label="With textarea"></textarea>
 					</div>
 					<!-- Submit button and Back Button -->
-					<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
-						<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/advisor_index'" value="Back">
-						<input class="btn btn-success" type="Submit" name="Status" value="Submit">
+					<div id="buttons" style="padding:0px; display: inline;">
+						<button type="button" style="margin-left: 0%; margin-right:37%" class="btn btn-outline-secondary" data-toggle="modal" data-target="#backButtonModal">
+							Back <span class="sr-only">(current)</span>
+						</button>
+						<!-- The Modal -->
+						<div class="modal" id="backButtonModal">
+			  				<div class="modal-dialog">
+			    				<div class="modal-content">
+							      <!-- Modal Header -->
+							      <div class="modal-header">
+							        <h4 class="modal-title">WARNING</h4>
+							        <button type="button" class="close" data-dismiss="modal">&times;</button>
+							      </div>
+			
+							      <!-- Modal body -->
+							      <div class="modal-body">
+							        Are you sure that you want to reset your content?
+							      </div>
+			
+							      <!-- Modal footer -->
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							        <button type="button" onclick="window.location='http://localhost:8081/pcomm/advisor_index'" class="btn btn-danger" data-dismiss="modal">Back</button>
+							      </div>
+			   					</div>
+			  				</div>
+						</div>
+						<input class="btn btn-outline-success" style="margin-left: 37%; margin-right: 0%;" type="Submit" name="Status" value="Submit">
 					</div>
 				</div>
 			</div>
