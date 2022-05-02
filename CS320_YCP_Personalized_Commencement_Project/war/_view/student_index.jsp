@@ -124,13 +124,9 @@
 				  <p class="lead">
 				    <strong>GPA:</strong>
 				    ${student.GPA}
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <label class="btn btn-secondary">
-					    <input type="radio" onclick="callJqueryAjax()" name="options" id="option1" checked> Show GPA
-					  </label>
-					  <label class="btn btn-secondary">
-					    <input type="radio" onclick="callJqueryAjax()" name="options" id="option2"> Do Not Show GPA
-					  </label>
+					<div class="custom-control custom-switch">
+					  <input type="checkbox" onclick="callJqueryAjax()" class="custom-control-input" id="customSwitch1">
+					  <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
 					</div>
 
 				  </p>
@@ -291,15 +287,14 @@
 	<script type="text/javascript">
 			function callJqueryAjax(){
 				console.log('Sending selection');
-				var gpa = $('#option1').val();
-				var gpa1 = $('#potion2').val();
+				var gpa = $('#customSwitch1').val();
 				var id = $('#studentid').val();
 				console.log(id);
 				console.log(gpa);
 				$.ajax({
 					url     : 'GPAAjaxServlet',
 					method     : 'POST',
-					data     : {studentid: id, gpa: gpa, gpa1: gpa1},
+					data     : {studentid: id, gpa: gpa},
 					success    : function(resultText){
 					$('#result').html(resultText);
 					},
