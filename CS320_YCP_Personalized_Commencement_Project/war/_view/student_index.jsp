@@ -124,16 +124,14 @@
 				  <p class="lead">
 				    <strong>GPA:</strong>
 				    ${student.GPA}
-							<div class="input-group mb-3">
-							  <div class="input-group-prepend">
-							    <label class="input-group-text" for="inputGroupSelect01">GPA</label>
-							  </div>
-							  <select name="gpa" class="custom-select" id="inputGroupSelect01" onclick="callJqueryAjax()">
-							    <option selected>Choose...</option>
-							    <option value="1">Show GPA during graduation</option>
-							    <option value="0">DO NOT show GPA during graduation</option>
-							  </select>
-							</div>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					  <label class="btn btn-secondary">
+					    <input type="radio" onclick="callJqueryAjax()" name="options" id="option1" checked> Show GPA
+					  </label>
+					  <label class="btn btn-secondary">
+					    <input type="radio" onclick="callJqueryAjax()" name="options" id="option2"> Do Not Show GPA
+					  </label>
+					</div>
 
 				  </p>
 				  <p class="lead">
@@ -293,14 +291,15 @@
 	<script type="text/javascript">
 			function callJqueryAjax(){
 				console.log('Sending selection');
-				var gpa = $('#inputGroupSelect01').val();
+				var gpa = $('#option1').val();
+				var gpa1 = $('#potion2').val();
 				var id = $('#studentid').val();
 				console.log(id);
 				console.log(gpa);
 				$.ajax({
 					url     : 'GPAAjaxServlet',
 					method     : 'POST',
-					data     : {studentid: id, gpa: gpa},
+					data     : {studentid: id, gpa: gpa, gpa1: gpa1},
 					success    : function(resultText){
 					$('#result').html(resultText);
 					},

@@ -39,20 +39,26 @@ public class StudentGPAAjaxServlet extends HttpServlet {
 			return;
 		}
 		
+		Student test = (Student)session.getAttribute("student");
+		
+		System.out.println(test.getFirst());
+		
 		try {
 		Student student = controller.getStudentById(controller.getInteger(req, "studentid"));
 		
-		int showGPA = controller.getInteger(req, "gpa");	
-		if(student.getShowGPA() != showGPA) { // to null out first click
-			controller.updateStudentShowGPA(student.getStudentId() , showGPA);
-			if(showGPA == 1){ // if user wants info to be shown
+		String showGPA = req.getParameter("gpa");
+		String dontShowGPA = req.getParameter("gpa");
+		System.out.println(showGPA);
+		System.out.println(dontShowGPA);
+			if(showGPA.equals("on")){ // if user wants info to be shown
 				   System.out.println("Student: " + student.getFirst() + " wants to show their GPA!");
-		    }else if(showGPA == 0){ // if user does not want info to be shown
+				   controller.updateStudentShowGPA(student.getStudentId() , 1);
+		    }else if(dontShowGPA.equals("on")){ // if user does not want info to be shown
 		    	System.out.println("Student: " + student.getFirst() + " DOES NOT want to show their GPA!");
+		    	controller.updateStudentShowGPA(student.getStudentId() , 0);
 		    }
-		} else {
-			System.out.println("\tStudent has not made any changes");
-		}
+			
+			session.setAttribute("student", controller.getStudentById(controller.getInteger(req, "studentid")));
 		}catch(NumberFormatException e){
 			System.out.println(e);
 		}
