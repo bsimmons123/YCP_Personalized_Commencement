@@ -12,10 +12,12 @@
 		<link href="${pageContext.request.contextPath}/css/StudentInSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-		
+
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-		
+		<%-- import for AJAX --%>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+
 		<!-- Imports navbar -->
 		<%@ include file="header.jsp" %>
 		<!-- imports student model -->
@@ -23,12 +25,12 @@
 		<!-- sets session's student model -->
 		<% Student student = (Student) session.getAttribute("student"); %>
 	</head>
-	
+
 	<script src="${pageContext.servletContext.contextPath}/javascript-files/confetti.js"></script>
 
 	<!-- styling and layout of the body  -->
 	<body>
-		
+
 		<!-- redirects to login page if -->
 		<c:if test="${empty student }">
 			<% response.sendRedirect(request.getContextPath() + "/_view/login.jsp"); %>
@@ -37,25 +39,23 @@
 		<div id="pageheader"  style="padding-top: 100px;">
 			<h1 class="title">Student Profile For Personalized Commencement</h1>
 		</div>
-		
-		<form action="${pageContext.servletContext.contextPath}/upload.do" method="post" enctype="multipart/form-data">
-			<div id="instructions">
+	<div id="instructions">
 
 				<!-- Welcome message -->
 				<c:if test="${! empty student }">
 					<div class="alert alert-info" role="alert" style="color: black; text-align: center;">
 						Welcome to your student portal, ${student.first}!
 						<p style="font-size: 13px; text-align: center;">
-							This is your student profile.  The content that you can customize consists of your Sports, Clubs, or Organizations, your background image, 
+							This is your student profile.  The content that you can customize consists of your Sports, Clubs, or Organizations, your background image,
 							and the audio that will play.
-							To add or change your content, click the "edit content" button.  To preview what your content will look like during the ceremony, 
+							To add or change your content, click the "edit content" button.  To preview what your content will look like during the ceremony,
 							click the "preview content" button.
 							When it is your turn to walk the stage at the ceremony, scan the QR code below in order to display your content on the screens that are running the ceremony.
 						</p>
 					</div>
 				</c:if>
-				
-				
+
+
 
 				<!-- Outputs approval status message depending on if the student has been approved or not -->
 				<%
@@ -65,14 +65,14 @@
 						Your content has been approved for the commencement ceremony!
 					</div>
 					<script>
-					// for starting the confetti 
+					// for starting the confetti
 					const start = () => {
 						setTimeout(function() {
 							confetti.start()
 						}, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
 					};
 
-					// for stopping the confetti 
+					// for stopping the confetti
 					const stop = () => {
 						setTimeout(function() {
 							confetti.stop()
@@ -92,7 +92,7 @@
 				<%
 				}
 				%>
-				
+
 				<!-- Outputs success message if files were uploaded -->
 				<c:if test="${! empty message}">
 					<div class="alert alert-success" role="alert" style="text-align: center;">
@@ -124,6 +124,17 @@
 				  <p class="lead">
 				    <strong>GPA:</strong>
 				    ${student.GPA}
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+							    <label class="input-group-text" for="inputGroupSelect01">GPA</label>
+							  </div>
+							  <select name="gpa" class="custom-select" id="inputGroupSelect01" onclick="callJqueryAjax()">
+							    <option selected>Choose...</option>
+							    <option value="1">Show GPA during graduation</option>
+							    <option value="0">DO NOT show GPA during graduation</option>
+							  </select>
+							</div>
+
 				  </p>
 				  <p class="lead">
 				    <strong>Awards:</strong>
@@ -215,7 +226,7 @@
 								<div style="margin-left:auto; margin-right:auto; width:100%;">
 									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
 									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
-								</div>										  
+								</div>
 								</p>
 						  </c:if>
 						  <c:if test="${student.checkAudio == 0}">
@@ -228,7 +239,7 @@
 								<div style="margin-left:auto; margin-right:auto; width:100%;">
 									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
 									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
-								</div>			
+								</div>
 								</p>
 						  </c:if>
 						</c:when>
@@ -252,13 +263,13 @@
 								<div style="margin-left:auto; margin-right:auto; width:100%;">
 									<h5 style="text-align: center; margin: auto; color: green;">QR For Ceremony</h5>
 									<img src="${pageContext.servletContext.contextPath}/QRCodes/${student.first}${student.last}${student.studentId}QR.png" style="border: 3px solid green; display:block; margin-left:auto; margin-right:auto; width:40%; height: 40%;">
-								</div>							 
+								</div>
 								 </p>
 						  </c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>
-				
+
 				<!-- Comment section below student's info card -->
 				<c:if test="${student.comment != ''}">
 					<div class="card" style="margin-bottom:20px;">
@@ -276,6 +287,44 @@
 					<input class="btn btn-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
 				</div>
 			</div>
-		</form>
+
+			<input type="hidden" id="studentid" value="${student.comment}" >
+
+
+	<script type="text/javascript">
+			function callJqueryAjax(){
+				console.log('Sending selection');
+				var gpa = $('#inputGroupSelect01').val();
+				var id = $('#studentid').val();
+				console.log(id);
+				console.log(gpa);
+				$.ajax({
+					url     : 'GPAAjaxServlet',
+					method     : 'POST',
+					data     : {studentid: id},
+					success    : function(resultText){
+					$('#result').html(resultText);
+					},
+					error : function(jqXHR, exception){
+						console.log('Error occured!!');
+					}
+				});
+			}
+		</script>
+
+
+	<script type="text/javascript">
+	function callAjax() {
+		httpRequest = new XMLHttpRequest();
+
+		if (!httpRequest) {
+		console.log('Unable to create XMLHTTP instance');
+		return false;
+		}
+		httpRequest.open('POST', 'GPAAjaxServlet');
+		httpRequest.send();
+	}
+	</script>
+
 	</body>
 </html>

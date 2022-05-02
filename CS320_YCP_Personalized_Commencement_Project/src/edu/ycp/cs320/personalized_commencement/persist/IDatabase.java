@@ -52,4 +52,6 @@ public interface IDatabase {
 	public Boolean updateStudentApproval(int student_id, int approval);
 
 	public Student getStudentByEmail(String email);
+
+	public Boolean updateStudentShowGPA(int student_id, int GPA);
 }

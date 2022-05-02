@@ -44,6 +44,7 @@ public class InitialData {
 				student.setCheckExtCur(Integer.parseInt(i.next()));
 				student.setCheckImg(Integer.parseInt(i.next()));
 				student.setCheckAudio(Integer.parseInt(i.next()));
+				student.setShowGPA(Integer.parseInt(i.next()));
 				studentList.add(student);
 			}
 			return studentList;

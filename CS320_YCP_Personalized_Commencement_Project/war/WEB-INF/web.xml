@@ -40,12 +40,13 @@
 	  	<servlet-name>UploadServlet</servlet-name>
 	  	<servlet-class>edu.ycp.cs320.personalized_commencement.servlet.UploadServlet</servlet-class>
   	</servlet>
-
+  	
   <!-- Servlet mappings -->
 	<servlet-mapping>
   		<servlet-name>AdvisorIndexServlet</servlet-name>
   		<url-pattern>/advisor_index</url-pattern>
 	</servlet-mapping>
+	
 	
 	<servlet-mapping>
 	  	<servlet-name>CeremonyServlet</servlet-name>

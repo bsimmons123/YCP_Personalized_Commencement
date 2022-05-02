@@ -8,7 +8,7 @@ package edu.ycp.cs320.personalized_commencement.model;
  */
 public class Student extends User{
 	// all methods extend user
-	private int checkMajor, checkMinor, checkExtCur, checkImg, checkAudio, checkApproval;
+	private int checkMajor, checkMinor, checkExtCur, checkImg, checkAudio, checkApproval, showGPA;
 
 	private double gpa;
 	private String GPA;
@@ -131,5 +131,12 @@ public class Student extends User{
 	// converts gpa to string for use in jsp's
 	public String getGPAString() {
 		return GPA;
+	}
+	public void setShowGPA(int showGPA) {
+		this.showGPA = showGPA;
+	}
+	
+	public int getShowGPA() {
+		return showGPA;
 	}
 }

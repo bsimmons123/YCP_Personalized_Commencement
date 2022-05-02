@@ -101,6 +101,7 @@ public class DerbyDatabase implements IDatabase {
 		student.setCheckExtCur(resultSet.getInt(index++));
 		student.setCheckImg(resultSet.getInt(index++));
 		student.setCheckAudio(resultSet.getInt(index++));
+		student.setShowGPA(resultSet.getInt(index++));
 		
 	}
 	
@@ -139,7 +140,8 @@ public class DerbyDatabase implements IDatabase {
 									+ "checkminor int,"
 									+ "checkextcur int,"
 									+ "checkimg int,"
-									+ "checkaudio int)"
+									+ "checkaudio int,"
+									+ "showgpa int)"
 					);	
 					stmt1.executeUpdate();
 					
@@ -182,8 +184,8 @@ public class DerbyDatabase implements IDatabase {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
 					insertStudent = conn.prepareStatement("INSERT INTO students (advisor_id, email, password, " + 
 							"firstname, lastname, major, minor, gpa, awards, extcur, img, audio, approval, comment, checkmajor, checkminor, "
-							+ "checkextcur, checkimg, checkaudio)" + 
-							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+							+ "checkextcur, checkimg, checkaudio, showgpa)" + 
+							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 					for (Student student : studentList) {
 						insertStudent.setInt(1, student.getAdvisorId());
 						insertStudent.setString(2, student.getEmail());
@@ -204,6 +206,7 @@ public class DerbyDatabase implements IDatabase {
 						insertStudent.setInt(17, student.getCheckExtCur());
 						insertStudent.setInt(18, student.getCheckImg());
 						insertStudent.setInt(19, student.getCheckAudio());
+						insertStudent.setInt(20, student.getShowGPA());
 						insertStudent.addBatch();
 					}
 					insertStudent.executeBatch();
@@ -595,6 +598,47 @@ public class DerbyDatabase implements IDatabase {
 							"where student_id = ?"
 					);
 					stmt.setInt(1, approval);
+					stmt.setInt(2, student_id);
+					
+					resultSet = stmt.executeUpdate();
+					
+					// for testing that a result was returned
+					Boolean found = false;
+					
+					if (resultSet != -1) {
+						found = true;
+						return found;
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("< Student_id: " + student_id + "> was not found in the Student table");
+					}
+					
+					return found;
+				} finally {
+					DBUtil.closeQuietly(stmt);
+				}
+			}
+		});
+	}
+	
+	@Override
+	public Boolean updateStudentShowGPA(int student_id, int GPA) {
+		return executeTransaction(new Transaction<Boolean>() {
+			@Override
+			public Boolean execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				int resultSet = -1;
+				
+				try {
+					// retreive all attributes from both Books and Authors tables
+					stmt = conn.prepareStatement(
+							"update students\r\n" + 
+							"set showgpa = ? " +
+							"where student_id = ?"
+					);
+					stmt.setInt(1, GPA);
 					stmt.setInt(2, student_id);
 					
 					resultSet = stmt.executeUpdate();

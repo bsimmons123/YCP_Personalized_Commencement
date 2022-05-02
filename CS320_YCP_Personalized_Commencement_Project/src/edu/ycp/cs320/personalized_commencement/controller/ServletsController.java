@@ -186,6 +186,7 @@ public class ServletsController {
 
 	/**
 	 * Converts the string passed as a parameter to an integer of either 1 or 0 and returns it.
+	 * Used for Radial values
 	 *
 	 * @returns an integer
 	 */
@@ -248,20 +249,35 @@ public class ServletsController {
  		return false;
  	}
 
-	public Boolean updateStudentApproval(int id, int approval) {
-		// Create the default IDatabase instance
-		DatabaseProvider.setInstance(new DerbyDatabase());
+	 public Boolean updateStudentApproval(int id, int approval) {
+			// Create the default IDatabase instance
+			DatabaseProvider.setInstance(new DerbyDatabase());
 
-		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
-		Boolean student = db.updateStudentApproval(id, approval);
-		// check if anything was returned and output the list
-		if (student == null) {
-			System.out.println("\tNo students found for ID <" + id + ">");
-			return false;
+			// get the DB instance and execute transaction
+			IDatabase db = DatabaseProvider.getInstance();
+			Boolean student = db.updateStudentApproval(id, approval);
+			// check if anything was returned and output the list
+			if (student == null) {
+				System.out.println("\tNo students found for ID <" + id + ">");
+				return false;
+			}
+			return true;
 		}
-		return true;
-	}
+	 
+	 public Boolean updateStudentShowGPA(int id, int GPA) {
+			// Create the default IDatabase instance
+			DatabaseProvider.setInstance(new DerbyDatabase());
+
+			// get the DB instance and execute transaction
+			IDatabase db = DatabaseProvider.getInstance();
+			Boolean student = db.updateStudentApproval(id, GPA);
+			// check if anything was returned and output the list
+			if (student == null) {
+				System.out.println("\tNo students found for ID <" + id + ">");
+				return false;
+			}
+			return true;
+		}
 
 	/**
 	 * Updates the comment written by an advisor inside of the database.
