@@ -38,6 +38,12 @@ public class StudentIndexServlet extends HttpServlet {
 		req.setAttribute("student", stuInfo);
 		
 		req.setAttribute("gpa", stuInfo.getShowGPA());
+		
+		if(stuInfo.getShowGPA() == 1) {
+			req.setAttribute("options1", "on");
+		}else {
+			req.setAttribute("options2", "on");
+		}
 
 		// call JSP to generate empty form
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);

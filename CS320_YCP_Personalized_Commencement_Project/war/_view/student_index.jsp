@@ -123,13 +123,13 @@
 				  </p>
 				  <p class="lead">
 				    <strong>GPA:</strong>
-				    ${student.GPA}
+				    ${student.GPA} <c:if test="${student.showGPA == 1}"> <p id="gpa">You have selected to show your GPA during graduation</p></c:if> <c:if test="${student.showGPA == 0}"> <p id="gpa">You have selected to <span>NOT</span> show your GPA during graduation</p></c:if>
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <label class="btn btn-secondary active">
-					    <input type="radio" name="options" id="option1" checked> Show GPA
+					  <label class="btn btn-primary active">
+					    <input type="radio" class="searchType" name="option1" id="option1"> Show GPA
 					  </label>
-					  <label class="btn btn-secondary">
-					    <input type="radio" name="options" id="option2"> Don't Show GPA
+					  <label class="btn btn-warning">
+					    <input type="radio" class="searchType1" name="options2" id="option2"> Don't Show GPA
 					  </label>
 					</div>
 
@@ -289,48 +289,46 @@
 
 
 	<script type="text/javascript">
-	$('#option1').on('change',function() {
-
-        if(this.checked){
-				console.log('Sending selection');
-				var gpa = $('#option1').val();
-				var id = $('#studentid').val();
-				console.log(id);
-				console.log(gpa);
-				$.ajax({
-					url     : 'GPAAjaxServlet',
-					method     : 'POST',
-					data     : {studentid: id, gpa: 'option1'},
-					success    : function(resultText){
-					$('#result').html(resultText);
-					},
-					error : function(jqXHR, exception){
-						console.log('Error occured!!');
-					}
-				});
+	$('.searchType').click(function() {
+       if(this.checked){
+		console.log('Sending selection');
+		var gpa = $('#option1').val();
+		var id = $('#studentid').val();
+		console.log(id);
+		console.log(gpa);
+		$.ajax({
+			url     : 'GPAAjaxServlet',
+			method     : 'POST',
+			data     : {studentid: id, gpa: 'option1'},
+			success    : function(resultText){
+			$('#gpa').html("You have selected to show your GPA during graduation");
+			},
+			error : function(jqXHR, exception){
+				console.log('Error occured!!');
 			}
+		});
+	}
 	})
 	
-	$('#option2').on('change',function() {
-
-        if(this.checked){
-				console.log('Sending selection');
-				var gpa = $('#option2').val();
-				var id = $('#studentid').val();
-				console.log(id);
-				console.log(gpa);
-				$.ajax({
-					url     : 'GPAAjaxServlet',
-					method     : 'POST',
-					data     : {studentid: id, gpa: 'option2'},
-					success    : function(resultText){
-					$('#result').html(resultText);
-					},
-					error : function(jqXHR, exception){
-						console.log('Error occured!!');
-					}
-				});
+	$('.searchType1').click(function() {
+      if(this.checked){
+		console.log('Sending selection');
+		var gpa = $('#option2').val();
+		var id = $('#studentid').val();
+		console.log(id);
+		console.log(gpa);
+		$.ajax({
+			url     : 'GPAAjaxServlet',
+			method     : 'POST',
+			data     : {studentid: id, gpa: 'option2'},
+			success    : function(resultText){
+			$('#gpa').html("You have selected to <span>NOT</span> show your GPA during graduation");
+			},
+			error : function(jqXHR, exception){
+				console.log('Error occured!!');
 			}
+		});
+	}
 	})
 	</script>
 
