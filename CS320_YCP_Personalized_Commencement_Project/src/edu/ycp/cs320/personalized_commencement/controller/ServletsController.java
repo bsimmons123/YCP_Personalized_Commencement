@@ -270,7 +270,7 @@ public class ServletsController {
 
 			// get the DB instance and execute transaction
 			IDatabase db = DatabaseProvider.getInstance();
-			Boolean student = db.updateStudentApproval(id, GPA);
+			Boolean student = db.updateStudentShowGPA(id, GPA);
 			// check if anything was returned and output the list
 			if (student == null) {
 				System.out.println("\tNo students found for ID <" + id + ">");

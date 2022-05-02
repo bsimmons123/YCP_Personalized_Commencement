@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
@@ -46,15 +42,17 @@ public class StudentGPAAjaxServlet extends HttpServlet {
 		try {
 		Student student = controller.getStudentById(controller.getInteger(req, "studentid"));
 		
-		System.out.println(student.getFirst());
-			int gpa = controller.getInteger(req, "gpa");	
-			System.out.println("GPA: " + gpa);
-			controller.updateStudentShowGPA(student.getStudentId() , gpa);
-			if(gpa == 1){ // if user wants info to be shown
+		int showGPA = controller.getInteger(req, "gpa");	
+		if(student.getShowGPA() != showGPA) { // to null out first click
+			controller.updateStudentShowGPA(student.getStudentId() , showGPA);
+			if(showGPA == 1){ // if user wants info to be shown
 				   System.out.println("Student: " + student.getFirst() + " wants to show their GPA!");
-		    }else if(gpa == 0){ // if user does not want info to be shown
+		    }else if(showGPA == 0){ // if user does not want info to be shown
 		    	System.out.println("Student: " + student.getFirst() + " DOES NOT want to show their GPA!");
 		    }
+		} else {
+			System.out.println("\tStudent has not made any changes");
+		}
 		}catch(NumberFormatException e){
 			System.out.println(e);
 		}

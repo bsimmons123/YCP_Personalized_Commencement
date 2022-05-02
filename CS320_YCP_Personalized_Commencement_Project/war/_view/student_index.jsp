@@ -287,8 +287,7 @@
 					<input class="btn btn-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
 				</div>
 			</div>
-
-			<input type="hidden" id="studentid" value="${student.comment}" >
+			<input name="studentid" id="studentid" type="hidden" value="${student.studentId}" />
 
 
 	<script type="text/javascript">
@@ -301,7 +300,7 @@
 				$.ajax({
 					url     : 'GPAAjaxServlet',
 					method     : 'POST',
-					data     : {studentid: id},
+					data     : {studentid: id, gpa: gpa},
 					success    : function(resultText){
 					$('#result').html(resultText);
 					},
