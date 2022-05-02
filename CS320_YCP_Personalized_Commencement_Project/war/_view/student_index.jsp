@@ -124,9 +124,13 @@
 				  <p class="lead">
 				    <strong>GPA:</strong>
 				    ${student.GPA}
-					<div class="custom-control custom-switch">
-					  <input type="checkbox" onclick="callJqueryAjax()" class="custom-control-input" id="customSwitch1">
-					  <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					  <label class="btn btn-secondary active">
+					    <input type="radio" name="options" id="option1" checked> Show GPA
+					  </label>
+					  <label class="btn btn-secondary">
+					    <input type="radio" name="options" id="option2"> Don't Show GPA
+					  </label>
 					</div>
 
 				  </p>
@@ -285,16 +289,18 @@
 
 
 	<script type="text/javascript">
-			function callJqueryAjax(){
+	$('#option1').on('change',function() {
+
+        if(this.checked){
 				console.log('Sending selection');
-				var gpa = $('#customSwitch1').val();
+				var gpa = $('#option1').val();
 				var id = $('#studentid').val();
 				console.log(id);
 				console.log(gpa);
 				$.ajax({
 					url     : 'GPAAjaxServlet',
 					method     : 'POST',
-					data     : {studentid: id, gpa: gpa},
+					data     : {studentid: id, gpa: 'option1'},
 					success    : function(resultText){
 					$('#result').html(resultText);
 					},
@@ -303,7 +309,30 @@
 					}
 				});
 			}
-		</script>
+	})
+	
+	$('#option2').on('change',function() {
+
+        if(this.checked){
+				console.log('Sending selection');
+				var gpa = $('#option2').val();
+				var id = $('#studentid').val();
+				console.log(id);
+				console.log(gpa);
+				$.ajax({
+					url     : 'GPAAjaxServlet',
+					method     : 'POST',
+					data     : {studentid: id, gpa: 'option2'},
+					success    : function(resultText){
+					$('#result').html(resultText);
+					},
+					error : function(jqXHR, exception){
+						console.log('Error occured!!');
+					}
+				});
+			}
+	})
+	</script>
 
 
 	<script type="text/javascript">

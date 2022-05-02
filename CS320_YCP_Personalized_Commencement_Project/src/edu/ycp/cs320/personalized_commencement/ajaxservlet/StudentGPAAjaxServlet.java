@@ -47,13 +47,11 @@ public class StudentGPAAjaxServlet extends HttpServlet {
 		Student student = controller.getStudentById(controller.getInteger(req, "studentid"));
 		
 		String showGPA = req.getParameter("gpa");
-		String dontShowGPA = req.getParameter("gpa");
 		System.out.println(showGPA);
-		System.out.println(dontShowGPA);
-			if(showGPA.equals("on")){ // if user wants info to be shown
+			if(showGPA.equals("option1")){ // if user wants info to be shown
 				   System.out.println("Student: " + student.getFirst() + " wants to show their GPA!");
 				   controller.updateStudentShowGPA(student.getStudentId() , 1);
-		    }else if(dontShowGPA.equals("on")){ // if user does not want info to be shown
+		    }else if (showGPA.equals("option2")){ // if user does not want info to be shown
 		    	System.out.println("Student: " + student.getFirst() + " DOES NOT want to show their GPA!");
 		    	controller.updateStudentShowGPA(student.getStudentId() , 0);
 		    }
