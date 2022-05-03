@@ -122,16 +122,16 @@
 				    ${student.minor}
 				  </p>
 				  <p class="lead">
-				    <strong>GPA:</strong>
-				    ${student.GPA} <c:if test="${student.showGPA == 1}"> <p id="gpa">You have selected to show your GPA during graduation</p></c:if> <c:if test="${student.showGPA == 0}"> <p id="gpa">You have selected to <span>NOT</span> show your GPA during graduation</p></c:if>
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <label class="btn btn-primary active">
+				    <strong>GPA: ${student.GPA}</strong>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons" style="width: 100%;">
+					  <label class="btn btn-outline-success active" style="width:50%">
 					    <input type="radio" class="searchType" name="option1" id="option1"> Show GPA
 					  </label>
-					  <label class="btn btn-warning">
+					  <label class="btn btn-outline-danger" style="width:50%">
 					    <input type="radio" class="searchType1" name="options2" id="option2"> Don't Show GPA
 					  </label>
 					</div>
+					<c:if test="${student.showGPA == 1}"> <p id="gpa" style="font-size: 16px; text-align: left;"><br><span style="font-weight:bold;">Selected</span>: Show GPA during the ceremony</p></c:if> <c:if test="${student.showGPA == 0}"> <p id="gpa" style="font-size: 16px; text-align: left;"><br><span style="font-weight:bold;">Selected</span>: Do <span style="font-style: italic; border-bottom: 2px solid red;">NOT</span> show GPA during the ceremony</p></c:if>
 				  </p>
 				  <p class="lead">
 				    <strong>Awards:</strong>
@@ -280,8 +280,8 @@
 				</c:if>
 				<!--Buttons for editing content and previewing content -->
 				<div id="buttons" style="margin-left:0%; padding:0px; display: inline;">
-					<input class="btn btn-info" style="width: 20%; margin-right: 51.2%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
-					<input class="btn btn-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
+					<input class="btn btn-outline-info" style="width: 20%; margin-right: 51.2%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/edit_student_content.jsp'" value="Edit Content">
+					<input class="btn btn-outline-success" style="width: 28%; margin-left:0%;" type="button" onclick="window.location='http://localhost:8081/pcomm/_view/graduation_preview.jsp'" value="Preview Content">
 				</div>
 			</div>
 			<input name="studentid" id="studentid" type="hidden" value="${student.studentId}" />
@@ -300,7 +300,7 @@
 			method     : 'POST',
 			data     : {studentid: id, gpa: 'option1'},
 			success    : function(resultText){
-			$('#gpa').html("You have selected to show your GPA during graduation");
+			$('#gpa').html("<br><span style='font-weight:bold;'>Selected</span>: Show GPA during the ceremony");
 			},
 			error : function(jqXHR, exception){
 				console.log('Error occured!!');
@@ -321,7 +321,7 @@
 			method     : 'POST',
 			data     : {studentid: id, gpa: 'option2'},
 			success    : function(resultText){
-			$('#gpa').html("You have selected to <span>NOT</span> show your GPA during graduation");
+			$('#gpa').html("<br><span style='font-weight:bold;'>Selected</span>: Do <span style='font-style: italic; border-bottom: 2px solid red;'>NOT</span> show GPA during the ceremony");
 			},
 			error : function(jqXHR, exception){
 				console.log('Error occured!!');

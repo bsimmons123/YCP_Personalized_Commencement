@@ -63,7 +63,7 @@ public class SearchServlet extends HttpServlet {
 			}
 		}
 
-		if(confettiCannon("big daddy hake", userInputEmail)) { // confetti trigger
+		if(confettiCannon("don hake", userInputEmail)) { // confetti trigger
 			req.setAttribute("confetti", "CONFETTI!!!!");
 			req.setAttribute("errorMessage", null);
 			req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
