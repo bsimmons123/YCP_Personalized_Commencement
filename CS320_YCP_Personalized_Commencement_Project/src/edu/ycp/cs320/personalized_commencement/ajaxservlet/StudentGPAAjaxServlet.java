@@ -1,7 +1,6 @@
 package edu.ycp.cs320.personalized_commencement.ajaxservlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
-import edu.ycp.cs320.personalized_commencement.model.Advisor;
 import edu.ycp.cs320.personalized_commencement.model.Student;
-import edu.ycp.cs320.personalized_commencement.servlet.AdvisorIndexServlet;
 import edu.ycp.cs320.personalized_commencement.servlet.LoginServlet;
 
 @WebServlet("/GPAAjaxServlet")
