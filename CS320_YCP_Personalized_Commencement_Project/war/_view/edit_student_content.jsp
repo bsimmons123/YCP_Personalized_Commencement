@@ -78,18 +78,14 @@
 			        </div>
 			      </div>
 			
-			      <div class="input-group mb-3">
-			        <div class="input-group-prepend">
-			          <span class="input-group-text" id="basic-addon1">Image</span>
-			        </div>
-			        <input type="file" name="imageorvideo" class="form-control" aria-describedby="basic-addon1">
-			      </div>
+		      	<div class="input-group mb-3">
+			         <label class="input-group-text" for="inputGroupFile01">Image</label>
+					 <input type="file" name="imageorvideo" class="form-control" id="inputGroupFile01">
+	      		</div>
 			
-			      <div class="input-group mb-3">
-			        <div class="input-group mb-3">
+		      	<div class="input-group mb-3">
 					  <label class="input-group-text" for="inputGroupFile01">Audio</label>
 					  <input type="file" name="audio" class="form-control" id="inputGroupFile01">
-					</div>
 			    </div>
 	
 				<!--Button for adding new content-->
