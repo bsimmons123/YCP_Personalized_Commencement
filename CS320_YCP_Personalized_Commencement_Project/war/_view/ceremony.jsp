@@ -194,6 +194,18 @@
     for(int i = 0; i < audApps.size(); i++) {
     	audioApprovals[i] = audApps.get(i);
     }
+    
+ 	// pulls list of all audio approval statuses of each student from attribute
+    ArrayList<String> GPAChoices = (ArrayList<String>) request.getAttribute("gpaChoices");
+    List<String> gpachoices = new ArrayList<>(GPAChoices.size());
+    for (Object object : GPAChoices) {
+        gpachoices.add(Objects.toString(object, null));
+    }
+    // array of audio approval statuses as strings that gets passed to the js QR function
+    String[] gpaChoices = new String[gpachoices.size()];
+    for(int i = 0; i < gpachoices.size(); i++) {
+    	gpaChoices[i] = gpachoices.get(i);
+    }
     %>
     
      <!-- Script that sets each converted array to a JS array for use in the QRScanner.js import below -->
@@ -229,6 +241,7 @@
 	    const extraCurApprovals = <%=getJSArray(extraCurApprovals)%>;
 	    const imageApprovals = <%=getJSArray(imageApprovals)%>;
 	    const audioApprovals = <%=getJSArray(audioApprovals)%>;
+	    const gpaChoices = <%=getJSArray(gpaChoices)%>;
 	    const ctx = "${pageContext.request.contextPath}";
 	</script>
  

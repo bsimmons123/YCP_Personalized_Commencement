@@ -132,7 +132,6 @@
 					    <input type="radio" class="searchType1" name="options2" id="option2"> Don't Show GPA
 					  </label>
 					</div>
-
 				  </p>
 				  <p class="lead">
 				    <strong>Awards:</strong>

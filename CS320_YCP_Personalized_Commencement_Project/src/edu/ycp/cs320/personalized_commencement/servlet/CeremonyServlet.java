@@ -34,6 +34,7 @@ public class CeremonyServlet extends HttpServlet{
 		ArrayList<String> extraCurApprovals = new ArrayList<String>();
 		ArrayList<String> imgApprovals = new ArrayList<String>();
 		ArrayList<String> audioApprovals = new ArrayList<String>();
+		ArrayList<String> GPAChoices = new ArrayList<String>();
 		
 		// add all students from database to student arrayList
 		students = controller.getAllStudents(); // list is sorted by id number ascending
@@ -53,6 +54,7 @@ public class CeremonyServlet extends HttpServlet{
 			extraCurApprovals.add(String.valueOf(stud.getCheckExtCur()));
 			imgApprovals.add(String.valueOf(stud.getCheckImg()));
 			audioApprovals.add(String.valueOf(stud.getCheckAudio()));
+			GPAChoices.add(String.valueOf(stud.getShowGPA()));
 		}
 		
 		// set all property lists as request attributes and send user to the page
@@ -70,6 +72,7 @@ public class CeremonyServlet extends HttpServlet{
 		req.setAttribute("extraCurApprovals", extraCurApprovals);
 		req.setAttribute("imgApprovals", imgApprovals);
 		req.setAttribute("audioApprovals", audioApprovals);
+		req.setAttribute("gpaChoices", GPAChoices);
 		req.getRequestDispatcher("/_view/ceremony.jsp").forward(req, resp);
 	}
 	

@@ -98,7 +98,9 @@
 				    <p style="text-align: left; margin-left: 5%; font-size: 14px;">
 				    	<strong>Majors</strong>: ${student.major}<br>
 				    	<strong>Minors</strong>: ${student.minor}<br>
-				    	<strong>GPA</strong>: ${student.GPA}<br>
+				    	<c:if test="${student.showGPA == 1}">
+				    		<strong>GPA</strong>: ${student.GPA}<br>
+				    	</c:if>
 				    	<strong>Awards</strong>: ${student.award}<br>
 				    	<c:choose>
 				    	  	<c:when test="${(student.extraCur == '') || (student.checkExtCur == 0)}">
