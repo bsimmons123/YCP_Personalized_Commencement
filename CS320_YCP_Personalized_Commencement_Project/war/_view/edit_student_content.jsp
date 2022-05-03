@@ -148,7 +148,7 @@
 	   					</div>
 	  				</div>
 				</div>
-				<input type="submit" class="btn btn-outline-primary" data-dismiss="modal" value="Save">
+				<input type="submit" class="btn btn-outline-success" data-dismiss="modal" value="Save">
 			</div>
 		</div>
     	</form>
