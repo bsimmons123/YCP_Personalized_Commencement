@@ -75,7 +75,7 @@ public class ServletsControllerTest {
 	
 	@Test
 	public void testGetAdvisorsStudents() {
-		assertEquals(1, serv.getAdvisorsStudents("jmoscola@ycp.edu").get(0).getStudentId());
+		assertEquals(5, serv.getAdvisorsStudents("jmoscola@ycp.edu").get(0).getStudentId());
 	}
 	
 	@Test
@@ -126,6 +126,12 @@ public class ServletsControllerTest {
 		serv.updateStudentApproval(25, 0);
 		
 		assertFalse(student.getApproval() == 0);
+	}
+	
+	@Test
+	public void testUpdateStudentShowGPA() {
+		assertTrue(serv.updateStudentShowGPA(1, 1));
+		assertFalse(serv.updateStudentShowGPA(-1, 0));
 	}
 	
 	@Test

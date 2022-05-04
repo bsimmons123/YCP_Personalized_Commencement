@@ -15,8 +15,8 @@ public class DatabaseTest {
 		assertEquals(3.91, GetterDB.getStudent("bsimmons1@ycp.edu", "test").getGPA(), 0);
 		assertEquals(3.89, GetterDB.findStudentsById(4).getGPA(), 0);
 		assertEquals(1, GetterDB.getAdvisor("jmoscola@ycp.edu", "test").getAdvisorId());
-		assertEquals(5, GetterDB.findStudentsByAdvisor("jmoscola@ycp.edu").get(4).getStudentId());
-		assertEquals(5, GetterDB.getEveryStudent().get(4).getStudentId());
+		assertEquals(5, GetterDB.findStudentsByAdvisor("jmoscola@ycp.edu").get(0).getStudentId());
+		assertEquals(17, GetterDB.getEveryStudent().get(0).getStudentId());
 	}
 	
 	@Test

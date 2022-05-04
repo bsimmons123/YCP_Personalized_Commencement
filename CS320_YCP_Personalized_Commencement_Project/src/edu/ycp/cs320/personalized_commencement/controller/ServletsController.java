@@ -243,7 +243,7 @@ public class ServletsController {
  			db.updateStudentApproval(id, 0);
  		}
  		// check if anything was returned and output the list
- 		if (student == null) {
+ 		if (student == false) {
  			System.out.println("\tNo students found for ID <" + id + ">");
  		}
  		return false;
@@ -257,7 +257,7 @@ public class ServletsController {
 			IDatabase db = DatabaseProvider.getInstance();
 			Boolean student = db.updateStudentApproval(id, approval);
 			// check if anything was returned and output the list
-			if (student == null) {
+			if (student == false) {
 				System.out.println("\tNo students found for ID <" + id + ">");
 				return false;
 			}
@@ -272,7 +272,7 @@ public class ServletsController {
 			IDatabase db = DatabaseProvider.getInstance();
 			Boolean student = db.updateStudentShowGPA(id, GPA);
 			// check if anything was returned and output the list
-			if (student == null) {
+			if (student == false) {
 				System.out.println("\tNo students found for ID <" + id + ">");
 				return false;
 			}
@@ -296,7 +296,7 @@ public class ServletsController {
 		Boolean student = db.updateAdvisorComment(email, comment);
 
 		// check if anything was returned and output the list
-		if (student == null) {
+		if (student == false) {
 			System.out.println("\tNo students found for email <" + email + ">");
 			return false;
 		}

@@ -434,7 +434,7 @@ public class DerbyDatabase implements IDatabase {
 					// for testing that a result was returned
 					Boolean found = false;
 					
-					if (resultSet != -1) {
+					if (resultSet != 0) {
 						found = true;
 						return found;
 					}
@@ -564,7 +564,7 @@ public class DerbyDatabase implements IDatabase {
 					// for testing that a result was returned
 					Boolean found = false;
 					
-					if (resultSet != -1) {
+					if (resultSet != 0) {
 						found = true;
 						return found;
 					}
@@ -605,7 +605,7 @@ public class DerbyDatabase implements IDatabase {
 					// for testing that a result was returned
 					Boolean found = false;
 					
-					if (resultSet != -1) {
+					if (resultSet != 0) {
 						found = true;
 						return found;
 					}
@@ -642,11 +642,12 @@ public class DerbyDatabase implements IDatabase {
 					stmt.setInt(2, student_id);
 					
 					resultSet = stmt.executeUpdate();
+					System.out.println(resultSet);
 					
 					// for testing that a result was returned
 					Boolean found = false;
 					
-					if (resultSet != -1) {
+					if (resultSet != 0) {
 						found = true;
 						return found;
 					}
