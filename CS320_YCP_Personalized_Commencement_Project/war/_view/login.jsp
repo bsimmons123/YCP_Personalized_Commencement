@@ -12,6 +12,30 @@
 		<link href="${pageContext.request.contextPath}/css/LoginSS.css" rel="stylesheet" type="text/css">
 		<!-- Styling with bootstrap -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+				<script>
+		$(document).ready(function(){
+			$('#searchbar').keyup(function(){
+				var search=$('#searchbar').val();
+				if(search !=='' && search !== null){
+					console.log(search);
+					$.ajax({
+						url     : '/pcomm/searchautofill.do',
+						method     : 'POST',
+						data     : 'key='+search,
+						success    : function(data){
+								$('#showList').html(data);
+						},
+						error : function(jqXHR, exception){
+							console.log('Error occured!!');
+						}
+					});
+				}else{
+					$('#showList').html('');
+				}
+			});
+		});
+		</script>
 		<%@ include file="navbar.jsp"%>	
 		
 		<script src="${pageContext.servletContext.contextPath}/javascript-files/confetti.js"></script>
@@ -19,6 +43,20 @@
 	
 	<!-- Body styling and layout -->
 	<body>
+	
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">First</th>
+		      <th scope="col">Last</th>
+		    </tr>
+		  </thead>
+		  <tbody id="showList">
+		    <tr>
+		    </tr>
+		  </tbody>
+		</table>
+		
 		<!-- if no error message (User enters correct credentials) -->
 		<form action="${pageContext.servletContext.contextPath}/login" method="post">
 			<!-- navbar styling with search area and submit button ONLY ON LOGIN PAGE -->
@@ -88,5 +126,7 @@
 		<div id="pageheader"> 
 			<h1 class="title" style="font-size: 20px;">Watch The Ceremony Here: <input class="btn btn-outline-success" style="margin-left: 2%;" type="button" onclick="window.location='https://www.twitch.tv/ycp_pcomm_ceremony'" value="Watch Ceremony"></h1>
 		</div>
+		
+
 	</body>
 </html>
