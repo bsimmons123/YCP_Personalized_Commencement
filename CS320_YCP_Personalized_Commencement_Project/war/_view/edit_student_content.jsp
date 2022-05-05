@@ -89,9 +89,9 @@
 			    </div>
 	
 				<!--Button for adding new content-->
-				<div id="buttons" style="width: 100%; margin: auto; display: inline;">
+				<div id="buttons" style="width: 100%; margin: auto; position: relative">
 				<!-- Button to Open the Modal -->
-				<button type="button" style="margin-left: 0%;" class="btn btn-outline-secondary" data-toggle="modal" data-target="#cancelModal">
+				<button type="button" style="left: 0%; position: absolute" class="btn btn-outline-secondary" data-toggle="modal" data-target="#cancelModal">
 				 Cancel<span class="sr-only">(current)</span>
 				</button>
 				<!-- The Modal -->
@@ -119,7 +119,7 @@
 				  </div>
 				</div>
 			
-				<button type="button" style="margin-left: 31.5%; margin-right: 34.3%;" class="btn btn-outline-danger" data-toggle="modal" data-target="#resetModal">
+				<button type="button" style="position: relative;" class="btn btn-outline-danger" data-toggle="modal" data-target="#resetModal">
 				 Reset<span class="sr-only">(current)</span>
 				</button>
 				<!-- The Modal -->
@@ -146,7 +146,7 @@
 	   					</div>
 	  				</div>
 				</div>
-				<input type="submit" class="btn btn-outline-success" data-dismiss="modal" value="Save">
+				<input style="right: 0%; position: absolute"type="submit" class="btn btn-outline-success" data-dismiss="modal" value="Save">
 			</div>
 		</div>
     	</form>
