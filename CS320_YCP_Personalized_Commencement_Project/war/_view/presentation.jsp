@@ -36,14 +36,6 @@
 			<h1 class="title">Submission Preview for ${studentInfo.first} ${studentInfo.last}</h1>
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/presentation" method="post">
-				<!-- history of comments -->
-				<ul class="list-group float-right" style="width: 500px; word-wrap: break-word;">
-					<li class="list-group-item list-group-item-success">Past Comments:</li>
-				<c:forEach var="comment" items="${comments}">
-					<li class="list-group-item">${comment }</li>
-				</c:forEach>
-				</ul>
-		
 			<!-- Instructions for advisor -->
 			<div id="instructions">
 				<div class="alert alert-info" role="alert" style="text-align: center; color: black;">
@@ -140,6 +132,13 @@
 						<input class="btn btn-outline-success" style="margin-left: 37%; margin-right: 0%;" type="Submit" name="Status" value="Submit">
 					</div>
 				</div>
+				<!-- history of comments -->
+				<ul class="list-group float-right" style="margin-top: -2%; margin-bottom: 10%; width: 100%; word-wrap: break-word; z-index: 1000;">
+					<li class="list-group-item list-group-item-success" style="background-color: rgb(0,128,0);"><h5 style="color: white; width: 30%; margin: auto; border-bottom: 1px solid white;">Past Comments</h5></li>
+				<c:forEach var="comment" items="${comments}">
+					<li class="list-group-item" style="background-color: rgb(233,236,239); text-align: left;">${comment}</li>
+				</c:forEach>
+				</ul>
 			</div>
 		</form>
 	</body>
