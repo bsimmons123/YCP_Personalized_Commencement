@@ -1,6 +1,7 @@
 package edu.ycp.cs320.personalized_commencement.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
 
 public class StudentIndexServlet extends HttpServlet {
@@ -31,20 +33,24 @@ public class StudentIndexServlet extends HttpServlet {
 		Student stuInfo = new Student();
 		stuInfo = (Student) session.getAttribute("student");
 		
-		if (!stuInfo.getComment().isEmpty()) {
-			System.out.println("Student Comment: " + stuInfo.getComment());
-		}
+		ServletsController DBController = new ServletsController();
+		
+		// get all of students comments (that advisor has made to student)
+		ArrayList<String> studentComments = DBController.getStudentsComments(stuInfo.getStudentId());
 		
 		req.setAttribute("student", stuInfo);
 		
-		req.setAttribute("gpa", stuInfo.getShowGPA());
-		
-		if(stuInfo.getShowGPA() == 1) {
-			req.setAttribute("options1", "on");
-		}else {
-			req.setAttribute("options2", "on");
+		// print out all comments for student
+		if(studentComments != null) {
+		for(String comments : studentComments) {
+			System.out.println("Past Comments: " + comments);
 		}
-
+		// set array list of comments in jsp
+		req.setAttribute("comment", studentComments.get(studentComments.size()-1));
+		}else {
+			req.setAttribute("comment", "");
+		}
+		
 		// call JSP to generate empty form
 		req.getRequestDispatcher("/_view/student_index.jsp").forward(req, resp);
 	}

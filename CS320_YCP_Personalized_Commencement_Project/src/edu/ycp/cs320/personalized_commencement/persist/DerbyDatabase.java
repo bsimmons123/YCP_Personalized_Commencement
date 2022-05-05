@@ -95,7 +95,6 @@ public class DerbyDatabase implements IDatabase {
 		student.setPicture(resultSet.getString(index++));;
 		student.setNameSound(resultSet.getString(index++));;
 		student.setApproval(resultSet.getInt(index++));
-		student.setComment(resultSet.getString(index++));
 		student.setCheckMajor(resultSet.getInt(index++));
 		student.setCheckMinor(resultSet.getInt(index++));
 		student.setCheckExtCur(resultSet.getInt(index++));
@@ -115,12 +114,13 @@ public class DerbyDatabase implements IDatabase {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
-				PreparedStatement stmt1 = null;
-				PreparedStatement stmt2 = null;
+				PreparedStatement createStudentTable = null;
+				PreparedStatement createAdvisorTable = null;
+				PreparedStatement createCommentTable = null;
 				
 				try {
 					// creates student's table
-					stmt1 = conn.prepareStatement(
+					createStudentTable = conn.prepareStatement(
 							"create table students (student_id int primary key generated always as identity (start with 1, increment by 1)," +
 									"advisor_id int," +
 									"email varchar(40)," +
@@ -135,7 +135,6 @@ public class DerbyDatabase implements IDatabase {
 									"img varchar(500)," +
 									"audio varchar(500),"
 									+ "approval int,"
-									+ "comment varchar(500),"
 									+ "checkmajor int,"
 									+ "checkminor int,"
 									+ "checkextcur int,"
@@ -143,20 +142,28 @@ public class DerbyDatabase implements IDatabase {
 									+ "checkaudio int,"
 									+ "showgpa int)"
 					);	
-					stmt1.executeUpdate();
+					createStudentTable.executeUpdate();
 					
 					// creates advisor's table
-					stmt2 = conn.prepareStatement(
+					createAdvisorTable = conn.prepareStatement(
 							"create table advisors (advisor_id int primary key generated always as identity (start with 1, increment by 1),\r\n" + 
 							"email varchar(40),\r\n" + 
 							"password varchar(40))"
 					);
-					stmt2.executeUpdate();
+					createAdvisorTable.executeUpdate();
+					
+					// creates comment's table
+					createCommentTable = conn.prepareStatement(
+							"create table comments (student_id integer constraint student_id references students,\n" + 
+							"comment varchar(500))" 
+					);
+					createCommentTable.executeUpdate();
 					
 					return true;
 				} finally {
-					DBUtil.closeQuietly(stmt1);
-					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(createStudentTable);
+					DBUtil.closeQuietly(createAdvisorTable);
+					DBUtil.closeQuietly(createCommentTable);
 				}
 			}
 		});
@@ -183,9 +190,9 @@ public class DerbyDatabase implements IDatabase {
 				try {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
 					insertStudent = conn.prepareStatement("INSERT INTO students (advisor_id, email, password, " + 
-							"firstname, lastname, major, minor, gpa, awards, extcur, img, audio, approval, comment, checkmajor, checkminor, "
+							"firstname, lastname, major, minor, gpa, awards, extcur, img, audio, approval, checkmajor, checkminor, "
 							+ "checkextcur, checkimg, checkaudio, showgpa)" + 
-							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+							"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 					for (Student student : studentList) {
 						insertStudent.setInt(1, student.getAdvisorId());
 						insertStudent.setString(2, student.getEmail());
@@ -200,13 +207,12 @@ public class DerbyDatabase implements IDatabase {
 						insertStudent.setString(11, student.getPicture());
 						insertStudent.setString(12, student.getNameSound());
 						insertStudent.setInt(13, student.getApproval());
-						insertStudent.setString(14, student.getComment());
-						insertStudent.setInt(15, student.getCheckMajor());
-						insertStudent.setInt(16, student.getCheckMinor());
-						insertStudent.setInt(17, student.getCheckExtCur());
-						insertStudent.setInt(18, student.getCheckImg());
-						insertStudent.setInt(19, student.getCheckAudio());
-						insertStudent.setInt(20, student.getShowGPA());
+						insertStudent.setInt(14, student.getCheckMajor());
+						insertStudent.setInt(15, student.getCheckMinor());
+						insertStudent.setInt(16, student.getCheckExtCur());
+						insertStudent.setInt(17, student.getCheckImg());
+						insertStudent.setInt(18, student.getCheckAudio());
+						insertStudent.setInt(19, student.getShowGPA());
 						insertStudent.addBatch();
 					}
 					insertStudent.executeBatch();
@@ -456,24 +462,24 @@ public class DerbyDatabase implements IDatabase {
 	 * Update student associated with email and password
 	 */
 	@Override
-	public Boolean updateAdvisorComment(String userEmail, String comment) {
+	public Boolean updateStudentComment(int student_id, String comment) {
 		return executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
-				PreparedStatement stmt = null;
+				PreparedStatement insertComment = null;
 				int resultSet = 0;
 				
 				try {
-					// retreive all attributes from both Books and Authors tables
-					stmt = conn.prepareStatement(
-							"update students\n" + 
-							"set comment = ? " + 
-							"where email = ?"
-					);
-					stmt.setString(1, comment);
-					stmt.setString(2, userEmail);
+					insertComment = conn.prepareStatement("INSERT INTO comments(\n" + 
+							"	student_id,\n" + 
+							"	comment)\n" + 
+							"	VALUES(\n" + 
+							"	?,\n" + 
+							"	?)");
+					insertComment.setInt(1, student_id);
+					insertComment.setString(2, comment);
 					
-					resultSet = stmt.executeUpdate();
+					resultSet = insertComment.executeUpdate();
 					
 					// for testing that a result was returned
 					Boolean found = false;
@@ -485,16 +491,61 @@ public class DerbyDatabase implements IDatabase {
 					
 					// check if the title was found
 					if (!found) {
-						System.out.println("<" + userEmail + "> was not found in the Student table");
+						System.out.println("<" + student_id + "> was not found in the Student table");
 					}
 					
 					return found;
 				} finally {
-					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(insertComment);
 				}
 			}
 		});
 	}
+	
+	/**
+	 * Get students comments
+	 */
+	@Override
+	public ArrayList<String> getStudentComments(int student_id) {
+		return executeTransaction(new Transaction<ArrayList<String>>() {
+			@Override
+			public ArrayList<String> execute(Connection conn) throws SQLException {
+				PreparedStatement insertComment = null;
+				ResultSet resultSet = null;
+				
+				try {
+					insertComment = conn.prepareStatement("select comment from comments where student_id = ?");
+					insertComment.setInt(1, student_id);
+					
+					resultSet = insertComment.executeQuery();
+					
+					// for testing that a result was returned
+					
+					ArrayList<String> comments = new ArrayList<String>();
+					
+					Boolean found = false;
+					
+					while (resultSet.next()) {
+						found = true;
+						
+						comments.add(resultSet.getString(1));
+					}
+					
+					// check if the title was found
+					if (!found) {
+						System.out.println("\t<" + student_id + "> was not found in the Students table");
+						return null;
+					}
+					
+					return comments;
+				} finally {
+					DBUtil.closeQuietly(insertComment);
+				}
+			}
+		});
+	}
+	
+	
 
 	@Override
 	public Student findStudentsById(int id) {

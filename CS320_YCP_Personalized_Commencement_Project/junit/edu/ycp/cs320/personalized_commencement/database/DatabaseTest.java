@@ -4,6 +4,9 @@ import edu.ycp.cs320.personalized_commencement.persist.DatabaseProvider;
 import edu.ycp.cs320.personalized_commencement.persist.DerbyDatabase;
 import edu.ycp.cs320.personalized_commencement.persist.IDatabase;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class DatabaseTest {
@@ -53,8 +56,9 @@ public class DatabaseTest {
 	public void testUpdateStudentCommentDB() {
 		DatabaseProvider.setInstance(new DerbyDatabase());
 		IDatabase USComDB = DatabaseProvider.getInstance();
-		USComDB.updateAdvisorComment("dschrute@ycp.edu", "Absolute Dweeb");
-		assertEquals("Absolute Dweeb", USComDB.getStudent("dschrute@ycp.edu", "test").getComment());
-		assertNotNull(USComDB.getStudent("amott@ycp.edu", "test").getComment());
+		USComDB.updateStudentComment(19, "Absolute Dweeb");
+		ArrayList<String> comments = USComDB.getStudentComments(19);
+		assertEquals("Absolute Dweeb", comments.get(comments.size()-1));
+		assertNull(USComDB.getStudentComments(4));
 	}
 }

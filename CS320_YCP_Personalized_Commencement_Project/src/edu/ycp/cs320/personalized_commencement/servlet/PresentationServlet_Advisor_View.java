@@ -57,7 +57,7 @@ public class PresentationServlet_Advisor_View extends HttpServlet {
 			System.out.println("\tAdvisor's checkBoxes saved");
 		}
 		
-		if(controller.updateStudentComment(student.getEmail(), comment)){
+		if(controller.updateStudentComment(student.getStudentId(), comment)){
 			System.out.println("\tAdvisor's Comment saved");
 		}
 		

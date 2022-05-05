@@ -36,6 +36,14 @@
 			<h1 class="title">Submission Preview for ${studentInfo.first} ${studentInfo.last}</h1>
 		</div>
 		<form action="${pageContext.servletContext.contextPath}/presentation" method="post">
+				<!-- history of comments -->
+				<ul class="list-group float-right" style="width: 500px; word-wrap: break-word;">
+					<li class="list-group-item list-group-item-success">Past Comments:</li>
+				<c:forEach var="comment" items="${comments}">
+					<li class="list-group-item">${comment }</li>
+				</c:forEach>
+				</ul>
+		
 			<!-- Instructions for advisor -->
 			<div id="instructions">
 				<div class="alert alert-info" role="alert" style="text-align: center; color: black;">
@@ -44,6 +52,7 @@
 						  If you disapprove of any of the information, leave the check box for it blank and add a comment regarding why it was denied.  When you are finished, click the submit button to confirm your decision.
 					</p>
 				</div>
+				
 				
 				<!-- Card holding student info -->
 				<div class="jumbotron">
@@ -97,6 +106,9 @@
 					  </div>
 					  <textarea class="form-control" maxlength="495" name="submissioncomment" aria-label="With textarea"></textarea>
 					</div>
+					
+					
+					
 					<!-- Submit button and Back Button -->
 					<div id="buttons" style="padding:0px; display: inline;">
 						<button type="button" style="margin-left: 0%; margin-right:37%" class="btn btn-outline-secondary" data-toggle="modal" data-target="#backButtonModal">

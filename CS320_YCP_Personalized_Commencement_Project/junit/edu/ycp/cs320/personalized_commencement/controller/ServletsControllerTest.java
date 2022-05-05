@@ -24,7 +24,6 @@ public class ServletsControllerTest {
 		sController2.setCheckExtCur(0);
 		sController2.setCheckMajor(0);
 		sController2.setCheckMinor(0);
-		sController2.setComment("4");
 		sController2.setFirstName("Shub");
 		sController2.setLastName("Spoon");
 	}
@@ -136,7 +135,6 @@ public class ServletsControllerTest {
 	
 	@Test
 	public void testUpdateStudentComment() {
-		assertTrue(serv.updateStudentComment(serv.getStudentById(1).getEmail(), "Absolutely impeccable."));
-		assertFalse(serv.updateStudentComment(sController2.getEmail(), "Holy schmoly"));
+		assertTrue(serv.updateStudentComment(serv.getStudentById(1).getStudentId(), "Absolutely impeccable."));
 	}
 }

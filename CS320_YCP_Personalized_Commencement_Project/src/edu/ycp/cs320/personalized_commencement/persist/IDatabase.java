@@ -23,7 +23,7 @@ public interface IDatabase {
 	/**
 	 * Update student associated with email and password
 	 */
-	public Boolean updateAdvisorComment(String userEmail, String comment);
+	public Boolean updateStudentComment(int student_id, String comment);
 
 	public Student findStudentsById(int id);
 
@@ -54,4 +54,9 @@ public interface IDatabase {
 	public Student getStudentByEmail(String email);
 
 	public Boolean updateStudentShowGPA(int student_id, int GPA);
+
+	/**
+	 * Get students comments
+	 */
+	ArrayList<String> getStudentComments(int student_id);
 }

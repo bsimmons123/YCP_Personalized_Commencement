@@ -25,7 +25,6 @@ public class StudentTest {
 		model.setCheckExtCur(0);
 		model.setCheckMajor(0);
 		model.setCheckMinor(0);
-		model.setComment("Good job.");
 		model.setFirstName("Andrew");
 		model.setLastName("MOTT");
 	}
@@ -73,10 +72,6 @@ public class StudentTest {
 	@Test
 	public void testCheckMinor() {
 		assertEquals(0,model.getCheckMinor());
-	}
-	@Test
-	public void testComment() {
-		assertEquals("Good job.", model.getComment());
 	}
 	@Test
 	public void testFirstName() {
@@ -134,11 +129,6 @@ public class StudentTest {
 	public void testSetCheckMinor() {
 		model.setCheckMinor(1);
 		assertEquals(1,model.getCheckMinor());
-	}
-	@Test
-	public void testSetComment () {
-		model.setComment("Het there!!");
-		assertEquals("Het there!!",model.getComment());
 	}
 	@Test
 	public void testSetFirstName() {

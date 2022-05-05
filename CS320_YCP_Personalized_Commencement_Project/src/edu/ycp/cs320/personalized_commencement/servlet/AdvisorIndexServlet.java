@@ -94,6 +94,10 @@ public class AdvisorIndexServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession(false);
 		
+		ServletsController DBController = new ServletsController();
+		
+		ArrayList<String> studentComments = DBController.getStudentsComments(student.getStudentId());
+		
 		// redirect if no session
 		if(session == null) {
 			LoginServlet loginServlet = new LoginServlet();
@@ -102,6 +106,8 @@ public class AdvisorIndexServlet extends HttpServlet {
 		}
 		
 		session.setAttribute("studentInfo", student);
+		
+		req.setAttribute("comments", studentComments);
 	
 		// Forward to view to render the result HTML document
 		req.getRequestDispatcher("/_view/presentation.jsp").forward(req, resp);

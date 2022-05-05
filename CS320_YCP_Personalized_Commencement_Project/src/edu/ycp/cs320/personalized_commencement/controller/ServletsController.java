@@ -156,6 +156,26 @@ public class ServletsController {
 	}
 	
 	/**
+	 * @returns the list of students that belong to a specific advisor.
+	 */
+	public ArrayList<String> getStudentsComments(int student_id) {
+		// Create the default IDatabase instance
+		DatabaseProvider.setInstance(new DerbyDatabase());
+
+		// get the DB instance and execute transaction
+		IDatabase db = DatabaseProvider.getInstance();
+		ArrayList<String> studentsCommentsList = db.getStudentComments(student_id);
+
+		// check if anything was returned and output the list
+		if (studentsCommentsList == null) {
+			System.out.println("\tNo comments in this list");
+			return null;
+		} else {
+			return studentsCommentsList;
+		}
+	}
+	
+	/**
 	 * @returns student requested from first and last name
 	 */
 	public Student getStudentByFirstAndLast(String first, String last) {
@@ -287,17 +307,17 @@ public class ServletsController {
 	 *
 	 * @returns the updated student object
 	 */
-	public boolean updateStudentComment(String email, String comment) {
+	public boolean updateStudentComment(int student_id, String comment) {
 		// Create the default IDatabase instance
 		DatabaseProvider.setInstance(new DerbyDatabase());
 
 		// get the DB instance and execute transaction
 		IDatabase db = DatabaseProvider.getInstance();
-		Boolean student = db.updateAdvisorComment(email, comment);
+		Boolean student = db.updateStudentComment(student_id, comment);
 
 		// check if anything was returned and output the list
 		if (student == false) {
-			System.out.println("\tNo students found for email <" + email + ">");
+			System.out.println("\tNo students found for email <" + student_id + ">");
 			return false;
 		}
 		else {

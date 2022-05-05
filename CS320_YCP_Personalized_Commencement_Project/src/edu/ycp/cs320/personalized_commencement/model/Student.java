@@ -21,7 +21,6 @@ public class Student extends User{
 	private String extraCur;
 	private String picture; // String holding the name of the users file
 	private String nameSound; // String of users file
-	private String comment; // Advisors comment on student info
 
 	// setters
 	public void setCheckMajor(int checkMajor) {
@@ -70,9 +69,6 @@ public class Student extends User{
 	public void setApproval(int checkApproval) {
 		this.checkApproval = checkApproval;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
 
 	// Getters
 	public int getCheckMajor() {
@@ -119,9 +115,6 @@ public class Student extends User{
 	}
 	public int getApproval() {
 		return checkApproval;
-	}
-	public String getComment() {
-		return comment;
 	}
 
 	public void setGPAString(double GPA) {

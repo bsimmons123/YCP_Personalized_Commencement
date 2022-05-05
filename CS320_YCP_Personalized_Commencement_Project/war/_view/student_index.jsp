@@ -268,13 +268,13 @@
 				</div>
 
 				<!-- Comment section below student's info card -->
-				<c:if test="${student.comment != ''}">
+				<c:if test="${comment != ''}">
 					<div class="card" style="margin-bottom:20px;">
 					  <div class="card-header">
 					    Advisor Comment
 					  </div>
 					  <div class="card-body">
-					    <p class="card-text">${student.comment}</p>
+					    <p class="card-text">${comment}</p>
 					  </div>
 					</div>
 				</c:if>

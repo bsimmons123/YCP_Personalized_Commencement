@@ -38,7 +38,6 @@ public class InitialData {
 				student.setPicture(i.next());
 				student.setNameSound(i.next());
 				student.setApproval(Integer.parseInt(i.next()));
-				student.setComment(i.next());
 				student.setCheckMajor(Integer.parseInt(i.next()));
 				student.setCheckMinor(Integer.parseInt(i.next()));
 				student.setCheckExtCur(Integer.parseInt(i.next()));
