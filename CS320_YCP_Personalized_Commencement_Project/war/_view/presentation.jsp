@@ -102,8 +102,8 @@
 					
 					
 					<!-- Submit button and Back Button -->
-					<div id="buttons" style="padding:0px; display: inline;">
-						<button type="button" style="margin-left: 0%; margin-right:37%" class="btn btn-outline-secondary" data-toggle="modal" data-target="#backButtonModal">
+					<div id="buttons" style="width: 100%; position: relative;">
+						<button type="button" style="left: 0%; position: absolute" class="btn btn-outline-secondary" data-toggle="modal" data-target="#backButtonModal">
 							Back <span class="sr-only">(current)</span>
 						</button>
 						<!-- The Modal -->
@@ -129,7 +129,7 @@
 			   					</div>
 			  				</div>
 						</div>
-						<input class="btn btn-outline-success" style="margin-left: 37%; margin-right: 0%;" type="Submit" name="Status" value="Submit">
+						<input class="btn btn-outline-success" style="position: absolute; right: 0%;" type="Submit" name="Status" value="Submit">
 					</div>
 				</div>
 				<!-- history of comments -->

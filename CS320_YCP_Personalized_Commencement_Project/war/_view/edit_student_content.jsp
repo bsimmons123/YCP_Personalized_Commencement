@@ -119,7 +119,7 @@
 				  </div>
 				</div>
 			
-				<button type="button" style="margin-left: 31.5%; margin-right: 34.4%;" class="btn btn-outline-danger" data-toggle="modal" data-target="#resetModal">
+				<button type="button" style="margin-left: 31.5%; margin-right: 34.3%;" class="btn btn-outline-danger" data-toggle="modal" data-target="#resetModal">
 				 Reset<span class="sr-only">(current)</span>
 				</button>
 				<!-- The Modal -->
