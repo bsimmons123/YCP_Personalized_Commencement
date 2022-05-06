@@ -40,7 +40,7 @@
   	</script>
 	
 	<!-- body layout and styling -->
-	<body style="background-color: rgb(0, 128, 0); height: 90%">
+	<body style="background-color: rgb(0, 128, 0); height: 80%">
 	
 		<!-- Overall navbar styling -->
 		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green; position: fixed; width: 100%; top: 0px; z-index: 1000;">
@@ -49,7 +49,7 @@
 		  <div id="navbarNavAltMarkup ml-auto">
 		    <div class="navbar-nav">
 		    <form action="${pageContext.servletContext.contextPath}/logout" method="post">
-		      <a class="nav-link active" href="http://localhost:8081/pcomm" 
+		      <a class="nav-link active" href="${pageContext.request.contextPath}" 
 		      style="text-align: center;width: 100px; border-radius: 5px; color: green; background-color: white; font-size: 20px;">
 		      Return<span class="sr-only">(current)</span>
 		      </a>
@@ -76,7 +76,7 @@
     	  	</c:otherwise>
     	</c:choose>
 		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 40%; height: 90%; margin-top: 5%;margin-left: auto; margin-right:auto;border: 5px solid gray;">
+		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 50%; height: 90%; top: 20%; margin-left: auto; margin-right:auto; bottom: 0px; padding-bottom: 0px; border: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active" style="height: inherit;">

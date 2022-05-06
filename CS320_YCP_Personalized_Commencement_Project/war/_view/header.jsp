@@ -39,7 +39,7 @@
 		      <!-- Modal footer -->
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
-		        <button type="button" onclick="window.location='http://localhost:8081/pcomm/logout'" class="btn btn-danger" data-dismiss="modal">Yes, Logout</button>
+		        <button type="button" onclick="window.location='${pageContext.request.contextPath}/logout'" class="btn btn-danger" data-dismiss="modal">Yes, Logout</button>
 		      </div>
 		
 		    </div>

@@ -63,6 +63,7 @@ public class SearchServlet extends HttpServlet {
 			}
 		}
 
+		userInputEmail.toLowerCase();
 		if(confettiCannon("don hake", userInputEmail)) { // confetti trigger
 			req.setAttribute("confetti", "CONFETTI!!!!");
 			req.setAttribute("errorMessage", null);

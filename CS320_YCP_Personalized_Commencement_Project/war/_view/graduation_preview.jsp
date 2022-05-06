@@ -42,7 +42,7 @@
   </script>
 	 
 	<!-- body layout and styling -->
-	<body style="background-color: rgb(0, 128, 0); height: 90%">
+	<body style="background-color: rgb(0, 128, 0); height: 80%">
 		<c:choose>
     	  	<c:when test="${(student.nameSound == '') || (student.checkAudio == 0)}">
     	  		<audio autoplay id="audio" src="${pageContext.servletContext.contextPath}/files/"></audio>
@@ -52,7 +52,7 @@
     	  	</c:otherwise>
     	</c:choose>
 		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 40%; height: 90%; margin-top: 5%;margin-left: auto; margin-right:auto;border: 5px solid gray;">
+		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 50%; height: 90%; top: 20%; margin-left: auto; margin-right:auto; bottom: 0px; padding-bottom: 0px; border: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active" style="height: inherit;">
@@ -90,10 +90,9 @@
 				  </div>
 		      </div>
 		    </div>
+		    <div style="top: 5%; position: relative; width: 100%;">
+		    	<input style="right: 0px; position: absolute;"class="btn btn-secondary" type="button" onclick="window.location='${pageContext.request.contextPath}/student_index'" value="Back">
+	    	</div>
 	    </div>
-		
-		  <div id="buttons" style="padding-left:93.5%; margin-top::0px; padding-bottom: 20px;display: inline; width: auto;">
-			<input class="btn btn-secondary" type="button" onclick="window.location='http://localhost:8081/pcomm/student_index'" value="Back">
-		  </div>
 	</body>
 </html>

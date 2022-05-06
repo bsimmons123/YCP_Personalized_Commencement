@@ -124,7 +124,7 @@
 							      <!-- Modal footer -->
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							        <button type="button" onclick="window.location='http://localhost:8081/pcomm/advisor_index'" class="btn btn-danger" data-dismiss="modal">Back</button>
+							        <button type="button" onclick="window.location='${pageContext.request.contextPath}/advisor_index'" class="btn btn-danger" data-dismiss="modal">Back</button>
 							      </div>
 			   					</div>
 			  				</div>
