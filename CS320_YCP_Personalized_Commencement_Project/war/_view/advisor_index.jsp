@@ -176,12 +176,12 @@
 				<div style="display: inline; width: auto; margin: auto;">
 					<div style="width: 40%; height: 50%; float: left; margin-left: 10%">
 						<br>
-						<h5 style="width: 50%; margin: auto; color: green;">Missing Students</h5>
+						<h5 style="width: 50%; margin: auto; color: green; font-size: 14px;">Missing Students</h5>
 						<img src="${pageContext.servletContext.contextPath}/browser-images/MissingStudentsQR.png" style="pointer-events: none; border: 3px solid green;">
 					</div>
 					<div style="width: 40%; height: 50%; float: left;">
 						<br>
-						<h5 style="width: 50%; margin: auto; color: green;">End Ceremony</h5>
+						<h5 style="width: 50%; margin: auto; color: green; font-size: 14px;">End Ceremony</h5>
 						<img src="${pageContext.servletContext.contextPath}/browser-images/EndCeremonyQR.png" style="pointer-events: none; border: 3px solid green;">
 					</div>
 				</div>
