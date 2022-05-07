@@ -76,7 +76,7 @@
     	  	</c:otherwise>
     	</c:choose>
 		<!-- carousel window size and styling -->
-		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 50%; height: 90%; top: 20%; margin-left: auto; margin-right:auto; bottom: 0px; padding-bottom: 0px; border: 5px solid gray;">
+		<div id="carouselExampleIndicators" class="carousel slide" data-interval="10000" data-ride="carousel" style="width: 40%; height: 90%; top: 20%; margin-left: auto; margin-right:auto; bottom: 0px; padding-bottom: 0px; border: 5px solid gray;">
 		    <div class="carousel-inner" style="height: 100%; width: 100%;">
 		  	  <!-- First Carousel Slide -->
 		      <div class="carousel-item active" style="height: inherit;">
