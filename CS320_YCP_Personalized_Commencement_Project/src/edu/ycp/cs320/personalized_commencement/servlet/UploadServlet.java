@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 
 import edu.ycp.cs320.personalized_commencement.controller.ServletsController;
 import edu.ycp.cs320.personalized_commencement.model.Student;
@@ -68,11 +69,19 @@ public class UploadServlet extends HttpServlet {
 	                if(!item.isFormField()){
 	
 	                	// retrieves the file name and file to send to jsp
-	                    fname = new File(item.getName()).getName();
+	                    fname = new File(item.getName()).getName().toLowerCase();
 	                    fsize = new Long(item.getSize()).toString();
 	                    if(!fsize.equals("0")) {
+	                    	
+	                    	// create students directory before writing files to it
+	                    	File newDirectory = new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + student.getLast());
+	                    	
+	                    	FileUtils.forceMkdir(newDirectory);
+	                    	
+	                    	System.out.println("Create new directory: " + newDirectory + " Success!");
+	                    	
 		                    // writes file to project folder
-		                    item.write( new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + student.getLast() + File.separator + fname));
+		                    item.write(new File(UPLOAD_DIRECTORY + File.separator + student.getFirst() + student.getLast() + File.separator + fname));
 		
 		                    // successfull upload message
 		                    System.out.println("\tFile: " + fname + " Uploaded Successfully");
