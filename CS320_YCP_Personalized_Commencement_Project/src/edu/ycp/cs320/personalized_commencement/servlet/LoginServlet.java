@@ -59,20 +59,20 @@ public class LoginServlet extends HttpServlet{
 		
 		// check student login
 		System.out.println("\tChecking user login");
-		if (controller.checkStudentLogin(jspUser.getEmail(), jspUser.getPassword())) {
+		if (controller.checkStudentLogin(jspUser.getEmail().toLowerCase(), jspUser.getPassword())) {
 			System.out.println("\t\tStudent Logged in");
 			HttpSession session = req.getSession(true);
 			System.out.println("\t\tUser Session: " + session.getId());
-			student = controller.getStudent(jspUser.getEmail(), jspUser.getPassword());
+			student = controller.getStudent(jspUser.getEmail().toLowerCase(), jspUser.getPassword());
 			session.setAttribute("student", student);
 			StudentIndexServlet studentIndex = new StudentIndexServlet();
 			studentIndex.doGet(req, resp);
 			return;
-		} else if(controller.checkAdvisorLogin(jspUser.getEmail(), jspUser.getPassword())) { // check advisor login
+		} else if(controller.checkAdvisorLogin(jspUser.getEmail().toLowerCase(), jspUser.getPassword())) { // check advisor login
 			System.out.println("\t\tAdvisor Logged in");
 			HttpSession session = req.getSession(true); // create a new http session
 			System.out.println("\t\tUser Session: " + session.getId()); // print out session id
-			advisor = controller.getAdvisor(jspUser.getEmail(), jspUser.getPassword()); // get advisor's email to send to session
+			advisor = controller.getAdvisor(jspUser.getEmail().toLowerCase(), jspUser.getPassword()); // get advisor's email to send to session
 			session.setAttribute("advisor", advisor); // set session
 			AdvisorIndexServlet advisorIndex = new AdvisorIndexServlet();
 			advisorIndex.doGet(req, resp); // creates a guaranteed push to get in advisor index
